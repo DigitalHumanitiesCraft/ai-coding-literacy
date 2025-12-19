@@ -254,7 +254,22 @@ function createProcessPanel(chapter) {
     html += `</div>`;
   }
 
+  // Navigation
+  html += `<div class="panel-nav">
+    <button class="panel-nav-btn prev" type="button">← Zurück</button>
+    <button class="panel-nav-btn next" type="button">Weiter zu Übungen →</button>
+  </div>`;
+
   panel.innerHTML = html;
+
+  // Nav handlers
+  panel.querySelector('.prev').addEventListener('click', () => {
+    scrollToPanel(panel.closest('.loop-container'), 0);
+  });
+  panel.querySelector('.next').addEventListener('click', () => {
+    scrollToPanel(panel.closest('.loop-container'), 2);
+  });
+
   return panel;
 }
 
@@ -314,7 +329,22 @@ function createExecutePanel(chapter) {
     html += `</div>`;
   });
 
+  // Navigation
+  html += `<div class="panel-nav">
+    <button class="panel-nav-btn prev" type="button">← Zurück zur Theorie</button>
+    <button class="panel-nav-btn next" type="button">Weiter zu Ressourcen →</button>
+  </div>`;
+
   panel.innerHTML = html;
+
+  // Nav handlers
+  panel.querySelector('.prev').addEventListener('click', () => {
+    scrollToPanel(panel.closest('.loop-container'), 1);
+  });
+  panel.querySelector('.next').addEventListener('click', () => {
+    scrollToPanel(panel.closest('.loop-container'), 3);
+  });
+
   return panel;
 }
 
@@ -344,10 +374,19 @@ function createOutputPanel(chapter) {
     `;
   }
 
-  // Loop Complete indicator
-  html += `<div class="loop-complete">Loop complete – iterate oder nächstes Kapitel</div>`;
+  // Navigation (nur Zurück, da letztes Panel)
+  html += `<div class="panel-nav">
+    <button class="panel-nav-btn prev" type="button">← Zurück zu Übungen</button>
+    <span class="loop-complete">✓ Loop complete</span>
+  </div>`;
 
   panel.innerHTML = html;
+
+  // Nav handler
+  panel.querySelector('.prev').addEventListener('click', () => {
+    scrollToPanel(panel.closest('.loop-container'), 2);
+  });
+
   return panel;
 }
 

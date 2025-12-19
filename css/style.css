@@ -564,7 +564,42 @@ footer a {
 }
 
 .loop-start-btn::after {
-  content: "→";
+  content: "";
+}
+
+/* Panel-Navigation (← →) */
+.panel-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.panel-nav-btn {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  color: var(--text);
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  padding: 0.6rem 1rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.panel-nav-btn:hover {
+  background: var(--bg);
+  border-color: var(--text);
+}
+
+.panel-nav-btn.prev {
+  margin-right: auto;
+}
+
+.panel-nav-btn.next {
+  margin-left: auto;
 }
 
 /* Panel: PROCESS (Theorie) */
@@ -587,22 +622,16 @@ footer a {
 
 /* Loop-Complete Indikator */
 .loop-complete {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 0.5rem;
-  margin-top: 2rem;
-  padding: 1rem;
+  padding: 0.6rem 1rem;
   background: var(--code-bg);
-  border-radius: 4px;
+  border-radius: 3px;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 14px;
+  font-size: 13px;
   color: var(--text-muted);
-}
-
-.loop-complete::before {
-  content: "↺";
-  font-size: 20px;
+  margin-left: auto;
 }
 
 /* Schatten für Tiefe */
