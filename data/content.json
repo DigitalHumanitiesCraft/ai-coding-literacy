@@ -23,33 +23,34 @@
       "short": "Probleme strukturieren und zerlegen",
 
       "theory": {
-        "description": "Problemzerlegung, Mustererkennung und Abstraktion – unabhängig von konkreter Programmiersyntax. Das eigene Domänenwissen wird zum Ausgangspunkt: Probleme so strukturieren, dass sie in ausführbare Schritte übersetzt werden können.",
+        "description": "Computational Thinking ist die Fähigkeit, Probleme so zu strukturieren, dass sie systematisch gelöst werden können. Für die Arbeit mit LLMs ist das die wichtigste Grundkompetenz. Das eigene Domänenwissen wird zum Ausgangspunkt: Probleme so zerlegen, dass jeder Teilschritt ein präziser Prompt werden kann.",
         "keyPoints": [
           "Computational Thinking ist keine Programmierung, sondern eine Denkweise",
           "Die vier Kernelemente: Dekomposition, Mustererkennung, Abstraktion, Algorithmus",
-          "LLMs verstehen Probleme besser, wenn Sie sie selbst verstanden haben",
+          "LLMs arbeiten am besten mit klaren, strukturierten Aufgaben – vage Anfragen führen zu unvorhersehbaren Ergebnissen",
+          "Dekomposition hilft: bessere Prompts schreiben, Fehler lokalisieren, iterativ verbessern",
           "Pseudocode und Flussdiagramme helfen, bevor Code generiert wird"
         ],
         "concepts": [
           {
             "term": "Dekomposition",
-            "definition": "Ein großes Problem in kleinere, handhabbare Teile zerlegen"
+            "definition": "Großes Problem in kleinere Teile zerlegen. Beispiel: 'Katalog digitalisieren' → Scannen → OCR → Korrektur → Strukturieren"
           },
           {
             "term": "Mustererkennung",
-            "definition": "Wiederkehrende Strukturen und Ähnlichkeiten identifizieren"
+            "definition": "Wiederkehrende Strukturen identifizieren. Beispiel: 'Alle Einträge haben: Titel, Datum, Material'"
           },
           {
             "term": "Abstraktion",
-            "definition": "Das Wesentliche herausarbeiten, irrelevante Details ausblenden"
+            "definition": "Unwichtiges weglassen, Kern erfassen. Beispiel: 'Egal ob Gemälde oder Skulptur – beide haben Inventarnummer'"
           },
           {
             "term": "Algorithmus",
-            "definition": "Eine Schritt-für-Schritt-Anleitung zur Lösung eines Problems"
+            "definition": "Schrittweise Anleitung formulieren. Beispiel: '1. Öffne Datei, 2. Lies Zeile, 3. Extrahiere Titel...'"
           },
           {
             "term": "Pseudocode",
-            "definition": "Informelle Beschreibung eines Ablaufs in natürlicher Sprache"
+            "definition": "Informelle Beschreibung eines Ablaufs in natürlicher Sprache, bevor echter Code geschrieben wird"
           }
         ]
       },

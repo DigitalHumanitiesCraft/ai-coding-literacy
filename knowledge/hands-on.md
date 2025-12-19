@@ -1,6 +1,6 @@
 # Hands-On-Übungen – Übersicht
 
-Diese Datei dokumentiert die Hands-On-Übungen des Curriculums. Die Übungen sind jetzt direkt in `/data/content.json` integriert und werden auf der Website dynamisch gerendert.
+Diese Datei dokumentiert die Hands-On-Übungen des Curriculums. Die Übungen sind in `/data/content.json` integriert und werden im **EXECUTE-Panel** des Prompt-Loop UI gerendert.
 
 ---
 
@@ -17,6 +17,27 @@ Jede Übung gehört zu einem der 6 Kompetenzbereiche und enthält:
 
 ---
 
+## Darstellung im Prompt-Loop UI
+
+Die Übungen erscheinen im **EXECUTE-Panel** (Phase 3 des Loops):
+
+```
+●───●───●───○
+INPUT → PROCESS → EXECUTE → OUTPUT
+                    ↑
+              Übungen hier
+```
+
+Innerhalb des EXECUTE-Panels werden alle Übungen eines Kapitels nacheinander angezeigt:
+- Übungstitel mit ID
+- Zusammenfassung
+- Lernziele als Liste
+- Code-Block (falls vorhanden)
+- Aufgabenstellung
+- Reflexionsfragen
+
+---
+
 ## Übersicht nach Kompetenzbereich
 
 ### CT – Computational Thinking (3 Übungen)
@@ -25,46 +46,70 @@ Jede Übung gehört zu einem der 6 Kompetenzbereiche und enthält:
 |----|-------|-------|
 | CT-1 | Code als Lesestoff | Python-Code lesen und verstehen |
 | CT-2 | Probleme zerlegen | Dekomposition und Pseudocode |
-| CT-3 | Workflow-Automatisierung | Bildverarbeitung mit Python |
+| CT-3 | Workflow-Automatisierung | Batch-Verarbeitung verstehen |
 
-### RE – Requirement Engineering (3 Übungen)
-
-| ID | Titel | Fokus |
-|----|-------|-------|
-| RE-1 | Anforderungen formulieren | Vom vagen Wunsch zur klaren Spezifikation |
-| RE-2 | User Stories schreiben | Strukturierte Anforderungsdokumentation |
-| RE-3 | Akzeptanzkriterien | Testbare Erfolgskriterien definieren |
-
-### CE – Context Engineering (3 Übungen)
+### RE – Requirement Engineering (2 Übungen)
 
 | ID | Titel | Fokus |
 |----|-------|-------|
-| CE-1 | Kontext bereitstellen | Relevante Informationen auswählen |
-| CE-2 | Wissen destillieren | Dokumentation komprimieren |
-| CE-3 | Few-Shot-Beispiele | Beispiele als Kontext nutzen |
+| RE-1 | Anforderungen spezifizieren | Vom vagen Wunsch zur klaren Spezifikation |
+| RE-2 | Akzeptanzkriterien testen | Testbare Erfolgskriterien definieren |
 
-### PE – Prompt Engineering (3 Übungen)
+**Geplante Erweiterung aus grundlagen-kompetenzbereiche.md:**
+- User Stories schreiben
+- INVEST-Kriterien anwenden
+- Kernfragen-Methode
 
-| ID | Titel | Fokus |
-|----|-------|-------|
-| PE-1 | Prompting-Grundlagen | Strukturierte Anweisungen |
-| PE-2 | Chain-of-Thought | Schritt-für-Schritt-Denken anregen |
-| PE-3 | Iterative Verfeinerung | Prompts verbessern durch Feedback |
-
-### CL – Code Literacy (3 Übungen)
+### CE – Context Engineering (2 Übungen)
 
 | ID | Titel | Fokus |
 |----|-------|-------|
-| CL-1 | Fehlermeldungen lesen | Traceback interpretieren |
-| CL-2 | Datenfluss verfolgen | Variablen und Transformationen |
-| CL-3 | Muster erkennen | Wiederverwendbare Codebausteine |
+| CE-1 | Wissen destillieren | Dokumentation komprimieren |
+| CE-2 | Textanalyse mit Kontext | Domänenspezifischen Kontext bereitstellen |
 
-### RV – Review (2 Übungen)
+**Geplante Erweiterung:**
+- RAG-Konzepte verstehen
+- Kontextstruktur aufbauen
+- Komprimierungsstrategien
+
+### PE – Prompt Engineering (2 Übungen)
 
 | ID | Titel | Fokus |
 |----|-------|-------|
-| RV-1 | Systematisch testen | Code gegen Anforderungen prüfen |
+| PE-1 | Prompt-Struktur | Strukturierte Anweisungen |
+| PE-2 | Iteratives Prompting | Prompts verbessern durch Feedback |
+
+**Geplante Erweiterung:**
+- Zero-Shot vs. Few-Shot
+- Chain-of-Thought anwenden
+- Iterative Verfeinerung dokumentieren
+
+### CL – Code Literacy (5 Übungen)
+
+| ID | Titel | Fokus |
+|----|-------|-------|
+| CL-1 | Variablen und Datentypen | Daten speichern und verarbeiten |
+| CL-2 | Kontrollstrukturen lesen | If-else und Schleifen |
+| CL-3 | Funktionen und Bibliotheken | Wiederverwendbare Bausteine |
+| CL-4 | Pandas für Datenverarbeitung | DataFrames verstehen |
+| CL-5 | Visualisierung mit Matplotlib | Daten sichtbar machen |
+
+**Geplante Erweiterung:**
+- Skill-Hierarchie (Run → Trace → Explain → Write)
+- Warnsignale beim Codelesen
+
+### RV – Review (3 Übungen)
+
+| ID | Titel | Fokus |
+|----|-------|-------|
+| RV-1 | Fehlermeldungen lesen | Traceback interpretieren |
 | RV-2 | Halluzinationen erkennen | Plausibilität validieren |
+| RV-3 | Systematisches Review | Code gegen Anforderungen prüfen |
+
+**Geplante Erweiterung:**
+- Halluzinations-Taxonomie (5 Kategorien)
+- Bug-Pattern-Erkennung
+- Metamorphic Testing
 
 ---
 
@@ -78,8 +123,6 @@ Zusätzlich zu den Grundübungen gibt es vertiefende Hands-On-Projekte, die mehr
 4. **Halluzinationsrisiken** (RV + CL)
 5. **Batch-Verarbeitung** (alle Kompetenzen)
 
-Diese sind ebenfalls in `content.json` als fortgeschrittene Übungen in den jeweiligen Kapiteln integriert.
-
 ---
 
 ## Technische Hinweise
@@ -87,3 +130,31 @@ Diese sind ebenfalls in `content.json` als fortgeschrittene Übungen in den jewe
 - Code-Beispiele sind in Python oder JavaScript
 - Alle Übungen funktionieren mit beliebigen LLMs (Claude, ChatGPT, etc.)
 - Für Python-Beispiele: Google Colab als Zero-Setup-Option
+
+---
+
+## Integration mit content.json
+
+Die Übungen werden in der JSON-Struktur so definiert:
+
+```json
+{
+  "handsOn": [
+    {
+      "id": "CT-1",
+      "title": "Code als Lesestoff",
+      "summary": "Code als Text betrachten...",
+      "goals": ["Grundstruktur erkennen", "..."],
+      "exercise": {
+        "description": "Betrachten Sie...",
+        "code": "# Python-Code hier",
+        "filename": "beispiel.py",
+        "task": "Formulieren Sie..."
+      },
+      "reflection": ["Frage 1?", "Frage 2?"]
+    }
+  ]
+}
+```
+
+Das JavaScript in `app.js` rendert diese Struktur im EXECUTE-Panel des Prompt-Loop UI.

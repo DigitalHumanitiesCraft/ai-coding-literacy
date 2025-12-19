@@ -3,6 +3,7 @@
 ## 1. Leitprinzipien
 
 - **Progressive Disclosure**: Komplexität entfaltet sich beim Scrollen
+- **Prompt-Loop Metapher**: UI spiegelt den iterativen AI-Coding-Workflow (INPUT → PROCESS → EXECUTE → OUTPUT)
 - **Professionelle Zielgruppe**: Promovierte Fachwissenschaftler·innen brauchen Klarheit, keine Gamification
 - **Code als Lesestoff**: Präsentation wie Quellentexte in Editionen (Zeilennummern, Annotationen)
 - **Datengetrieben**: Alle Inhalte aus JSON, keine statischen HTML-Seiten pro Session
@@ -16,9 +17,10 @@ Tufte-inspiriert mit Early-Web-Ästhetik: Direktheit, Lesbarkeit, funktionale Eh
 - Hyperlinks blau und unterstrichen
 - Horizontale Linien als Trenner
 - Farbige Sidebar als Kompetenz-Navigation
+- Loop-Progress-Indikator (●───○───○───○)
 
 **Nein**
-- Keine Schatten, Gradients, Transparenzen
+- Keine Schatten, Gradients, Transparenzen (außer subtile Panel-Schatten für Tiefe)
 - Keine animierten GIFs, Retro-Ironie
 - Keine schwebenden Karten, Pseudo-3D
 
@@ -53,6 +55,7 @@ Tufte-inspiriert mit Early-Web-Ästhetik: Direktheit, Lesbarkeit, funktionale Eh
 | H1 | Georgia Bold | 28px |
 | H2 | Georgia Bold | 24px |
 | H3 | Georgia Bold | 20px |
+| Loop-Indikator | IBM Plex Mono | 11px |
 
 ## 5. Layout
 
@@ -71,29 +74,62 @@ Tufte-inspiriert mit Early-Web-Ästhetik: Direktheit, Lesbarkeit, funktionale Eh
 - Sidebar verschwindet
 - Content zentriert, volle Breite
 
-## 6. Komponenten
+### Mobile (<600px)
+- Vertikales Fallback für Loop-Panels
+- Kein horizontaler Scroll
 
-### Session-Abschnitt
+## 6. Prompt-Loop UI
+
+### Konzept
+
+Jedes Kapitel ist ein horizontaler Loop mit 4 Phasen:
+
 ```
-Session N · [Kompetenz-Farbe]
-──────────────────────────────
-Titel
-Summary
+●───○───○───○
+INPUT → PROCESS → EXECUTE → OUTPUT
+```
 
-Lernziele
-→ Ziel 1
-→ Ziel 2
+### Loop-Progress-Indikator
+- Zentriert über dem Loop-Container
+- Punkte (●/○) mit Verbindungslinien
+- Aktiver Schritt: gefüllt + bold
+- Completed: gefüllt, muted
 
-Konzepte
-Begriff – Definition
+### Loop-Container
+- Horizontaler Scroll mit CSS scroll-snap
+- Peek: Nächstes Panel 100px sichtbar
+- Subtiler Schatten für Tiefe
 
-Übung
-[Code-Block]
-Aufgabe: ...
+### Loop-Panels
 
-Reflexion
-• Frage 1
-• Frage 2
+| Panel | Inhalt | Phase-Farbe |
+|-------|--------|-------------|
+| INPUT | Kapitelname, Kurzbeschreibung, "Loop starten" Button | Neutral |
+| PROCESS | Theorie, Kernpunkte, Konzepte | CT (Petrol) |
+| EXECUTE | Übungen mit Code-Blöcken | PE (Mauve) |
+| OUTPUT | Ressourcen, Zitat, "Loop complete" | RV (Steel Blue) |
+
+### Interaktion
+- **Horizontal Scroll/Swipe**: Zwischen Panels navigieren
+- **"Loop starten" Button**: Springt zu PROCESS
+- **Keyboard**: ← → zwischen Panels
+- **State**: Panel-Position pro Kapitel in sessionStorage
+
+## 7. Komponenten
+
+### Session-Abschnitt (Loop-basiert)
+```
+●───○───○───○ INPUT → PROCESS → EXECUTE → OUTPUT
+┌──────────────────────────────────────────────────────┐
+│ [INPUT]                                              │
+│                                                      │
+│ CT                                                   │
+│ ■ Computational Thinking                             │
+│                                                      │
+│ Probleme strukturieren und zerlegen                  │
+│                                                      │
+│ [Loop starten →]                                     │
+└──────────────────────────────────────────────────────┘
 ```
 
 ### Code-Block
@@ -104,36 +140,41 @@ Reflexion
 └────────────────────────────────────────────┘
 ```
 
-## 7. Interaktion
+## 8. Interaktion
 
-### Endless Scroll
-- Intersection Observer lädt 3 Sessions nach
-- Fade-In Animation beim Erscheinen
-- Loading-Indikator am Ende
+### Prompt-Loop Navigation
+- Horizontales Scrollen/Swipen innerhalb eines Kapitels
+- CSS scroll-snap für Panel-Snapping
+- Touch-friendly durch native Browser-Unterstützung
 
 ### Sidebar-Navigation
 - Klick auf Balken → scrollt zu erster Session mit dieser Kompetenz
-- Scroll-Spy → aktiver Kompetenzbereich wird hervorgehoben (translateX + shadow)
+- Scroll-Spy → aktiver Kompetenzbereich wird hervorgehoben
 
 ### Code kopieren
 - Button in Code-Header
 - Feedback: "kopiert!" für 2 Sekunden
 
-## 8. Technik
+### Keyboard Navigation
+- ← → zwischen Loop-Panels
+- Funktioniert nur für aktives Kapitel
+
+## 9. Technik
 
 **Stack**
 - Vanilla HTML/CSS/JavaScript
 - JSON für Inhalte (`/data/content.json`)
-- Intersection Observer für Lazy Loading
+- Intersection Observer für Lazy Loading und Scroll-Spy
 - Keine Build-Tools, keine Frameworks
 
 **Warum?**
 Maximale Transparenz – was geschrieben wird, ist was im Browser läuft. Ideal für ein Curriculum, das Code-Verständnis lehrt.
 
-## 9. Dateien
+## 10. Dateien
 
 ```
-de/index.html          # Single-Page mit allem JavaScript inline
-css/style.css          # Globale Basis-Styles
+de/index.html          # Single-Page mit Prompt-Loop UI
+css/style.css          # Globale Styles inkl. Loop-Komponenten
+js/app.js              # Loop-Logik, Panel-Navigation
 data/content.json      # Alle Inhalte strukturiert
 ```

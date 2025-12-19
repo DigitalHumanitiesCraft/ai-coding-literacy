@@ -1,9 +1,10 @@
 /* AI Coding Literacy – Style
    Tufte-inspiriert: Maximale Information, minimale Dekoration
-   Spezifikationskonform */
+   ============================================================ */
 
 /* === Foundation === */
 :root {
+  /* Farben */
   --bg: #FFFFF8;
   --text: #222222;
   --text-muted: #666666;
@@ -13,6 +14,19 @@
   --code-bg: #F0F0F0;
   --prompt-bg: #FFFDE7;
   --table-header: #F5F5F5;
+
+  /* Kompetenzfarben */
+  --comp-CT: #4A7C7C;
+  --comp-RE: #8B4557;
+  --comp-CE: #5B7355;
+  --comp-PE: #7B6B8D;
+  --comp-CL: #8B7355;
+  --comp-RV: #4A6B8C;
+
+  /* Layout */
+  --sidebar-width: 200px;
+  --content-width: 780px;
+  --content-width-narrow: 720px;
 }
 
 *, *::before, *::after {
@@ -26,9 +40,16 @@ body {
   line-height: 1.7;
   color: var(--text);
   background: var(--bg);
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 2rem 1.5rem;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* Alle Seiten haben Sidebar */
+body {
+  display: flex;
+  max-width: none;
+  padding: 0;
 }
 
 /* === Typography === */
@@ -49,6 +70,12 @@ h3 {
   font-size: 20px;
   font-weight: bold;
   margin: 2rem 0 0.75rem;
+}
+
+h4 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 1.5rem 0 0.5rem;
 }
 
 p {
@@ -78,6 +105,11 @@ a:hover {
   text-decoration: none;
 }
 
+a:focus {
+  outline: 2px solid var(--link);
+  outline-offset: 2px;
+}
+
 /* === Navigation === */
 nav {
   margin-bottom: 2rem;
@@ -101,7 +133,6 @@ nav a.active {
   font-weight: bold;
 }
 
-/* Spacing between nav links */
 nav a + a {
   margin-left: 1rem;
 }
@@ -142,23 +173,6 @@ th {
   font-weight: bold;
 }
 
-/* Session list table */
-.session-list {
-  border: 1px solid var(--border);
-}
-
-.session-list td:first-child {
-  width: 2.5rem;
-  text-align: center;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 16px;
-}
-
-.session-list td:last-child {
-  width: 2rem;
-  text-align: center;
-}
-
 /* === Code === */
 code {
   font-family: 'IBM Plex Mono', 'Source Code Pro', 'Courier New', monospace;
@@ -175,7 +189,6 @@ pre {
   overflow-x: auto;
   margin: 1rem 0 1.5rem;
   line-height: 1.5;
-  max-width: 860px;
 }
 
 pre code {
@@ -187,7 +200,6 @@ pre code {
 /* === Code Block with Header === */
 .code-block {
   margin: 1.5rem 0;
-  max-width: 860px;
 }
 
 .code-header {
@@ -219,49 +231,13 @@ pre code {
   background: var(--code-bg);
 }
 
+.copy-btn:focus {
+  outline: 2px solid var(--link);
+  outline-offset: 2px;
+}
+
 .code-block pre {
   margin: 0;
-}
-
-/* Line numbers */
-.code-block .line {
-  display: block;
-}
-
-.code-block .line::before {
-  counter-increment: line;
-  content: counter(line);
-  display: inline-block;
-  width: 2rem;
-  margin-right: 1rem;
-  text-align: right;
-  color: var(--text-muted);
-  border-right: 1px solid #CCCCCC;
-  padding-right: 0.75rem;
-  user-select: none;
-}
-
-.code-block pre {
-  counter-reset: line;
-}
-
-/* Code annotations */
-.code-annotations {
-  background: var(--table-header);
-  border: 1px solid var(--border);
-  border-top: none;
-  padding: 0.75rem 1rem;
-  font-size: 15px;
-}
-
-.code-annotations p {
-  margin: 0.25rem 0;
-}
-
-.annotation-ref {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 13px;
-  color: var(--link);
 }
 
 /* === Blockquote === */
@@ -276,7 +252,14 @@ blockquote p {
   margin: 0;
 }
 
-/* === Callout Box (nur für wichtige Hinweise) === */
+blockquote cite {
+  display: block;
+  font-size: 14px;
+  margin-top: 0.5rem;
+  font-style: normal;
+}
+
+/* === Callout Box === */
 .callout {
   background: var(--prompt-bg);
   border: 1px solid var(--border);
@@ -286,33 +269,6 @@ blockquote p {
 
 .callout p {
   margin: 0;
-}
-
-/* === Session Page === */
-.session-meta {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 15px;
-  color: var(--text-muted);
-  margin-bottom: 0.25rem;
-}
-
-.section-nav {
-  font-size: 16px;
-  color: var(--text-muted);
-  margin: 1rem 0 0;
-}
-
-/* === Page Navigation === */
-.page-nav {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 3rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--border);
-}
-
-.page-nav a {
-  font-size: 16px;
 }
 
 /* === Footer === */
@@ -328,11 +284,748 @@ footer a {
   color: var(--text-muted);
 }
 
-/* === Responsive === */
+/* ============================================================
+   SIDEBAR LAYOUT (alle Seiten)
+   ============================================================ */
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: var(--sidebar-width);
+  height: 100vh;
+  background: var(--bg);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  z-index: 100;
+}
+
+/* Sidebar Navigation */
+.sidebar-nav {
+  margin-bottom: 2rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+}
+
+.sidebar-nav a {
+  display: block;
+  text-decoration: none;
+  color: var(--text-muted);
+  padding: 0.4rem 0;
+  border-bottom: 1px solid transparent;
+}
+
+.sidebar-nav a:hover {
+  color: var(--text);
+}
+
+.sidebar-nav a.active {
+  color: var(--text);
+  font-weight: bold;
+}
+
+.sidebar-nav a::before,
+.sidebar-nav a::after {
+  content: none;
+}
+
+/* Kompetenz-Balken Container */
+.competency-bars {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  gap: 4px;
+}
+
+/* Kompetenz-Balken in Sidebar */
+.competency-bar {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  width: 100%;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.competency-bar:hover,
+.competency-bar.active {
+  transform: translateX(8px);
+  box-shadow: -4px 0 0 rgba(0,0,0,0.3);
+}
+
+.competency-bar:focus {
+  outline: 2px solid var(--text);
+  outline-offset: 2px;
+}
+
+.bar-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: bold;
+  color: rgba(255,255,255,0.95);
+  padding-left: 12px;
+  letter-spacing: 1px;
+}
+
+/* Kompetenzfarben */
+.comp-CT { background: var(--comp-CT); }
+.comp-RE { background: var(--comp-RE); }
+.comp-CE { background: var(--comp-CE); }
+.comp-PE { background: var(--comp-PE); }
+.comp-CL { background: var(--comp-CL); }
+.comp-RV { background: var(--comp-RV); }
+
+/* Page Wrapper (Content rechts von Sidebar) */
+.page-wrapper {
+  margin-left: var(--sidebar-width);
+  flex: 1;
+  max-width: var(--content-width);
+  padding: 2rem 3rem;
+}
+
+/* ============================================================
+   PROMPT-LOOP UI - Horizontale Session-Panels
+   ============================================================ */
+
+/* Kapitel-Container */
+.chapter {
+  margin: 1.5rem 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.chapter.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.chapter:first-of-type {
+  border-top: none;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* Loop-Progress-Indikator */
+.loop-progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 1rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+}
+
+.loop-step {
+  display: flex;
+  align-items: center;
+  color: var(--text-muted);
+  transition: color 0.3s ease;
+}
+
+.loop-step.active {
+  color: var(--text);
+  font-weight: bold;
+}
+
+.loop-step.completed {
+  color: var(--text);
+}
+
+.loop-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border);
+  margin-right: 0.4rem;
+  transition: all 0.3s ease;
+}
+
+.loop-step.active .loop-dot {
+  background: var(--text);
+  box-shadow: 0 0 0 3px var(--code-bg);
+}
+
+.loop-step.completed .loop-dot {
+  background: var(--text-muted);
+}
+
+.loop-line {
+  width: 30px;
+  height: 2px;
+  background: var(--border);
+  margin: 0 0.25rem;
+}
+
+.loop-step.completed + .loop-line {
+  background: var(--text-muted);
+}
+
+/* Horizontaler Scroll-Container */
+.loop-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  min-height: 400px;
+}
+
+.loop-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Loop-Panels */
+.loop-panel {
+  min-width: calc(100% - 100px); /* 100px Peek */
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  padding: 2rem;
+  background: var(--bg);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  max-height: 600px; /* Erhöht von 500px für mehr Content */
+}
+
+.loop-panel:last-child {
+  min-width: 100%;
+  border-right: none;
+}
+
+/* Panel-Header mit Loop-Phase */
+.panel-phase {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  background: var(--code-bg);
+  padding: 0.25rem 0.75rem;
+  border-radius: 2px;
+  margin-bottom: 1rem;
+}
+
+/* Panel: INPUT (Überblick) */
+.loop-panel.panel-input {
+  display: flex;
+  flex-direction: column;
+}
+
+.loop-panel.panel-input h3 {
+  margin: 0.5rem 0;
+  font-size: 22px;
+}
+
+.loop-panel.panel-input .chapter-short {
+  flex: 1;
+}
+
+/* Loop-Start Button */
+.loop-start-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  color: var(--text);
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  padding: 0.75rem 1.25rem;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: auto;
+  transition: all 0.2s ease;
+}
+
+.loop-start-btn:hover {
+  background: var(--bg);
+  border-color: var(--text);
+}
+
+.loop-start-btn::after {
+  content: "→";
+}
+
+/* Panel: PROCESS (Theorie) */
+.loop-panel.panel-process .panel-phase {
+  background: var(--comp-CT);
+  color: white;
+}
+
+/* Panel: EXECUTE (Übungen) */
+.loop-panel.panel-execute .panel-phase {
+  background: var(--comp-PE);
+  color: white;
+}
+
+/* Panel: OUTPUT (Ressourcen) */
+.loop-panel.panel-output .panel-phase {
+  background: var(--comp-RV);
+  color: white;
+}
+
+/* Loop-Complete Indikator */
+.loop-complete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  padding: 1rem;
+  background: var(--code-bg);
+  border-radius: 4px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.loop-complete::before {
+  content: "↺";
+  font-size: 20px;
+}
+
+/* Schatten für Tiefe */
+.loop-panel:not(.panel-input) {
+  box-shadow: -10px 0 30px rgba(0,0,0,0.08);
+}
+
+/* Chapter-Header im Panel */
+.chapter-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.chapter-id {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.chapter-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+.chapter-short {
+  font-style: italic;
+  color: var(--text-muted);
+  margin: 0.5rem 0 1.5rem;
+}
+
+/* Ressourcen-Liste */
+.resources-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.resources-list li {
+  margin-bottom: 0.75rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--border);
+}
+
+.resources-list a {
+  font-weight: bold;
+}
+
+/* Chapter Header */
+.chapter-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.chapter-id {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.chapter-color {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+}
+
+/* Chapter Description */
+.chapter-short {
+  font-style: italic;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+/* Theory Block */
+.theory-block {
+  margin: 1.5rem 0;
+}
+
+/* Goals Liste */
+.goals-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.goals-list li {
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+
+.goals-list li::before {
+  content: "\2192"; /* → */
+  position: absolute;
+  left: 0;
+  color: var(--text-muted);
+}
+
+/* Concepts */
+.concepts {
+  margin: 1.5rem 0;
+}
+
+.concept {
+  margin-bottom: 0.75rem;
+}
+
+.concept-term {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: bold;
+}
+
+/* Exercise Box */
+.exercise {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.exercise h4 {
+  margin: 0 0 1rem;
+  font-size: 16px;
+}
+
+.exercise h5 {
+  font-size: 18px;
+  margin: 0 0 0.5rem;
+}
+
+.exercise h6 {
+  font-size: 14px;
+  margin: 1rem 0 0.5rem;
+  color: var(--text-muted);
+}
+
+/* Hands-On Section */
+.hands-on-section {
+  margin: 2rem 0;
+}
+
+.hands-on-section h4 {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.hands-on-section .exercise {
+  margin-bottom: 2rem;
+}
+
+/* Reflection */
+.reflection {
+  margin: 1.5rem 0;
+  padding-left: 1rem;
+  border-left: 3px solid var(--border);
+}
+
+.reflection h4,
+.reflection h6 {
+  margin: 0 0 0.5rem;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* Resources */
+.resources {
+  margin: 2rem 0;
+  padding: 1rem;
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+}
+
+.resources h4 {
+  margin: 0 0 1rem;
+}
+
+.resources ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.resources li {
+  margin-bottom: 0.5rem;
+}
+
+.resource-type {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* Session Quote */
+.session-quote {
+  font-style: italic;
+  color: var(--text-muted);
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border-left: 4px solid var(--border);
+}
+
+.session-quote cite {
+  display: block;
+  font-style: normal;
+  font-size: 14px;
+  margin-top: 0.5rem;
+}
+
+/* Loading Indicator */
+.loading {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-muted);
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* Kompetenz-Liste im Intro */
+.competency-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.competency-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 0.4rem;
+}
+
+.comp-marker {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   KOMPETENZ-BADGES
+   ============================================================ */
+
+.comp-badge {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  letter-spacing: 1px;
+  vertical-align: middle;
+}
+
+.comp-badge-sm {
+  font-size: 10px;
+  padding: 0.1rem 0.35rem;
+}
+
+/* ============================================================
+   KOMPETENZMODELL-SEITE
+   ============================================================ */
+
+.comp-short {
+  font-style: italic;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.comp-ref {
+  font-size: 14px;
+  color: var(--text-muted);
+  border-left: 3px solid;
+  padding-left: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.competency-detail {
+  margin: 2rem 0;
+}
+
+.competency-detail h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.competency-detail blockquote {
+  margin-top: 1.5rem;
+}
+
+.cycle-list li {
+  margin-bottom: 0.75rem;
+}
+
+.concept-table {
+  margin-top: 1rem;
+}
+
+/* ============================================================
+   REFERENZ-SEITE
+   ============================================================ */
+
+.concept-section {
+  margin: 1.5rem 0;
+}
+
+.concept-section h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.concept-list {
+  margin: 0;
+  padding: 0;
+}
+
+.concept-list dt {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: bold;
+  margin-top: 0.75rem;
+}
+
+.concept-list dd {
+  margin: 0.25rem 0 0 1.5rem;
+  color: var(--text-muted);
+}
+
+.exercise-table {
+  font-size: 15px;
+}
+
+.exercise-table td:first-child {
+  white-space: nowrap;
+}
+
+.exercise-table td:last-child {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.resource-section {
+  margin: 1.5rem 0;
+}
+
+.resource-section h3 {
+  font-size: 18px;
+  margin-bottom: 0.5rem;
+}
+
+.resource-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.resource-section li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.resource-chapter {
+  margin-left: auto;
+}
+
+.reference-quote {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: var(--code-bg);
+  border-left: 4px solid var(--border);
+}
+
+.reference-quote p {
+  margin: 0;
+  font-style: italic;
+}
+
+.reference-quote footer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.reference-quote cite {
+  font-style: normal;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+/* Tablet / Small Desktop */
+@media (max-width: 1000px) {
+  .sidebar {
+    display: none;
+  }
+
+  body {
+    display: block;
+  }
+
+  .page-wrapper {
+    margin-left: 0;
+    max-width: var(--content-width-narrow);
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+
+  /* Detail-Ansicht ohne Sidebar */
+  body.detail-view-active .chapter-detail-view {
+    margin-left: 0;
+    padding: 2rem 1.5rem;
+  }
+}
+
+/* Mobile */
 @media (max-width: 600px) {
   body {
-    padding: 1rem;
     font-size: 16px;
+  }
+
+  .page-wrapper {
+    padding: 1rem;
   }
 
   h1 { font-size: 24px; }
@@ -348,12 +1041,60 @@ footer a {
     margin-left: 0;
   }
 
-  .page-nav {
+  .competency-list li {
     flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .resource-section li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .resource-chapter {
+    margin-left: 0;
+  }
+
+  /* Detail-Ansicht mobile */
+  body.detail-view-active .chapter-detail-view {
+    padding: 1rem;
+  }
+
+  .chapter-card {
+    padding: 1rem;
+  }
+
+  /* Loop UI Mobile: Vertikales Fallback */
+  .loop-progress {
+    flex-wrap: wrap;
     gap: 0.5rem;
   }
 
-  pre, .code-block {
-    max-width: 100%;
+  .loop-line {
+    display: none;
+  }
+
+  .loop-container {
+    flex-direction: column;
+    overflow-x: visible;
+    overflow-y: auto;
+    scroll-snap-type: none;
+    min-height: auto;
+    max-height: none;
+  }
+
+  .loop-panel {
+    min-width: 100%;
+    scroll-snap-align: none;
+    border-bottom: 1px solid var(--border);
+    max-height: none;
+  }
+
+  .loop-panel:last-child {
+    border-bottom: none;
+  }
+
+  .panel-input .loop-start-btn {
+    display: none;
   }
 }
