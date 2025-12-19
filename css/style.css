@@ -481,7 +481,6 @@ footer a {
   background: var(--code-bg);
   border: 1px solid var(--border);
   border-radius: 4px;
-  min-height: 400px;
 }
 
 .loop-container::-webkit-scrollbar {
@@ -497,7 +496,7 @@ footer a {
   background: var(--bg);
   border-right: 1px solid var(--border);
   overflow-y: auto;
-  max-height: 600px;
+  max-height: none; /* Kein Abschneiden - volle Höhe */
 }
 
 .loop-panel:last-child {
