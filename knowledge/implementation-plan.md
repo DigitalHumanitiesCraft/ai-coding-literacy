@@ -2,7 +2,7 @@
 
 ## Projektübersicht
 
-**Ziel:** Single-Page Lernplattform mit Prompt-Loop UI auf GitHub Pages.
+**Ziel:** Single-Page Lernplattform mit Loop-UI auf GitHub Pages.
 
 **Stack:**
 - Vanilla HTML/CSS/JavaScript
@@ -23,33 +23,35 @@ Alle Inhalte werden aus `/data/content.json` geladen:
 - 6 Kapitel (Kompetenzbereiche) mit Farben
 - Jedes Kapitel mit Theorie, Hands-On-Übungen, Ressourcen
 
-### Prompt-Loop UI
+### Loop-UI
 
-Das zentrale UI-Konzept ist der **Prompt-Loop** - eine horizontale Navigation innerhalb jedes Kapitels:
+Das zentrale UI-Konzept ist der **Loop** - eine horizontale Navigation innerhalb jedes Kapitels:
 
 ```
 ●───○───○───○
-INPUT → PROCESS → EXECUTE → OUTPUT
+Überblick → Theorie → Übungen → Ressourcen
 
 ┌─────────────────────────────────────────────────────────────┐
-│ INPUT          │ PROCESS        │ EXECUTE       │ OUTPUT   │
-│                │ (peek →)       │               │          │
-│ Kapitelname    │ Theorie        │ Übungen       │ Ressourcen│
-│ Kurzbeschr.    │ Kernpunkte     │ Code          │ Zitat    │
-│ [Loop starten] │ Konzepte       │ Reflexion     │ [↺ Loop] │
+│ Überblick      │ Theorie        │ Übungen       │ Ressourcen│
+│                │                │               │           │
+│ Kapitelname    │ Kernpunkte     │ Exercises     │ Links     │
+│ Kurzbeschr.    │ Konzepte       │ Code          │ Zitat     │
+│ Intro-Text     │                │ Reflexion     │           │
+│                │ [← Zurück]     │ [← Zurück]    │ [← Zurück]│
+│ [Weiter →]     │ [Weiter →]     │ [Weiter →]    │ ✓ Complete│
 └─────────────────────────────────────────────────────────────┘
 ```
 
-**Didaktische Metapher:** Der Loop spiegelt den iterativen AI-Coding-Workflow wider:
-1. **INPUT**: Problem/Anforderung verstehen
-2. **PROCESS**: Wissen aufbauen (Theorie)
-3. **EXECUTE**: Anwenden (Übungen)
-4. **OUTPUT**: Prüfen und iterieren
+**Didaktische Metapher:** Der Loop spiegelt den iterativen Lernprozess wider:
+1. **Überblick**: Thema und Einführung verstehen
+2. **Theorie**: Konzepte und Kernpunkte lernen
+3. **Übungen**: Praktisch anwenden
+4. **Ressourcen**: Vertiefen und weiterlernen
 
 ### Navigation
 
-- **Vertikal:** Scrollen zwischen Kapiteln
-- **Horizontal:** Swipe/Scroll innerhalb eines Kapitels durch die 4 Loop-Phasen
+- **Vertikal:** Scrollen zwischen Kapiteln (3rem Abstand, 3px Trennlinie)
+- **Horizontal:** Button-Navigation + Keyboard (← →) durch die 4 Loop-Phasen
 - **Sidebar:** 6 farbige Kompetenzbalken mit Scroll-Spy
 
 ---
@@ -60,7 +62,7 @@ INPUT → PROCESS → EXECUTE → OUTPUT
 ai-coding-literacy/
 ├── index.html              # Redirect zu /de/
 ├── de/
-│   ├── index.html          # Single-Page mit Prompt-Loop UI
+│   ├── index.html          # Single-Page mit Loop-UI
 │   ├── kompetenzmodell.html # Detailseite Kompetenzen
 │   └── referenz.html       # Referenzmaterial
 ├── css/
@@ -76,6 +78,7 @@ ai-coding-literacy/
     ├── design.md
     ├── implementation-plan.md
     ├── hands-on.md
+    ├── status-report.md
     ├── grundlagen-computational-thinking.md
     ├── grundlagen-kompetenzbereiche.md
     └── grundlagen-oekosystem.md
@@ -92,10 +95,6 @@ ai-coding-literacy/
     "subtitle": "...",
     "description": "..."
   },
-  "audience": {
-    "description": "...",
-    "prerequisites": ["..."]
-  },
   "chapters": [
     {
       "id": "CT",
@@ -103,7 +102,7 @@ ai-coding-literacy/
       "color": "#4A7C7C",
       "short": "Probleme strukturieren und zerlegen",
       "theory": {
-        "description": "...",
+        "description": "Einführungstext für Überblick-Panel...",
         "keyPoints": ["...", "..."],
         "concepts": [{"term": "...", "definition": "..."}]
       },
@@ -142,7 +141,7 @@ ai-coding-literacy/
   align-items: center;
   justify-content: center;
 }
-/* ●───○───○───○ INPUT → PROCESS → EXECUTE → OUTPUT */
+/* ●───○───○───○ Überblick → Theorie → Übungen → Ressourcen */
 ```
 
 ### Loop-Container (horizontaler Scroll)
@@ -156,10 +155,16 @@ ai-coding-literacy/
 ```
 
 ### Loop-Panels
-- **panel-input**: Kapitelübersicht, "Loop starten" Button
-- **panel-process**: Theorie, Kernpunkte, Konzepte
-- **panel-execute**: Hands-On Übungen mit Code
-- **panel-output**: Ressourcen, Zitat, "Loop complete"
+- **panel-input**: Überblick - Kapitelname, Intro-Text, "Weiter zur Theorie" Button
+- **panel-process**: Theorie - Kernpunkte, Konzepte, Navigation
+- **panel-execute**: Übungen - Exercises mit Code, Navigation
+- **panel-output**: Ressourcen - Links, Zitat, "✓ Loop complete"
+
+### Panel-Navigation
+Jedes Panel (außer Überblick) hat:
+- "← Zurück" Button (links)
+- "Weiter →" Button (rechts, außer letztes Panel)
+- Keyboard-Support: ← → Pfeiltasten
 
 ### Sidebar Navigation
 - 6 farbige Balken (je ein Kompetenzbereich)
@@ -188,19 +193,22 @@ ai-coding-literacy/
 - [x] CSS erstellen – style.css nach Design-Spezifikation
 - [x] JavaScript erstellen – app.js mit Loop-UI
 - [x] JSON-Datenstruktur – content.json mit 6 Kapiteln
-- [x] Single-Page – de/index.html mit Prompt-Loop UI
-- [x] Loop-Progress-Indikator
+- [x] Single-Page – de/index.html mit Loop-UI
+- [x] Loop-Progress-Indikator (deutsche Labels)
 - [x] Horizontale Panel-Navigation
+- [x] Panel-Navigation-Buttons (← Zurück / Weiter →)
 - [x] Keyboard-Navigation (← →)
-- [x] Scroll-State Speicherung (sessionStorage)
+- [x] Scroll-State Speicherung (sessionStorage v2)
 - [x] Responsive Fallback für Mobile (<600px)
 - [x] Kompetenzmodell – de/kompetenzmodell.html
 - [x] Referenz – de/referenz.html
+- [x] UI Bug Fixes (Panel-Höhe, Kapitel-Trennung, Labels)
+- [x] CT-Kapitel Content erweitert
 
 ### Offen
-- [ ] UI Bugs fixen (Panel-Höhe, State-Key)
-- [ ] Content erweitern aus grundlagen-kompetenzbereiche.md
+- [ ] Content erweitern: RE, CE, PE, CL, RV Kapitel
 - [ ] GitHub Pages – Deployment konfigurieren
+- [ ] Final-Test aller Seiten
 
 ---
 
@@ -219,6 +227,7 @@ ai-coding-literacy/
 | concept.md | Definition, Zielgruppe, Kompetenzmodell |
 | design.md | Visuelle Identität, Layout, Komponenten |
 | hands-on.md | Übersicht aller Hands-On-Übungen |
+| status-report.md | Aktueller Projektstatus, Commits |
 | grundlagen-computational-thinking.md | CT-Theorie im Detail |
 | grundlagen-kompetenzbereiche.md | RE, CE, PE, CL, RV-Theorie |
 | grundlagen-oekosystem.md | LLM-Ökosystem, Tools |

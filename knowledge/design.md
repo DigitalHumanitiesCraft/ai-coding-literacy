@@ -3,7 +3,7 @@
 ## 1. Leitprinzipien
 
 - **Progressive Disclosure**: Komplexität entfaltet sich beim Scrollen
-- **Prompt-Loop Metapher**: UI spiegelt den iterativen AI-Coding-Workflow (INPUT → PROCESS → EXECUTE → OUTPUT)
+- **Loop-Metapher**: UI spiegelt den iterativen Lernprozess (Überblick → Theorie → Übungen → Ressourcen)
 - **Professionelle Zielgruppe**: Promovierte Fachwissenschaftler·innen brauchen Klarheit, keine Gamification
 - **Code als Lesestoff**: Präsentation wie Quellentexte in Editionen (Zeilennummern, Annotationen)
 - **Datengetrieben**: Alle Inhalte aus JSON, keine statischen HTML-Seiten pro Session
@@ -15,7 +15,7 @@ Tufte-inspiriert mit Early-Web-Ästhetik: Direktheit, Lesbarkeit, funktionale Eh
 **Ja**
 - Sichtbare Rahmen und Strukturen
 - Hyperlinks blau und unterstrichen
-- Horizontale Linien als Trenner
+- Horizontale Linien als Trenner (3px zwischen Kapiteln)
 - Farbige Sidebar als Kompetenz-Navigation
 - Loop-Progress-Indikator (●───○───○───○)
 
@@ -56,6 +56,8 @@ Tufte-inspiriert mit Early-Web-Ästhetik: Direktheit, Lesbarkeit, funktionale Eh
 | H2 | Georgia Bold | 24px |
 | H3 | Georgia Bold | 20px |
 | Loop-Indikator | IBM Plex Mono | 11px |
+| Panel-Phase | IBM Plex Mono | 10px, uppercase |
+| Navigation Buttons | IBM Plex Mono | 13px |
 
 ## 5. Layout
 
@@ -68,7 +70,7 @@ Tufte-inspiriert mit Early-Web-Ästhetik: Direktheit, Lesbarkeit, funktionale Eh
 ### Content (max. 780px)
 - Zentriert rechts neben Sidebar
 - Sessions als endloser Scroll
-- Horizontale Trenner zwischen Sessions
+- 3px schwarze Linie + 3rem Margin zwischen Kapiteln
 
 ### Responsive (<1000px)
 - Sidebar verschwindet
@@ -77,8 +79,9 @@ Tufte-inspiriert mit Early-Web-Ästhetik: Direktheit, Lesbarkeit, funktionale Eh
 ### Mobile (<600px)
 - Vertikales Fallback für Loop-Panels
 - Kein horizontaler Scroll
+- "Weiter zur Theorie" Button versteckt
 
-## 6. Prompt-Loop UI
+## 6. Loop-UI
 
 ### Konzept
 
@@ -86,7 +89,7 @@ Jedes Kapitel ist ein horizontaler Loop mit 4 Phasen:
 
 ```
 ●───○───○───○
-INPUT → PROCESS → EXECUTE → OUTPUT
+Überblick → Theorie → Übungen → Ressourcen
 ```
 
 ### Loop-Progress-Indikator
@@ -94,41 +97,58 @@ INPUT → PROCESS → EXECUTE → OUTPUT
 - Punkte (●/○) mit Verbindungslinien
 - Aktiver Schritt: gefüllt + bold
 - Completed: gefüllt, muted
+- Deutsche Labels: Überblick, Theorie, Übungen, Ressourcen
 
 ### Loop-Container
 - Horizontaler Scroll mit CSS scroll-snap
-- Peek: Nächstes Panel 100px sichtbar
-- Subtiler Schatten für Tiefe
+- Volle Breite pro Panel (100%)
+- Subtiler Schatten für Tiefe auf nicht-Input-Panels
 
 ### Loop-Panels
 
-| Panel | Inhalt | Phase-Farbe |
+| Panel | Inhalt | Phase-Label |
 |-------|--------|-------------|
-| INPUT | Kapitelname, Kurzbeschreibung, "Loop starten" Button | Neutral |
-| PROCESS | Theorie, Kernpunkte, Konzepte | CT (Petrol) |
-| EXECUTE | Übungen mit Code-Blöcken | PE (Mauve) |
-| OUTPUT | Ressourcen, Zitat, "Loop complete" | RV (Steel Blue) |
+| Überblick | Kapitelname, Intro-Text, "Weiter zur Theorie" Button | Überblick |
+| Theorie | Kernpunkte, Konzepte, Navigation | Theorie |
+| Übungen | Exercises mit Code-Blöcken, Navigation | Übungen |
+| Ressourcen | Links, Zitat, "← Zurück", "✓ Loop complete" | Ressourcen |
+
+### Panel-Navigation
+
+Jedes Panel hat eine `.panel-nav` Leiste am unteren Rand:
+
+```
+┌─────────────────────────────────────────┐
+│ [← Zurück]              [Weiter → ]     │
+└─────────────────────────────────────────┘
+```
+
+- Überblick: nur "Weiter zur Theorie"
+- Theorie/Übungen: "← Zurück" + "Weiter →"
+- Ressourcen: "← Zurück zu Übungen" + "✓ Loop complete"
 
 ### Interaktion
-- **Horizontal Scroll/Swipe**: Zwischen Panels navigieren
-- **"Loop starten" Button**: Springt zu PROCESS
-- **Keyboard**: ← → zwischen Panels
-- **State**: Panel-Position pro Kapitel in sessionStorage
+- **Button-Navigation**: Primäre Methode zum Navigieren
+- **Keyboard**: ← → zwischen Panels (für Power-User)
+- **Horizontal Scroll**: Funktioniert weiterhin (Touch/Trackpad)
+- **State**: Panel-Position pro Kapitel in sessionStorage (v2)
 
 ## 7. Komponenten
 
-### Session-Abschnitt (Loop-basiert)
+### Kapitel-Abschnitt (Loop-basiert)
 ```
-●───○───○───○ INPUT → PROCESS → EXECUTE → OUTPUT
+●───○───○───○ Überblick → Theorie → Übungen → Ressourcen
 ┌──────────────────────────────────────────────────────┐
-│ [INPUT]                                              │
+│ [Überblick]                                          │
 │                                                      │
 │ CT                                                   │
 │ ■ Computational Thinking                             │
 │                                                      │
 │ Probleme strukturieren und zerlegen                  │
 │                                                      │
-│ [Loop starten →]                                     │
+│ Einführungstext aus theory.description...            │
+│                                                      │
+│ [Weiter zur Theorie →]                               │
 └──────────────────────────────────────────────────────┘
 ```
 
@@ -142,8 +162,8 @@ INPUT → PROCESS → EXECUTE → OUTPUT
 
 ## 8. Interaktion
 
-### Prompt-Loop Navigation
-- Horizontales Scrollen/Swipen innerhalb eines Kapitels
+### Loop-Navigation
+- **Buttons**: "← Zurück" und "Weiter →" in jedem Panel
 - CSS scroll-snap für Panel-Snapping
 - Touch-friendly durch native Browser-Unterstützung
 
@@ -157,7 +177,7 @@ INPUT → PROCESS → EXECUTE → OUTPUT
 
 ### Keyboard Navigation
 - ← → zwischen Loop-Panels
-- Funktioniert nur für aktives Kapitel
+- Funktioniert nur für aktives Kapitel (im Viewport)
 
 ## 9. Technik
 
@@ -165,6 +185,7 @@ INPUT → PROCESS → EXECUTE → OUTPUT
 - Vanilla HTML/CSS/JavaScript
 - JSON für Inhalte (`/data/content.json`)
 - Intersection Observer für Lazy Loading und Scroll-Spy
+- sessionStorage für Panel-Position (Key: `ai-coding-literacy-loop-v2`)
 - Keine Build-Tools, keine Frameworks
 
 **Warum?**
@@ -173,7 +194,7 @@ Maximale Transparenz – was geschrieben wird, ist was im Browser läuft. Ideal 
 ## 10. Dateien
 
 ```
-de/index.html          # Single-Page mit Prompt-Loop UI
+de/index.html          # Single-Page mit Loop-UI
 css/style.css          # Globale Styles inkl. Loop-Komponenten
 js/app.js              # Loop-Logik, Panel-Navigation
 data/content.json      # Alle Inhalte strukturiert

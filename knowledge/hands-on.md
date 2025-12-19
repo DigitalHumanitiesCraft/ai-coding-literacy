@@ -1,6 +1,6 @@
 # Hands-On-Übungen – Übersicht
 
-Diese Datei dokumentiert die Hands-On-Übungen des Curriculums. Die Übungen sind in `/data/content.json` integriert und werden im **EXECUTE-Panel** des Prompt-Loop UI gerendert.
+Diese Datei dokumentiert die Hands-On-Übungen des Curriculums. Die Übungen sind in `/data/content.json` integriert und werden im **Übungen-Panel** des Loop-UI gerendert.
 
 ---
 
@@ -17,24 +17,28 @@ Jede Übung gehört zu einem der 6 Kompetenzbereiche und enthält:
 
 ---
 
-## Darstellung im Prompt-Loop UI
+## Darstellung im Loop-UI
 
-Die Übungen erscheinen im **EXECUTE-Panel** (Phase 3 des Loops):
+Die Übungen erscheinen im **Übungen-Panel** (Phase 3 des Loops):
 
 ```
 ●───●───●───○
-INPUT → PROCESS → EXECUTE → OUTPUT
-                    ↑
-              Übungen hier
+Überblick → Theorie → Übungen → Ressourcen
+                        ↑
+                  Übungen hier
 ```
 
-Innerhalb des EXECUTE-Panels werden alle Übungen eines Kapitels nacheinander angezeigt:
+Innerhalb des Übungen-Panels werden alle Übungen eines Kapitels nacheinander angezeigt:
 - Übungstitel mit ID
 - Zusammenfassung
 - Lernziele als Liste
 - Code-Block (falls vorhanden)
 - Aufgabenstellung
 - Reflexionsfragen
+
+Navigation:
+- "← Zurück zur Theorie" Button
+- "Weiter zu Ressourcen →" Button
 
 ---
 
@@ -157,4 +161,4 @@ Die Übungen werden in der JSON-Struktur so definiert:
 }
 ```
 
-Das JavaScript in `app.js` rendert diese Struktur im EXECUTE-Panel des Prompt-Loop UI.
+Das JavaScript in `app.js` rendert diese Struktur im Übungen-Panel des Loop-UI.
