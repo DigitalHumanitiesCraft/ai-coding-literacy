@@ -323,163 +323,96 @@ function setupInfiniteScroll() {
 
 // Setup scroll spy for sidebar
 function setupScrollSpy() {
-  // Track visible elements
   const visibleChapters = new Set();
   const visibleSections = new Set();
 
-  // Helper to update sidebar based on topmost visible chapter (fallback when no sections visible)
-  function updateSidebarForTopmost() {
-    // Only update if no sections are visible (section observer is primary)
-    if (visibleSections.size > 0) {
-      console.log('🔍 ScrollSpy: Chapter Update skipped (sections are visible)');
-      return;
+  // Shared helper: update sidebar state
+  function updateSidebar(chapterId, sectionId = null) {
+    // Update chapter bar
+    document.querySelectorAll('.competency-bar').forEach(bar => {
+      bar.classList.toggle('active', bar.classList.contains(`comp-${chapterId}`));
+    });
+
+    // Update sub-links visibility
+    document.querySelectorAll('.sidebar-sublinks').forEach(sublinks => {
+      sublinks.classList.remove('visible');
+    });
+    const activeSublinks = document.getElementById(`sublinks-${chapterId}`);
+    if (activeSublinks) {
+      activeSublinks.classList.add('visible');
     }
 
-    console.group('🔍 ScrollSpy: Chapter Update (fallback)');
-    console.log('Visible chapters:', [...visibleChapters]);
-
-    if (visibleChapters.size === 0) {
-      console.log('No visible chapters');
-      console.groupEnd();
-      return;
+    // Update active sub-link
+    if (sectionId) {
+      document.querySelectorAll('.sidebar-sublink').forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${sectionId}`);
+      });
     }
+  }
 
-    // Find the topmost visible chapter by comparing their positions
-    let topmostChapter = null;
+  // Find topmost element from a Set by comparing positions
+  function findTopmostElement(elementSet, getElement) {
+    let topmost = null;
     let topmostTop = Infinity;
 
-    visibleChapters.forEach(competency => {
-      const chapter = document.querySelector(`[data-competency="${competency}"]`);
-      if (chapter) {
-        const rect = chapter.getBoundingClientRect();
-        console.log(`  ${competency}: top=${rect.top.toFixed(0)}px`);
-        if (rect.top < topmostTop) {
-          topmostTop = rect.top;
-          topmostChapter = competency;
+    elementSet.forEach(id => {
+      const el = getElement(id);
+      if (el) {
+        const top = el.getBoundingClientRect().top;
+        if (top < topmostTop) {
+          topmostTop = top;
+          topmost = id;
         }
       }
     });
-
-    console.log('→ Topmost chapter:', topmostChapter, `(top: ${topmostTop.toFixed(0)}px)`);
-
-    if (topmostChapter) {
-      // Update main bars
-      document.querySelectorAll('.competency-bar').forEach(bar => {
-        bar.classList.remove('active');
-        if (bar.classList.contains(`comp-${topmostChapter}`)) {
-          bar.classList.add('active');
-        }
-      });
-
-      // Show sub-links for active chapter
-      document.querySelectorAll('.sidebar-sublinks').forEach(sublinks => {
-        sublinks.classList.remove('visible');
-      });
-      const activeSublinks = document.getElementById(`sublinks-${topmostChapter}`);
-      if (activeSublinks) {
-        activeSublinks.classList.add('visible');
-      }
-    }
-    console.groupEnd();
+    return topmost;
   }
 
-  // Observe chapters for main bar highlighting
+  // Chapter observer (fallback when no sections visible)
   const chapterObserver = new IntersectionObserver((entries) => {
-    console.group('📊 IntersectionObserver: Chapters');
     entries.forEach(entry => {
       const competency = entry.target.dataset.competency;
-      const chapterId = entry.target.id;
-      console.log(`${competency} (${chapterId}): isIntersecting=${entry.isIntersecting}, ratio=${entry.intersectionRatio.toFixed(2)}`);
       if (entry.isIntersecting) {
         visibleChapters.add(competency);
       } else {
         visibleChapters.delete(competency);
       }
     });
-    console.groupEnd();
-    updateSidebarForTopmost();
+
+    // Only update if no sections visible
+    if (visibleSections.size === 0 && visibleChapters.size > 0) {
+      const topmost = findTopmostElement(
+        visibleChapters,
+        id => document.querySelector(`[data-competency="${id}"]`)
+      );
+      if (topmost) updateSidebar(topmost);
+    }
   }, {
     rootMargin: '-10% 0px -70% 0px',
     threshold: 0
   });
 
-  // Helper to update sub-links based on topmost visible section
-  function updateSublinksForTopmost() {
-    console.group('🔍 ScrollSpy: Section Update');
-    console.log('Visible sections:', [...visibleSections]);
-
-    if (visibleSections.size === 0) {
-      console.log('No visible sections');
-      console.groupEnd();
-      return;
-    }
-
-    let topmostSection = null;
-    let topmostTop = Infinity;
-
-    visibleSections.forEach(sectionId => {
-      const section = document.getElementById(sectionId);
-      if (section) {
-        const rect = section.getBoundingClientRect();
-        console.log(`  ${sectionId}: top=${rect.top.toFixed(0)}px`);
-        if (rect.top < topmostTop) {
-          topmostTop = rect.top;
-          topmostSection = sectionId;
-        }
-      }
-    });
-
-    console.log('→ Topmost section:', topmostSection);
-
-    if (topmostSection) {
-      // Extract chapter ID from section ID (e.g., "CT-theorie" → "CT")
-      const chapterId = topmostSection.split('-')[0];
-      console.log('→ Chapter from section:', chapterId);
-
-      // Update chapter highlighting based on section (more accurate)
-      document.querySelectorAll('.competency-bar').forEach(bar => {
-        bar.classList.remove('active');
-        if (bar.classList.contains(`comp-${chapterId}`)) {
-          bar.classList.add('active');
-        }
-      });
-
-      // Show sub-links for the chapter that contains the topmost section
-      document.querySelectorAll('.sidebar-sublinks').forEach(sublinks => {
-        sublinks.classList.remove('visible');
-      });
-      const activeSublinks = document.getElementById(`sublinks-${chapterId}`);
-      if (activeSublinks) {
-        activeSublinks.classList.add('visible');
-        console.log('→ Showing sublinks for:', chapterId);
-      }
-
-      // Highlight the active sub-link
-      document.querySelectorAll('.sidebar-sublink').forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${topmostSection}`) {
-          link.classList.add('active');
-          console.log('→ Activated sublink:', link.getAttribute('href'));
-        }
-      });
-    }
-    console.groupEnd();
-  }
-
-  // Observe sections for sub-link highlighting
+  // Section observer (primary source of truth)
   const sectionObserver = new IntersectionObserver((entries) => {
-    console.group('📊 IntersectionObserver: Sections');
     entries.forEach(entry => {
       const sectionId = entry.target.id;
-      console.log(`${sectionId}: isIntersecting=${entry.isIntersecting}, ratio=${entry.intersectionRatio.toFixed(2)}`);
       if (entry.isIntersecting) {
         visibleSections.add(sectionId);
       } else {
         visibleSections.delete(sectionId);
       }
     });
-    console.groupEnd();
-    updateSublinksForTopmost();
+
+    if (visibleSections.size > 0) {
+      const topmost = findTopmostElement(
+        visibleSections,
+        id => document.getElementById(id)
+      );
+      if (topmost) {
+        const chapterId = topmost.split('-')[0];
+        updateSidebar(chapterId, topmost);
+      }
+    }
   }, {
     rootMargin: '-20% 0px -60% 0px',
     threshold: 0
