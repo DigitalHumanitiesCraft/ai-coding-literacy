@@ -323,51 +323,166 @@ function setupInfiniteScroll() {
 
 // Setup scroll spy for sidebar
 function setupScrollSpy() {
-  // Observe chapters for main bar highlighting
-  const chapterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const competency = entry.target.dataset.competency;
+  // Track visible elements
+  const visibleChapters = new Set();
+  const visibleSections = new Set();
 
-        // Update main bars
-        document.querySelectorAll('.competency-bar').forEach(bar => {
-          bar.classList.remove('active');
-          if (bar.classList.contains(`comp-${competency}`)) {
-            bar.classList.add('active');
-          }
-        });
+  // Helper to update sidebar based on topmost visible chapter (fallback when no sections visible)
+  function updateSidebarForTopmost() {
+    // Only update if no sections are visible (section observer is primary)
+    if (visibleSections.size > 0) {
+      console.log('🔍 ScrollSpy: Chapter Update skipped (sections are visible)');
+      return;
+    }
 
-        // Show sub-links for active chapter
-        document.querySelectorAll('.sidebar-sublinks').forEach(sublinks => {
-          sublinks.classList.remove('visible');
-        });
-        const activeSublinks = document.getElementById(`sublinks-${competency}`);
-        if (activeSublinks) {
-          activeSublinks.classList.add('visible');
+    console.group('🔍 ScrollSpy: Chapter Update (fallback)');
+    console.log('Visible chapters:', [...visibleChapters]);
+
+    if (visibleChapters.size === 0) {
+      console.log('No visible chapters');
+      console.groupEnd();
+      return;
+    }
+
+    // Find the topmost visible chapter by comparing their positions
+    let topmostChapter = null;
+    let topmostTop = Infinity;
+
+    visibleChapters.forEach(competency => {
+      const chapter = document.querySelector(`[data-competency="${competency}"]`);
+      if (chapter) {
+        const rect = chapter.getBoundingClientRect();
+        console.log(`  ${competency}: top=${rect.top.toFixed(0)}px`);
+        if (rect.top < topmostTop) {
+          topmostTop = rect.top;
+          topmostChapter = competency;
         }
       }
     });
+
+    console.log('→ Topmost chapter:', topmostChapter, `(top: ${topmostTop.toFixed(0)}px)`);
+
+    if (topmostChapter) {
+      // Update main bars
+      document.querySelectorAll('.competency-bar').forEach(bar => {
+        bar.classList.remove('active');
+        if (bar.classList.contains(`comp-${topmostChapter}`)) {
+          bar.classList.add('active');
+        }
+      });
+
+      // Show sub-links for active chapter
+      document.querySelectorAll('.sidebar-sublinks').forEach(sublinks => {
+        sublinks.classList.remove('visible');
+      });
+      const activeSublinks = document.getElementById(`sublinks-${topmostChapter}`);
+      if (activeSublinks) {
+        activeSublinks.classList.add('visible');
+      }
+    }
+    console.groupEnd();
+  }
+
+  // Observe chapters for main bar highlighting
+  const chapterObserver = new IntersectionObserver((entries) => {
+    console.group('📊 IntersectionObserver: Chapters');
+    entries.forEach(entry => {
+      const competency = entry.target.dataset.competency;
+      const chapterId = entry.target.id;
+      console.log(`${competency} (${chapterId}): isIntersecting=${entry.isIntersecting}, ratio=${entry.intersectionRatio.toFixed(2)}`);
+      if (entry.isIntersecting) {
+        visibleChapters.add(competency);
+      } else {
+        visibleChapters.delete(competency);
+      }
+    });
+    console.groupEnd();
+    updateSidebarForTopmost();
   }, {
-    rootMargin: '-20% 0px -60% 0px'
+    rootMargin: '-10% 0px -70% 0px',
+    threshold: 0
   });
+
+  // Helper to update sub-links based on topmost visible section
+  function updateSublinksForTopmost() {
+    console.group('🔍 ScrollSpy: Section Update');
+    console.log('Visible sections:', [...visibleSections]);
+
+    if (visibleSections.size === 0) {
+      console.log('No visible sections');
+      console.groupEnd();
+      return;
+    }
+
+    let topmostSection = null;
+    let topmostTop = Infinity;
+
+    visibleSections.forEach(sectionId => {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        const rect = section.getBoundingClientRect();
+        console.log(`  ${sectionId}: top=${rect.top.toFixed(0)}px`);
+        if (rect.top < topmostTop) {
+          topmostTop = rect.top;
+          topmostSection = sectionId;
+        }
+      }
+    });
+
+    console.log('→ Topmost section:', topmostSection);
+
+    if (topmostSection) {
+      // Extract chapter ID from section ID (e.g., "CT-theorie" → "CT")
+      const chapterId = topmostSection.split('-')[0];
+      console.log('→ Chapter from section:', chapterId);
+
+      // Update chapter highlighting based on section (more accurate)
+      document.querySelectorAll('.competency-bar').forEach(bar => {
+        bar.classList.remove('active');
+        if (bar.classList.contains(`comp-${chapterId}`)) {
+          bar.classList.add('active');
+        }
+      });
+
+      // Show sub-links for the chapter that contains the topmost section
+      document.querySelectorAll('.sidebar-sublinks').forEach(sublinks => {
+        sublinks.classList.remove('visible');
+      });
+      const activeSublinks = document.getElementById(`sublinks-${chapterId}`);
+      if (activeSublinks) {
+        activeSublinks.classList.add('visible');
+        console.log('→ Showing sublinks for:', chapterId);
+      }
+
+      // Highlight the active sub-link
+      document.querySelectorAll('.sidebar-sublink').forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${topmostSection}`) {
+          link.classList.add('active');
+          console.log('→ Activated sublink:', link.getAttribute('href'));
+        }
+      });
+    }
+    console.groupEnd();
+  }
 
   // Observe sections for sub-link highlighting
   const sectionObserver = new IntersectionObserver((entries) => {
+    console.group('📊 IntersectionObserver: Sections');
     entries.forEach(entry => {
+      const sectionId = entry.target.id;
+      console.log(`${sectionId}: isIntersecting=${entry.isIntersecting}, ratio=${entry.intersectionRatio.toFixed(2)}`);
       if (entry.isIntersecting) {
-        const sectionId = entry.target.id;
-
-        // Update sub-links
-        document.querySelectorAll('.sidebar-sublink').forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === `#${sectionId}`) {
-            link.classList.add('active');
-          }
-        });
+        visibleSections.add(sectionId);
+      } else {
+        visibleSections.delete(sectionId);
       }
     });
+    console.groupEnd();
+    updateSublinksForTopmost();
   }, {
-    rootMargin: '-30% 0px -50% 0px'
+    rootMargin: '-20% 0px -60% 0px',
+    threshold: 0
   });
 
   // Observe chapters as they're added
