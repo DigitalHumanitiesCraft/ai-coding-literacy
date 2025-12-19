@@ -1,110 +1,159 @@
 # Status-Report: AI Coding Literacy
 
 **Datum:** 2025-12-19
-**Phase:** UI Bug Fixes abgeschlossen, Content-Update steht aus
+**Phase:** Vertikales Layout implementiert, Content-Update abgeschlossen
 
 ---
 
 ## Zusammenfassung
 
-Die AI Coding Literacy Lernplattform hat ein funktionierendes **Loop-UI** mit klarer Navigation. Die Panel-Labels wurden auf deutsche Begriffe umgestellt: Überblick → Theorie → Übungen → Ressourcen.
+Die AI Coding Literacy Lernplattform wurde von einem horizontalen Loop-UI auf ein **vertikales Scroll-Layout** umgestellt. Die Sidebar hat jetzt **ausklappbare Sub-Links** (Theorie, Übungen, Ressourcen) für jedes Kapitel.
 
 ---
 
 ## Abgeschlossene Arbeiten
 
-### 1. Loop-UI Implementation (100%)
+### 1. UI-Umstellung: Loop-UI → Vertikales Layout (100%)
 
 | Komponente | Status | Datei |
 |------------|--------|-------|
-| Loop-Progress-Indikator | ✅ | css/style.css |
-| Horizontaler Scroll-Container | ✅ | css/style.css |
-| 4 Panel-Typen | ✅ | js/app.js |
-| Keyboard-Navigation (← →) | ✅ | js/app.js |
-| Scroll-State Speicherung (v2) | ✅ | js/app.js |
-| Responsive Mobile Fallback | ✅ | css/style.css |
+| Vertikale Sektionen (Theorie, Übungen, Ressourcen) | ✅ | js/app.js |
+| Sidebar mit ausklappbaren Sub-Links | ✅ | js/app.js |
+| Dual Scroll-Spy (Kapitel + Sektion) | ✅ | js/app.js |
+| CSS für vertikales Layout | ✅ | css/style.css |
+| Entfernung alter Loop-UI-Styles | ✅ | css/style.css |
 
-### 2. UI Bug Fixes (100%)
-
-| Bug | Problem | Lösung |
-|-----|---------|--------|
-| Panel-Höhe | Content + Buttons abgeschnitten | `max-height: none` |
-| State-Key | Falsche Start-Position | Key versioniert (v2) |
-| Navigation fehlt | Keine Buttons zum Weiterklicken | Panel-Nav-Buttons in allen Panels |
-| Kapitel-Trennung | Zwei Kapitel überlappen | 3px Linie, 3rem Margin |
-| Labels unklar | INPUT/PROCESS/EXECUTE/OUTPUT | Überblick/Theorie/Übungen/Ressourcen |
-
-### 3. CT-Kapitel Content (100%)
-
-Das CT-Kapitel wurde mit erweiterter `theory.description` und Domänen-Beispielen aktualisiert.
-
----
-
-## Offene Arbeiten
-
-### Phase 2: Content Update (0%)
+### 2. Content-Update: Alle Kapitel (100%)
 
 | Kapitel | Status | Neue Konzepte |
 |---------|--------|---------------|
-| CT | ✅ | Fertig |
-| RE | ⏳ | User Story, INVEST-Kriterien, Kernfragen |
-| CE | ⏳ | RAG, Lost in Middle, Kontextstruktur |
-| PE | ⏳ | Zero-Shot, Few-Shot, Chain-of-Thought |
-| CL | ⏳ | Skill-Hierarchie, Prozedurale/Funktionale Modelle |
-| RV | ⏳ | Halluzinations-Taxonomie, Bug-Patterns |
+| CT | ✅ | Fertig (vorherige Session) |
+| RE | ✅ | User Story, INVEST-Kriterien, Kernfragen |
+| CE | ✅ | RAG, Lost in Middle, Kontextstruktur |
+| PE | ✅ | Zero-Shot, Few-Shot, Chain-of-Thought, APE |
+| CL | ✅ | Skill-Hierarchie, Prozedurales/Funktionales Modell, Delocalized Plans |
+| RV | ✅ | Halluzinationskategorien, Bug-Patterns, Metamorphic Testing |
 
-### Phase 3: Polish (0%)
+### 3. Dokumentation aktualisiert
 
-- Final-Test aller Seiten im Browser
-- Mobile-Fallback testen
-- GitHub Pages Deployment
+| Datei | Status |
+|-------|--------|
+| README.md | ✅ |
+| status-report.md | ✅ |
+| implementation-plan.md | ⏳ |
+| design.md | ⏳ |
 
 ---
 
 ## Aktuelle UI-Struktur
 
-```
-●───○───○───○
-Überblick → Theorie → Übungen → Ressourcen
+### Vertikales Scroll-Layout
 
-┌─────────────────────────────────────────────────────────────┐
-│ Überblick      │ Theorie        │ Übungen       │ Ressourcen│
-│                │                │               │           │
-│ Kapitelname    │ Kernpunkte     │ Exercises     │ Links     │
-│ Kurzbeschr.    │ Konzepte       │ Code          │ Zitat     │
-│ Intro-Text     │                │ Reflexion     │           │
-│                │ [← Zurück]     │ [← Zurück]    │ [← Zurück]│
-│ [Weiter →]     │ [Weiter →]     │ [Weiter →]    │ ✓ Complete│
-└─────────────────────────────────────────────────────────────┘
 ```
+┌─────────────────────────────────────────┐
+│ Sidebar     │  Kapitel-Header           │
+│             │  ────────────────────     │
+│ [CT] ←      │  ■ Theorie                │
+│  Theorie    │    Kernpunkte             │
+│  Übungen    │    Konzepte               │
+│  Ressourcen │                           │
+│ [RE]        │  ■ Übungen                │
+│ [CE]        │    Exercise-Blöcke        │
+│ [PE]        │    Code, Reflexion        │
+│ [CL]        │                           │
+│ [RV]        │  ■ Ressourcen             │
+│             │    Links, Zitat           │
+└─────────────────────────────────────────┘
+```
+
+### Sidebar-Verhalten
+
+- Kompetenz-Balken sind klickbar → scrollt zum Kapitel
+- Sub-Links klappen bei aktivem Kapitel aus
+- Scroll-Spy highlightet:
+  - Aktiven Kompetenz-Balken
+  - Aktiven Sub-Link (Theorie/Übungen/Ressourcen)
 
 ---
 
-## Commits dieser Session
+## Geplante Erweiterungen
 
-| Hash | Beschreibung |
-|------|--------------|
-| 0a6d585 | Fix UI bugs: panel layout, chapter separation |
-| b5373ff | Add navigation buttons to all panels |
-| 13a4b13 | Fix panel height - remove max-height |
-| c4ffb58 | Rename panel labels to German terms |
+### Detailseiten pro Kompetenz
+
+```
+/de/
+├── index.html           # Übersicht (aktuell)
+├── ct.html              # CT-Detailseite
+├── re.html              # RE-Detailseite
+├── ce.html              # CE-Detailseite
+├── pe.html              # PE-Detailseite
+├── cl.html              # CL-Detailseite
+└── rv.html              # RV-Detailseite
+```
+
+**Konzept:**
+- Übersicht zeigt alle Kompetenzen kompakt
+- Detailseiten bieten vertiefende Inhalte, mehr Übungen, interaktive Elemente
+- Link von Übersicht zu Detailseite: "Mehr lernen →"
+
+---
+
+## Technische Änderungen
+
+### JavaScript (app.js)
+
+**Entfernt:**
+- `createInputPanel()`, `createProcessPanel()`, `createExecutePanel()`, `createOutputPanel()`
+- `updateLoopProgress()`
+- Horizontale Scroll-Logik
+- sessionStorage für Loop-Position
+
+**Neu:**
+- `createChapterElement()` – erstellt vertikale Sektionen
+- `scrollToSection()` – scrollt zu Theorie/Übungen/Ressourcen
+- Sidebar-Wrapper mit Sub-Links
+- Dual IntersectionObserver für Scroll-Spy
+
+### CSS (style.css)
+
+**Entfernt:**
+- `.loop-container`, `.loop-panel`, `.panel-phase`
+- `.loop-progress`, `.loop-step`, `.loop-dot`, `.loop-line`
+- Panel-spezifische Styles (`.panel-input`, `.panel-process`, etc.)
+
+**Neu:**
+- `.competency-bar-wrapper` – Wrapper für Bar + Sub-Links
+- `.sidebar-sublinks` – Container für Sub-Links (animiert)
+- `.sidebar-sublink` – Einzelne Sub-Links mit active-State
+- `.chapter-header-block` – Kapitel-Header mit Badge
+- `.content-section` – Theorie/Übungen/Ressourcen-Sektionen
+- `.section-title`, `.section-marker` – Sektions-Überschriften
+- `.keypoints`, `.keypoints-list` – Kernpunkte
+- `.concepts`, `.concepts-list` – Konzept-Definitionen
+- `.exercise-block` – Übungs-Container
+- `.chapter-quote` – Zitat am Ende
 
 ---
 
 ## Nächste Schritte
 
-1. **Content-Update** - RE, CE, PE, CL, RV Kapitel mit Material aus `grundlagen-kompetenzbereiche.md` erweitern
-2. **Browser-Test** - Alle 6 Kapitel durchklicken
-3. **Deployment** - GitHub Pages
+1. **implementation-plan.md** und **design.md** aktualisieren
+2. **Detailseiten** erstellen (ct.html, re.html, etc.)
+3. **GitHub Pages** – Deployment testen
+4. **Mobile-Test** – Responsive Layout prüfen
 
 ---
 
 ## Überprüfungskriterien
 
-### Navigation testen:
+### Vertikales Layout testen:
 
-- [x] "Weiter zur Theorie" Button funktioniert
-- [x] "← Zurück" und "Weiter →" Buttons in allen Panels
-- [x] Keyboard ← → navigiert zwischen Panels
-- [x] Progress-Indikator zeigt aktuelle Position
-- [ ] Mobile (<600px): Vertikales Layout aktiv
+- [x] Alle Kapitel scrollen vertikal
+- [x] Theorie/Übungen/Ressourcen-Sektionen sichtbar
+- [x] Sidebar-Balken scrollen zum Kapitel
+- [x] Sub-Links klappen bei aktivem Kapitel aus
+- [x] Sub-Links scrollen zur Sektion
+- [x] Scroll-Spy highlightet korrekten Balken
+- [x] Scroll-Spy highlightet korrekten Sub-Link
+- [ ] Mobile (<600px): Sidebar versteckt
+- [ ] Mobile: Vertikales Layout ohne Probleme

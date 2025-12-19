@@ -145,14 +145,28 @@
       "short": "Anforderungen präzise formulieren",
 
       "theory": {
-        "description": "Präzise Formulierung von Anforderungen und Akzeptanzkriterien. Was soll das Tool tun? Was nicht? Welche Eingaben, welche Ausgaben? Woran erkennt man, dass es korrekt funktioniert?",
+        "description": "Requirement Engineering bezeichnet die systematische Formulierung von Anforderungen. Für die Arbeit mit LLMs ist das entscheidend, weil ein Prompt funktional ein Requirements-Dokument ist. Wer präzise Anforderungen formulieren kann, schreibt bessere Prompts. Die Kernfragen: Was soll das Tool tun? Was nicht? Welche Eingaben, welche Ausgaben? Woran erkennt man, dass es korrekt funktioniert?",
         "keyPoints": [
-          "Unklare Anforderungen führen zu unbrauchbarem Code",
+          "Ein Prompt ist funktional ein Requirements-Dokument",
+          "User Stories sind niedrigschwelliger als formale Spezifikationen",
+          "LLMs raten bei vagen Anforderungen – sie füllen Lücken mit Annahmen",
           "Akzeptanzkriterien definieren, bevor Code generiert wird",
           "Grenzfälle und Ausnahmen antizipieren",
           "Das LLM kann nur liefern, was Sie spezifizieren"
         ],
         "concepts": [
+          {
+            "term": "User Story",
+            "definition": "Leichtgewichtiges Anforderungsformat: 'Als [Rolle] möchte ich [Funktion], damit [Nutzen]'"
+          },
+          {
+            "term": "INVEST-Kriterien",
+            "definition": "Gute Anforderungen sind: Independent, Negotiable, Valuable, Estimable, Small, Testable"
+          },
+          {
+            "term": "Kernfragen",
+            "definition": "Was tun? Was nicht? Eingabe? Ausgabe? Woran erkenne ich Erfolg?"
+          },
           {
             "term": "Funktionale Anforderung",
             "definition": "Was das System tun soll (Eingabe → Verarbeitung → Ausgabe)"
@@ -164,10 +178,6 @@
           {
             "term": "Grenzfall",
             "definition": "Extreme oder ungewöhnliche Eingaben, die getestet werden müssen"
-          },
-          {
-            "term": "Nicht-funktionale Anforderung",
-            "definition": "Qualitätseigenschaften wie Geschwindigkeit, Lesbarkeit, Wartbarkeit"
           }
         ]
       },
@@ -175,21 +185,23 @@
       "handsOn": [
         {
           "id": "RE-1",
-          "title": "Anforderungen spezifizieren",
-          "summary": "Eine vollständige Anforderungsspezifikation schreiben, bevor Sie prompten.",
+          "title": "User Stories schreiben",
+          "summary": "Anforderungen im User-Story-Format formulieren, bevor Sie prompten.",
           "goals": [
-            "Funktionale Anforderungen klar beschreiben",
+            "Das User-Story-Format anwenden",
             "Akzeptanzkriterien definieren",
-            "Grenzfälle identifizieren"
+            "Abgrenzungen explizit machen"
           ],
           "exercise": {
-            "description": "Sie möchten ein Skript, das CSV-Dateien in JSON konvertiert. Schreiben Sie die Anforderungen auf.",
-            "task": "Beantworten Sie: Was ist die Eingabe? Was ist die Ausgabe? Was passiert bei leeren Dateien? Bei fehlenden Spalten? Bei Sonderzeichen?"
+            "description": "Sie möchten ein Tool, das Ihre Bibliografie verwaltet. Formulieren Sie die Anforderungen.",
+            "code": "# Vage Anforderung (schlecht):\n\"Ich brauche was, um meine Bibliografie zu verwalten\"\n\n# User Story (besser):\n\"Als Forschende möchte ich eine CSV-Datei mit\nBibliografiedaten in eine formatierte HTML-Seite\numwandeln, damit ich meine Publikationsliste\nauf meiner Website anzeigen kann.\"\n\n# Präzise Spezifikation (am besten):\n# Eingabe: CSV mit Spalten (Autor, Titel, Jahr, Zeitschrift)\n# Ausgabe: HTML mit alphabetisch sortierter Liste\n# Format: Autor (Jahr): Titel. In: Zeitschrift.\n# Nicht im Scope: PDF-Verlinkung, Dubletten-Erkennung",
+            "filename": "anforderung.txt",
+            "task": "Schreiben Sie für Ihr eigenes Projekt: 1) Eine User Story, 2) Eingabe und Ausgabe, 3) Drei Akzeptanzkriterien, 4) Zwei Abgrenzungen (Was soll es nicht tun?)"
           },
           "reflection": [
-            "Wie viele Grenzfälle haben Sie gefunden?",
             "Welche Anforderungen waren implizit (in Ihrem Kopf)?",
-            "Was hätte das LLM falsch gemacht ohne diese Spezifikation?"
+            "Was hätte das LLM ohne diese Spezifikation geraten?",
+            "Wie schwer war es, Abgrenzungen zu formulieren?"
           ]
         },
         {
@@ -215,9 +227,14 @@
 
       "resources": [
         {
-          "title": "IEEE Guide to Software Requirements Specifications",
-          "url": "https://standards.ieee.org/standard/830-1998.html",
-          "type": "standard"
+          "title": "Vogelsang & Fischbach (2024): LLMs for RE Tasks",
+          "url": "https://arxiv.org/abs/2402.13823",
+          "type": "paper"
+        },
+        {
+          "title": "Lucassen et al. (2016): User Stories in Practice",
+          "url": "https://link.springer.com/chapter/10.1007/978-3-319-30282-9_14",
+          "type": "paper"
         },
         {
           "title": "User Stories Applied (Mike Cohn)",
@@ -239,25 +256,31 @@
       "short": "Kontext für LLMs gestalten",
 
       "theory": {
-        "description": "Systematische Gestaltung des Informationskontexts für das LLM. Auswahl, Kompression und Anordnung relevanter Informationen: Codebasis-Ausschnitte, Dokumentation, Beispiele, Projektkonventionen.",
+        "description": "Context Engineering bezeichnet die systematische Gestaltung des Informationskontexts, den man einem LLM gibt. Das Kontextfenster ist begrenzt – was man hineinpackt und wie man es anordnet, bestimmt die Qualität der Ausgabe. Mehr ist nicht automatisch besser: LLMs können Informationen 'in der Mitte verlieren' (Lost in the Middle Problem).",
         "keyPoints": [
-          "Das Kontextfenster ist begrenzt – wählen Sie weise",
-          "Relevante Informationen priorisieren und komprimieren",
-          "Beispiele sind oft wirksamer als Beschreibungen",
+          "Kontextfenster: GPT-4o 128K, Claude 200K, Gemini 1M Tokens",
+          "Mehr Kontext ist nicht automatisch besser – Lost in the Middle Problem",
+          "Bewährte Struktur: Rolle → Aufgabe → Infos → Constraints → Format",
+          "Komprimierung: Relevante Ausschnitte statt ganzer Dateien",
+          "Beispiele sind oft wirksamer als lange Beschreibungen",
           "Projektkonventionen explizit machen"
         ],
         "concepts": [
           {
+            "term": "RAG",
+            "definition": "Retrieval-Augmented Generation – relevante Infos aus externen Quellen abrufen und dem LLM bereitstellen"
+          },
+          {
+            "term": "Lost in the Middle",
+            "definition": "LLMs verlieren Informationen in der Mitte langer Kontexte – wichtiges an Anfang/Ende"
+          },
+          {
+            "term": "Kontextstruktur",
+            "definition": "Bewährte Anordnung: Rolle → Aufgabe → Informationen → Constraints → Format"
+          },
+          {
             "term": "Kontextfenster",
-            "definition": "Die maximale Textmenge, die ein LLM gleichzeitig verarbeiten kann"
-          },
-          {
-            "term": "Few-Shot Learning",
-            "definition": "Dem LLM Beispiele geben, um das gewünschte Verhalten zu zeigen"
-          },
-          {
-            "term": "Retrieval",
-            "definition": "Gezieltes Abrufen relevanter Informationen für den Kontext"
+            "definition": "Die maximale Textmenge (in Tokens), die ein LLM gleichzeitig verarbeiten kann"
           },
           {
             "term": "Destillation",
@@ -269,6 +292,27 @@
       "handsOn": [
         {
           "id": "CE-1",
+          "title": "Kontext strukturieren",
+          "summary": "Einen Prompt mit der bewährten Kontextstruktur aufbauen.",
+          "goals": [
+            "Die 5-teilige Kontextstruktur anwenden",
+            "Relevante von irrelevanten Informationen trennen",
+            "Wirksamkeit vergleichen"
+          ],
+          "exercise": {
+            "description": "Vergleichen Sie diese beiden Prompts für dieselbe Aufgabe.",
+            "code": "# OHNE Kontextstruktur:\n\"Mach mir ein Skript für meine Excel-Dateien\"\n\n# MIT Kontextstruktur:\n\"\"\"\nDu hilfst mir, ein Python-Skript zu schreiben.\n\nAufgabe: Alle Excel-Dateien in einem Ordner einlesen\nund zu einer CSV zusammenführen.\n\nBeispieldaten (erste Datei):\n| Inv-Nr | Bezeichnung | Datierung |\n| 001    | Vase        | 1820      |\n\nConstraints:\n- Alle Dateien haben identische Spaltenstruktur\n- Encoding: UTF-8\n- Nur .xlsx, keine .xls\n\nAusgabe: Ein einzelnes Skript mit Kommentaren.\n\"\"\"",
+            "filename": "kontext_vergleich.txt",
+            "task": "Testen Sie beide Prompts mit einem LLM. Dokumentieren Sie die Unterschiede in den Ergebnissen."
+          },
+          "reflection": [
+            "Welche Rückfragen stellte das LLM beim ersten Prompt?",
+            "Wie viel präziser war das Ergebnis beim zweiten Prompt?",
+            "Welche Informationen haben Sie im strukturierten Prompt hinzugefügt?"
+          ]
+        },
+        {
+          "id": "CE-2",
           "title": "Wissen destillieren",
           "summary": "Einen komplexen Standard so aufbereiten, dass er ins Kontextfenster passt.",
           "goals": [
@@ -285,34 +329,18 @@
             "Welche Informationen haben Sie weggelassen?",
             "Hat das LLM mit dem destillierten Kontext korrekt gearbeitet?"
           ]
-        },
-        {
-          "id": "CE-2",
-          "title": "Textanalyse mit Kontext",
-          "summary": "Text als Daten verarbeiten – mit dem richtigen Kontext für das LLM.",
-          "goals": [
-            "Tokenisierung verstehen",
-            "Textbereinigung nachvollziehen",
-            "Domänenspezifischen Kontext bereitstellen"
-          ],
-          "exercise": {
-            "description": "Verstehen Sie diese einfache Textanalyse.",
-            "code": "from collections import Counter\nimport re\n\ntext = \"\"\"Die Vase stammt aus dem 5. Jahrhundert.\nDie Vase zeigt mythologische Szenen.\"\"\"\n\n# Tokenisieren\nwoerter = re.findall(r'\\b\\w+\\b', text.lower())\n\n# Stopwörter entfernen\nstopwoerter = {'die', 'der', 'das', 'aus', 'dem'}\nwoerter_bereinigt = [w for w in woerter if w not in stopwoerter]\n\n# Häufigkeiten zählen\nhaeufigkeiten = Counter(woerter_bereinigt)\nprint(haeufigkeiten.most_common(5))",
-            "filename": "textanalyse.py",
-            "task": "Was passiert in jedem Schritt? Wie würden Sie domänenspezifische Stopwörter ergänzen?"
-          },
-          "reflection": [
-            "Welcher Kontext würde die Analyse verbessern?",
-            "Welche Informationen gehen durch die Normalisierung verloren?",
-            "Wie würden Sie das LLM auf Ihre Domäne spezialisieren?"
-          ]
         }
       ],
 
       "resources": [
         {
-          "title": "Mei et al. (2025). A Survey of Context Engineering for LLMs",
-          "url": "https://arxiv.org/abs/2507.13334",
+          "title": "Gao et al. (2024): RAG Survey",
+          "url": "https://arxiv.org/abs/2312.10997",
+          "type": "paper"
+        },
+        {
+          "title": "Liu et al. (2025): Long-Context Survey",
+          "url": "https://arxiv.org/abs/2503.17407",
           "type": "paper"
         },
         {
@@ -335,29 +363,35 @@
       "short": "Effektive Prompts entwickeln",
 
       "theory": {
-        "description": "Entwicklung und Optimierung von Eingabeaufforderungen. Auswahl von Prompting-Techniken, um LLMs effektiv zu steuern und die Qualität der generierten Ausgaben zu maximieren.",
+        "description": "Prompt Engineering bezeichnet die Entwicklung und Optimierung von Eingabeaufforderungen. Ein Prompt ist mehr als eine Frage – die Art, wie man fragt, bestimmt die Art der Antwort. Schulhoff et al. (2024) dokumentieren 58 verschiedene Prompting-Techniken. Für die meisten Anwendungen genügen wenige Kernstrategien.",
         "keyPoints": [
-          "Klarheit und Präzision schlagen Länge",
-          "Struktur hilft: Rolle, Aufgabe, Format, Einschränkungen",
-          "Iterativ verbessern durch Dialog",
+          "Schulhoff et al. dokumentieren 58 Prompting-Techniken – für die Praxis genügen wenige",
+          "Zero-Shot: Direkte Anweisung ohne Beispiele – für einfache, eindeutige Aufgaben",
+          "Few-Shot: 2-5 Beispiele zeigen Format und Umgang mit Sonderfällen",
+          "Chain-of-Thought: 'Denke Schritt für Schritt' – für komplexe Probleme",
+          "Iterative Verfeinerung: Prompt → Output → Problem → Anpassung → wiederholen",
           "Ausgabeformat explizit spezifizieren"
         ],
         "concepts": [
           {
-            "term": "System-Prompt",
-            "definition": "Grundlegende Anweisungen, die das Verhalten des LLM steuern"
-          },
-          {
-            "term": "Chain-of-Thought",
-            "definition": "Das LLM bitten, Schritt für Schritt zu denken"
+            "term": "Zero-Shot",
+            "definition": "Direkte Anweisung ohne Beispiele – funktioniert bei einfachen, eindeutigen Aufgaben"
           },
           {
             "term": "Few-Shot",
-            "definition": "Beispiele im Prompt, die das gewünschte Format zeigen"
+            "definition": "2-5 Beispiele im Prompt zeigen das gewünschte Format und den Umgang mit Sonderfällen"
+          },
+          {
+            "term": "Chain-of-Thought",
+            "definition": "'Denke Schritt für Schritt' – verbessert Leistung bei komplexen, mehrstufigen Problemen"
+          },
+          {
+            "term": "Role Prompting",
+            "definition": "'Du bist ein erfahrener...' – wenn spezifische Expertise oder Perspektive wichtig ist"
           },
           {
             "term": "Iteration",
-            "definition": "Schrittweise Verbesserung durch Dialog und Anpassung"
+            "definition": "Prompt → Output prüfen → Problem identifizieren → Prompt anpassen → wiederholen"
           }
         ]
       },
@@ -365,22 +399,23 @@
       "handsOn": [
         {
           "id": "PE-1",
-          "title": "Prompt-Struktur",
-          "summary": "Einen strukturierten Prompt nach bewährtem Muster aufbauen.",
+          "title": "Zero-Shot vs. Few-Shot",
+          "summary": "Den Unterschied zwischen direkter Anweisung und Beispiel-basiertem Prompting verstehen.",
           "goals": [
-            "Die Elemente eines guten Prompts kennen",
-            "Rolle, Aufgabe, Format unterscheiden",
-            "Einschränkungen explizit machen"
+            "Zero-Shot und Few-Shot unterscheiden",
+            "Erkennen, wann Beispiele helfen",
+            "Beispiele effektiv formulieren"
           ],
           "exercise": {
-            "description": "Strukturieren Sie diesen chaotischen Prompt neu.",
-            "code": "# Chaotischer Prompt:\n\"Ich hab da so CSV-Dateien mit Museumsdaten und brauch die als JSON, \nkannst du mir da was schreiben? Ach ja, und die Spaltennamen \nsind auf Deutsch und haben Umlaute...\"",
-            "task": "Schreiben Sie den Prompt neu mit: 1) Rolle, 2) Aufgabe, 3) Eingabe, 4) Ausgabe, 5) Einschränkungen, 6) Beispiel."
+            "description": "Vergleichen Sie diese beiden Strategien für dieselbe Aufgabe.",
+            "code": "# ZERO-SHOT:\n\"Extrahiere das Datum aus diesem Text:\n'Das Gemälde wurde am 15. März 1823 erworben.'\"\n\n# FEW-SHOT:\n\"Extrahiere das Datum aus Texten. Formatiere als YYYY-MM-DD.\n\nText: 'Erworben im Januar 1820' -> 1820-01-00\nText: 'Datiert auf den 3.5.1899' -> 1899-05-03\nText: 'Das Gemälde wurde am 15. März 1823 erworben.' ->\"",
+            "filename": "prompting_strategien.txt",
+            "task": "Testen Sie beide Strategien. Wann liefert Few-Shot bessere Ergebnisse? Wann genügt Zero-Shot?"
           },
           "reflection": [
-            "Wie viel länger wurde der Prompt?",
-            "Welche impliziten Annahmen haben Sie explizit gemacht?",
-            "Ist der Code besser geworden?"
+            "Wie unterschieden sich die Ausgaben?",
+            "Welche Sonderfälle haben die Beispiele abgedeckt?",
+            "Wann würden Sie Few-Shot in Ihrer Arbeit einsetzen?"
           ]
         },
         {
@@ -389,12 +424,14 @@
           "summary": "Durch Dialog schrittweise zum gewünschten Ergebnis.",
           "goals": [
             "Feedback präzise formulieren",
-            "Anpassungen gezielt anfordern",
+            "Typische Anpassungen kennen",
             "Wissen, wann man neu anfangen sollte"
           ],
           "exercise": {
-            "description": "Starten Sie mit einem einfachen Prompt und verbessern Sie iterativ.",
-            "task": "Generieren Sie Code, identifizieren Sie ein Problem, formulieren Sie eine Anpassung. Wiederholen Sie 3x. Dokumentieren Sie jeden Schritt."
+            "description": "Verfolgen Sie diesen iterativen Verfeinerungsprozess.",
+            "code": "# Iteration 1:\n\"Schreibe ein Skript, das Bilder verkleinert.\"\n# Problem: Unklar welche Größe, welches Format, welcher Ordner\n\n# Iteration 2:\n\"Schreibe ein Python-Skript mit Pillow.\nEingabe: Ordnerpfad als Argument\nAufgabe: Alle .jpg auf max. 1200px Breite skalieren\nAusgabe: Neue Dateien mit Suffix '_web'\"\n# Problem: Überschreibt Originale\n\n# Iteration 3:\n\"... (wie oben)\nConstraint: Originaldateien nicht überschreiben\"",
+            "filename": "iteration.txt",
+            "task": "Starten Sie mit einem einfachen Prompt für Ihr Projekt. Dokumentieren Sie 3 Iterationen: Problem → Anpassung → Ergebnis."
           },
           "reflection": [
             "Wie viele Iterationen brauchten Sie?",
@@ -406,19 +443,19 @@
 
       "resources": [
         {
-          "title": "Schulhoff et al. (2025). The Prompt Report",
+          "title": "Schulhoff et al. (2024): The Prompt Report (58 Techniken)",
           "url": "https://arxiv.org/abs/2406.06608",
+          "type": "paper"
+        },
+        {
+          "title": "Wei et al. (2022): Chain-of-Thought (NeurIPS)",
+          "url": "https://arxiv.org/abs/2201.11903",
           "type": "paper"
         },
         {
           "title": "OpenAI: Prompt Engineering Guide",
           "url": "https://platform.openai.com/docs/guides/prompt-engineering",
           "type": "documentation"
-        },
-        {
-          "title": "Learn Prompting",
-          "url": "https://learnprompting.org/",
-          "type": "tutorial"
         }
       ],
 
@@ -435,21 +472,31 @@
       "short": "Generierten Code verstehen",
 
       "theory": {
-        "description": "Generierten Code lesen und verstehen: Ablauf nachvollziehen, Eingaben und Ausgaben identifizieren, Logik erkennen, Unstimmigkeiten bemerken. Setzt nicht voraus, denselben Code selbst schreiben zu können.",
+        "description": "Code Literacy bezeichnet die Fähigkeit, Code zu lesen und zu verstehen. Das ist eine eigenständige Kompetenz, die dem Schreiben vorausgeht. Man muss nicht selbst Code schreiben können, um LLM-generierten Code zu bewerten. Die Skill-Hierarchie: Run → Trace → Explain → Write. Für AI Coding Literacy sind primär Trace und Explain relevant.",
         "keyPoints": [
-          "Lesen ist einfacher als Schreiben",
-          "Code hat Struktur: Variablen, Funktionen, Kontrollfluss",
-          "Fehlermeldungen sind Informationen, keine Katastrophen",
+          "Lesen und Schreiben sind getrennte Kompetenzen (Lopez et al., 2008)",
+          "Skill-Hierarchie: Run → Trace → Explain → Write",
+          "Auch Experten vermeiden tiefes Verstehen wenn möglich – partielles Verstehen ist normal",
+          "39% der Praktiker finden LLM-Code lesbarer als menschlichen Code",
+          "Zwei mentale Modelle: prozedural ('Was passiert der Reihe nach?') und funktional ('Was ist das Ziel?')",
           "Sie müssen nicht alles verstehen – nur genug, um zu prüfen"
         ],
         "concepts": [
           {
-            "term": "Variable",
-            "definition": "Ein Name, der auf einen Wert im Speicher verweist"
+            "term": "Skill-Hierarchie",
+            "definition": "Run → Trace → Explain → Write: Lesen und Nachvollziehen gehen dem Schreiben voraus"
           },
           {
-            "term": "Funktion",
-            "definition": "Ein benannter Code-Block, der eine bestimmte Aufgabe ausführt"
+            "term": "Prozedurales Modell",
+            "definition": "'Was passiert der Reihe nach?' – Kontrollfluss, Zeile für Zeile nachvollziehen"
+          },
+          {
+            "term": "Funktionales Modell",
+            "definition": "'Was ist das Ziel?' – Zweck verstehen, Eingabe/Ausgabe identifizieren"
+          },
+          {
+            "term": "Delocalized Plans",
+            "definition": "Code einer Intention ist oft über mehrere Stellen verstreut – Navigation erforderlich"
           },
           {
             "term": "Kontrollstruktur",
@@ -458,10 +505,6 @@
           {
             "term": "Bibliothek",
             "definition": "Sammlung von vorgefertigtem Code für bestimmte Aufgaben"
-          },
-          {
-            "term": "API",
-            "definition": "Schnittstelle, über die Programme miteinander kommunizieren"
           }
         ]
       },
@@ -576,6 +619,16 @@
 
       "resources": [
         {
+          "title": "Lopez et al. (2008): Reading vs Writing Skills",
+          "url": "https://dl.acm.org/doi/10.1145/1404520.1404535",
+          "type": "paper"
+        },
+        {
+          "title": "Xie et al. (2019): Quadranten-Modell",
+          "url": "https://www.tandfonline.com/doi/full/10.1080/08993408.2019.1565235",
+          "type": "paper"
+        },
+        {
           "title": "Hermans, F. (2021). The Programmer's Brain",
           "url": "https://www.manning.com/books/the-programmers-brain",
           "type": "book"
@@ -584,11 +637,6 @@
           "title": "Python Tutorial (offiziell)",
           "url": "https://docs.python.org/3/tutorial/",
           "type": "documentation"
-        },
-        {
-          "title": "Pandas Getting Started",
-          "url": "https://pandas.pydata.org/docs/getting_started/",
-          "type": "tutorial"
         }
       ],
 
@@ -605,33 +653,39 @@
       "short": "Ergebnisse systematisch prüfen",
 
       "theory": {
-        "description": "Systematische Prüfung gegen die definierten Anforderungen. Validieren, ob der Code die Akzeptanzkriterien erfüllt. Lücken identifizieren. Den Entwicklungszyklus durch Iteration schließen.",
+        "description": "Review bezeichnet die systematische Prüfung von generiertem Code gegen die definierten Anforderungen. LLM-generierter Code sieht oft korrekt aus, enthält aber systematisch Fehler. EvalPlus zeigt: Pass-Raten sinken um 19-28.9% bei gründlicherem Testing. Tambon et al. identifizierten 10 Bug-Patterns. Vertrauen ist gut, Prüfen ist besser.",
         "keyPoints": [
-          "Vertrauen ist gut, Prüfen ist besser",
-          "Fehler sind Informationen, keine Katastrophen",
-          "Systematisch testen: Normalfall, Grenzfall, Fehlerfall",
-          "Die eigenen Grenzen erkennen"
+          "EvalPlus: Pass-Raten sinken um 19-28.9% bei gründlicherem Testing",
+          "Tambon et al.: 10 Bug-Patterns in LLM-generiertem Code",
+          "29.5% Python-Snippets von Copilot haben Sicherheitslücken (Fu et al.)",
+          "5 Halluzinationskategorien: Intent Conflicting, Context Inconsistency, Dead Code, Knowledge Conflicting",
+          "Metamorphic Testing: Paraphrasierte Prompts zur Konsistenzprüfung",
+          "Systematisch testen: Normalfall, Grenzfall, Fehlerfall"
         ],
         "concepts": [
           {
-            "term": "Syntax Error",
-            "definition": "Tippfehler oder falsche Struktur – Code kann nicht ausgeführt werden"
+            "term": "Halluzinierte Objekte",
+            "definition": "Nicht existierende Funktionen oder Bibliotheken, die das LLM erfindet"
           },
           {
-            "term": "Runtime Error",
-            "definition": "Fehler während der Ausführung, z.B. Division durch Null"
+            "term": "Intent Conflicting",
+            "definition": "Code widerspricht der Anforderung – macht etwas anderes als gewünscht"
           },
           {
-            "term": "Logischer Fehler",
-            "definition": "Code läuft, aber das Ergebnis ist falsch"
+            "term": "Context Inconsistency",
+            "definition": "Code widerspricht dem bereitgestellten Kontext (Beispieldaten, Dokumentation)"
+          },
+          {
+            "term": "Metamorphic Testing",
+            "definition": "Paraphrasierte Prompts zur Konsistenzprüfung – erkennt 75% fehlerhafter Programme"
           },
           {
             "term": "Traceback",
-            "definition": "Die Fehlerspur, die zeigt, wo der Fehler aufgetreten ist"
+            "definition": "Die Fehlerspur, die zeigt, wo der Fehler aufgetreten ist – von unten nach oben lesen"
           },
           {
-            "term": "Halluzination",
-            "definition": "Das LLM erfindet plausibel klingende aber falsche Informationen"
+            "term": "Logischer Fehler",
+            "definition": "Code läuft, aber das Ergebnis ist falsch – am schwierigsten zu finden"
           }
         ]
       },
@@ -701,8 +755,18 @@
 
       "resources": [
         {
-          "title": "Dell'Acqua et al. (2023). Navigating the Jagged Technological Frontier",
-          "url": "https://www.hbs.edu/faculty/Pages/item.aspx?num=64700",
+          "title": "Liu et al. (2024): HalluCode Benchmark",
+          "url": "https://arxiv.org/abs/2404.00971",
+          "type": "paper"
+        },
+        {
+          "title": "Tambon et al. (2024): Bug-Pattern Taxonomie",
+          "url": "https://arxiv.org/abs/2403.08937",
+          "type": "paper"
+        },
+        {
+          "title": "Fu et al. (2024): Security Analysis of Copilot",
+          "url": "https://dl.acm.org/doi/10.1145/3643769",
           "type": "paper"
         },
         {

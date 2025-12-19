@@ -389,8 +389,55 @@ footer a {
 }
 
 /* ============================================================
-   PROMPT-LOOP UI - Horizontale Session-Panels
+   VERTIKALES SCROLL-LAYOUT
    ============================================================ */
+
+/* Sidebar-Wrapper für Bar + Sub-Links */
+.competency-bar-wrapper {
+  position: relative;
+}
+
+/* Sidebar Sub-Links (versteckt bis aktiv) */
+.sidebar-sublinks {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+  padding-left: 8px;
+}
+
+.sidebar-sublinks.visible {
+  max-height: 120px;
+  opacity: 1;
+  margin: 4px 0;
+}
+
+.sidebar-sublink {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 0.3rem 0.5rem;
+  border-left: 2px solid var(--border);
+  transition: all 0.2s ease;
+}
+
+.sidebar-sublink:hover {
+  color: var(--text);
+  border-left-color: var(--text);
+}
+
+.sidebar-sublink.active {
+  color: var(--text);
+  font-weight: bold;
+  border-left-color: var(--text);
+}
+
+.sidebar-sublink::before,
+.sidebar-sublink::after {
+  content: none;
+}
 
 /* Kapitel-Container */
 .chapter {
@@ -414,228 +461,180 @@ footer a {
   padding-top: 0;
 }
 
-/* Loop-Progress-Indikator */
-.loop-progress {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0;
-  margin-bottom: 1rem;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
-}
-
-.loop-step {
-  display: flex;
-  align-items: center;
-  color: var(--text-muted);
-  transition: color 0.3s ease;
-}
-
-.loop-step.active {
-  color: var(--text);
-  font-weight: bold;
-}
-
-.loop-step.completed {
-  color: var(--text);
-}
-
-.loop-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--border);
-  margin-right: 0.4rem;
-  transition: all 0.3s ease;
-}
-
-.loop-step.active .loop-dot {
-  background: var(--text);
-  box-shadow: 0 0 0 3px var(--code-bg);
-}
-
-.loop-step.completed .loop-dot {
-  background: var(--text-muted);
-}
-
-.loop-line {
-  width: 30px;
-  height: 2px;
-  background: var(--border);
-  margin: 0 0.25rem;
-}
-
-.loop-step.completed + .loop-line {
-  background: var(--text-muted);
-}
-
-/* Horizontaler Scroll-Container */
-.loop-container {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
+/* Chapter Header Block */
+.chapter-header-block {
+  padding: 1.5rem;
+  padding-left: 1.5rem;
+  margin-bottom: 2rem;
   background: var(--code-bg);
-  border: 1px solid var(--border);
-  border-radius: 4px;
 }
 
-.loop-container::-webkit-scrollbar {
-  display: none;
-}
-
-/* Loop-Panels */
-.loop-panel {
-  min-width: 100%; /* Volle Breite für bessere Lesbarkeit */
-  flex-shrink: 0;
-  scroll-snap-align: start;
-  padding: 2rem;
-  background: var(--bg);
-  border-right: 1px solid var(--border);
-  overflow-y: auto;
-  max-height: none; /* Kein Abschneiden - volle Höhe */
-}
-
-.loop-panel:last-child {
-  min-width: 100%;
-  border-right: none;
-}
-
-/* Panel-Header mit Loop-Phase */
-.panel-phase {
+.chapter-id-badge {
   display: inline-block;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  padding: 0.25rem 0.6rem;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.chapter-title {
+  margin: 0.5rem 0 0.25rem;
+  font-size: 24px;
+}
+
+.chapter-subtitle {
+  margin: 0;
+  font-style: italic;
   color: var(--text-muted);
+}
+
+/* Chapter Intro Block */
+.chapter-intro-block {
+  margin-bottom: 2rem;
+  max-width: 70ch;
+}
+
+.chapter-intro-block p {
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+/* Content Sections */
+.content-section {
+  margin: 2.5rem 0;
+  padding-top: 1.5rem;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 20px;
+  margin: 0 0 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-marker {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+}
+
+/* KeyPoints */
+.keypoints {
+  margin: 1.5rem 0;
+}
+
+.keypoints h4 {
+  font-size: 16px;
+  margin-bottom: 0.75rem;
+  color: var(--text-muted);
+}
+
+.keypoints-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.keypoints-list li {
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 0.6rem;
+}
+
+.keypoints-list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--text-muted);
+}
+
+/* Concepts */
+.concepts {
+  margin: 1.5rem 0;
+}
+
+.concepts h4 {
+  font-size: 16px;
+  margin-bottom: 0.75rem;
+  color: var(--text-muted);
+}
+
+.concepts-list {
+  margin: 0;
+  padding: 0;
+}
+
+.concepts-list dt {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: bold;
+  margin-top: 0.75rem;
+}
+
+.concepts-list dd {
+  margin: 0.25rem 0 0 1.5rem;
+  color: var(--text-muted);
+}
+
+/* Exercise Block */
+.exercise-block {
   background: var(--code-bg);
-  padding: 0.25rem 0.75rem;
-  border-radius: 2px;
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.exercise-title {
+  margin: 0 0 0.75rem;
+  font-size: 18px;
+}
+
+.exercise-summary {
+  color: var(--text-muted);
   margin-bottom: 1rem;
 }
 
-/* Panel: INPUT (Überblick) */
-.loop-panel.panel-input {
-  display: flex;
-  flex-direction: column;
+.exercise-goals {
+  margin: 1rem 0;
 }
 
-.loop-panel.panel-input h3 {
+.exercise-goals ul {
   margin: 0.5rem 0;
-  font-size: 22px;
+  padding-left: 1.5rem;
 }
 
-.loop-panel.panel-input .chapter-short {
-  flex: 1;
+.exercise-description {
+  margin: 1rem 0;
 }
 
-/* Einführungstext im INPUT-Panel */
-.chapter-intro {
-  margin: 1rem 0 1.5rem;
-  line-height: 1.6;
-  max-width: 60ch;
+.exercise-task {
+  margin: 1rem 0;
+  padding: 0.75rem;
+  background: var(--prompt-bg);
+  border-left: 3px solid var(--text);
 }
 
-/* Loop-Start Button */
-.loop-start-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 13px;
-  color: var(--text);
-  background: var(--code-bg);
-  border: 1px solid var(--border);
-  padding: 0.75rem 1.25rem;
-  border-radius: 3px;
-  cursor: pointer;
-  margin-top: auto;
-  transition: all 0.2s ease;
-}
-
-.loop-start-btn:hover {
-  background: var(--bg);
-  border-color: var(--text);
-}
-
-.loop-start-btn::after {
-  content: "";
-}
-
-/* Panel-Navigation (← →) */
-.panel-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--border);
-}
-
-.panel-nav-btn {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 13px;
-  color: var(--text);
-  background: var(--code-bg);
-  border: 1px solid var(--border);
-  padding: 0.6rem 1rem;
-  border-radius: 3px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.panel-nav-btn:hover {
-  background: var(--bg);
-  border-color: var(--text);
-}
-
-.panel-nav-btn.prev {
-  margin-right: auto;
-}
-
-.panel-nav-btn.next {
-  margin-left: auto;
-}
-
-/* Panel: PROCESS (Theorie) */
-.loop-panel.panel-process .panel-phase {
-  background: var(--comp-CT);
-  color: white;
-}
-
-/* Panel: EXECUTE (Übungen) */
-.loop-panel.panel-execute .panel-phase {
-  background: var(--comp-PE);
-  color: white;
-}
-
-/* Panel: OUTPUT (Ressourcen) */
-.loop-panel.panel-output .panel-phase {
-  background: var(--comp-RV);
-  color: white;
-}
-
-/* Loop-Complete Indikator */
-.loop-complete {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.6rem 1rem;
-  background: var(--code-bg);
-  border-radius: 3px;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 13px;
+/* Chapter Quote */
+.chapter-quote {
+  font-style: italic;
   color: var(--text-muted);
-  margin-left: auto;
+  margin: 2rem 0;
+  padding: 1rem;
+  background: var(--code-bg);
+  border-left: 4px solid var(--border);
 }
 
-/* Schatten für Tiefe */
-.loop-panel:not(.panel-input) {
-  box-shadow: -10px 0 30px rgba(0,0,0,0.08);
+.chapter-quote cite {
+  display: block;
+  font-style: normal;
+  font-size: 14px;
+  margin-top: 0.75rem;
 }
 
 /* Chapter-Header im Panel */
@@ -1099,37 +1098,17 @@ footer a {
     padding: 1rem;
   }
 
-  /* Loop UI Mobile: Vertikales Fallback */
-  .loop-progress {
-    flex-wrap: wrap;
-    gap: 0.5rem;
+  /* Vertikales Layout Mobile */
+  .chapter-header-block {
+    padding: 1rem;
   }
 
-  .loop-line {
-    display: none;
+  .content-section {
+    margin: 1.5rem 0;
+    padding-top: 1rem;
   }
 
-  .loop-container {
-    flex-direction: column;
-    overflow-x: visible;
-    overflow-y: auto;
-    scroll-snap-type: none;
-    min-height: auto;
-    max-height: none;
-  }
-
-  .loop-panel {
-    min-width: 100%;
-    scroll-snap-align: none;
-    border-bottom: 1px solid var(--border);
-    max-height: none;
-  }
-
-  .loop-panel:last-child {
-    border-bottom: none;
-  }
-
-  .panel-input .loop-start-btn {
-    display: none;
+  .exercise-block {
+    padding: 1rem;
   }
 }

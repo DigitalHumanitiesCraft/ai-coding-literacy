@@ -2,12 +2,12 @@
 
 ## Projektübersicht
 
-**Ziel:** Single-Page Lernplattform mit Loop-UI auf GitHub Pages.
+**Ziel:** Lernplattform mit vertikalem Scroll-Layout auf GitHub Pages.
 
 **Stack:**
 - Vanilla HTML/CSS/JavaScript
 - JSON für strukturierte Inhalte
-- Intersection Observer für Lazy Loading
+- Intersection Observer für Scroll-Spy
 - GitHub Pages
 
 **Design:** Tufte-inspirierte Ästhetik nach [design.md](design.md).
@@ -23,36 +23,36 @@ Alle Inhalte werden aus `/data/content.json` geladen:
 - 6 Kapitel (Kompetenzbereiche) mit Farben
 - Jedes Kapitel mit Theorie, Hands-On-Übungen, Ressourcen
 
-### Loop-UI
+### Vertikales Scroll-Layout
 
-Das zentrale UI-Konzept ist der **Loop** - eine horizontale Navigation innerhalb jedes Kapitels:
+Das zentrale UI-Konzept ist **vertikales Scrollen** mit einer erweiterten Sidebar:
 
 ```
-●───○───○───○
-Überblick → Theorie → Übungen → Ressourcen
-
-┌─────────────────────────────────────────────────────────────┐
-│ Überblick      │ Theorie        │ Übungen       │ Ressourcen│
-│                │                │               │           │
-│ Kapitelname    │ Kernpunkte     │ Exercises     │ Links     │
-│ Kurzbeschr.    │ Konzepte       │ Code          │ Zitat     │
-│ Intro-Text     │                │ Reflexion     │           │
-│                │ [← Zurück]     │ [← Zurück]    │ [← Zurück]│
-│ [Weiter →]     │ [Weiter →]     │ [Weiter →]    │ ✓ Complete│
-└─────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────┐
+│ Sidebar     │  Kapitel-Header           │
+│             │  ────────────────────     │
+│ [CT] ←      │  ■ Theorie                │
+│  Theorie    │    Kernpunkte             │
+│  Übungen    │    Konzepte               │
+│  Ressourcen │                           │
+│ [RE]        │  ■ Übungen                │
+│ [CE]        │    Exercise-Blöcke        │
+│ [PE]        │    Code, Reflexion        │
+│ [CL]        │                           │
+│ [RV]        │  ■ Ressourcen             │
+│             │    Links, Zitat           │
+└─────────────────────────────────────────┘
 ```
 
-**Didaktische Metapher:** Der Loop spiegelt den iterativen Lernprozess wider:
-1. **Überblick**: Thema und Einführung verstehen
-2. **Theorie**: Konzepte und Kernpunkte lernen
-3. **Übungen**: Praktisch anwenden
-4. **Ressourcen**: Vertiefen und weiterlernen
+**Vorteile:**
+- Natürliches Scrollverhalten
+- Alle Inhalte auf einen Blick zugänglich
+- Sidebar mit Kontext (welche Sektion ist aktiv)
 
-### Navigation
+### Zwei-Ebenen-Konzept
 
-- **Vertikal:** Scrollen zwischen Kapiteln (3rem Abstand, 3px Trennlinie)
-- **Horizontal:** Button-Navigation + Keyboard (← →) durch die 4 Loop-Phasen
-- **Sidebar:** 6 farbige Kompetenzbalken mit Scroll-Spy
+1. **Übersicht (index.html):** Alle 6 Kompetenzen kompakt
+2. **Detailseiten (ct.html etc.):** Vertiefende Inhalte (geplant)
 
 ---
 
@@ -62,23 +62,29 @@ Das zentrale UI-Konzept ist der **Loop** - eine horizontale Navigation innerhalb
 ai-coding-literacy/
 ├── index.html              # Redirect zu /de/
 ├── de/
-│   ├── index.html          # Single-Page mit Loop-UI
+│   ├── index.html          # Übersicht mit vertikalem Scroll
 │   ├── kompetenzmodell.html # Detailseite Kompetenzen
-│   └── referenz.html       # Referenzmaterial
+│   ├── referenz.html       # Referenzmaterial
+│   ├── ct.html             # CT-Detailseite (geplant)
+│   ├── re.html             # RE-Detailseite (geplant)
+│   ├── ce.html             # CE-Detailseite (geplant)
+│   ├── pe.html             # PE-Detailseite (geplant)
+│   ├── cl.html             # CL-Detailseite (geplant)
+│   └── rv.html             # RV-Detailseite (geplant)
 ├── css/
-│   └── style.css           # Globale Styles inkl. Loop-UI
+│   └── style.css           # Globale Styles
 ├── data/
 │   └── content.json        # Alle Inhalte strukturiert
 ├── js/
-│   ├── app.js              # Hauptlogik für Loop-UI
+│   ├── app.js              # Hauptlogik für Übersicht
 │   ├── kompetenzmodell.js  # Kompetenzmodell-Seite
 │   └── referenz.js         # Referenz-Seite
 └── knowledge/              # Konzeptdokumente (nicht Teil der Website)
     ├── concept.md
     ├── design.md
     ├── implementation-plan.md
-    ├── hands-on.md
     ├── status-report.md
+    ├── hands-on.md
     ├── grundlagen-computational-thinking.md
     ├── grundlagen-kompetenzbereiche.md
     └── grundlagen-oekosystem.md
@@ -102,7 +108,7 @@ ai-coding-literacy/
       "color": "#4A7C7C",
       "short": "Probleme strukturieren und zerlegen",
       "theory": {
-        "description": "Einführungstext für Überblick-Panel...",
+        "description": "Einführungstext...",
         "keyPoints": ["...", "..."],
         "concepts": [{"term": "...", "definition": "..."}]
       },
@@ -134,43 +140,79 @@ ai-coding-literacy/
 
 ## 4. UI-Komponenten
 
-### Loop-Progress-Indikator
-```css
-.loop-progress {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-/* ●───○───○───○ Überblick → Theorie → Übungen → Ressourcen */
-```
-
-### Loop-Container (horizontaler Scroll)
-```css
-.loop-container {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-}
-```
-
-### Loop-Panels
-- **panel-input**: Überblick - Kapitelname, Intro-Text, "Weiter zur Theorie" Button
-- **panel-process**: Theorie - Kernpunkte, Konzepte, Navigation
-- **panel-execute**: Übungen - Exercises mit Code, Navigation
-- **panel-output**: Ressourcen - Links, Zitat, "✓ Loop complete"
-
-### Panel-Navigation
-Jedes Panel (außer Überblick) hat:
-- "← Zurück" Button (links)
-- "Weiter →" Button (rechts, außer letztes Panel)
-- Keyboard-Support: ← → Pfeiltasten
-
 ### Sidebar Navigation
-- 6 farbige Balken (je ein Kompetenzbereich)
-- Labels: CT, RE, CE, PE, CL, RV
-- Klick scrollt zum entsprechenden Kapitel
-- Scroll-Spy highlightet aktuell sichtbaren Bereich
+
+```
+┌──────────────┐
+│ Übersicht    │  ← Aktive Seite
+│ Kompetenzmod │
+│ Referenz     │
+├──────────────┤
+│ [CT] ■■■■■■  │  ← Farbiger Balken
+│  Theorie     │  ← Sub-Link (sichtbar bei aktivem Kapitel)
+│  Übungen     │
+│  Ressourcen  │
+│ [RE] ■■■■■■  │
+│ [CE] ■■■■■■  │
+│ [PE] ■■■■■■  │
+│ [CL] ■■■■■■  │
+│ [RV] ■■■■■■  │
+└──────────────┘
+```
+
+**Verhalten:**
+- Kompetenz-Balken: Klick scrollt zum Kapitel
+- Sub-Links: Klappen aus bei aktivem Kapitel
+- Scroll-Spy: Highlightet aktiven Balken + Sub-Link
+
+### Kapitel-Struktur
+
+```html
+<section class="chapter" id="chapter-CT" data-competency="CT">
+  <div class="chapter-header-block">
+    <span class="chapter-id-badge">CT</span>
+    <h2 class="chapter-title">Computational Thinking</h2>
+    <p class="chapter-subtitle">Probleme strukturieren und zerlegen</p>
+  </div>
+
+  <div class="chapter-intro-block">
+    <p>Einführungstext...</p>
+  </div>
+
+  <div class="content-section" id="CT-theorie">
+    <h3 class="section-title">
+      <span class="section-marker"></span>
+      Theorie
+    </h3>
+    <!-- Kernpunkte, Konzepte -->
+  </div>
+
+  <div class="content-section" id="CT-uebungen">
+    <h3 class="section-title">
+      <span class="section-marker"></span>
+      Übungen
+    </h3>
+    <!-- Exercise-Blöcke -->
+  </div>
+
+  <div class="content-section" id="CT-ressourcen">
+    <h3 class="section-title">
+      <span class="section-marker"></span>
+      Ressourcen
+    </h3>
+    <!-- Links, Zitat -->
+  </div>
+</section>
+```
+
+### Code-Block
+
+```
+┌─ dateiname.py ─────────────── [kopieren] ─┐
+│ from PIL import Image                      │
+│ import os                                  │
+└────────────────────────────────────────────┘
+```
 
 ---
 
@@ -187,47 +229,87 @@ Jedes Panel (außer Überblick) hat:
 
 ---
 
-## 6. Umsetzungsstand
+## 6. JavaScript-Architektur (app.js)
 
-### Abgeschlossen
-- [x] CSS erstellen – style.css nach Design-Spezifikation
-- [x] JavaScript erstellen – app.js mit Loop-UI
-- [x] JSON-Datenstruktur – content.json mit 6 Kapiteln
-- [x] Single-Page – de/index.html mit Loop-UI
-- [x] Loop-Progress-Indikator (deutsche Labels)
-- [x] Horizontale Panel-Navigation
-- [x] Panel-Navigation-Buttons (← Zurück / Weiter →)
-- [x] Keyboard-Navigation (← →)
-- [x] Scroll-State Speicherung (sessionStorage v2)
-- [x] Responsive Fallback für Mobile (<600px)
-- [x] Kompetenzmodell – de/kompetenzmodell.html
-- [x] Referenz – de/referenz.html
-- [x] UI Bug Fixes (Panel-Höhe, Kapitel-Trennung, Labels)
-- [x] CT-Kapitel Content erweitert
+### Hauptfunktionen
 
-### Offen
-- [ ] Content erweitern: RE, CE, PE, CL, RV Kapitel
-- [ ] GitHub Pages – Deployment konfigurieren
-- [ ] Final-Test aller Seiten
+```javascript
+// State
+let contentData = null;
+let loadedChapters = 0;
+
+// Initialisierung
+loadContent()           // Lädt JSON
+initPage()              // Initialisiert UI
+
+// Sidebar
+scrollToChapter(id)     // Scrollt zu Kapitel
+scrollToSection(id, sec) // Scrollt zu Sektion
+
+// Content
+loadMoreChapters()      // Lazy Loading
+createChapterElement()  // Erstellt Kapitel-HTML
+
+// Observers
+setupInfiniteScroll()   // Lazy Loading Observer
+setupScrollSpy()        // Scroll-Spy Observer
+```
+
+### Scroll-Spy
+
+Zwei IntersectionObserver:
+
+1. **chapterObserver:** Beobachtet `.chapter` Elemente
+   - Highlightet aktiven Kompetenz-Balken
+   - Zeigt Sub-Links für aktives Kapitel
+
+2. **sectionObserver:** Beobachtet `.content-section` Elemente
+   - Highlightet aktiven Sub-Link
 
 ---
 
-## 7. Nicht im Scope
+## 7. Umsetzungsstand
+
+### Abgeschlossen
+
+- [x] CSS erstellen – style.css mit vertikalem Layout
+- [x] JavaScript erstellen – app.js mit Scroll-Spy
+- [x] JSON-Datenstruktur – content.json mit 6 Kapiteln
+- [x] Single-Page – de/index.html mit vertikalem Scroll
+- [x] Sidebar mit ausklappbaren Sub-Links
+- [x] Dual Scroll-Spy (Kapitel + Sektion)
+- [x] Infinite Scroll für Kapitel
+- [x] Responsive Fallback für Mobile (<600px)
+- [x] Kompetenzmodell – de/kompetenzmodell.html
+- [x] Referenz – de/referenz.html
+- [x] Content erweitert: Alle 6 Kapitel
+
+### Offen
+
+- [ ] Detailseiten erstellen (ct.html, re.html, etc.)
+- [ ] GitHub Pages – Deployment konfigurieren
+- [ ] Final-Test aller Seiten
+- [ ] Mobile-Test
+
+---
+
+## 8. Nicht im Scope
 
 - Englische Version (Struktur vorbereitet mit /de/ Pfad)
 - Logbuch-Komponente (Phase 2)
 - Syntax-Highlighting für Code (optional)
+- Interaktive Code-Ausführung
 
 ---
 
-## 8. Knowledge-Dokumente
+## 9. Knowledge-Dokumente
 
 | Datei | Inhalt |
 |-------|--------|
 | concept.md | Definition, Zielgruppe, Kompetenzmodell |
 | design.md | Visuelle Identität, Layout, Komponenten |
 | hands-on.md | Übersicht aller Hands-On-Übungen |
-| status-report.md | Aktueller Projektstatus, Commits |
+| status-report.md | Aktueller Projektstatus |
 | grundlagen-computational-thinking.md | CT-Theorie im Detail |
 | grundlagen-kompetenzbereiche.md | RE, CE, PE, CL, RV-Theorie |
 | grundlagen-oekosystem.md | LLM-Ökosystem, Tools |

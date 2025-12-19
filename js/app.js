@@ -1,13 +1,12 @@
 /**
- * AI Coding Literacy - Prompt-Loop UI
- * Horizontale Loop-Panels pro Session
+ * AI Coding Literacy - Vertikales Scroll-Layout
+ * Einfaches, klares Layout mit Sidebar-Navigation
  */
 
 // State
 let contentData = null;
 let loadedChapters = 0;
 const CHAPTERS_PER_LOAD = 2;
-const SCROLL_STATE_KEY = 'ai-coding-literacy-loop-v2'; // v2: Reset für neues UI
 
 // Load JSON data
 async function loadContent() {
@@ -27,9 +26,13 @@ function initPage() {
   document.getElementById('subtitle').textContent = contentData.meta.subtitle;
   document.getElementById('description').textContent = contentData.meta.description;
 
-  // Sidebar competency bars
+  // Sidebar with expandable sub-links
   const sidebarBars = document.getElementById('sidebar-bars');
   contentData.chapters.forEach(chapter => {
+    const barWrapper = document.createElement('div');
+    barWrapper.className = 'competency-bar-wrapper';
+
+    // Main bar (clickable)
     const link = document.createElement('a');
     link.href = `#chapter-${chapter.id}`;
     link.className = `competency-bar comp-${chapter.id}`;
@@ -39,7 +42,33 @@ function initPage() {
       e.preventDefault();
       scrollToChapter(chapter.id);
     });
-    sidebarBars.appendChild(link);
+    barWrapper.appendChild(link);
+
+    // Sub-links (Theorie, Übungen, Ressourcen)
+    const subLinks = document.createElement('div');
+    subLinks.className = 'sidebar-sublinks';
+    subLinks.id = `sublinks-${chapter.id}`;
+
+    const sections = [
+      { id: 'theorie', label: 'Theorie' },
+      { id: 'uebungen', label: 'Übungen' },
+      { id: 'ressourcen', label: 'Ressourcen' }
+    ];
+
+    sections.forEach(sec => {
+      const subLink = document.createElement('a');
+      subLink.href = `#${chapter.id}-${sec.id}`;
+      subLink.className = 'sidebar-sublink';
+      subLink.textContent = sec.label;
+      subLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        scrollToSection(chapter.id, sec.id);
+      });
+      subLinks.appendChild(subLink);
+    });
+
+    barWrapper.appendChild(subLinks);
+    sidebarBars.appendChild(barWrapper);
   });
 
   // Competency list in overview
@@ -63,11 +92,25 @@ function initPage() {
 
 // Scroll to chapter
 function scrollToChapter(chapterId) {
+  // Load all chapters if needed
   while (loadedChapters < contentData.chapters.length) {
     loadMoreChapters();
   }
 
   const element = document.getElementById(`chapter-${chapterId}`);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+// Scroll to specific section within chapter
+function scrollToSection(chapterId, sectionId) {
+  // Load all chapters if needed
+  while (loadedChapters < contentData.chapters.length) {
+    loadMoreChapters();
+  }
+
+  const element = document.getElementById(`${chapterId}-${sectionId}`);
   if (element) {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
@@ -89,7 +132,7 @@ function loadMoreChapters() {
   }
 
   chaptersToLoad.forEach(chapter => {
-    const section = createLoopElement(chapter);
+    const section = createChapterElement(chapter);
     container.appendChild(section);
 
     // Trigger visibility animation
@@ -98,9 +141,6 @@ function loadMoreChapters() {
         section.classList.add('visible');
       });
     });
-
-    // Restore scroll state
-    restoreScrollState(chapter.id);
   });
 
   loadedChapters += chaptersToLoad.length;
@@ -110,329 +150,158 @@ function loadMoreChapters() {
   }
 }
 
-// Create Loop Element with horizontal panels
-function createLoopElement(chapter) {
+// Create Chapter Element with vertical sections
+function createChapterElement(chapter) {
   const section = document.createElement('section');
   section.className = 'chapter';
   section.id = `chapter-${chapter.id}`;
   section.dataset.competency = chapter.id;
 
-  // Loop Progress Indicator
-  const progress = createLoopProgress();
-  section.appendChild(progress);
+  let html = '';
 
-  // Loop Container with panels
-  const loopContainer = document.createElement('div');
-  loopContainer.className = 'loop-container';
-  loopContainer.dataset.panel = '0';
-
-  // Panel 1: INPUT (Überblick)
-  loopContainer.appendChild(createInputPanel(chapter));
-
-  // Panel 2: PROCESS (Theorie)
-  if (chapter.theory) {
-    loopContainer.appendChild(createProcessPanel(chapter));
-  }
-
-  // Panel 3: EXECUTE (Übungen)
-  if (chapter.handsOn && chapter.handsOn.length > 0) {
-    loopContainer.appendChild(createExecutePanel(chapter));
-  }
-
-  // Panel 4: OUTPUT (Ressourcen)
-  if ((chapter.resources && chapter.resources.length > 0) || chapter.quote) {
-    loopContainer.appendChild(createOutputPanel(chapter));
-  }
-
-  // Track scroll position and update progress
-  loopContainer.addEventListener('scroll', () => {
-    const panelWidth = loopContainer.firstElementChild.offsetWidth;
-    const panelIndex = Math.round(loopContainer.scrollLeft / panelWidth);
-    loopContainer.dataset.panel = panelIndex;
-    updateLoopProgress(section, panelIndex);
-    saveScrollState(chapter.id, panelIndex);
-  });
-
-  section.appendChild(loopContainer);
-  return section;
-}
-
-// Create Loop Progress Indicator
-function createLoopProgress() {
-  const progress = document.createElement('div');
-  progress.className = 'loop-progress';
-
-  const steps = ['Überblick', 'Theorie', 'Übungen', 'Ressourcen'];
-  steps.forEach((step, i) => {
-    const stepEl = document.createElement('span');
-    stepEl.className = `loop-step ${i === 0 ? 'active' : ''}`;
-    stepEl.dataset.step = i;
-    stepEl.innerHTML = `<span class="loop-dot"></span>${step}`;
-    progress.appendChild(stepEl);
-
-    if (i < steps.length - 1) {
-      const line = document.createElement('span');
-      line.className = 'loop-line';
-      progress.appendChild(line);
-    }
-  });
-
-  return progress;
-}
-
-// Update Loop Progress based on panel index
-function updateLoopProgress(section, panelIndex) {
-  const steps = section.querySelectorAll('.loop-step');
-  const lines = section.querySelectorAll('.loop-line');
-
-  steps.forEach((step, i) => {
-    step.classList.remove('active', 'completed');
-    if (i < panelIndex) {
-      step.classList.add('completed');
-    } else if (i === panelIndex) {
-      step.classList.add('active');
-    }
-  });
-
-  lines.forEach((line, i) => {
-    line.classList.toggle('completed', i < panelIndex);
-  });
-}
-
-// Panel 1: INPUT
-function createInputPanel(chapter) {
-  const panel = document.createElement('div');
-  panel.className = 'loop-panel panel-input';
-
-  // Hole theory.description als Einführungstext
-  const introText = chapter.theory?.description || '';
-
-  panel.innerHTML = `
-    <span class="panel-phase">Überblick</span>
-    <div class="chapter-header">
-      <span class="chapter-id">${chapter.id}</span>
-      <span class="chapter-color" style="background: ${chapter.color}"></span>
+  // Chapter Header
+  html += `
+    <div class="chapter-header-block" style="border-left: 4px solid ${chapter.color}">
+      <span class="chapter-id-badge" style="background: ${chapter.color}">${chapter.id}</span>
+      <h2 class="chapter-title">${chapter.name}</h2>
+      <p class="chapter-subtitle">${chapter.short}</p>
     </div>
-    <h3>${chapter.name}</h3>
-    <p class="chapter-short">${chapter.short}</p>
-    ${introText ? `<p class="chapter-intro">${introText}</p>` : ''}
-    <button class="loop-start-btn" type="button">Weiter zur Theorie</button>
   `;
 
-  // Click handler for start button
-  panel.querySelector('.loop-start-btn').addEventListener('click', () => {
-    const container = panel.closest('.loop-container');
-    scrollToPanel(container, 1);
-  });
-
-  return panel;
-}
-
-// Panel 2: PROCESS (Theorie)
-function createProcessPanel(chapter) {
-  const panel = document.createElement('div');
-  panel.className = 'loop-panel panel-process';
-
-  let html = `<span class="panel-phase">Theorie</span>`;
-  html += `<h4>${chapter.name}</h4>`;
-
-  // Key Points
-  if (chapter.theory.keyPoints && chapter.theory.keyPoints.length > 0) {
-    html += `<h5>Kernpunkte</h5><ul class="goals-list">`;
-    chapter.theory.keyPoints.forEach(point => {
-      html += `<li>${point}</li>`;
-    });
-    html += `</ul>`;
-  }
-
-  // Concepts
-  if (chapter.theory.concepts && chapter.theory.concepts.length > 0) {
-    html += `<div class="concepts"><h5>Konzepte</h5>`;
-    chapter.theory.concepts.forEach(concept => {
-      html += `<p class="concept"><span class="concept-term">${concept.term}</span> – ${concept.definition}</p>`;
-    });
-    html += `</div>`;
-  }
-
-  // Navigation
-  html += `<div class="panel-nav">
-    <button class="panel-nav-btn prev" type="button">← Zurück</button>
-    <button class="panel-nav-btn next" type="button">Weiter zu Übungen →</button>
-  </div>`;
-
-  panel.innerHTML = html;
-
-  // Nav handlers
-  panel.querySelector('.prev').addEventListener('click', () => {
-    scrollToPanel(panel.closest('.loop-container'), 0);
-  });
-  panel.querySelector('.next').addEventListener('click', () => {
-    scrollToPanel(panel.closest('.loop-container'), 2);
-  });
-
-  return panel;
-}
-
-// Panel 3: EXECUTE (Übungen)
-function createExecutePanel(chapter) {
-  const panel = document.createElement('div');
-  panel.className = 'loop-panel panel-execute';
-
-  let html = `<span class="panel-phase">Übungen</span>`;
-
-  chapter.handsOn.forEach(exercise => {
+  // Intro/Description
+  if (chapter.theory?.description) {
     html += `
-      <div class="exercise" id="exercise-${exercise.id}">
-        <h4>${exercise.id}: ${exercise.title}</h4>
-        <p>${exercise.summary}</p>
+      <div class="chapter-intro-block">
+        <p>${chapter.theory.description}</p>
+      </div>
+    `;
+  }
+
+  // Theorie Section
+  if (chapter.theory) {
+    html += `
+      <div class="content-section" id="${chapter.id}-theorie">
+        <h3 class="section-title">
+          <span class="section-marker" style="background: ${chapter.color}"></span>
+          Theorie
+        </h3>
     `;
 
-    // Goals
-    if (exercise.goals && exercise.goals.length > 0) {
-      html += `<p><strong>Lernziele:</strong></p><ul class="goals-list">`;
-      exercise.goals.forEach(goal => {
-        html += `<li>${goal}</li>`;
-      });
-      html += `</ul>`;
-    }
-
-    // Exercise details
-    if (exercise.exercise) {
-      if (exercise.exercise.description) {
-        html += `<p>${exercise.exercise.description}</p>`;
-      }
-      if (exercise.exercise.code) {
-        html += `
-          <div class="code-block">
-            <div class="code-header">
-              <span class="filename">${exercise.exercise.filename || 'code.py'}</span>
-              <button class="copy-btn" onclick="copyCode(this)">kopieren</button>
-            </div>
-            <pre><code>${escapeHtml(exercise.exercise.code)}</code></pre>
-          </div>
-        `;
-      }
-      if (exercise.exercise.task) {
-        html += `<p><strong>Aufgabe:</strong> ${exercise.exercise.task}</p>`;
-      }
-    }
-
-    // Reflection
-    if (exercise.reflection && exercise.reflection.length > 0) {
-      html += `<div class="reflection"><h5>Reflexion</h5><ul>`;
-      exercise.reflection.forEach(q => {
-        html += `<li>${q}</li>`;
+    // Key Points
+    if (chapter.theory.keyPoints?.length > 0) {
+      html += `<div class="keypoints"><h4>Kernpunkte</h4><ul class="keypoints-list">`;
+      chapter.theory.keyPoints.forEach(point => {
+        html += `<li>${point}</li>`;
       });
       html += `</ul></div>`;
     }
 
-    html += `</div>`;
-  });
-
-  // Navigation
-  html += `<div class="panel-nav">
-    <button class="panel-nav-btn prev" type="button">← Zurück zur Theorie</button>
-    <button class="panel-nav-btn next" type="button">Weiter zu Ressourcen →</button>
-  </div>`;
-
-  panel.innerHTML = html;
-
-  // Nav handlers
-  panel.querySelector('.prev').addEventListener('click', () => {
-    scrollToPanel(panel.closest('.loop-container'), 1);
-  });
-  panel.querySelector('.next').addEventListener('click', () => {
-    scrollToPanel(panel.closest('.loop-container'), 3);
-  });
-
-  return panel;
-}
-
-// Panel 4: OUTPUT (Ressourcen)
-function createOutputPanel(chapter) {
-  const panel = document.createElement('div');
-  panel.className = 'loop-panel panel-output';
-
-  let html = `<span class="panel-phase">Ressourcen</span>`;
-
-  // Resources
-  if (chapter.resources && chapter.resources.length > 0) {
-    html += `<h4>Weiterführende Ressourcen</h4><ul class="resources-list">`;
-    chapter.resources.forEach(res => {
-      html += `<li><a href="${res.url}" target="_blank" rel="noopener">${res.title}</a> <span class="resource-type">(${res.type})</span></li>`;
-    });
-    html += `</ul>`;
-  }
-
-  // Quote
-  if (chapter.quote) {
-    html += `
-      <blockquote class="session-quote">
-        "${chapter.quote.text}"
-        <cite>— ${chapter.quote.source}</cite>
-      </blockquote>
-    `;
-  }
-
-  // Navigation (nur Zurück, da letztes Panel)
-  html += `<div class="panel-nav">
-    <button class="panel-nav-btn prev" type="button">← Zurück zu Übungen</button>
-    <span class="loop-complete">✓ Loop complete</span>
-  </div>`;
-
-  panel.innerHTML = html;
-
-  // Nav handler
-  panel.querySelector('.prev').addEventListener('click', () => {
-    scrollToPanel(panel.closest('.loop-container'), 2);
-  });
-
-  return panel;
-}
-
-// Scroll to specific panel
-function scrollToPanel(container, panelIndex) {
-  const panels = container.querySelectorAll('.loop-panel');
-  if (panels[panelIndex]) {
-    const panelWidth = panels[0].offsetWidth;
-    container.scrollTo({
-      left: panelIndex * panelWidth,
-      behavior: 'smooth'
-    });
-  }
-}
-
-// Scroll State Management
-function saveScrollState(chapterId, panelIndex) {
-  try {
-    const state = JSON.parse(sessionStorage.getItem(SCROLL_STATE_KEY) || '{}');
-    state[chapterId] = panelIndex;
-    sessionStorage.setItem(SCROLL_STATE_KEY, JSON.stringify(state));
-  } catch (e) {
-    // sessionStorage not available
-  }
-}
-
-function restoreScrollState(chapterId) {
-  try {
-    const state = JSON.parse(sessionStorage.getItem(SCROLL_STATE_KEY) || '{}');
-    const panelIndex = state[chapterId];
-
-    if (panelIndex && panelIndex > 0) {
-      const section = document.getElementById(`chapter-${chapterId}`);
-      const container = section.querySelector('.loop-container');
-      if (container) {
-        requestAnimationFrame(() => {
-          const panelWidth = container.firstElementChild.offsetWidth;
-          container.scrollLeft = panelIndex * panelWidth;
-          container.dataset.panel = panelIndex;
-          updateLoopProgress(section, panelIndex);
-        });
-      }
+    // Concepts
+    if (chapter.theory.concepts?.length > 0) {
+      html += `<div class="concepts"><h4>Konzepte</h4><dl class="concepts-list">`;
+      chapter.theory.concepts.forEach(concept => {
+        html += `<dt>${concept.term}</dt><dd>${concept.definition}</dd>`;
+      });
+      html += `</dl></div>`;
     }
-  } catch (e) {
-    // sessionStorage not available
+
+    html += `</div>`;
   }
+
+  // Übungen Section
+  if (chapter.handsOn?.length > 0) {
+    html += `
+      <div class="content-section" id="${chapter.id}-uebungen">
+        <h3 class="section-title">
+          <span class="section-marker" style="background: ${chapter.color}"></span>
+          Übungen
+        </h3>
+    `;
+
+    chapter.handsOn.forEach(exercise => {
+      html += `
+        <div class="exercise-block" id="exercise-${exercise.id}">
+          <h4 class="exercise-title">${exercise.id}: ${exercise.title}</h4>
+          <p class="exercise-summary">${exercise.summary}</p>
+      `;
+
+      // Goals
+      if (exercise.goals?.length > 0) {
+        html += `<div class="exercise-goals"><strong>Lernziele:</strong><ul>`;
+        exercise.goals.forEach(goal => {
+          html += `<li>${goal}</li>`;
+        });
+        html += `</ul></div>`;
+      }
+
+      // Exercise content
+      if (exercise.exercise) {
+        if (exercise.exercise.description) {
+          html += `<p class="exercise-description">${exercise.exercise.description}</p>`;
+        }
+        if (exercise.exercise.code) {
+          html += `
+            <div class="code-block">
+              <div class="code-header">
+                <span class="filename">${exercise.exercise.filename || 'code.py'}</span>
+                <button class="copy-btn" onclick="copyCode(this)">kopieren</button>
+              </div>
+              <pre><code>${escapeHtml(exercise.exercise.code)}</code></pre>
+            </div>
+          `;
+        }
+        if (exercise.exercise.task) {
+          html += `<p class="exercise-task"><strong>Aufgabe:</strong> ${exercise.exercise.task}</p>`;
+        }
+      }
+
+      // Reflection
+      if (exercise.reflection?.length > 0) {
+        html += `<div class="reflection"><strong>Reflexion:</strong><ul>`;
+        exercise.reflection.forEach(q => {
+          html += `<li>${q}</li>`;
+        });
+        html += `</ul></div>`;
+      }
+
+      html += `</div>`;
+    });
+
+    html += `</div>`;
+  }
+
+  // Ressourcen Section
+  if (chapter.resources?.length > 0 || chapter.quote) {
+    html += `
+      <div class="content-section" id="${chapter.id}-ressourcen">
+        <h3 class="section-title">
+          <span class="section-marker" style="background: ${chapter.color}"></span>
+          Ressourcen
+        </h3>
+    `;
+
+    if (chapter.resources?.length > 0) {
+      html += `<ul class="resources-list">`;
+      chapter.resources.forEach(res => {
+        html += `<li><a href="${res.url}" target="_blank" rel="noopener">${res.title}</a> <span class="resource-type">(${res.type})</span></li>`;
+      });
+      html += `</ul>`;
+    }
+
+    if (chapter.quote) {
+      html += `
+        <blockquote class="chapter-quote">
+          "${chapter.quote.text}"
+          <cite>— ${chapter.quote.source}</cite>
+        </blockquote>
+      `;
+    }
+
+    html += `</div>`;
+  }
+
+  section.innerHTML = html;
+  return section;
 }
 
 // Setup Intersection Observer for infinite scroll
@@ -454,21 +323,51 @@ function setupInfiniteScroll() {
 
 // Setup scroll spy for sidebar
 function setupScrollSpy() {
-  const observer = new IntersectionObserver((entries) => {
+  // Observe chapters for main bar highlighting
+  const chapterObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const competency = entry.target.dataset.competency;
 
+        // Update main bars
         document.querySelectorAll('.competency-bar').forEach(bar => {
           bar.classList.remove('active');
           if (bar.classList.contains(`comp-${competency}`)) {
             bar.classList.add('active');
           }
         });
+
+        // Show sub-links for active chapter
+        document.querySelectorAll('.sidebar-sublinks').forEach(sublinks => {
+          sublinks.classList.remove('visible');
+        });
+        const activeSublinks = document.getElementById(`sublinks-${competency}`);
+        if (activeSublinks) {
+          activeSublinks.classList.add('visible');
+        }
       }
     });
   }, {
-    rootMargin: '-50% 0px -50% 0px'
+    rootMargin: '-20% 0px -60% 0px'
+  });
+
+  // Observe sections for sub-link highlighting
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const sectionId = entry.target.id;
+
+        // Update sub-links
+        document.querySelectorAll('.sidebar-sublink').forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${sectionId}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }, {
+    rootMargin: '-30% 0px -50% 0px'
   });
 
   // Observe chapters as they're added
@@ -477,7 +376,12 @@ function setupScrollSpy() {
     mutations.forEach(mutation => {
       mutation.addedNodes.forEach(node => {
         if (node.classList && node.classList.contains('chapter')) {
-          observer.observe(node);
+          chapterObserver.observe(node);
+
+          // Also observe sections within the chapter
+          node.querySelectorAll('.content-section').forEach(section => {
+            sectionObserver.observe(section);
+          });
         }
       });
     });
@@ -493,7 +397,7 @@ function escapeHtml(text) {
   return div.innerHTML;
 }
 
-// Copy code function
+// Utility: Copy code
 function copyCode(button) {
   const codeBlock = button.closest('.code-block');
   const code = codeBlock.querySelector('code').textContent;
@@ -506,32 +410,6 @@ function copyCode(button) {
     }, 2000);
   });
 }
-
-// Keyboard navigation
-document.addEventListener('keydown', (e) => {
-  // Find the currently visible chapter
-  const chapters = document.querySelectorAll('.chapter');
-  let activeChapter = null;
-
-  chapters.forEach(chapter => {
-    const rect = chapter.getBoundingClientRect();
-    if (rect.top < window.innerHeight / 2 && rect.bottom > window.innerHeight / 2) {
-      activeChapter = chapter;
-    }
-  });
-
-  if (!activeChapter) return;
-
-  const container = activeChapter.querySelector('.loop-container');
-  const currentPanel = parseInt(container.dataset.panel) || 0;
-  const panelCount = container.querySelectorAll('.loop-panel').length;
-
-  if (e.key === 'ArrowRight' && currentPanel < panelCount - 1) {
-    scrollToPanel(container, currentPanel + 1);
-  } else if (e.key === 'ArrowLeft' && currentPanel > 0) {
-    scrollToPanel(container, currentPanel - 1);
-  }
-});
 
 // Initialize
 document.addEventListener('DOMContentLoaded', loadContent);

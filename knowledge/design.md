@@ -3,7 +3,7 @@
 ## 1. Leitprinzipien
 
 - **Progressive Disclosure**: Komplexität entfaltet sich beim Scrollen
-- **Loop-Metapher**: UI spiegelt den iterativen Lernprozess (Überblick → Theorie → Übungen → Ressourcen)
+- **Vertikales Layout**: Natürliches Scrollverhalten, alle Inhalte zugänglich
 - **Professionelle Zielgruppe**: Promovierte Fachwissenschaftler·innen brauchen Klarheit, keine Gamification
 - **Code als Lesestoff**: Präsentation wie Quellentexte in Editionen (Zeilennummern, Annotationen)
 - **Datengetrieben**: Alle Inhalte aus JSON, keine statischen HTML-Seiten pro Session
@@ -17,12 +17,13 @@ Tufte-inspiriert mit Early-Web-Ästhetik: Direktheit, Lesbarkeit, funktionale Eh
 - Hyperlinks blau und unterstrichen
 - Horizontale Linien als Trenner (3px zwischen Kapiteln)
 - Farbige Sidebar als Kompetenz-Navigation
-- Loop-Progress-Indikator (●───○───○───○)
+- Ausklappbare Sub-Links für Sektionen
 
 **Nein**
-- Keine Schatten, Gradients, Transparenzen (außer subtile Panel-Schatten für Tiefe)
+- Keine Schatten, Gradients, Transparenzen
 - Keine animierten GIFs, Retro-Ironie
 - Keine schwebenden Karten, Pseudo-3D
+- Keine horizontalen Carousels oder Slides
 
 ## 3. Farben
 
@@ -53,106 +54,179 @@ Tufte-inspiriert mit Early-Web-Ästhetik: Direktheit, Lesbarkeit, funktionale Eh
 | Fließtext | Georgia | 18px, Zeilenabstand 1.7 |
 | Code | IBM Plex Mono | 16px |
 | H1 | Georgia Bold | 28px |
-| H2 | Georgia Bold | 24px |
-| H3 | Georgia Bold | 20px |
-| Loop-Indikator | IBM Plex Mono | 11px |
-| Panel-Phase | IBM Plex Mono | 10px, uppercase |
-| Navigation Buttons | IBM Plex Mono | 13px |
+| H2 (Kapitel) | Georgia Bold | 24px |
+| H3 (Sektion) | Georgia Bold | 20px |
+| H4 (Übung) | Georgia Bold | 18px |
+| Sub-Links | IBM Plex Mono | 11px |
+| Badges | IBM Plex Mono | 12px |
 
 ## 5. Layout
 
 ### Sidebar (200px, fixed)
-- 6 farbige Balken = 6 Kompetenzbereiche
-- Klickbar (scrollt zur ersten Session)
-- Scroll-Spy highlightet aktiven Bereich
-- Labels: CT, RE, CE, PE, CL, RV
+
+```
+┌──────────────┐
+│ Übersicht    │  ← Aktive Seite
+│ Kompetenzmod │
+│ Referenz     │
+├──────────────┤
+│ [CT] ■■■■■■  │  ← Farbiger Balken
+│  Theorie     │  ← Sub-Link
+│  Übungen     │
+│  Ressourcen  │
+│ [RE] ■■■■■■  │
+│ [CE] ■■■■■■  │
+│ [PE] ■■■■■■  │
+│ [CL] ■■■■■■  │
+│ [RV] ■■■■■■  │
+└──────────────┘
+```
+
+**Verhalten:**
+- Kompetenz-Balken klickbar → scrollt zum Kapitel
+- Sub-Links klappen aus bei aktivem Kapitel (CSS transition)
+- Scroll-Spy highlightet aktiven Balken + Sub-Link
 
 ### Content (max. 780px)
+
 - Zentriert rechts neben Sidebar
-- Sessions als endloser Scroll
+- Kapitel als vertikaler Scroll
 - 3px schwarze Linie + 3rem Margin zwischen Kapiteln
 
 ### Responsive (<1000px)
+
 - Sidebar verschwindet
 - Content zentriert, volle Breite
 
 ### Mobile (<600px)
-- Vertikales Fallback für Loop-Panels
-- Kein horizontaler Scroll
-- "Weiter zur Theorie" Button versteckt
 
-## 6. Loop-UI
+- Kompaktere Abstände
+- Kapitel-Header kleinere Schrift
+- Kein horizontales Layout
+
+## 6. Vertikales Scroll-Layout
 
 ### Konzept
 
-Jedes Kapitel ist ein horizontaler Loop mit 4 Phasen:
-
-```
-●───○───○───○
-Überblick → Theorie → Übungen → Ressourcen
-```
-
-### Loop-Progress-Indikator
-- Zentriert über dem Loop-Container
-- Punkte (●/○) mit Verbindungslinien
-- Aktiver Schritt: gefüllt + bold
-- Completed: gefüllt, muted
-- Deutsche Labels: Überblick, Theorie, Übungen, Ressourcen
-
-### Loop-Container
-- Horizontaler Scroll mit CSS scroll-snap
-- Volle Breite pro Panel (100%)
-- Subtiler Schatten für Tiefe auf nicht-Input-Panels
-
-### Loop-Panels
-
-| Panel | Inhalt | Phase-Label |
-|-------|--------|-------------|
-| Überblick | Kapitelname, Intro-Text, "Weiter zur Theorie" Button | Überblick |
-| Theorie | Kernpunkte, Konzepte, Navigation | Theorie |
-| Übungen | Exercises mit Code-Blöcken, Navigation | Übungen |
-| Ressourcen | Links, Zitat, "← Zurück", "✓ Loop complete" | Ressourcen |
-
-### Panel-Navigation
-
-Jedes Panel hat eine `.panel-nav` Leiste am unteren Rand:
+Die Übersichtsseite zeigt alle 6 Kompetenzen vertikal untereinander:
 
 ```
 ┌─────────────────────────────────────────┐
-│ [← Zurück]              [Weiter → ]     │
+│ Sidebar     │  Kapitel-Header           │
+│             │  ────────────────────     │
+│ [CT] ←      │  ■ Theorie                │
+│  Theorie    │    Kernpunkte             │
+│  Übungen    │    Konzepte               │
+│  Ressourcen │                           │
+│ [RE]        │  ■ Übungen                │
+│ [CE]        │    Exercise-Blöcke        │
+│ [PE]        │    Code, Reflexion        │
+│ [CL]        │                           │
+│ [RV]        │  ■ Ressourcen             │
+│             │    Links, Zitat           │
 └─────────────────────────────────────────┘
 ```
 
-- Überblick: nur "Weiter zur Theorie"
-- Theorie/Übungen: "← Zurück" + "Weiter →"
-- Ressourcen: "← Zurück zu Übungen" + "✓ Loop complete"
+### Kapitel-Struktur
 
-### Interaktion
-- **Button-Navigation**: Primäre Methode zum Navigieren
-- **Keyboard**: ← → zwischen Panels (für Power-User)
-- **Horizontal Scroll**: Funktioniert weiterhin (Touch/Trackpad)
-- **State**: Panel-Position pro Kapitel in sessionStorage (v2)
+Jedes Kapitel enthält drei Sektionen:
+
+1. **Theorie** – Kernpunkte, Konzepte
+2. **Übungen** – Exercise-Blöcke mit Code
+3. **Ressourcen** – Links, Zitat
+
+### Kapitel-Header
+
+```
+┌────────────────────────────────────────┐
+│ [CT]                                   │
+│ Computational Thinking                 │
+│ Probleme strukturieren und zerlegen    │
+└────────────────────────────────────────┘
+```
+
+- Farbiger Badge mit Kompetenz-ID
+- Titel (H2)
+- Untertitel (kursiv, muted)
+- Hintergrund: Code-Background-Farbe
+- Linker Rand: Kompetenzfarbe (4px)
+
+### Sektions-Titel
+
+```
+■ Theorie
+────────────────────────────
+```
+
+- Farbiger Marker (8x8px)
+- Titel (H3)
+- Unterlinie (1px border)
 
 ## 7. Komponenten
 
-### Kapitel-Abschnitt (Loop-basiert)
+### Sidebar Sub-Links
+
+```css
+.sidebar-sublinks {
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.3s, opacity 0.3s;
+}
+
+.sidebar-sublinks.visible {
+  max-height: 120px;
+  opacity: 1;
+}
 ```
-●───○───○───○ Überblick → Theorie → Übungen → Ressourcen
-┌──────────────────────────────────────────────────────┐
-│ [Überblick]                                          │
-│                                                      │
-│ CT                                                   │
-│ ■ Computational Thinking                             │
-│                                                      │
-│ Probleme strukturieren und zerlegen                  │
-│                                                      │
-│ Einführungstext aus theory.description...            │
-│                                                      │
-│ [Weiter zur Theorie →]                               │
-└──────────────────────────────────────────────────────┘
+
+### Kernpunkte-Liste
+
+```
+→ Punkt 1
+→ Punkt 2
+→ Punkt 3
+```
+
+- Pfeil-Icon als Listmarker
+- Kein padding-left für Bullets
+
+### Konzept-Definitionen
+
+```
+Term
+    Definition (muted)
+```
+
+- Term in Monospace, bold
+- Definition eingerückt, muted
+
+### Exercise-Block
+
+```
+┌────────────────────────────────────────┐
+│ CT-1: Übungsname                       │
+│ Kurzbeschreibung (muted)               │
+│                                        │
+│ Lernziele:                             │
+│ • Ziel 1                               │
+│ • Ziel 2                               │
+│                                        │
+│ Beschreibung...                        │
+│                                        │
+│ ┌─ dateiname.py ─────── [kopieren] ─┐  │
+│ │ code                              │  │
+│ └───────────────────────────────────┘  │
+│                                        │
+│ Aufgabe: Task-Beschreibung             │
+│                                        │
+│ Reflexion:                             │
+│ • Frage 1                              │
+│ • Frage 2                              │
+└────────────────────────────────────────┘
 ```
 
 ### Code-Block
+
 ```
 ┌─ dateiname.py ─────────────── [kopieren] ─┐
 │ from PIL import Image                      │
@@ -160,32 +234,51 @@ Jedes Panel hat eine `.panel-nav` Leiste am unteren Rand:
 └────────────────────────────────────────────┘
 ```
 
+### Zitat
+
+```
+┌────────────────────────────────────────┐
+│ "Zitat-Text..."                        │
+│ — Quelle                               │
+└────────────────────────────────────────┘
+```
+
+- Kursiv
+- Muted
+- Background: code-bg
+- Border-left: 4px
+
 ## 8. Interaktion
 
-### Loop-Navigation
-- **Buttons**: "← Zurück" und "Weiter →" in jedem Panel
-- CSS scroll-snap für Panel-Snapping
-- Touch-friendly durch native Browser-Unterstützung
-
 ### Sidebar-Navigation
-- Klick auf Balken → scrollt zu erster Session mit dieser Kompetenz
-- Scroll-Spy → aktiver Kompetenzbereich wird hervorgehoben
+
+- Klick auf Balken → `scrollIntoView({ behavior: 'smooth' })`
+- Klick auf Sub-Link → scrollt zur Sektion
+
+### Scroll-Spy
+
+Zwei IntersectionObserver:
+
+1. **Kapitel-Observer**
+   - rootMargin: `-20% 0px -60% 0px`
+   - Highlightet aktiven Balken
+   - Zeigt Sub-Links
+
+2. **Sektions-Observer**
+   - rootMargin: `-30% 0px -50% 0px`
+   - Highlightet aktiven Sub-Link
 
 ### Code kopieren
+
 - Button in Code-Header
 - Feedback: "kopiert!" für 2 Sekunden
-
-### Keyboard Navigation
-- ← → zwischen Loop-Panels
-- Funktioniert nur für aktives Kapitel (im Viewport)
 
 ## 9. Technik
 
 **Stack**
 - Vanilla HTML/CSS/JavaScript
 - JSON für Inhalte (`/data/content.json`)
-- Intersection Observer für Lazy Loading und Scroll-Spy
-- sessionStorage für Panel-Position (Key: `ai-coding-literacy-loop-v2`)
+- Intersection Observer für Scroll-Spy
 - Keine Build-Tools, keine Frameworks
 
 **Warum?**
@@ -194,8 +287,8 @@ Maximale Transparenz – was geschrieben wird, ist was im Browser läuft. Ideal 
 ## 10. Dateien
 
 ```
-de/index.html          # Single-Page mit Loop-UI
-css/style.css          # Globale Styles inkl. Loop-Komponenten
-js/app.js              # Loop-Logik, Panel-Navigation
+de/index.html          # Übersicht mit vertikalem Scroll
+css/style.css          # Globale Styles
+js/app.js              # Scroll-Spy, Sidebar-Logik
 data/content.json      # Alle Inhalte strukturiert
 ```
