@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Context Engineering – AI Coding Literacy</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <a href="/en/">Overview</a>
+      <a href="/en/competency-model.html">Competency Model</a>
+      <a href="/en/reference.html">Reference</a>
+    </nav>
+    <div class="competency-bars">
+      <div class="competency-bar-wrapper">
+        <a href="/en/ct.html" class="competency-bar comp-CT" title="Computational Thinking"><span class="bar-label">CT</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/en/re.html" class="competency-bar comp-RE" title="Requirement Engineering"><span class="bar-label">RE</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/en/ce.html" class="competency-bar comp-CE active" title="Context Engineering"><span class="bar-label">CE</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/en/pe.html" class="competency-bar comp-PE" title="Prompt Engineering"><span class="bar-label">PE</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/en/cl.html" class="competency-bar comp-CL" title="Code Literacy"><span class="bar-label">CL</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/en/rv.html" class="competency-bar comp-RV" title="Review"><span class="bar-label">RV</span></a>
+      </div>
+    </div>
+    <div class="language-switcher">
+      <a href="/de/ce.html" class="lang-link" title="Deutsch">DE</a>
+      <span class="lang-separator">|</span>
+      <a href="/en/ce.html" class="lang-link active" title="English">EN</a>
+    </div>
+  </aside>
+
+  <div class="page-wrapper">
+    <main id="content">
+      <nav class="breadcrumb">
+        <a href="/en/">Overview</a> → <span>Context Engineering</span>
+      </nav>
+
+      <div class="chapter-header-block" style="border-left: 4px solid #5B7355">
+        <span class="chapter-id-badge" style="background: #5B7355">CE</span>
+        <h1 class="chapter-title">Context Engineering</h1>
+        <p class="chapter-subtitle">Designing context for LLMs</p>
+      </div>
+
+      <div class="chapter-intro-block">
+        <p>Context Engineering refers to the systematic design of information context provided to an LLM. The context window is limited – what you include and how you arrange it determines the quality of the output. More is not automatically better.</p>
+      </div>
+
+      <nav class="detail-nav">
+        <a href="#theory">Theory</a>
+        <a href="#exercises">Exercises</a>
+        <a href="#deep-dive">Deep Dive</a>
+        <a href="#resources">Resources</a>
+      </nav>
+
+      <section class="content-section" id="theory">
+        <h2 class="section-title">
+          <span class="section-marker" style="background: #5B7355"></span>
+          Theory
+        </h2>
+
+        <div class="keypoints">
+          <h3>Key Points</h3>
+          <ul class="keypoints-list">
+            <li>Context window: GPT-4o 128K, Claude 200K, Gemini 1M tokens</li>
+            <li>More context is not automatically better – Lost in the Middle problem</li>
+            <li>Proven structure: Role → Task → Information → Constraints → Format</li>
+            <li>Compression: Relevant excerpts instead of entire files</li>
+            <li>Examples are often more effective than long descriptions</li>
+            <li>Make project conventions explicit</li>
+          </ul>
+        </div>
+
+        <div class="concepts">
+          <h3>Concepts</h3>
+          <dl class="concepts-list">
+            <dt>RAG</dt>
+            <dd>Retrieval-Augmented Generation – retrieving relevant information from external sources and providing it to the LLM</dd>
+
+            <dt>Lost in the Middle</dt>
+            <dd>LLMs lose information in the middle of long contexts – place important content at beginning/end</dd>
+
+            <dt>Context Structure</dt>
+            <dd>Proven arrangement: Role → Task → Information → Constraints → Format</dd>
+
+            <dt>Context Window</dt>
+            <dd>The maximum amount of text (in tokens) that an LLM can process simultaneously</dd>
+
+            <dt>Distillation</dt>
+            <dd>Compressing complex information to its essentials</dd>
+          </dl>
+        </div>
+
+        <div class="theory-deep-dive">
+          <h3>The 5-Part Context Structure</h3>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="filename">context_template.txt</span>
+              <button class="copy-btn" onclick="copyCode(this)">copy</button>
+            </div>
+            <pre><code># 1. ROLE
+You are an experienced Python developer focusing on data processing.
+
+# 2. TASK
+Write a script that merges Excel files.
+
+# 3. INFORMATION
+Input files: 50 .xlsx in folder /data/
+Columns: ID, Name, Date, Value
+Encoding: UTF-8
+
+# 4. CONSTRAINTS
+- No external dependencies except openpyxl
+- Skip faulty rows, don't abort
+- Log to file, not just console
+
+# 5. FORMAT
+- Comments in English
+- Functions with docstrings
+- Single script, no modules</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" id="exercises">
+        <h2 class="section-title">
+          <span class="section-marker" style="background: #5B7355"></span>
+          Exercises
+        </h2>
+
+        <div class="exercise-block" id="exercise-CE-1">
+          <h3 class="exercise-title">CE-1: Structuring Context</h3>
+          <p class="exercise-summary">Build a prompt using the proven context structure.</p>
+
+          <div class="exercise-goals">
+            <strong>Learning Objectives:</strong>
+            <ul>
+              <li>Apply the 5-part context structure</li>
+              <li>Separate relevant from irrelevant information</li>
+              <li>Compare effectiveness</li>
+            </ul>
+          </div>
+
+          <div class="exercise-content">
+            <p><strong>Compare these two prompts:</strong></p>
+
+            <div class="code-block">
+              <div class="code-header">
+                <span class="filename">context_comparison.txt</span>
+                <button class="copy-btn" onclick="copyCode(this)">copy</button>
+              </div>
+              <pre><code># WITHOUT context structure:
+"Make me a script for my Excel files"
+
+# WITH context structure:
+"""
+You help me write a Python script.
+
+Task: Read all Excel files in a folder
+and merge them into a single CSV.
+
+Example data (first file):
+| Inv-Nr | Description | Dating |
+| 001    | Vase        | 1820   |
+
+Constraints:
+- All files have identical column structure
+- Encoding: UTF-8
+- Only .xlsx, no .xls
+
+Output: A single script with comments.
+"""</code></pre>
+            </div>
+          </div>
+
+          <p class="exercise-task"><strong>Task:</strong> Test both prompts with an LLM. Document the differences in results.</p>
+
+          <div class="reflection">
+            <strong>Reflection:</strong>
+            <ul>
+              <li>What clarifying questions did the LLM ask with the first prompt?</li>
+              <li>How much more precise was the result with the second prompt?</li>
+              <li>What information did you add in the structured prompt?</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exercise-block" id="exercise-CE-2">
+          <h3 class="exercise-title">CE-2: Distilling Knowledge</h3>
+          <p class="exercise-summary">Prepare a complex standard so it fits in the context window.</p>
+
+          <div class="exercise-goals">
+            <strong>Learning Objectives:</strong>
+            <ul>
+              <li>Identify relevant information</li>
+              <li>Compress context in a structured way</li>
+              <li>Test effectiveness</li>
+            </ul>
+          </div>
+
+          <p class="exercise-task"><strong>Task:</strong> Visit the Darwin Core documentation (dwc.tdwg.org) and distill the relevant fields for a museum collection. Create a compact reference document with field name, definition, and example value.</p>
+
+          <div class="reflection">
+            <strong>Reflection:</strong>
+            <ul>
+              <li>How much shorter did the document become?</li>
+              <li>What information did you omit?</li>
+              <li>Did the LLM work correctly with the distilled context?</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" id="deep-dive">
+        <h2 class="section-title">
+          <span class="section-marker" style="background: #5B7355"></span>
+          Deep Dive
+        </h2>
+
+        <div class="deep-dive-box">
+          <h3>Lost in the Middle Problem</h3>
+          <p>Research shows: LLMs process information at the beginning and end of context better than in the middle. Consequences:</p>
+          <ul>
+            <li>Important information at the beginning or end</li>
+            <li>Examples at the beginning, constraints at the end</li>
+            <li>For long contexts: repeat summary at the end</li>
+          </ul>
+        </div>
+
+        <div class="deep-dive-box">
+          <h3>When More Context Hurts</h3>
+          <ul>
+            <li><strong>Irrelevant details</strong> distract and confuse</li>
+            <li><strong>Contradictory information</strong> leads to inconsistent outputs</li>
+            <li><strong>Too many examples</strong> can lead to overfitting on examples</li>
+            <li><strong>Outdated information</strong> overwrites current knowledge</li>
+          </ul>
+        </div>
+
+        <div class="deep-dive-box">
+          <h3>Context Compression Techniques</h3>
+          <dl class="concepts-list">
+            <dt>Summarization</dt>
+            <dd>Condense long documents into 1-2 paragraphs</dd>
+
+            <dt>Relevant Excerpts</dt>
+            <dd>Only the parts of a document relevant to the task</dd>
+
+            <dt>Structured Formats</dt>
+            <dd>JSON/YAML instead of prose – more compact and precise</dd>
+
+            <dt>Example Instead of Description</dt>
+            <dd>A good example says more than three paragraphs of explanation</dd>
+          </dl>
+        </div>
+      </section>
+
+      <section class="content-section" id="resources">
+        <h2 class="section-title">
+          <span class="section-marker" style="background: #5B7355"></span>
+          Resources
+        </h2>
+
+        <ul class="resources-list">
+          <li>
+            <a href="https://arxiv.org/abs/2312.10997" target="_blank" rel="noopener">Gao et al. (2024): RAG Survey</a>
+            <span class="resource-type">(paper)</span>
+          </li>
+          <li>
+            <a href="https://arxiv.org/abs/2503.17407" target="_blank" rel="noopener">Liu et al. (2025): Long-Context Survey</a>
+            <span class="resource-type">(paper)</span>
+          </li>
+          <li>
+            <a href="https://docs.anthropic.com/claude/docs/prompt-engineering" target="_blank" rel="noopener">Anthropic: Prompt Engineering Guide</a>
+            <span class="resource-type">(documentation)</span>
+          </li>
+        </ul>
+
+        <blockquote class="chapter-quote">
+          "Context is everything. The same prompt with different context produces completely different results."
+          <cite>— AI Practitioner Wisdom</cite>
+        </blockquote>
+      </section>
+
+      <nav class="chapter-nav">
+        <a href="/en/re.html" class="nav-prev">← Requirement Engineering</a>
+        <a href="/en/pe.html" class="nav-next">Prompt Engineering →</a>
+      </nav>
+    </main>
+
+    <footer>
+      <a href="https://github.com/DigitalHumanitiesCraft/ai-coding-literacy">GitHub</a> ·
+      DigitalHumanitiesCraft · 2025
+    </footer>
+  </div>
+
+  <script>
+    function copyCode(button) {
+      const codeBlock = button.closest('.code-block');
+      const code = codeBlock.querySelector('code').textContent;
+      navigator.clipboard.writeText(code).then(() => {
+        const originalText = button.textContent;
+        button.textContent = 'copied!';
+        setTimeout(() => { button.textContent = originalText; }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>

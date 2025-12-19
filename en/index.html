@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,44 +12,44 @@
   <!-- Sidebar -->
   <aside class="sidebar">
     <nav class="sidebar-nav">
-      <a href="/de/" class="active">Übersicht</a>
-      <a href="/de/kompetenzmodell.html">Kompetenzmodell</a>
-      <a href="/de/referenz.html">Referenz</a>
+      <a href="/en/" class="active">Overview</a>
+      <a href="/en/competency-model.html">Competency Model</a>
+      <a href="/en/reference.html">Reference</a>
     </nav>
     <div class="competency-bars" id="sidebar-bars">
-      <!-- Wird dynamisch aus JSON gefüllt -->
+      <!-- Dynamically filled from JSON -->
     </div>
     <div class="language-switcher">
-      <a href="/de/" class="lang-link active" title="Deutsch">DE</a>
+      <a href="/de/" class="lang-link" title="Deutsch">DE</a>
       <span class="lang-separator">|</span>
-      <a href="/en/" class="lang-link" title="English">EN</a>
+      <a href="/en/" class="lang-link active" title="English">EN</a>
     </div>
   </aside>
 
   <!-- Page Content -->
   <div class="page-wrapper">
     <main id="content">
-      <!-- Intro-Bereich -->
+      <!-- Intro Section -->
       <section id="intro">
         <h1 id="title">AI Coding Literacy</h1>
         <p id="subtitle"></p>
         <p id="description"></p>
       </section>
 
-      <!-- Kompetenzmodell-Übersicht -->
+      <!-- Competency Model Overview -->
       <section id="competencies-overview">
-        <h2>Kompetenzmodell</h2>
-        <p>Das Curriculum entwickelt sechs Kompetenzbereiche:</p>
+        <h2>Competency Model</h2>
+        <p>The curriculum develops six competency areas:</p>
         <ul class="competency-list" id="competency-list">
-          <!-- Wird dynamisch gefüllt -->
+          <!-- Dynamically filled -->
         </ul>
       </section>
 
-      <!-- Sessions werden hier dynamisch geladen -->
+      <!-- Sessions are dynamically loaded here -->
       <section id="sessions-section">
         <h2>Sessions</h2>
         <div id="sessions-container"></div>
-        <div class="loading" id="loading">Lade Sessions...</div>
+        <div class="loading" id="loading">Loading sessions...</div>
       </section>
     </main>
 

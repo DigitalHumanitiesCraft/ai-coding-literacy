@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Requirement Engineering – AI Coding Literacy</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <a href="/en/">Overview</a>
+      <a href="/en/competency-model.html">Competency Model</a>
+      <a href="/en/reference.html">Reference</a>
+    </nav>
+    <div class="competency-bars">
+      <div class="competency-bar-wrapper">
+        <a href="/en/ct.html" class="competency-bar comp-CT" title="Computational Thinking"><span class="bar-label">CT</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/en/re.html" class="competency-bar comp-RE active" title="Requirement Engineering"><span class="bar-label">RE</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/en/ce.html" class="competency-bar comp-CE" title="Context Engineering"><span class="bar-label">CE</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/en/pe.html" class="competency-bar comp-PE" title="Prompt Engineering"><span class="bar-label">PE</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/en/cl.html" class="competency-bar comp-CL" title="Code Literacy"><span class="bar-label">CL</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/en/rv.html" class="competency-bar comp-RV" title="Review"><span class="bar-label">RV</span></a>
+      </div>
+    </div>
+    <div class="language-switcher">
+      <a href="/de/re.html" class="lang-link" title="Deutsch">DE</a>
+      <span class="lang-separator">|</span>
+      <a href="/en/re.html" class="lang-link active" title="English">EN</a>
+    </div>
+  </aside>
+
+  <div class="page-wrapper">
+    <main id="content">
+      <nav class="breadcrumb">
+        <a href="/en/">Overview</a> → <span>Requirement Engineering</span>
+      </nav>
+
+      <div class="chapter-header-block" style="border-left: 4px solid #8B4A5C">
+        <span class="chapter-id-badge" style="background: #8B4A5C">RE</span>
+        <h1 class="chapter-title">Requirement Engineering</h1>
+        <p class="chapter-subtitle">Defining what you want</p>
+      </div>
+
+      <div class="chapter-intro-block">
+        <p>A prompt is functionally a requirements document. Requirement Engineering teaches us to articulate clearly what a system should do. The same techniques help us formulate better prompts: What should happen? What should not happen? What's the input? What's the output?</p>
+      </div>
+
+      <nav class="detail-nav">
+        <a href="#theory">Theory</a>
+        <a href="#exercises">Exercises</a>
+        <a href="#deep-dive">Deep Dive</a>
+        <a href="#resources">Resources</a>
+      </nav>
+
+      <section class="content-section" id="theory">
+        <h2 class="section-title">
+          <span class="section-marker" style="background: #8B4A5C"></span>
+          Theory
+        </h2>
+
+        <div class="keypoints">
+          <h3>Key Points</h3>
+          <ul class="keypoints-list">
+            <li>A prompt is functionally a requirements document</li>
+            <li>User Stories are more accessible than formal specifications</li>
+            <li>LLMs guess when requirements are vague – with unpredictable results</li>
+            <li>INVEST criteria help formulate clear requirements</li>
+            <li>Core questions: What to do? What not to do? Input? Output? Success criteria?</li>
+          </ul>
+        </div>
+
+        <div class="concepts">
+          <h3>Concepts</h3>
+          <dl class="concepts-list">
+            <dt>User Story</dt>
+            <dd>"As a [role] I want [function] so that [benefit]" – lightweight requirements format</dd>
+
+            <dt>INVEST Criteria</dt>
+            <dd>Independent, Negotiable, Valuable, Estimable, Small, Testable – criteria for good requirements</dd>
+
+            <dt>Acceptance Criteria</dt>
+            <dd>Concrete conditions that must be met for a requirement to be fulfilled</dd>
+
+            <dt>Scope</dt>
+            <dd>Clear definition of what is included in the project and what is not</dd>
+
+            <dt>Edge Cases</dt>
+            <dd>Special cases and exceptions that must be considered</dd>
+          </dl>
+        </div>
+
+        <div class="theory-deep-dive">
+          <h3>From User Story to Prompt</h3>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="filename">user_story_example.txt</span>
+              <button class="copy-btn" onclick="copyCode(this)">copy</button>
+            </div>
+            <pre><code># User Story:
+"As an archivist I want to batch rename images
+so that they follow our naming convention."
+
+# Translated to Prompt:
+"""
+Task: Python script for batch renaming images
+
+Input: Folder with JPG files (e.g., IMG_001.jpg)
+Output: Renamed files (e.g., 2024_exhibition_001.jpg)
+
+Requirements:
+- Prefix from command line parameter
+- Keep sequential numbering
+- Preserve original extension
+- Error if file already exists
+
+Not part of scope:
+- No subfolders
+- No other formats than JPG
+"""</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" id="exercises">
+        <h2 class="section-title">
+          <span class="section-marker" style="background: #8B4A5C"></span>
+          Exercises
+        </h2>
+
+        <div class="exercise-block" id="exercise-RE-1">
+          <h3 class="exercise-title">RE-1: User Stories for AI Tasks</h3>
+          <p class="exercise-summary">Formulate requirements in a structured format.</p>
+
+          <div class="exercise-goals">
+            <strong>Learning Objectives:</strong>
+            <ul>
+              <li>Use User Story format</li>
+              <li>Identify acceptance criteria</li>
+              <li>Distinguish in-scope from out-of-scope</li>
+            </ul>
+          </div>
+
+          <div class="exercise-content">
+            <div class="code-block">
+              <div class="code-header">
+                <span class="filename">template.txt</span>
+                <button class="copy-btn" onclick="copyCode(this)">copy</button>
+              </div>
+              <pre><code># User Story Template:
+As a [role]
+I want [function]
+so that [benefit]
+
+# Acceptance Criteria:
+- [ ] Criterion 1
+- [ ] Criterion 2
+- [ ] Criterion 3
+
+# In Scope:
+- ...
+
+# Out of Scope:
+- ...</code></pre>
+            </div>
+          </div>
+
+          <p class="exercise-task"><strong>Task:</strong> Formulate 3 User Stories for tasks in your work area. Define at least 3 acceptance criteria for each.</p>
+
+          <div class="reflection">
+            <strong>Reflection:</strong>
+            <ul>
+              <li>Where was delimitation difficult?</li>
+              <li>Which criteria are difficult to test?</li>
+              <li>How would you translate the User Story to a prompt?</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exercise-block" id="exercise-RE-2">
+          <h3 class="exercise-title">RE-2: INVEST Check</h3>
+          <p class="exercise-summary">Evaluate requirements using INVEST criteria.</p>
+
+          <div class="exercise-goals">
+            <strong>Learning Objectives:</strong>
+            <ul>
+              <li>Apply INVEST criteria</li>
+              <li>Identify weak requirements</li>
+              <li>Improve requirements iteratively</li>
+            </ul>
+          </div>
+
+          <div class="exercise-content">
+            <div class="code-block">
+              <div class="code-header">
+                <span class="filename">invest_check.txt</span>
+                <button class="copy-btn" onclick="copyCode(this)">copy</button>
+              </div>
+              <pre><code># INVEST Criteria:
+I - Independent: Can it stand on its own?
+N - Negotiable: Are details flexible?
+V - Valuable: What is the benefit?
+E - Estimable: Can effort be estimated?
+S - Small: Achievable in one session?
+T - Testable: When is it "done"?
+
+# Example Check:
+"Analyze all data and create a report"
+- Independent: ✓
+- Negotiable: ? (what exactly?)
+- Valuable: ✓
+- Estimable: ✗ (too vague)
+- Small: ✗ (too large)
+- Testable: ✗ (when is it "good"?)</code></pre>
+            </div>
+          </div>
+
+          <p class="exercise-task"><strong>Task:</strong> Check your User Stories from RE-1 against INVEST criteria. Improve the weakest points.</p>
+        </div>
+      </section>
+
+      <section class="content-section" id="deep-dive">
+        <h2 class="section-title">
+          <span class="section-marker" style="background: #8B4A5C"></span>
+          Deep Dive
+        </h2>
+
+        <div class="deep-dive-box">
+          <h3>The Five Core Questions</h3>
+          <p>Before writing a prompt, answer these questions:</p>
+          <ol>
+            <li><strong>What to do?</strong> – The main task</li>
+            <li><strong>What not to do?</strong> – Explicit exclusions</li>
+            <li><strong>What's the input?</strong> – Data format, source, size</li>
+            <li><strong>What's the output?</strong> – Format, location, naming</li>
+            <li><strong>What is success?</strong> – Testable criteria</li>
+          </ol>
+        </div>
+
+        <div class="deep-dive-box">
+          <h3>LLMs and Vague Requirements</h3>
+          <p>When requirements are vague, LLMs:</p>
+          <ul>
+            <li>Make assumptions that may not match your intent</li>
+            <li>Choose solutions that seem "typical" but may be inappropriate</li>
+            <li>Produce inconsistent results across multiple attempts</li>
+            <li>Cannot ask clarifying questions proactively</li>
+          </ul>
+          <p><strong>Consequence:</strong> Spend time upfront on clear requirements rather than debugging later.</p>
+        </div>
+
+        <div class="deep-dive-box">
+          <h3>From Requirements to Prompts</h3>
+          <dl class="concepts-list">
+            <dt>User Story → Task Description</dt>
+            <dd>The "I want" part becomes the main instruction</dd>
+
+            <dt>Acceptance Criteria → Constraints</dt>
+            <dd>List as explicit requirements</dd>
+
+            <dt>Out of Scope → Negative Constraints</dt>
+            <dd>"Do NOT include...", "Ignore..."</dd>
+
+            <dt>Edge Cases → Examples</dt>
+            <dd>Show how to handle special cases</dd>
+          </dl>
+        </div>
+      </section>
+
+      <section class="content-section" id="resources">
+        <h2 class="section-title">
+          <span class="section-marker" style="background: #8B4A5C"></span>
+          Resources
+        </h2>
+
+        <ul class="resources-list">
+          <li>
+            <a href="https://arxiv.org/abs/2405.15320" target="_blank" rel="noopener">Vogelsang & Fischbach (2024): LLMs in Requirement Engineering</a>
+            <span class="resource-type">(paper)</span>
+          </li>
+          <li>
+            <a href="https://www.researchgate.net/publication/309419287" target="_blank" rel="noopener">Lucassen et al. (2016): User Stories in Practice</a>
+            <span class="resource-type">(empirical study)</span>
+          </li>
+          <li>
+            <a href="https://www.mountaingoatsoftware.com/agile/user-stories" target="_blank" rel="noopener">Mountain Goat: User Stories Guide</a>
+            <span class="resource-type">(practical guide)</span>
+          </li>
+        </ul>
+
+        <blockquote class="chapter-quote">
+          "The hardest single part of building a software system is deciding precisely what to build."
+          <cite>— Fred Brooks</cite>
+        </blockquote>
+      </section>
+
+      <nav class="chapter-nav">
+        <a href="/en/ct.html" class="nav-prev">← Computational Thinking</a>
+        <a href="/en/ce.html" class="nav-next">Context Engineering →</a>
+      </nav>
+    </main>
+
+    <footer>
+      <a href="https://github.com/DigitalHumanitiesCraft/ai-coding-literacy">GitHub</a> ·
+      DigitalHumanitiesCraft · 2025
+    </footer>
+  </div>
+
+  <script>
+    function copyCode(button) {
+      const codeBlock = button.closest('.code-block');
+      const code = codeBlock.querySelector('code').textContent;
+      navigator.clipboard.writeText(code).then(() => {
+        const originalText = button.textContent;
+        button.textContent = 'copied!';
+        setTimeout(() => { button.textContent = originalText; }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>

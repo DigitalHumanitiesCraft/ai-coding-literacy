@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Computational Thinking – AI Coding Literacy</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <a href="/en/">Overview</a>
+      <a href="/en/competency-model.html">Competency Model</a>
+      <a href="/en/reference.html">Reference</a>
+    </nav>
+    <div class="competency-bars">
+      <div class="competency-bar-wrapper">
+        <a href="/en/ct.html" class="competency-bar comp-CT active" title="Computational Thinking"><span class="bar-label">CT</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/en/re.html" class="competency-bar comp-RE" title="Requirement Engineering"><span class="bar-label">RE</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/en/ce.html" class="competency-bar comp-CE" title="Context Engineering"><span class="bar-label">CE</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/en/pe.html" class="competency-bar comp-PE" title="Prompt Engineering"><span class="bar-label">PE</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/en/cl.html" class="competency-bar comp-CL" title="Code Literacy"><span class="bar-label">CL</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/en/rv.html" class="competency-bar comp-RV" title="Review"><span class="bar-label">RV</span></a>
+      </div>
+    </div>
+    <div class="language-switcher">
+      <a href="/de/ct.html" class="lang-link" title="Deutsch">DE</a>
+      <span class="lang-separator">|</span>
+      <a href="/en/ct.html" class="lang-link active" title="English">EN</a>
+    </div>
+  </aside>
+
+  <div class="page-wrapper">
+    <main id="content">
+      <nav class="breadcrumb">
+        <a href="/en/">Overview</a> → <span>Computational Thinking</span>
+      </nav>
+
+      <div class="chapter-header-block" style="border-left: 4px solid #4A90A4">
+        <span class="chapter-id-badge" style="background: #4A90A4">CT</span>
+        <h1 class="chapter-title">Computational Thinking</h1>
+        <p class="chapter-subtitle">Thinking like a programmer</p>
+      </div>
+
+      <div class="chapter-intro-block">
+        <p>Computational Thinking is the ability to formulate problems in a way that a computer (or an LLM) can solve them. This doesn't require programming knowledge, but rather a specific way of structuring and analyzing problems.</p>
+      </div>
+
+      <nav class="detail-nav">
+        <a href="#theory">Theory</a>
+        <a href="#exercises">Exercises</a>
+        <a href="#deep-dive">Deep Dive</a>
+        <a href="#resources">Resources</a>
+      </nav>
+
+      <section class="content-section" id="theory">
+        <h2 class="section-title">
+          <span class="section-marker" style="background: #4A90A4"></span>
+          Theory
+        </h2>
+
+        <div class="keypoints">
+          <h3>Key Points</h3>
+          <ul class="keypoints-list">
+            <li>Decomposition: Break complex problems into smaller, manageable parts</li>
+            <li>Pattern Recognition: Identify recurring structures in the problem</li>
+            <li>Abstraction: Distill to the essential, ignore irrelevant details</li>
+            <li>Algorithm Design: Develop step-by-step solutions</li>
+            <li>Evaluation: Critically assess solutions and improve them iteratively</li>
+          </ul>
+        </div>
+
+        <div class="concepts">
+          <h3>Concepts</h3>
+          <dl class="concepts-list">
+            <dt>Decomposition</dt>
+            <dd>Breaking down complex problems into smaller, independent sub-problems</dd>
+
+            <dt>Abstraction</dt>
+            <dd>Focusing on relevant details while ignoring unnecessary complexity</dd>
+
+            <dt>Pattern Recognition</dt>
+            <dd>Identifying similarities and recurring structures across problems</dd>
+
+            <dt>Algorithm</dt>
+            <dd>A precise, step-by-step instruction to solve a specific problem</dd>
+
+            <dt>Pseudocode</dt>
+            <dd>Informal description of an algorithm in natural language</dd>
+          </dl>
+        </div>
+
+        <div class="theory-deep-dive">
+          <h3>From Problem to Solution</h3>
+
+          <div class="example-box">
+            <strong>Example Problem:</strong> "Analyze metadata from 500 museum objects"
+            <ul>
+              <li><strong>Decomposition:</strong> Import → Validation → Analysis → Export</li>
+              <li><strong>Abstraction:</strong> What data per object? What kind of analysis?</li>
+              <li><strong>Pattern:</strong> Are there recurring data formats?</li>
+              <li><strong>Algorithm:</strong> Step-by-step processing</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" id="exercises">
+        <h2 class="section-title">
+          <span class="section-marker" style="background: #4A90A4"></span>
+          Exercises
+        </h2>
+
+        <div class="exercise-block" id="exercise-CT-1">
+          <h3 class="exercise-title">CT-1: Problem Decomposition</h3>
+          <p class="exercise-summary">Decompose a complex task into manageable parts.</p>
+
+          <div class="exercise-goals">
+            <strong>Learning Objectives:</strong>
+            <ul>
+              <li>Apply decomposition technique</li>
+              <li>Identify dependencies between sub-problems</li>
+              <li>Consider solution order</li>
+            </ul>
+          </div>
+
+          <div class="exercise-content">
+            <div class="code-block">
+              <div class="code-header">
+                <span class="filename">decomposition_example.txt</span>
+                <button class="copy-btn" onclick="copyCode(this)">copy</button>
+              </div>
+              <pre><code># Task: "Create a website for a photo exhibition"
+
+## Decomposition:
+1. Content: Which photos? Descriptions? Arrangement?
+2. Structure: How many pages? Navigation?
+3. Design: Colors, Fonts, Layout?
+4. Technology: Static HTML or CMS?
+5. Hosting: Where to publish?
+
+## Dependencies:
+- Content → Structure (number of images determines pages)
+- Design → Technology (some designs need JS)
+- Technology → Hosting (CMS needs database)</code></pre>
+            </div>
+          </div>
+
+          <p class="exercise-task"><strong>Task:</strong> Take a current project from your work and decompose it into 5-7 sub-problems. Mark dependencies between the parts.</p>
+
+          <div class="reflection">
+            <strong>Reflection:</strong>
+            <ul>
+              <li>Which sub-problem is the most complex?</li>
+              <li>Which parts can be processed in parallel?</li>
+              <li>Where would AI-supported assistance be most helpful?</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exercise-block" id="exercise-CT-2">
+          <h3 class="exercise-title">CT-2: Pseudocode Development</h3>
+          <p class="exercise-summary">Describe a solution in natural language before writing code.</p>
+
+          <div class="exercise-goals">
+            <strong>Learning Objectives:</strong>
+            <ul>
+              <li>Write pseudocode</li>
+              <li>Bridge the gap between idea and implementation</li>
+              <li>Use pseudocode as prompt</li>
+            </ul>
+          </div>
+
+          <div class="exercise-content">
+            <div class="code-block">
+              <div class="code-header">
+                <span class="filename">pseudocode.txt</span>
+                <button class="copy-btn" onclick="copyCode(this)">copy</button>
+              </div>
+              <pre><code># Task: Detect duplicate images in a folder
+
+## Pseudocode:
+1. Collect all image files in the folder
+2. For each image:
+   a. Calculate a hash value (fingerprint)
+   b. Store in list: [Filename, Hash]
+3. Sort list by hash
+4. Find adjacent entries with same hash
+5. Output duplicates as pairs</code></pre>
+            </div>
+          </div>
+
+          <p class="exercise-task"><strong>Task:</strong> Use this pseudocode as a prompt for an LLM. Compare the result with an unstructured prompt like "Write a script that finds duplicate images."</p>
+
+          <div class="reflection">
+            <strong>Reflection:</strong>
+            <ul>
+              <li>How did the outputs differ?</li>
+              <li>Did the LLM suggest improvements to the pseudocode?</li>
+              <li>Where was the pseudocode too vague?</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" id="deep-dive">
+        <h2 class="section-title">
+          <span class="section-marker" style="background: #4A90A4"></span>
+          Deep Dive
+        </h2>
+
+        <div class="deep-dive-box">
+          <h3>Computational Thinking vs. Programming</h3>
+          <p>Computational Thinking is the <em>thinking</em>, programming is the <em>implementation</em>. You can have CT without programming, but good programming needs CT.</p>
+          <ul>
+            <li><strong>CT:</strong> "How do I organize this data logically?"</li>
+            <li><strong>Programming:</strong> "What data structure do I use in Python?"</li>
+          </ul>
+        </div>
+
+        <div class="deep-dive-box">
+          <h3>CT in AI-Assisted Coding</h3>
+          <p>When using LLMs for coding, CT skills become even more important:</p>
+          <ul>
+            <li>Decomposition helps formulate clear, focused prompts</li>
+            <li>Abstraction helps provide appropriate context</li>
+            <li>Pattern Recognition helps identify reusable solutions</li>
+            <li>Algorithm thinking helps evaluate generated code</li>
+          </ul>
+        </div>
+
+        <div class="deep-dive-box">
+          <h3>The Four Dimensions</h3>
+          <dl class="concepts-list">
+            <dt>Decomposition</dt>
+            <dd>Most directly transferable to prompt engineering – breaking tasks into steps</dd>
+
+            <dt>Abstraction</dt>
+            <dd>Critical for context engineering – what to include, what to omit</dd>
+
+            <dt>Pattern Recognition</dt>
+            <dd>Helps in code literacy – understanding code structure</dd>
+
+            <dt>Algorithm Design</dt>
+            <dd>Foundation for reviewing and correcting LLM output</dd>
+          </dl>
+        </div>
+      </section>
+
+      <section class="content-section" id="resources">
+        <h2 class="section-title">
+          <span class="section-marker" style="background: #4A90A4"></span>
+          Resources
+        </h2>
+
+        <ul class="resources-list">
+          <li>
+            <a href="https://www.cs.cmu.edu/~15110-s13/Wing06-ct.pdf" target="_blank" rel="noopener">Wing (2006): Computational Thinking</a>
+            <span class="resource-type">(foundational paper)</span>
+          </li>
+          <li>
+            <a href="https://edu.google.com/resources/programs/exploring-computational-thinking/" target="_blank" rel="noopener">Google: Exploring Computational Thinking</a>
+            <span class="resource-type">(educational resource)</span>
+          </li>
+          <li>
+            <a href="https://www.bbc.co.uk/bitesize/guides/zp92mp3/revision/1" target="_blank" rel="noopener">BBC Bitesize: Introduction to CT</a>
+            <span class="resource-type">(beginner-friendly)</span>
+          </li>
+        </ul>
+
+        <blockquote class="chapter-quote">
+          "Computational thinking is the thought processes involved in formulating problems and their solutions so that the solutions are represented in a form that can be effectively carried out by an information-processing agent."
+          <cite>— Jeannette Wing</cite>
+        </blockquote>
+      </section>
+
+      <nav class="chapter-nav">
+        <span class="nav-prev disabled">← Previous</span>
+        <a href="/en/re.html" class="nav-next">Requirement Engineering →</a>
+      </nav>
+    </main>
+
+    <footer>
+      <a href="https://github.com/DigitalHumanitiesCraft/ai-coding-literacy">GitHub</a> ·
+      DigitalHumanitiesCraft · 2025
+    </footer>
+  </div>
+
+  <script>
+    function copyCode(button) {
+      const codeBlock = button.closest('.code-block');
+      const code = codeBlock.querySelector('code').textContent;
+      navigator.clipboard.writeText(code).then(() => {
+        const originalText = button.textContent;
+        button.textContent = 'copied!';
+        setTimeout(() => { button.textContent = originalText; }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>

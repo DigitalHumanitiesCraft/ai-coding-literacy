@@ -1,0 +1,721 @@
+{
+  "meta": {
+    "title": "AI Coding Literacy",
+    "subtitle": "A learning platform for researchers to systematically develop skills in AI-assisted programming.",
+    "description": "AI Coding Literacy refers to the ability to use Large Language Models as tools for code development. The goal is not professional software development, but scripting and prototyping: small, functional solutions for specific problems in your field of work."
+  },
+
+  "audience": {
+    "description": "Researchers from the humanities and cultural sciences who want to develop small, functional tools for their work without prior programming experience.",
+    "prerequisites": [
+      "No programming experience required",
+      "Basic computer skills (file system, browser)",
+      "Experience with an LLM (chat interface)",
+      "Specific problems from your own field of work"
+    ]
+  },
+
+  "chapters": [
+    {
+      "id": "CT",
+      "name": "Computational Thinking",
+      "color": "#4A7C7C",
+      "short": "Structure and decompose problems",
+
+      "theory": {
+        "description": "Computational Thinking is the ability to structure problems so they can be solved systematically. For working with LLMs, this is the most important foundational skill. Your domain knowledge becomes the starting point: decompose problems so that each step can become a precise prompt.",
+        "keyPoints": [
+          "Computational Thinking is not programming, but a way of thinking",
+          "The four core elements: Decomposition, Pattern Recognition, Abstraction, Algorithm",
+          "LLMs work best with clear, structured tasks – vague requests lead to unpredictable results",
+          "Decomposition helps: write better prompts, locate errors, improve iteratively",
+          "Pseudocode and flowcharts help before code is generated"
+        ],
+        "concepts": [
+          {
+            "term": "Decomposition",
+            "definition": "Breaking a large problem into smaller parts. Example: 'Digitize catalog' → Scan → OCR → Correction → Structure"
+          },
+          {
+            "term": "Pattern Recognition",
+            "definition": "Identifying recurring structures. Example: 'All entries have: Title, Date, Material'"
+          },
+          {
+            "term": "Abstraction",
+            "definition": "Omitting the unimportant, capturing the essence. Example: 'Whether painting or sculpture – both have inventory numbers'"
+          },
+          {
+            "term": "Algorithm",
+            "definition": "Formulating step-by-step instructions. Example: '1. Open file, 2. Read line, 3. Extract title...'"
+          },
+          {
+            "term": "Pseudocode",
+            "definition": "Informal description of a process in natural language, before actual code is written"
+          }
+        ]
+      },
+
+      "handsOn": [
+        {
+          "id": "CT-1",
+          "title": "Code as Reading Material",
+          "summary": "View code as text that can be read and understood – similar to source texts in scholarly work.",
+          "goals": [
+            "Recognize the basic structure of a Python program",
+            "Understand line numbers and indentation as structural elements",
+            "Interpret comments as annotations"
+          ],
+          "exercise": {
+            "description": "Look at the following Python program. It loads an image and displays its dimensions.",
+            "code": "# Image analysis script\nfrom PIL import Image\nimport os\n\ndef analyze_image(path):\n    \"\"\"Analyzes an image and returns dimensions.\"\"\"\n    img = Image.open(path)\n    width, height = img.size\n    return width, height\n\n# Main program\nif __name__ == \"__main__\":\n    w, h = analyze_image(\"example.jpg\")\n    print(f\"Size: {w} x {h} pixels\")",
+            "filename": "image_analysis.py",
+            "task": "Formulate a prompt that explains this code. Use the pattern: 'Explain the following Python code line by line. I am a [your field] and have no programming experience.'"
+          },
+          "reflection": [
+            "Which parts of the code did you understand without explanation?",
+            "Which terms were unfamiliar?",
+            "How helpful was the LLM explanation? What was missing?"
+          ]
+        },
+        {
+          "id": "CT-2",
+          "title": "Decomposing Problems",
+          "summary": "How to structure problems so LLMs can understand and solve them.",
+          "goals": [
+            "Break problems into sub-steps (Decomposition)",
+            "Recognize recurring patterns",
+            "Abstract from specific problem to general solution"
+          ],
+          "exercise": {
+            "description": "Take a problem from your field and break it into sub-steps.",
+            "task": "Write pseudocode before formulating a prompt. This forces you to really understand the problem."
+          },
+          "reflection": [
+            "Did decomposition help you see the problem more clearly?",
+            "Where were the boundaries between sub-steps unclear?",
+            "What did you learn about your own understanding of the problem?"
+          ]
+        },
+        {
+          "id": "CT-3",
+          "title": "Workflow Automation",
+          "summary": "Automate recurring tasks. From single script to reusable workflow.",
+          "goals": [
+            "Recognize automation potential",
+            "Understand batch processing",
+            "Read simple workflow scripts"
+          ],
+          "exercise": {
+            "description": "Understand this batch processing workflow.",
+            "code": "from pathlib import Path\nimport pandas as pd\n\n# Find all CSV files in folder\ninput_folder = Path(\"raw_data\")\noutput_folder = Path(\"processed\")\noutput_folder.mkdir(exist_ok=True)\n\nfor file in input_folder.glob(\"*.csv\"):\n    print(f\"Processing: {file.name}\")\n    \n    # Load and clean\n    df = pd.read_csv(file)\n    df = df.dropna()\n    df.columns = [c.lower().strip() for c in df.columns]\n    \n    # Save\n    output = output_folder / file.name\n    df.to_csv(output, index=False)\n    \nprint(f\"Done! {len(list(input_folder.glob('*.csv')))} files processed.\")",
+            "filename": "batch_workflow.py",
+            "task": "What does the script do? Which steps are executed for each file?"
+          },
+          "reflection": [
+            "Where in your work are there recurring tasks?",
+            "What would need to be adjusted for your files?",
+            "How would you extend the workflow?"
+          ]
+        }
+      ],
+
+      "resources": [
+        {
+          "title": "Wing, J. (2006). Computational Thinking",
+          "url": "https://www.cs.cmu.edu/~15110-s13/Wing06-ct.pdf",
+          "type": "paper"
+        },
+        {
+          "title": "Denning, P. & Tedre, M. (2019). Computational Thinking",
+          "url": "https://mitpress.mit.edu/books/computational-thinking",
+          "type": "book"
+        }
+      ],
+
+      "quote": {
+        "text": "Computational thinking is a way of solving problems, designing systems, and understanding human behavior that draws on concepts fundamental to computer science.",
+        "source": "Jeannette Wing, 2006"
+      }
+    },
+
+    {
+      "id": "RE",
+      "name": "Requirement Engineering",
+      "color": "#8B4557",
+      "short": "Formulate requirements precisely",
+
+      "theory": {
+        "description": "Requirement Engineering refers to the systematic formulation of requirements. For working with LLMs, this is crucial because a prompt is functionally a requirements document. Those who can formulate precise requirements write better prompts. The key questions: What should the tool do? What not? What inputs, what outputs? How do you know if it works correctly?",
+        "keyPoints": [
+          "A prompt is functionally a requirements document",
+          "User Stories are more accessible than formal specifications",
+          "LLMs guess when requirements are vague – they fill gaps with assumptions",
+          "Define acceptance criteria before code is generated",
+          "Anticipate edge cases and exceptions",
+          "The LLM can only deliver what you specify"
+        ],
+        "concepts": [
+          {
+            "term": "User Story",
+            "definition": "Lightweight requirement format: 'As a [role] I want [function] so that [benefit]'"
+          },
+          {
+            "term": "INVEST Criteria",
+            "definition": "Good requirements are: Independent, Negotiable, Valuable, Estimable, Small, Testable"
+          },
+          {
+            "term": "Key Questions",
+            "definition": "What to do? What not? Input? Output? How do I recognize success?"
+          },
+          {
+            "term": "Functional Requirement",
+            "definition": "What the system should do (Input → Processing → Output)"
+          },
+          {
+            "term": "Acceptance Criterion",
+            "definition": "Measurable standard for whether a requirement is met"
+          },
+          {
+            "term": "Edge Case",
+            "definition": "Extreme or unusual inputs that must be tested"
+          }
+        ]
+      },
+
+      "handsOn": [
+        {
+          "id": "RE-1",
+          "title": "Writing User Stories",
+          "summary": "Formulate requirements in User Story format before prompting.",
+          "goals": [
+            "Apply the User Story format",
+            "Define acceptance criteria",
+            "Make boundaries explicit"
+          ],
+          "exercise": {
+            "description": "You want a tool that manages your bibliography. Formulate the requirements.",
+            "code": "# Vague requirement (bad):\n\"I need something to manage my bibliography\"\n\n# User Story (better):\n\"As a researcher I want to convert a CSV file with\nbibliography data into a formatted HTML page\nso I can display my publication list\non my website.\"\n\n# Precise specification (best):\n# Input: CSV with columns (Author, Title, Year, Journal)\n# Output: HTML with alphabetically sorted list\n# Format: Author (Year): Title. In: Journal.\n# Not in scope: PDF linking, duplicate detection",
+            "filename": "requirement.txt",
+            "task": "Write for your own project: 1) A User Story, 2) Input and Output, 3) Three acceptance criteria, 4) Two boundaries (What should it not do?)"
+          },
+          "reflection": [
+            "Which requirements were implicit (in your head)?",
+            "What would the LLM have guessed without this specification?",
+            "How difficult was it to formulate boundaries?"
+          ]
+        },
+        {
+          "id": "RE-2",
+          "title": "Testing Acceptance Criteria",
+          "summary": "Systematically test code against defined criteria.",
+          "goals": [
+            "Derive test cases from requirements",
+            "Systematically test edge cases",
+            "Document deviations"
+          ],
+          "exercise": {
+            "description": "Take the generated code from RE-1 and test it against your acceptance criteria.",
+            "task": "Create a checklist and verify each point. Document what works and what doesn't."
+          },
+          "reflection": [
+            "How many of your criteria were met?",
+            "What errors would you have missed without criteria?",
+            "What do you need to adjust in the prompt?"
+          ]
+        }
+      ],
+
+      "resources": [
+        {
+          "title": "Vogelsang & Fischbach (2024): LLMs for RE Tasks",
+          "url": "https://arxiv.org/abs/2402.13823",
+          "type": "paper"
+        },
+        {
+          "title": "Lucassen et al. (2016): User Stories in Practice",
+          "url": "https://link.springer.com/chapter/10.1007/978-3-319-30282-9_14",
+          "type": "paper"
+        },
+        {
+          "title": "User Stories Applied (Mike Cohn)",
+          "url": "https://www.mountaingoatsoftware.com/books/user-stories-applied",
+          "type": "book"
+        }
+      ],
+
+      "quote": {
+        "text": "The hardest single part of building a software system is deciding precisely what to build.",
+        "source": "Fred Brooks"
+      }
+    },
+
+    {
+      "id": "CE",
+      "name": "Context Engineering",
+      "color": "#5B7355",
+      "short": "Design context for LLMs",
+
+      "theory": {
+        "description": "Context Engineering refers to the systematic design of the information context provided to an LLM. The context window is limited – what you put in and how you arrange it determines the quality of the output. More is not automatically better: LLMs can 'lose' information in the middle of long contexts (Lost in the Middle problem).",
+        "keyPoints": [
+          "Context windows: GPT-4o 128K, Claude 200K, Gemini 1M Tokens",
+          "More context is not automatically better – Lost in the Middle problem",
+          "Proven structure: Role → Task → Info → Constraints → Format",
+          "Compression: Relevant excerpts instead of entire files",
+          "Examples are often more effective than long descriptions",
+          "Make project conventions explicit"
+        ],
+        "concepts": [
+          {
+            "term": "RAG",
+            "definition": "Retrieval-Augmented Generation – retrieve relevant info from external sources and provide to LLM"
+          },
+          {
+            "term": "Lost in the Middle",
+            "definition": "LLMs lose information in the middle of long contexts – put important things at beginning/end"
+          },
+          {
+            "term": "Context Structure",
+            "definition": "Proven arrangement: Role → Task → Information → Constraints → Format"
+          },
+          {
+            "term": "Context Window",
+            "definition": "The maximum amount of text (in tokens) that an LLM can process at once"
+          },
+          {
+            "term": "Distillation",
+            "definition": "Compressing complex information to the essentials"
+          }
+        ]
+      },
+
+      "handsOn": [
+        {
+          "id": "CE-1",
+          "title": "Structuring Context",
+          "summary": "Build a prompt with the proven context structure.",
+          "goals": [
+            "Apply the 5-part context structure",
+            "Separate relevant from irrelevant information",
+            "Compare effectiveness"
+          ],
+          "exercise": {
+            "description": "Compare these two prompts for the same task.",
+            "code": "# WITHOUT context structure:\n\"Make me a script for my Excel files\"\n\n# WITH context structure:\n\"\"\"\nYou help me write a Python script.\n\nTask: Read all Excel files in a folder\nand merge them into one CSV.\n\nExample data (first file):\n| Inv-No | Description | Date |\n| 001    | Vase        | 1820 |\n\nConstraints:\n- All files have identical column structure\n- Encoding: UTF-8\n- Only .xlsx, no .xls\n\nOutput: A single script with comments.\n\"\"\"",
+            "filename": "context_comparison.txt",
+            "task": "Test both prompts with an LLM. Document the differences in results."
+          },
+          "reflection": [
+            "What follow-up questions did the LLM ask with the first prompt?",
+            "How much more precise was the result with the second prompt?",
+            "What information did you add in the structured prompt?"
+          ]
+        },
+        {
+          "id": "CE-2",
+          "title": "Distilling Knowledge",
+          "summary": "Prepare a complex standard so it fits in the context window.",
+          "goals": [
+            "Identify relevant information",
+            "Compress context in a structured way",
+            "Test effectiveness"
+          ],
+          "exercise": {
+            "description": "Visit the Darwin Core documentation (dwc.tdwg.org) and distill the relevant fields for a museum collection.",
+            "task": "Create a compact reference document with field name, definition, and example value. Test: Can the LLM work correctly with it?"
+          },
+          "reflection": [
+            "How much shorter did the document become?",
+            "What information did you leave out?",
+            "Did the LLM work correctly with the distilled context?"
+          ]
+        }
+      ],
+
+      "resources": [
+        {
+          "title": "Gao et al. (2024): RAG Survey",
+          "url": "https://arxiv.org/abs/2312.10997",
+          "type": "paper"
+        },
+        {
+          "title": "Liu et al. (2025): Long-Context Survey",
+          "url": "https://arxiv.org/abs/2503.17407",
+          "type": "paper"
+        },
+        {
+          "title": "Anthropic: Prompt Engineering Guide",
+          "url": "https://docs.anthropic.com/claude/docs/prompt-engineering",
+          "type": "documentation"
+        }
+      ],
+
+      "quote": {
+        "text": "Context is everything. The same prompt with different context produces completely different results.",
+        "source": "AI Practitioner Wisdom"
+      }
+    },
+
+    {
+      "id": "PE",
+      "name": "Prompt Engineering",
+      "color": "#7B6B8D",
+      "short": "Develop effective prompts",
+
+      "theory": {
+        "description": "Prompt Engineering refers to the development and optimization of input prompts. A prompt is more than a question – the way you ask determines the type of answer. Schulhoff et al. (2024) document 58 different prompting techniques. For most applications, a few core strategies suffice.",
+        "keyPoints": [
+          "Schulhoff et al. document 58 prompting techniques – a few suffice for practice",
+          "Zero-Shot: Direct instruction without examples – for simple, clear tasks",
+          "Few-Shot: 2-5 examples show format and handling of special cases",
+          "Chain-of-Thought: 'Think step by step' – for complex problems",
+          "Iterative refinement: Prompt → Output → Problem → Adjustment → repeat",
+          "Explicitly specify output format"
+        ],
+        "concepts": [
+          {
+            "term": "Zero-Shot",
+            "definition": "Direct instruction without examples – works for simple, clear tasks"
+          },
+          {
+            "term": "Few-Shot",
+            "definition": "2-5 examples in the prompt show the desired format and handling of special cases"
+          },
+          {
+            "term": "Chain-of-Thought",
+            "definition": "'Think step by step' – improves performance on complex, multi-step problems"
+          },
+          {
+            "term": "Role Prompting",
+            "definition": "'You are an experienced...' – when specific expertise or perspective matters"
+          },
+          {
+            "term": "Iteration",
+            "definition": "Prompt → Check output → Identify problem → Adjust prompt → repeat"
+          }
+        ]
+      },
+
+      "handsOn": [
+        {
+          "id": "PE-1",
+          "title": "Zero-Shot vs. Few-Shot",
+          "summary": "Understand the difference between direct instruction and example-based prompting.",
+          "goals": [
+            "Distinguish Zero-Shot and Few-Shot",
+            "Recognize when examples help",
+            "Formulate examples effectively"
+          ],
+          "exercise": {
+            "description": "Compare these two strategies for the same task.",
+            "code": "# ZERO-SHOT:\n\"Extract the date from this text:\n'The painting was acquired on March 15, 1823.'\"\n\n# FEW-SHOT:\n\"Extract the date from texts. Format as YYYY-MM-DD.\n\nText: 'Acquired in January 1820' -> 1820-01-00\nText: 'Dated to 3.5.1899' -> 1899-05-03\nText: 'The painting was acquired on March 15, 1823.' ->\"",
+            "filename": "prompting_strategies.txt",
+            "task": "Test both strategies. When does Few-Shot deliver better results? When is Zero-Shot sufficient?"
+          },
+          "reflection": [
+            "How did the outputs differ?",
+            "What special cases did the examples cover?",
+            "When would you use Few-Shot in your work?"
+          ]
+        },
+        {
+          "id": "PE-2",
+          "title": "Iterative Prompting",
+          "summary": "Reach the desired result step by step through dialogue.",
+          "goals": [
+            "Formulate feedback precisely",
+            "Know typical adjustments",
+            "Know when to start over"
+          ],
+          "exercise": {
+            "description": "Follow this iterative refinement process.",
+            "code": "# Iteration 1:\n\"Write a script that resizes images.\"\n# Problem: Unclear which size, format, folder\n\n# Iteration 2:\n\"Write a Python script with Pillow.\nInput: Folder path as argument\nTask: Scale all .jpg to max. 1200px width\nOutput: New files with suffix '_web'\"\n# Problem: Overwrites originals\n\n# Iteration 3:\n\"... (as above)\nConstraint: Do not overwrite original files\"",
+            "filename": "iteration.txt",
+            "task": "Start with a simple prompt for your project. Document 3 iterations: Problem → Adjustment → Result."
+          },
+          "reflection": [
+            "How many iterations did you need?",
+            "What type of feedback was most effective?",
+            "When would you have been better off starting over?"
+          ]
+        }
+      ],
+
+      "resources": [
+        {
+          "title": "Schulhoff et al. (2024): The Prompt Report (58 Techniques)",
+          "url": "https://arxiv.org/abs/2406.06608",
+          "type": "paper"
+        },
+        {
+          "title": "Wei et al. (2022): Chain-of-Thought (NeurIPS)",
+          "url": "https://arxiv.org/abs/2201.11903",
+          "type": "paper"
+        },
+        {
+          "title": "OpenAI: Prompt Engineering Guide",
+          "url": "https://platform.openai.com/docs/guides/prompt-engineering",
+          "type": "documentation"
+        }
+      ],
+
+      "quote": {
+        "text": "The quality of your output is directly proportional to the quality of your input.",
+        "source": "Prompt Engineering Wisdom"
+      }
+    },
+
+    {
+      "id": "CL",
+      "name": "Code Literacy",
+      "color": "#8B7355",
+      "short": "Understand generated code",
+
+      "theory": {
+        "description": "Code Literacy refers to the ability to read and understand code. This is an independent skill that precedes writing. You don't need to be able to write code yourself to evaluate LLM-generated code. The skill hierarchy: Run → Trace → Explain → Write. For AI Coding Literacy, primarily Trace and Explain are relevant.",
+        "keyPoints": [
+          "Reading and writing are separate skills (Lopez et al., 2008)",
+          "Skill hierarchy: Run → Trace → Explain → Write",
+          "Even experts avoid deep understanding when possible – partial understanding is normal",
+          "39% of practitioners find LLM code more readable than human code",
+          "Two mental models: procedural ('What happens step by step?') and functional ('What is the goal?')",
+          "You don't need to understand everything – just enough to verify"
+        ],
+        "concepts": [
+          {
+            "term": "Skill Hierarchy",
+            "definition": "Run → Trace → Explain → Write: Reading and tracing precede writing"
+          },
+          {
+            "term": "Procedural Model",
+            "definition": "'What happens step by step?' – Control flow, follow line by line"
+          },
+          {
+            "term": "Functional Model",
+            "definition": "'What is the goal?' – Understand purpose, identify input/output"
+          },
+          {
+            "term": "Delocalized Plans",
+            "definition": "Code for one intention is often scattered across multiple locations – navigation required"
+          },
+          {
+            "term": "Control Structure",
+            "definition": "Instructions that control flow (if, for, while)"
+          },
+          {
+            "term": "Library",
+            "definition": "Collection of pre-built code for specific tasks"
+          }
+        ]
+      },
+
+      "handsOn": [
+        {
+          "id": "CL-1",
+          "title": "Variables and Data Types",
+          "summary": "Understand the building blocks of code.",
+          "goals": [
+            "Understand variables as named storage locations",
+            "Distinguish basic data types",
+            "Read assignments"
+          ],
+          "exercise": {
+            "description": "Read the following code and answer the questions.",
+            "code": "# Variables are named storage locations\nname = \"Vase\"           # String (text)\ninventory_no = 1234     # Integer (whole number)\nprice = 45.50           # Float (decimal number)\nis_displayed = True     # Boolean (True/False)\n\n# Lists store multiple values\nmaterials = [\"Ceramic\", \"Glaze\", \"Gold\"]\n\n# Dictionaries store key-value pairs\nobject = {\n    \"name\": \"Vase\",\n    \"year\": 1820,\n    \"location\": \"Room 3\"\n}",
+            "filename": "variables.py",
+            "task": "What is the value of `object[\"year\"]`? What type is `is_displayed`?"
+          },
+          "reflection": [
+            "Which data types occur in your data?",
+            "When would you use a list vs. a dictionary?"
+          ]
+        },
+        {
+          "id": "CL-2",
+          "title": "Reading Control Structures",
+          "summary": "Understand branches and loops.",
+          "goals": [
+            "Follow if/else branches",
+            "Understand for loops",
+            "Recognize indentation as a structural feature"
+          ],
+          "exercise": {
+            "description": "Follow the execution of this code.",
+            "code": "files = [\"image1.jpg\", \"document.pdf\", \"image2.png\", \"text.txt\"]\n\n# For each file in the list\nfor file in files:\n    # Check the extension\n    if file.endswith(\".jpg\") or file.endswith(\".png\"):\n        print(f\"Image found: {file}\")\n    elif file.endswith(\".pdf\"):\n        print(f\"PDF found: {file}\")\n    else:\n        print(f\"Other file: {file}\")",
+            "filename": "control_structures.py",
+            "task": "What output does this code produce? Go through line by line."
+          },
+          "reflection": [
+            "What happens with an empty list?",
+            "What happens with a file named 'IMAGE.JPG' (uppercase)?"
+          ]
+        },
+        {
+          "id": "CL-3",
+          "title": "Understanding Functions",
+          "summary": "Recognize reusable code blocks.",
+          "goals": [
+            "Recognize function definitions",
+            "Understand parameters and return values",
+            "Follow function calls"
+          ],
+          "exercise": {
+            "description": "Understand this function.",
+            "code": "def format_name(first_name, last_name, title=None):\n    \"\"\"Formats a name for display.\"\"\"\n    if title:\n        return f\"{title} {first_name} {last_name}\"\n    else:\n        return f\"{first_name} {last_name}\"\n\n# Function calls\nname1 = format_name(\"Maria\", \"Mueller\")\nname2 = format_name(\"Hans\", \"Schmidt\", \"Dr.\")\n\nprint(name1)  # → Maria Mueller\nprint(name2)  # → Dr. Hans Schmidt",
+            "filename": "functions.py",
+            "task": "What does `format_name(\"Anna\", \"Weber\", \"Prof.\")` return?"
+          },
+          "reflection": [
+            "Why is `title=None` written with an equals sign?",
+            "How would you call the function for someone without a title?"
+          ]
+        }
+      ],
+
+      "resources": [
+        {
+          "title": "Lopez et al. (2008): Reading vs Writing Skills",
+          "url": "https://dl.acm.org/doi/10.1145/1404520.1404535",
+          "type": "paper"
+        },
+        {
+          "title": "Xie et al. (2019): Quadrant Model",
+          "url": "https://www.tandfonline.com/doi/full/10.1080/08993408.2019.1565235",
+          "type": "paper"
+        },
+        {
+          "title": "Hermans, F. (2021). The Programmer's Brain",
+          "url": "https://www.manning.com/books/the-programmers-brain",
+          "type": "book"
+        },
+        {
+          "title": "Python Tutorial (official)",
+          "url": "https://docs.python.org/3/tutorial/",
+          "type": "documentation"
+        }
+      ],
+
+      "quote": {
+        "text": "Reading code is a skill. Like reading a foreign language, it gets easier with practice.",
+        "source": "Felienne Hermans"
+      }
+    },
+
+    {
+      "id": "RV",
+      "name": "Review",
+      "color": "#4A6B8C",
+      "short": "Systematically verify results",
+
+      "theory": {
+        "description": "Review refers to the systematic verification of generated code against defined requirements. LLM-generated code often looks correct but contains systematic errors. EvalPlus shows: pass rates drop by 19-28.9% with more thorough testing. Tambon et al. identified 10 bug patterns. Trust is good, verification is better.",
+        "keyPoints": [
+          "EvalPlus: Pass rates drop by 19-28.9% with more thorough testing",
+          "Tambon et al.: 10 bug patterns in LLM-generated code",
+          "29.5% of Copilot Python snippets have security vulnerabilities (Fu et al.)",
+          "5 hallucination categories: Intent Conflicting, Context Inconsistency, Dead Code, Knowledge Conflicting",
+          "Metamorphic Testing: Paraphrased prompts for consistency checking",
+          "Test systematically: Normal case, Edge case, Error case"
+        ],
+        "concepts": [
+          {
+            "term": "Hallucinated Objects",
+            "definition": "Non-existent functions or libraries that the LLM invents"
+          },
+          {
+            "term": "Intent Conflicting",
+            "definition": "Code contradicts the requirement – does something different than desired"
+          },
+          {
+            "term": "Context Inconsistency",
+            "definition": "Code contradicts the provided context (example data, documentation)"
+          },
+          {
+            "term": "Metamorphic Testing",
+            "definition": "Paraphrased prompts for consistency checking – detects 75% of faulty programs"
+          },
+          {
+            "term": "Traceback",
+            "definition": "The error trace showing where the error occurred – read from bottom to top"
+          },
+          {
+            "term": "Logical Error",
+            "definition": "Code runs, but result is wrong – hardest to find"
+          }
+        ]
+      },
+
+      "handsOn": [
+        {
+          "id": "RV-1",
+          "title": "Reading Error Messages",
+          "summary": "Understand tracebacks and locate the cause.",
+          "goals": [
+            "Read tracebacks from bottom to top",
+            "Identify the relevant line",
+            "Distinguish error types"
+          ],
+          "exercise": {
+            "description": "Analyze this traceback.",
+            "code": "Traceback (most recent call last):\n  File \"script.py\", line 15, in <module>\n    result = process_data(data)\n  File \"script.py\", line 8, in process_data\n    return data[\"name\"].upper()\nKeyError: 'name'\n\n# Interpretation:\n# 1. Last line: The error (KeyError: 'name')\n# 2. Line before: Where it happened (line 8, data[\"name\"])\n# 3. The dictionary 'data' has no key 'name'\n# 4. Solution: Check which keys actually exist",
+            "filename": "traceback.txt",
+            "task": "Have an LLM generate code and deliberately cause an error (e.g., wrong file). Read the traceback and locate the problem."
+          },
+          "reflection": [
+            "What information is in the last line?",
+            "How do you find the faulty line in your code?",
+            "Was the error in the generated code or in your usage?"
+          ]
+        },
+        {
+          "id": "RV-2",
+          "title": "Systematic Code Review",
+          "summary": "Work through a checklist for LLM-generated code.",
+          "goals": [
+            "Check systematically instead of intuitively",
+            "Recognize typical LLM errors",
+            "Develop your own checklists"
+          ],
+          "exercise": {
+            "description": "Use this review checklist.",
+            "code": "# Review Checklist for LLM Code\n\n## 1. Does it run?\n- [ ] Code starts without syntax errors\n- [ ] All imports are available\n- [ ] No invented libraries\n\n## 2. Does it do the right thing?\n- [ ] Output matches requirement\n- [ ] Normal case works\n- [ ] Edge cases tested (empty input, large data)\n\n## 3. Does it do nothing wrong?\n- [ ] No unexpected side effects\n- [ ] Original data not overwritten\n- [ ] No security vulnerabilities (paths, injections)\n\n## 4. Is it robust?\n- [ ] Error handling present\n- [ ] Error messages are helpful\n- [ ] No hardcoded paths/values",
+            "filename": "review_checklist.md",
+            "task": "Take code from a previous exercise and work through the checklist. Document each point."
+          },
+          "reflection": [
+            "What problems would you have missed without the checklist?",
+            "How would you adapt the checklist for your projects?"
+          ]
+        }
+      ],
+
+      "resources": [
+        {
+          "title": "Liu et al. (2024): HalluCode Benchmark",
+          "url": "https://arxiv.org/abs/2404.00971",
+          "type": "paper"
+        },
+        {
+          "title": "Tambon et al. (2024): Bug Pattern Taxonomy",
+          "url": "https://arxiv.org/abs/2403.08937",
+          "type": "paper"
+        },
+        {
+          "title": "Fu et al. (2024): Security Analysis of Copilot",
+          "url": "https://dl.acm.org/doi/10.1145/3643769",
+          "type": "paper"
+        },
+        {
+          "title": "Mollick, E. (2024). Co-Intelligence",
+          "url": "https://www.oneusefulthing.org/",
+          "type": "book"
+        }
+      ],
+
+      "quote": {
+        "text": "Trust, but verify. Especially with AI-generated code.",
+        "source": "Adapted from Reagan"
+      }
+    }
+  ]
+}

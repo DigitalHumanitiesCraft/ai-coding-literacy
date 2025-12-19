@@ -8,20 +8,57 @@ let contentData = null;
 let loadedChapters = 0;
 const CHAPTERS_PER_LOAD = 2;
 
+// Detect language from URL path
+function detectLanguage() {
+  const path = window.location.pathname;
+  if (path.startsWith('/en/') || path.startsWith('/en')) {
+    return 'en';
+  }
+  return 'de';
+}
+
+// Get i18n strings based on language
+function getI18n(lang) {
+  const strings = {
+    de: {
+      loadError: 'Fehler beim Laden der Inhalte.',
+      theorie: 'Theorie',
+      uebungen: 'Übungen',
+      ressourcen: 'Ressourcen',
+      learnMore: 'Mehr lernen →'
+    },
+    en: {
+      loadError: 'Error loading content.',
+      theorie: 'Theory',
+      uebungen: 'Exercises',
+      ressourcen: 'Resources',
+      learnMore: 'Learn more →'
+    }
+  };
+  return strings[lang] || strings.de;
+}
+
 // Load JSON data
 async function loadContent() {
   try {
-    const response = await fetch('/data/content.json');
+    const lang = detectLanguage();
+    const contentFile = lang === 'en' ? '/data/content-en.json' : '/data/content.json';
+    const response = await fetch(contentFile);
     contentData = await response.json();
     initPage();
   } catch (error) {
-    console.error('Fehler beim Laden:', error);
-    document.getElementById('loading').textContent = 'Fehler beim Laden der Inhalte.';
+    console.error('Error loading content:', error);
+    const lang = detectLanguage();
+    const i18n = getI18n(lang);
+    document.getElementById('loading').textContent = i18n.loadError;
   }
 }
 
 // Initialize page
 function initPage() {
+  const lang = detectLanguage();
+  const i18n = getI18n(lang);
+
   // Meta
   document.getElementById('subtitle').textContent = contentData.meta.subtitle;
   document.getElementById('description').textContent = contentData.meta.description;
@@ -44,15 +81,15 @@ function initPage() {
     });
     barWrapper.appendChild(link);
 
-    // Sub-links (Theorie, Übungen, Ressourcen)
+    // Sub-links (Theory, Exercises, Resources)
     const subLinks = document.createElement('div');
     subLinks.className = 'sidebar-sublinks';
     subLinks.id = `sublinks-${chapter.id}`;
 
     const sections = [
-      { id: 'theorie', label: 'Theorie' },
-      { id: 'uebungen', label: 'Übungen' },
-      { id: 'ressourcen', label: 'Ressourcen' }
+      { id: 'theorie', label: i18n.theorie },
+      { id: 'uebungen', label: i18n.uebungen },
+      { id: 'ressourcen', label: i18n.ressourcen }
     ];
 
     sections.forEach(sec => {

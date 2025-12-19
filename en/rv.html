@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Review – AI Coding Literacy</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <a href="/en/">Overview</a>
+      <a href="/en/competency-model.html">Competency Model</a>
+      <a href="/en/reference.html">Reference</a>
+    </nav>
+    <div class="competency-bars">
+      <div class="competency-bar-wrapper">
+        <a href="/en/ct.html" class="competency-bar comp-CT" title="Computational Thinking"><span class="bar-label">CT</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/en/re.html" class="competency-bar comp-RE" title="Requirement Engineering"><span class="bar-label">RE</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/en/ce.html" class="competency-bar comp-CE" title="Context Engineering"><span class="bar-label">CE</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/en/pe.html" class="competency-bar comp-PE" title="Prompt Engineering"><span class="bar-label">PE</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/en/cl.html" class="competency-bar comp-CL" title="Code Literacy"><span class="bar-label">CL</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/en/rv.html" class="competency-bar comp-RV active" title="Review"><span class="bar-label">RV</span></a>
+      </div>
+    </div>
+    <div class="language-switcher">
+      <a href="/de/rv.html" class="lang-link" title="Deutsch">DE</a>
+      <span class="lang-separator">|</span>
+      <a href="/en/rv.html" class="lang-link active" title="English">EN</a>
+    </div>
+  </aside>
+
+  <div class="page-wrapper">
+    <main id="content">
+      <nav class="breadcrumb">
+        <a href="/en/">Overview</a> → <span>Review</span>
+      </nav>
+
+      <div class="chapter-header-block" style="border-left: 4px solid #9B6B5B">
+        <span class="chapter-id-badge" style="background: #9B6B5B">RV</span>
+        <h1 class="chapter-title">Review</h1>
+        <p class="chapter-subtitle">Critically evaluating code</p>
+      </div>
+
+      <div class="chapter-intro-block">
+        <p>Generated code looks correct on the surface – but appearances are deceptive. LLMs produce syntactically correct but semantically wrong code, hallucinated libraries, and subtle security vulnerabilities. Systematic review is not optional.</p>
+      </div>
+
+      <nav class="detail-nav">
+        <a href="#theory">Theory</a>
+        <a href="#exercises">Exercises</a>
+        <a href="#deep-dive">Deep Dive</a>
+        <a href="#resources">Resources</a>
+      </nav>
+
+      <section class="content-section" id="theory">
+        <h2 class="section-title">
+          <span class="section-marker" style="background: #9B6B5B"></span>
+          Theory
+        </h2>
+
+        <div class="keypoints">
+          <h3>Key Points</h3>
+          <ul class="keypoints-list">
+            <li>EvalPlus: Pass rates drop 19-28.9% with more thorough testing</li>
+            <li>Tambon et al.: 10 bug patterns in LLM-generated code</li>
+            <li>29.5% of Python snippets from Copilot have security vulnerabilities</li>
+            <li>Hallucinated libraries: Functions/packages that don't exist</li>
+            <li>Intent Conflicting: Code contradicts requirements</li>
+            <li>Context Inconsistency: Code contradicts provided context</li>
+          </ul>
+        </div>
+
+        <div class="concepts">
+          <h3>Concepts</h3>
+          <dl class="concepts-list">
+            <dt>Hallucinated Objects</dt>
+            <dd>Non-existent functions, libraries, or APIs that LLMs confidently generate</dd>
+
+            <dt>Intent Conflicting</dt>
+            <dd>Code contradicts the stated requirement – does something else</dd>
+
+            <dt>Context Inconsistency</dt>
+            <dd>Code contradicts information provided in the context</dd>
+
+            <dt>Metamorphic Testing</dt>
+            <dd>Paraphrased prompts to check consistency of outputs</dd>
+
+            <dt>Bug Patterns</dt>
+            <dd>Recurring types of errors in LLM-generated code</dd>
+          </dl>
+        </div>
+
+        <div class="theory-deep-dive">
+          <h3>Common Bug Patterns</h3>
+
+          <div class="example-box">
+            <strong>Hallucination</strong>
+            <ul>
+              <li>Non-existent library functions</li>
+              <li>Wrong API signatures</li>
+              <li>Made-up package names</li>
+            </ul>
+          </div>
+
+          <div class="example-box">
+            <strong>Logic Errors</strong>
+            <ul>
+              <li>Off-by-one errors</li>
+              <li>Wrong boundary conditions</li>
+              <li>Incorrect edge case handling</li>
+            </ul>
+          </div>
+
+          <div class="example-box">
+            <strong>Security Issues</strong>
+            <ul>
+              <li>SQL injection vulnerabilities</li>
+              <li>Missing input validation</li>
+              <li>Insecure defaults</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" id="exercises">
+        <h2 class="section-title">
+          <span class="section-marker" style="background: #9B6B5B"></span>
+          Exercises
+        </h2>
+
+        <div class="exercise-block" id="exercise-RV-1">
+          <h3 class="exercise-title">RV-1: Bug Hunting</h3>
+          <p class="exercise-summary">Find errors in generated code systematically.</p>
+
+          <div class="exercise-goals">
+            <strong>Learning Objectives:</strong>
+            <ul>
+              <li>Identify common bug patterns</li>
+              <li>Test edge cases</li>
+              <li>Verify library imports</li>
+            </ul>
+          </div>
+
+          <div class="exercise-content">
+            <div class="code-block">
+              <div class="code-header">
+                <span class="filename">buggy_example.py</span>
+                <button class="copy-btn" onclick="copyCode(this)">copy</button>
+              </div>
+              <pre><code># LLM-generated code to find duplicate files
+import hashlib
+from pathlib import Path
+
+def find_duplicates(folder):
+    hashes = {}
+    duplicates = []
+
+    for file in Path(folder).glob('*'):
+        hash = hashlib.md5(file.read_bytes()).hexdigest()
+        if hash in hashes:
+            duplicates.append((hashes[hash], file))
+        hashes[hash] = file
+
+    return duplicates
+
+# What are the problems?
+# 1. Doesn't handle directories (will crash)
+# 2. Doesn't handle unreadable files
+# 3. Only checks immediate children, not subdirs
+# 4. Variable 'hash' shadows builtin</code></pre>
+            </div>
+          </div>
+
+          <p class="exercise-task"><strong>Task:</strong> Have an LLM generate code for a task in your domain. Systematically check: Does it run? Edge cases? Error handling? Security?</p>
+
+          <div class="reflection">
+            <strong>Reflection:</strong>
+            <ul>
+              <li>What bug patterns did you find?</li>
+              <li>Which errors were obvious, which subtle?</li>
+              <li>How would you improve your review process?</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exercise-block" id="exercise-RV-2">
+          <h3 class="exercise-title">RV-2: Metamorphic Testing</h3>
+          <p class="exercise-summary">Check consistency with paraphrased prompts.</p>
+
+          <div class="exercise-goals">
+            <strong>Learning Objectives:</strong>
+            <ul>
+              <li>Apply metamorphic testing</li>
+              <li>Identify inconsistencies</li>
+              <li>Evaluate robustness</li>
+            </ul>
+          </div>
+
+          <div class="exercise-content">
+            <div class="code-block">
+              <div class="code-header">
+                <span class="filename">metamorphic_test.txt</span>
+                <button class="copy-btn" onclick="copyCode(this)">copy</button>
+              </div>
+              <pre><code># Original Prompt:
+"Write a function that sorts a list of dates"
+
+# Paraphrased Versions:
+"Create a function to order dates chronologically"
+"Implement date sorting for a list"
+"Write code to arrange dates from earliest to latest"
+
+# Compare:
+- Do all versions handle the same date formats?
+- Same edge cases (empty list, single item)?
+- Same error handling?
+- Same output format?</code></pre>
+            </div>
+          </div>
+
+          <p class="exercise-task"><strong>Task:</strong> Create 3 paraphrased versions of a prompt. Compare the outputs. Document differences.</p>
+
+          <div class="reflection">
+            <strong>Reflection:</strong>
+            <ul>
+              <li>How consistent were the outputs?</li>
+              <li>Which version produced the best result?</li>
+              <li>What does this tell you about prompt sensitivity?</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" id="deep-dive">
+        <h2 class="section-title">
+          <span class="section-marker" style="background: #9B6B5B"></span>
+          Deep Dive
+        </h2>
+
+        <div class="deep-dive-box">
+          <h3>The Review Checklist</h3>
+          <ol>
+            <li><strong>Does it run?</strong> – Syntax errors, import errors</li>
+            <li><strong>Does it do what was asked?</strong> – Compare to requirements</li>
+            <li><strong>Edge cases?</strong> – Empty input, large input, special characters</li>
+            <li><strong>Error handling?</strong> – What happens when things go wrong</li>
+            <li><strong>Security?</strong> – Input validation, injection, sensitive data</li>
+            <li><strong>Dependencies?</strong> – Do libraries exist? Right versions?</li>
+          </ol>
+        </div>
+
+        <div class="deep-dive-box">
+          <h3>Hallucination Categories</h3>
+          <dl class="concepts-list">
+            <dt>Library Hallucination</dt>
+            <dd>Package or function doesn't exist</dd>
+
+            <dt>API Hallucination</dt>
+            <dd>Function exists but with different signature</dd>
+
+            <dt>Behavioral Hallucination</dt>
+            <dd>Function exists but does something different</dd>
+
+            <dt>Version Hallucination</dt>
+            <dd>Feature exists in different version than assumed</dd>
+          </dl>
+        </div>
+
+        <div class="deep-dive-box">
+          <h3>Security Review Priorities</h3>
+          <ul>
+            <li><strong>OWASP Top 10</strong> – Common web vulnerabilities</li>
+            <li><strong>Input validation</strong> – Never trust user input</li>
+            <li><strong>Output encoding</strong> – Prevent injection</li>
+            <li><strong>Authentication/Authorization</strong> – Access control</li>
+            <li><strong>Sensitive data</strong> – Logging, storage, transmission</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="content-section" id="resources">
+        <h2 class="section-title">
+          <span class="section-marker" style="background: #9B6B5B"></span>
+          Resources
+        </h2>
+
+        <ul class="resources-list">
+          <li>
+            <a href="https://arxiv.org/abs/2404.08560" target="_blank" rel="noopener">Liu et al. (2024): HalluCode Benchmark</a>
+            <span class="resource-type">(paper)</span>
+          </li>
+          <li>
+            <a href="https://arxiv.org/abs/2403.10613" target="_blank" rel="noopener">Tambon et al. (2024): Bug-Pattern Taxonomy</a>
+            <span class="resource-type">(paper)</span>
+          </li>
+          <li>
+            <a href="https://owasp.org/Top10/" target="_blank" rel="noopener">OWASP Top 10</a>
+            <span class="resource-type">(security reference)</span>
+          </li>
+          <li>
+            <a href="https://arxiv.org/abs/2108.09293" target="_blank" rel="noopener">Fu et al. (2024): Security Analysis of Copilot</a>
+            <span class="resource-type">(paper)</span>
+          </li>
+        </ul>
+
+        <blockquote class="chapter-quote">
+          "Trust, but verify."
+          <cite>— Ronald Reagan (adapted for AI)</cite>
+        </blockquote>
+      </section>
+
+      <nav class="chapter-nav">
+        <a href="/en/cl.html" class="nav-prev">← Code Literacy</a>
+        <span class="nav-next disabled">Next →</span>
+      </nav>
+    </main>
+
+    <footer>
+      <a href="https://github.com/DigitalHumanitiesCraft/ai-coding-literacy">GitHub</a> ·
+      DigitalHumanitiesCraft · 2025
+    </footer>
+  </div>
+
+  <script>
+    function copyCode(button) {
+      const codeBlock = button.closest('.code-block');
+      const code = codeBlock.querySelector('code').textContent;
+      navigator.clipboard.writeText(code).then(() => {
+        const originalText = button.textContent;
+        button.textContent = 'copied!';
+        setTimeout(() => { button.textContent = originalText; }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>

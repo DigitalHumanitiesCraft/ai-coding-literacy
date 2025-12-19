@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Literacy – AI Coding Literacy</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <a href="/en/">Overview</a>
+      <a href="/en/competency-model.html">Competency Model</a>
+      <a href="/en/reference.html">Reference</a>
+    </nav>
+    <div class="competency-bars">
+      <div class="competency-bar-wrapper">
+        <a href="/en/ct.html" class="competency-bar comp-CT" title="Computational Thinking"><span class="bar-label">CT</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/en/re.html" class="competency-bar comp-RE" title="Requirement Engineering"><span class="bar-label">RE</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/en/ce.html" class="competency-bar comp-CE" title="Context Engineering"><span class="bar-label">CE</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/en/pe.html" class="competency-bar comp-PE" title="Prompt Engineering"><span class="bar-label">PE</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/en/cl.html" class="competency-bar comp-CL active" title="Code Literacy"><span class="bar-label">CL</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/en/rv.html" class="competency-bar comp-RV" title="Review"><span class="bar-label">RV</span></a>
+      </div>
+    </div>
+    <div class="language-switcher">
+      <a href="/de/cl.html" class="lang-link" title="Deutsch">DE</a>
+      <span class="lang-separator">|</span>
+      <a href="/en/cl.html" class="lang-link active" title="English">EN</a>
+    </div>
+  </aside>
+
+  <div class="page-wrapper">
+    <main id="content">
+      <nav class="breadcrumb">
+        <a href="/en/">Overview</a> → <span>Code Literacy</span>
+      </nav>
+
+      <div class="chapter-header-block" style="border-left: 4px solid #6B8E9B">
+        <span class="chapter-id-badge" style="background: #6B8E9B">CL</span>
+        <h1 class="chapter-title">Code Literacy</h1>
+        <p class="chapter-subtitle">Reading and understanding code</p>
+      </div>
+
+      <div class="chapter-intro-block">
+        <p>Reading and writing code are separate competencies. You don't need to be a programmer to understand code – and understanding generated code is essential for using it safely. Even experts avoid deep understanding when possible; this is a feature, not a bug.</p>
+      </div>
+
+      <nav class="detail-nav">
+        <a href="#theory">Theory</a>
+        <a href="#exercises">Exercises</a>
+        <a href="#deep-dive">Deep Dive</a>
+        <a href="#resources">Resources</a>
+      </nav>
+
+      <section class="content-section" id="theory">
+        <h2 class="section-title">
+          <span class="section-marker" style="background: #6B8E9B"></span>
+          Theory
+        </h2>
+
+        <div class="keypoints">
+          <h3>Key Points</h3>
+          <ul class="keypoints-list">
+            <li>Reading and writing code are separate skills (Lopez et al.)</li>
+            <li>Skill hierarchy: Run → Trace → Explain → Write</li>
+            <li>Two models: Procedural ("what happens step by step?") and Functional ("what's the goal?")</li>
+            <li>Delocalized Plans: Code for one intention scattered across multiple locations</li>
+            <li>Even experts avoid deep understanding when possible</li>
+            <li>39% of practitioners find LLM code more readable than human code</li>
+          </ul>
+        </div>
+
+        <div class="concepts">
+          <h3>Concepts</h3>
+          <dl class="concepts-list">
+            <dt>Skill Hierarchy</dt>
+            <dd>Run → Trace → Explain → Write – each level requires the previous one</dd>
+
+            <dt>Procedural Model</dt>
+            <dd>"What happens step by step?" – Following program flow line by line</dd>
+
+            <dt>Functional Model</dt>
+            <dd>"What is the goal?" – Understanding the purpose without tracing every line</dd>
+
+            <dt>Delocalized Plans</dt>
+            <dd>Code belonging to one concept scattered across multiple files/functions</dd>
+
+            <dt>Code Comprehension</dt>
+            <dd>The ability to understand code at appropriate levels of abstraction</dd>
+          </dl>
+        </div>
+
+        <div class="theory-deep-dive">
+          <h3>The Skill Hierarchy</h3>
+
+          <div class="example-box">
+            <strong>Level 1: Run</strong> – Can execute the code
+            <ul>
+              <li>Knows how to start</li>
+              <li>Can provide input</li>
+              <li>Understands the output</li>
+            </ul>
+          </div>
+
+          <div class="example-box">
+            <strong>Level 2: Trace</strong> – Can follow execution
+            <ul>
+              <li>Follows variable values</li>
+              <li>Understands control flow</li>
+              <li>Can predict output</li>
+            </ul>
+          </div>
+
+          <div class="example-box">
+            <strong>Level 3: Explain</strong> – Can describe purpose
+            <ul>
+              <li>Understands why code exists</li>
+              <li>Can summarize function</li>
+              <li>Recognizes design patterns</li>
+            </ul>
+          </div>
+
+          <div class="example-box">
+            <strong>Level 4: Write</strong> – Can create code
+            <ul>
+              <li>Can implement solutions</li>
+              <li>Can modify existing code</li>
+              <li>Can extend functionality</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" id="exercises">
+        <h2 class="section-title">
+          <span class="section-marker" style="background: #6B8E9B"></span>
+          Exercises
+        </h2>
+
+        <div class="exercise-block" id="exercise-CL-1">
+          <h3 class="exercise-title">CL-1: Procedural Reading</h3>
+          <p class="exercise-summary">Read code step by step and trace variable values.</p>
+
+          <div class="exercise-goals">
+            <strong>Learning Objectives:</strong>
+            <ul>
+              <li>Follow program flow</li>
+              <li>Trace variable values</li>
+              <li>Predict output</li>
+            </ul>
+          </div>
+
+          <div class="exercise-content">
+            <div class="code-block">
+              <div class="code-header">
+                <span class="filename">trace_example.py</span>
+                <button class="copy-btn" onclick="copyCode(this)">copy</button>
+              </div>
+              <pre><code>def process_items(items):
+    result = []
+    for item in items:
+        if len(item) > 3:
+            result.append(item.upper())
+        else:
+            result.append(item)
+    return result
+
+data = ["cat", "elephant", "dog", "butterfly"]
+output = process_items(data)
+print(output)</code></pre>
+            </div>
+          </div>
+
+          <p class="exercise-task"><strong>Task:</strong> Trace through this code step by step. For each iteration, write down: current item, condition result, what gets appended. Predict the output before running.</p>
+
+          <div class="reflection">
+            <strong>Reflection:</strong>
+            <ul>
+              <li>Did your prediction match the actual output?</li>
+              <li>Where did you have to slow down and think?</li>
+              <li>What would you change to improve readability?</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exercise-block" id="exercise-CL-2">
+          <h3 class="exercise-title">CL-2: Functional Reading</h3>
+          <p class="exercise-summary">Understand code purpose without tracing every line.</p>
+
+          <div class="exercise-goals">
+            <strong>Learning Objectives:</strong>
+            <ul>
+              <li>Identify code purpose from structure</li>
+              <li>Use naming as documentation</li>
+              <li>Skim before deep reading</li>
+            </ul>
+          </div>
+
+          <div class="exercise-content">
+            <div class="code-block">
+              <div class="code-header">
+                <span class="filename">functional_example.py</span>
+                <button class="copy-btn" onclick="copyCode(this)">copy</button>
+              </div>
+              <pre><code>def validate_museum_record(record):
+    """Check if a museum record has all required fields."""
+    required_fields = ['inventory_number', 'title', 'date_acquired']
+
+    missing = [f for f in required_fields if f not in record]
+
+    if missing:
+        return {'valid': False, 'missing': missing}
+
+    if not record['inventory_number'].startswith('INV-'):
+        return {'valid': False, 'error': 'Invalid inventory format'}
+
+    return {'valid': True}</code></pre>
+            </div>
+          </div>
+
+          <p class="exercise-task"><strong>Task:</strong> Without tracing line-by-line: What does this function do? What are the possible return values? How would you use it?</p>
+
+          <div class="reflection">
+            <strong>Reflection:</strong>
+            <ul>
+              <li>Which elements helped you understand quickly?</li>
+              <li>What questions remain unanswered?</li>
+              <li>How would you test this function?</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" id="deep-dive">
+        <h2 class="section-title">
+          <span class="section-marker" style="background: #6B8E9B"></span>
+          Deep Dive
+        </h2>
+
+        <div class="deep-dive-box">
+          <h3>Reading vs. Writing</h3>
+          <p>Research shows that reading and writing code are distinct skills:</p>
+          <ul>
+            <li>You can learn to read code without being able to write it</li>
+            <li>Professional developers spend 70% of their time reading code</li>
+            <li>Understanding generated code is sufficient for many AI-assisted tasks</li>
+          </ul>
+        </div>
+
+        <div class="deep-dive-box">
+          <h3>Strategies for LLM-Generated Code</h3>
+          <dl class="concepts-list">
+            <dt>Skim First</dt>
+            <dd>Look at function names, structure, imports before details</dd>
+
+            <dt>Ask for Explanation</dt>
+            <dd>Have the LLM explain its own code</dd>
+
+            <dt>Test Before Understanding</dt>
+            <dd>Run with sample data – does it work?</dd>
+
+            <dt>Compare Versions</dt>
+            <dd>Ask for alternative implementations</dd>
+          </dl>
+        </div>
+
+        <div class="deep-dive-box">
+          <h3>Delocalized Plans</h3>
+          <p>In real codebases, functionality is often spread across files:</p>
+          <ul>
+            <li>Configuration in one file</li>
+            <li>Logic in another</li>
+            <li>Error handling in a third</li>
+            <li>Tests elsewhere</li>
+          </ul>
+          <p>Understanding requires mentally assembling these pieces – a skill that transfers to reading LLM output across multiple files.</p>
+        </div>
+      </section>
+
+      <section class="content-section" id="resources">
+        <h2 class="section-title">
+          <span class="section-marker" style="background: #6B8E9B"></span>
+          Resources
+        </h2>
+
+        <ul class="resources-list">
+          <li>
+            <a href="https://dl.acm.org/doi/10.1145/1352135.1352222" target="_blank" rel="noopener">Lopez et al. (2008): Reading vs Writing Skills</a>
+            <span class="resource-type">(research)</span>
+          </li>
+          <li>
+            <a href="https://www.manning.com/books/the-programmers-brain" target="_blank" rel="noopener">Hermans (2021): The Programmer's Brain</a>
+            <span class="resource-type">(book)</span>
+          </li>
+          <li>
+            <a href="https://ieeexplore.ieee.org/document/10172490" target="_blank" rel="noopener">Xie et al. (2019): Quadrant Model of Code Comprehension</a>
+            <span class="resource-type">(research)</span>
+          </li>
+        </ul>
+
+        <blockquote class="chapter-quote">
+          "Code is read much more often than it is written."
+          <cite>— Guido van Rossum</cite>
+        </blockquote>
+      </section>
+
+      <nav class="chapter-nav">
+        <a href="/en/pe.html" class="nav-prev">← Prompt Engineering</a>
+        <a href="/en/rv.html" class="nav-next">Review →</a>
+      </nav>
+    </main>
+
+    <footer>
+      <a href="https://github.com/DigitalHumanitiesCraft/ai-coding-literacy">GitHub</a> ·
+      DigitalHumanitiesCraft · 2025
+    </footer>
+  </div>
+
+  <script>
+    function copyCode(button) {
+      const codeBlock = button.closest('.code-block');
+      const code = codeBlock.querySelector('code').textContent;
+      navigator.clipboard.writeText(code).then(() => {
+        const originalText = button.textContent;
+        button.textContent = 'copied!';
+        setTimeout(() => { button.textContent = originalText; }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>

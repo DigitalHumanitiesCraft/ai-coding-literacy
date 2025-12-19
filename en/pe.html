@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prompt Engineering – AI Coding Literacy</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <a href="/en/">Overview</a>
+      <a href="/en/competency-model.html">Competency Model</a>
+      <a href="/en/reference.html">Reference</a>
+    </nav>
+    <div class="competency-bars">
+      <div class="competency-bar-wrapper">
+        <a href="/en/ct.html" class="competency-bar comp-CT" title="Computational Thinking"><span class="bar-label">CT</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/en/re.html" class="competency-bar comp-RE" title="Requirement Engineering"><span class="bar-label">RE</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/en/ce.html" class="competency-bar comp-CE" title="Context Engineering"><span class="bar-label">CE</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/en/pe.html" class="competency-bar comp-PE active" title="Prompt Engineering"><span class="bar-label">PE</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/en/cl.html" class="competency-bar comp-CL" title="Code Literacy"><span class="bar-label">CL</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/en/rv.html" class="competency-bar comp-RV" title="Review"><span class="bar-label">RV</span></a>
+      </div>
+    </div>
+    <div class="language-switcher">
+      <a href="/de/pe.html" class="lang-link" title="Deutsch">DE</a>
+      <span class="lang-separator">|</span>
+      <a href="/en/pe.html" class="lang-link active" title="English">EN</a>
+    </div>
+  </aside>
+
+  <div class="page-wrapper">
+    <main id="content">
+      <nav class="breadcrumb">
+        <a href="/en/">Overview</a> → <span>Prompt Engineering</span>
+      </nav>
+
+      <div class="chapter-header-block" style="border-left: 4px solid #7B6B8D">
+        <span class="chapter-id-badge" style="background: #7B6B8D">PE</span>
+        <h1 class="chapter-title">Prompt Engineering</h1>
+        <p class="chapter-subtitle">Developing effective prompts</p>
+      </div>
+
+      <div class="chapter-intro-block">
+        <p>Prompt Engineering refers to the development and optimization of input prompts. A prompt is more than a question – how you ask determines the type of answer. Schulhoff et al. (2024) document 58 different prompting techniques. For most applications, a few core strategies suffice.</p>
+      </div>
+
+      <nav class="detail-nav">
+        <a href="#theory">Theory</a>
+        <a href="#exercises">Exercises</a>
+        <a href="#deep-dive">Deep Dive</a>
+        <a href="#resources">Resources</a>
+      </nav>
+
+      <section class="content-section" id="theory">
+        <h2 class="section-title">
+          <span class="section-marker" style="background: #7B6B8D"></span>
+          Theory
+        </h2>
+
+        <div class="keypoints">
+          <h3>Key Points</h3>
+          <ul class="keypoints-list">
+            <li>Schulhoff et al. document 58 prompting techniques – for practice, a few suffice</li>
+            <li>Zero-Shot: Direct instruction without examples – for simple, unambiguous tasks</li>
+            <li>Few-Shot: 2-5 examples show format and handling of edge cases</li>
+            <li>Chain-of-Thought: "Think step by step" – for complex problems</li>
+            <li>Iterative refinement: Prompt → Output → Problem → Adjustment → repeat</li>
+            <li>Explicitly specify output format</li>
+          </ul>
+        </div>
+
+        <div class="concepts">
+          <h3>Concepts</h3>
+          <dl class="concepts-list">
+            <dt>Zero-Shot</dt>
+            <dd>Direct instruction without examples – works for simple, unambiguous tasks</dd>
+
+            <dt>Few-Shot</dt>
+            <dd>2-5 examples in the prompt show the desired format and handling of edge cases</dd>
+
+            <dt>Chain-of-Thought</dt>
+            <dd>"Think step by step" – improves performance on complex, multi-step problems</dd>
+
+            <dt>Role Prompting</dt>
+            <dd>"You are an experienced..." – when specific expertise or perspective matters</dd>
+
+            <dt>Iteration</dt>
+            <dd>Prompt → Check output → Identify problem → Adjust prompt → repeat</dd>
+          </dl>
+        </div>
+
+        <div class="theory-deep-dive">
+          <h3>When to Use Which Technique?</h3>
+
+          <div class="example-box">
+            <strong>Zero-Shot</strong> – When the task is unambiguous:
+            <ul>
+              <li>"Translate this text to German"</li>
+              <li>"Format this data as JSON"</li>
+              <li>"Explain this code"</li>
+            </ul>
+          </div>
+
+          <div class="example-box">
+            <strong>Few-Shot</strong> – When format matters:
+            <ul>
+              <li>Specific output formats</li>
+              <li>Demonstrating handling of edge cases</li>
+              <li>Domain-specific conventions</li>
+            </ul>
+          </div>
+
+          <div class="example-box">
+            <strong>Chain-of-Thought</strong> – For complex logic:
+            <ul>
+              <li>Multi-step calculations</li>
+              <li>Logical reasoning</li>
+              <li>Debugging complex problems</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" id="exercises">
+        <h2 class="section-title">
+          <span class="section-marker" style="background: #7B6B8D"></span>
+          Exercises
+        </h2>
+
+        <div class="exercise-block" id="exercise-PE-1">
+          <h3 class="exercise-title">PE-1: Zero-Shot vs. Few-Shot</h3>
+          <p class="exercise-summary">Understand the difference between direct instruction and example-based prompting.</p>
+
+          <div class="exercise-goals">
+            <strong>Learning Objectives:</strong>
+            <ul>
+              <li>Distinguish Zero-Shot and Few-Shot</li>
+              <li>Recognize when examples help</li>
+              <li>Formulate examples effectively</li>
+            </ul>
+          </div>
+
+          <div class="exercise-content">
+            <div class="code-block">
+              <div class="code-header">
+                <span class="filename">prompting_strategies.txt</span>
+                <button class="copy-btn" onclick="copyCode(this)">copy</button>
+              </div>
+              <pre><code># ZERO-SHOT:
+"Extract the date from this text:
+'The painting was acquired on March 15, 1823.'"
+
+# FEW-SHOT:
+"Extract the date from texts. Format as YYYY-MM-DD.
+
+Text: 'Acquired in January 1820' -> 1820-01-00
+Text: 'Dated to 3.5.1899' -> 1899-05-03
+Text: 'The painting was acquired on March 15, 1823.' ->"</code></pre>
+            </div>
+          </div>
+
+          <p class="exercise-task"><strong>Task:</strong> Test both strategies. When does Few-Shot produce better results? When is Zero-Shot sufficient?</p>
+
+          <div class="reflection">
+            <strong>Reflection:</strong>
+            <ul>
+              <li>How did the outputs differ?</li>
+              <li>What edge cases did the examples cover?</li>
+              <li>When would you use Few-Shot in your work?</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exercise-block" id="exercise-PE-2">
+          <h3 class="exercise-title">PE-2: Iterative Prompting</h3>
+          <p class="exercise-summary">Step by step to the desired result through dialogue.</p>
+
+          <div class="exercise-goals">
+            <strong>Learning Objectives:</strong>
+            <ul>
+              <li>Formulate feedback precisely</li>
+              <li>Know typical adjustments</li>
+              <li>Know when to start over</li>
+            </ul>
+          </div>
+
+          <div class="exercise-content">
+            <div class="code-block">
+              <div class="code-header">
+                <span class="filename">iteration.txt</span>
+                <button class="copy-btn" onclick="copyCode(this)">copy</button>
+              </div>
+              <pre><code># Iteration 1:
+"Write a script that resizes images."
+# Problem: Unclear what size, format, folder
+
+# Iteration 2:
+"Write a Python script with Pillow.
+Input: Folder path as argument
+Task: Scale all .jpg to max 1200px width
+Output: New files with suffix '_web'"
+# Problem: Overwrites originals
+
+# Iteration 3:
+"... (as above)
+Constraint: Don't overwrite original files
+Constraint: Output to subfolder 'web/'"</code></pre>
+            </div>
+          </div>
+
+          <p class="exercise-task"><strong>Task:</strong> Start with a simple prompt for your project. Document 3 iterations: Problem → Adjustment → Result.</p>
+
+          <div class="reflection">
+            <strong>Reflection:</strong>
+            <ul>
+              <li>How many iterations did you need?</li>
+              <li>What type of feedback was most effective?</li>
+              <li>When would it have been better to start over?</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" id="deep-dive">
+        <h2 class="section-title">
+          <span class="section-marker" style="background: #7B6B8D"></span>
+          Deep Dive
+        </h2>
+
+        <div class="deep-dive-box">
+          <h3>Chain-of-Thought in Practice</h3>
+          <p>For complex problems, it helps to guide the LLM to think step by step:</p>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="filename">chain_of_thought.txt</span>
+            </div>
+            <pre><code># Without Chain-of-Thought:
+"Calculate the total cost for 47 books at $23.50 with 19% tax."
+
+# With Chain-of-Thought:
+"Calculate the total cost for 47 books at $23.50 with 19% tax.
+Think step by step:
+1. Calculate the net price
+2. Calculate the tax
+3. Calculate the gross price
+Show each step."</code></pre>
+          </div>
+        </div>
+
+        <div class="deep-dive-box">
+          <h3>Typical Iteration Patterns</h3>
+          <dl class="concepts-list">
+            <dt>"Too general"</dt>
+            <dd>→ Add concrete examples</dd>
+
+            <dt>"Wrong format"</dt>
+            <dd>→ Explicitly specify output format or give an example</dd>
+
+            <dt>"Wrong assumptions"</dt>
+            <dd>→ Make constraints and boundaries explicit</dd>
+
+            <dt>"Too complex"</dt>
+            <dd>→ Break down problem, solve individually</dd>
+
+            <dt>"Inconsistent"</dt>
+            <dd>→ New prompt, start from scratch</dd>
+          </dl>
+        </div>
+
+        <div class="deep-dive-box">
+          <h3>Anti-Patterns to Avoid</h3>
+          <ul>
+            <li><strong>Too many tasks</strong> – One prompt, one goal</li>
+            <li><strong>Vague formulations</strong> – "good", "nice", "appropriate" → be specific</li>
+            <li><strong>Contradictory instructions</strong> – "brief but comprehensive"</li>
+            <li><strong>Excessive role-prompting</strong> – "You are the world's best expert" doesn't help</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="content-section" id="resources">
+        <h2 class="section-title">
+          <span class="section-marker" style="background: #7B6B8D"></span>
+          Resources
+        </h2>
+
+        <ul class="resources-list">
+          <li>
+            <a href="https://arxiv.org/abs/2406.06608" target="_blank" rel="noopener">Schulhoff et al. (2024): The Prompt Report (58 Techniques)</a>
+            <span class="resource-type">(paper)</span>
+          </li>
+          <li>
+            <a href="https://arxiv.org/abs/2201.11903" target="_blank" rel="noopener">Wei et al. (2022): Chain-of-Thought (NeurIPS)</a>
+            <span class="resource-type">(paper)</span>
+          </li>
+          <li>
+            <a href="https://platform.openai.com/docs/guides/prompt-engineering" target="_blank" rel="noopener">OpenAI: Prompt Engineering Guide</a>
+            <span class="resource-type">(documentation)</span>
+          </li>
+        </ul>
+
+        <blockquote class="chapter-quote">
+          "The quality of your output is directly proportional to the quality of your input."
+          <cite>— Prompt Engineering Wisdom</cite>
+        </blockquote>
+      </section>
+
+      <nav class="chapter-nav">
+        <a href="/en/ce.html" class="nav-prev">← Context Engineering</a>
+        <a href="/en/cl.html" class="nav-next">Code Literacy →</a>
+      </nav>
+    </main>
+
+    <footer>
+      <a href="https://github.com/DigitalHumanitiesCraft/ai-coding-literacy">GitHub</a> ·
+      DigitalHumanitiesCraft · 2025
+    </footer>
+  </div>
+
+  <script>
+    function copyCode(button) {
+      const codeBlock = button.closest('.code-block');
+      const code = codeBlock.querySelector('code').textContent;
+      navigator.clipboard.writeText(code).then(() => {
+        const originalText = button.textContent;
+        button.textContent = 'copied!';
+        setTimeout(() => { button.textContent = originalText; }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
