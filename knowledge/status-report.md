@@ -1,13 +1,13 @@
 # Status-Report: AI Coding Literacy
 
 **Datum:** 2025-12-19
-**Phase:** Vertikales Layout implementiert, Content-Update abgeschlossen
+**Phase:** Detailseiten implementiert, Scroll-Spy optimiert
 
 ---
 
 ## Zusammenfassung
 
-Die AI Coding Literacy Lernplattform wurde von einem horizontalen Loop-UI auf ein **vertikales Scroll-Layout** umgestellt. Die Sidebar hat jetzt **ausklappbare Sub-Links** (Theorie, Übungen, Ressourcen) für jedes Kapitel.
+Die AI Coding Literacy Lernplattform hat ein **vertikales Scroll-Layout** mit **ausklappbaren Sub-Links** in der Sidebar. Zusätzlich wurden **6 Detailseiten** (ct.html bis rv.html) mit vertiefenden Inhalten erstellt. Der Scroll-Spy wurde refactored für präzisere Synchronisation.
 
 ---
 
@@ -34,14 +34,34 @@ Die AI Coding Literacy Lernplattform wurde von einem horizontalen Loop-UI auf ei
 | CL | ✅ | Skill-Hierarchie, Prozedurales/Funktionales Modell, Delocalized Plans |
 | RV | ✅ | Halluzinationskategorien, Bug-Patterns, Metamorphic Testing |
 
-### 3. Dokumentation aktualisiert
+### 3. Detailseiten (100%)
+
+| Seite | Status | Inhalt |
+|-------|--------|--------|
+| ct.html | ✅ | Computational Thinking - Vertiefung mit erweiterten Übungen |
+| re.html | ✅ | Requirement Engineering - User Stories, INVEST |
+| ce.html | ✅ | Context Engineering - RAG, Lost in Middle |
+| pe.html | ✅ | Prompt Engineering - Zero-Shot, Few-Shot, CoT |
+| cl.html | ✅ | Code Literacy - Skill-Hierarchie, Lesestrategien |
+| rv.html | ✅ | Review - Halluzinationskategorien, Bug-Patterns |
+
+### 4. Scroll-Spy Refactoring (100%)
+
+| Änderung | Status |
+|----------|--------|
+| Section Observer als primäre Quelle | ✅ |
+| Chapter Observer als Fallback | ✅ |
+| Debug-Logging entfernt | ✅ |
+| Duplikation reduziert | ✅ |
+
+### 5. Dokumentation aktualisiert
 
 | Datei | Status |
 |-------|--------|
 | README.md | ✅ |
 | status-report.md | ✅ |
-| implementation-plan.md | ⏳ |
-| design.md | ⏳ |
+| implementation-plan.md | ✅ |
+| design.md | ✅ |
 
 ---
 
@@ -137,10 +157,9 @@ Die AI Coding Literacy Lernplattform wurde von einem horizontalen Loop-UI auf ei
 
 ## Nächste Schritte
 
-1. **implementation-plan.md** und **design.md** aktualisieren
-2. **Detailseiten** erstellen (ct.html, re.html, etc.)
-3. **GitHub Pages** – Deployment testen
-4. **Mobile-Test** – Responsive Layout prüfen
+1. **GitHub Pages** – Deployment testen
+2. **Mobile-Test** – Responsive Layout prüfen
+3. **Cross-Browser-Test** – Firefox, Safari, Edge
 
 ---
 

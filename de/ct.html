@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Computational Thinking – AI Coding Literacy</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <a href="/de/">Übersicht</a>
+      <a href="/de/kompetenzmodell.html">Kompetenzmodell</a>
+      <a href="/de/referenz.html">Referenz</a>
+    </nav>
+    <div class="competency-bars">
+      <div class="competency-bar-wrapper">
+        <a href="/de/ct.html" class="competency-bar comp-CT active" title="Computational Thinking">
+          <span class="bar-label">CT</span>
+        </a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/de/re.html" class="competency-bar comp-RE" title="Requirement Engineering">
+          <span class="bar-label">RE</span>
+        </a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/de/ce.html" class="competency-bar comp-CE" title="Context Engineering">
+          <span class="bar-label">CE</span>
+        </a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/de/pe.html" class="competency-bar comp-PE" title="Prompt Engineering">
+          <span class="bar-label">PE</span>
+        </a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/de/cl.html" class="competency-bar comp-CL" title="Code Literacy">
+          <span class="bar-label">CL</span>
+        </a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/de/rv.html" class="competency-bar comp-RV" title="Review">
+          <span class="bar-label">RV</span>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Page Content -->
+  <div class="page-wrapper">
+    <main id="content">
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb">
+        <a href="/de/">Übersicht</a> → <span>Computational Thinking</span>
+      </nav>
+
+      <!-- Chapter Header -->
+      <div class="chapter-header-block" style="border-left: 4px solid #4A7C7C">
+        <span class="chapter-id-badge" style="background: #4A7C7C">CT</span>
+        <h1 class="chapter-title">Computational Thinking</h1>
+        <p class="chapter-subtitle">Probleme strukturieren und zerlegen</p>
+      </div>
+
+      <!-- Intro -->
+      <div class="chapter-intro-block">
+        <p>Computational Thinking ist die Fähigkeit, Probleme so zu strukturieren, dass sie mit automatisierten Prozessen lösbar werden. Es geht nicht um Programmieren, sondern um eine Denkweise: Wie zerlege ich ein komplexes Problem in handhabbare Teile? Welche Muster erkenne ich? Was kann ich abstrahieren?</p>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="detail-nav">
+        <a href="#theorie">Theorie</a>
+        <a href="#uebungen">Übungen</a>
+        <a href="#vertiefung">Vertiefung</a>
+        <a href="#ressourcen">Ressourcen</a>
+      </nav>
+
+      <!-- Theorie Section -->
+      <section class="content-section" id="theorie">
+        <h2 class="section-title">
+          <span class="section-marker" style="background: #4A7C7C"></span>
+          Theorie
+        </h2>
+
+        <div class="keypoints">
+          <h3>Kernpunkte</h3>
+          <ul class="keypoints-list">
+            <li>Computational Thinking ist eine Denkweise, keine Programmiersprache</li>
+            <li>Die vier Säulen: Dekomposition, Mustererkennung, Abstraktion, Algorithmus</li>
+            <li>Jede Säule ist für sich wertvoll, auch ohne Code zu schreiben</li>
+            <li>LLMs verstärken Ihre Denkarbeit – sie ersetzen sie nicht</li>
+            <li>Strukturiertes Denken führt zu besseren Prompts und besseren Ergebnissen</li>
+          </ul>
+        </div>
+
+        <div class="concepts">
+          <h3>Konzepte</h3>
+          <dl class="concepts-list">
+            <dt>Dekomposition</dt>
+            <dd>Ein komplexes Problem in kleinere, handhabbare Teile zerlegen. Jeder Teil wird separat lösbar.</dd>
+
+            <dt>Mustererkennung</dt>
+            <dd>Wiederkehrende Strukturen identifizieren. Was ist hier ähnlich wie bei anderen Problemen?</dd>
+
+            <dt>Abstraktion</dt>
+            <dd>Vom konkreten Fall zum allgemeinen Prinzip. Was ist das Wesentliche?</dd>
+
+            <dt>Algorithmus</dt>
+            <dd>Eine Schritt-für-Schritt-Anleitung zur Lösung. Präzise, wiederholbar, überprüfbar.</dd>
+
+            <dt>Iteration</dt>
+            <dd>Wiederholung eines Prozesses mit schrittweiser Verfeinerung. Test → Feedback → Anpassung.</dd>
+
+            <dt>Bedingte Logik</dt>
+            <dd>Entscheidungen basierend auf Bedingungen: "Wenn X, dann Y, sonst Z"</dd>
+          </dl>
+        </div>
+
+        <div class="theory-deep-dive">
+          <h3>Die vier Säulen im Detail</h3>
+
+          <h4>1. Dekomposition</h4>
+          <p>Komplexe Probleme erscheinen oft unlösbar, weil wir sie als Ganzes betrachten. Dekomposition bedeutet, sie in Teilprobleme zu zerlegen, die jeweils für sich lösbar sind.</p>
+          <div class="example-box">
+            <strong>Beispiel:</strong> "Erstelle eine Bibliografie aus meinen Notizen" wird zu:
+            <ol>
+              <li>Notizen einlesen (welches Format?)</li>
+              <li>Relevante Felder extrahieren (Autor, Titel, Jahr)</li>
+              <li>Daten strukturieren (welches Schema?)</li>
+              <li>Format generieren (BibTeX, HTML, etc.)</li>
+            </ol>
+          </div>
+
+          <h4>2. Mustererkennung</h4>
+          <p>Wenn Sie ein Problem lösen, fragen Sie sich: Wo habe ich ähnliches schon gesehen? Muster zu erkennen spart Arbeit und ermöglicht Wiederverwendung.</p>
+          <div class="example-box">
+            <strong>Beispiel:</strong> "CSV-Dateien zusammenführen" und "Excel-Dateien zusammenführen" folgen demselben Muster:
+            <ul>
+              <li>Dateien finden → Einzeln einlesen → Struktur prüfen → Zusammenfügen → Speichern</li>
+            </ul>
+          </div>
+
+          <h4>3. Abstraktion</h4>
+          <p>Abstraktion bedeutet, sich auf das Wesentliche zu konzentrieren und Details zu ignorieren. Was ist die Essenz des Problems?</p>
+          <div class="example-box">
+            <strong>Beispiel:</strong> Ob Sie Bilder, Texte oder Datenbanken verarbeiten – das abstrakte Problem ist oft dasselbe: "Transformation von Eingabe A zu Ausgabe B nach Regeln R".
+          </div>
+
+          <h4>4. Algorithmus</h4>
+          <p>Ein Algorithmus ist eine präzise Handlungsanweisung. Er muss so klar sein, dass jemand (oder etwas) ihn ohne Rückfragen ausführen kann.</p>
+          <div class="example-box">
+            <strong>Beispiel – schlecht:</strong> "Sortiere die Dateien"<br>
+            <strong>Beispiel – gut:</strong> "Für jede Datei im Ordner: Lies das Datum aus dem Dateinamen. Erstelle einen Unterordner mit dem Format YYYY-MM falls nicht vorhanden. Verschiebe die Datei in diesen Unterordner."
+          </div>
+        </div>
+      </section>
+
+      <!-- Übungen Section -->
+      <section class="content-section" id="uebungen">
+        <h2 class="section-title">
+          <span class="section-marker" style="background: #4A7C7C"></span>
+          Übungen
+        </h2>
+
+        <div class="exercise-block" id="exercise-CT-1">
+          <h3 class="exercise-title">CT-1: Problem zerlegen</h3>
+          <p class="exercise-summary">Üben Sie Dekomposition an einem konkreten Problem.</p>
+
+          <div class="exercise-goals">
+            <strong>Lernziele:</strong>
+            <ul>
+              <li>Ein komplexes Problem in Teilprobleme zerlegen</li>
+              <li>Abhängigkeiten zwischen Teilen erkennen</li>
+              <li>Präzise Teilaufgaben formulieren</li>
+            </ul>
+          </div>
+
+          <div class="exercise-content">
+            <p><strong>Szenario:</strong> Sie haben 500 gescannte Archivdokumente (JPG). Sie möchten: OCR durchführen, nach Datum sortieren, und eine durchsuchbare Übersicht erstellen.</p>
+
+            <div class="code-block">
+              <div class="code-header">
+                <span class="filename">dekomposition.txt</span>
+                <button class="copy-btn" onclick="copyCode(this)">kopieren</button>
+              </div>
+              <pre><code># Großes Problem:
+"500 Archivdokumente digitalisieren und sortieren"
+
+# Zerlegung in Teilprobleme:
+1. Dateien inventarisieren
+   - Wie viele? Welche Formate? Namenskonvention?
+
+2. OCR durchführen
+   - Welches Tool? Welche Sprache? Batch-Verarbeitung?
+
+3. Datum extrahieren
+   - Aus Dateiname? Aus OCR-Text? Format?
+
+4. Sortierstruktur festlegen
+   - Nach Jahr? Monat? Thema? Ordnerstruktur?
+
+5. Übersicht generieren
+   - CSV? HTML? Durchsuchbar wie?
+
+# Abhängigkeiten:
+1 → 2 → 3 → 4 → 5 (linear)
+Aber: 4 kann parallel zu 2-3 geplant werden</code></pre>
+            </div>
+          </div>
+
+          <p class="exercise-task"><strong>Aufgabe:</strong> Wählen Sie ein Problem aus Ihrer eigenen Arbeit. Zerlegen Sie es in mindestens 5 Teilprobleme. Notieren Sie die Abhängigkeiten.</p>
+
+          <div class="reflection">
+            <strong>Reflexion:</strong>
+            <ul>
+              <li>Welches Teilproblem ist am schwierigsten?</li>
+              <li>Wo könnten Sie ein LLM einsetzen?</li>
+              <li>Was müssen Sie selbst entscheiden?</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exercise-block" id="exercise-CT-2">
+          <h3 class="exercise-title">CT-2: Algorithmus formulieren</h3>
+          <p class="exercise-summary">Eine präzise Handlungsanweisung entwickeln.</p>
+
+          <div class="exercise-goals">
+            <strong>Lernziele:</strong>
+            <ul>
+              <li>Vage Beschreibungen in präzise Schritte übersetzen</li>
+              <li>Bedingte Logik formulieren</li>
+              <li>Grenzfälle antizipieren</li>
+            </ul>
+          </div>
+
+          <div class="exercise-content">
+            <p><strong>Szenario:</strong> Definieren Sie einen Algorithmus für: "Alle Bilder im Ordner nach Aufnahmedatum sortieren".</p>
+
+            <div class="code-block">
+              <div class="code-header">
+                <span class="filename">algorithmus.txt</span>
+                <button class="copy-btn" onclick="copyCode(this)">kopieren</button>
+              </div>
+              <pre><code># Version 1 (zu vage):
+"Sortiere Bilder nach Datum"
+
+# Version 2 (besser):
+"Für jedes Bild: Lies EXIF-Datum, erstelle Ordner YYYY-MM, verschiebe"
+
+# Version 3 (präzise):
+EINGABE: Ordnerpfad
+AUSGABE: Neue Ordnerstruktur mit sortierten Bildern
+
+FÜR JEDE Datei im Ordner:
+  WENN Datei ist Bild (.jpg, .png, .heic):
+    Versuche EXIF-Datum zu lesen
+    WENN EXIF vorhanden:
+      datum = EXIF-Aufnahmedatum
+    SONST:
+      datum = Datei-Änderungsdatum
+      WARNUNG ausgeben: "Kein EXIF für {Dateiname}"
+
+    zielordner = Format(datum, "YYYY-MM")
+    WENN zielordner nicht existiert:
+      Erstelle zielordner
+
+    Verschiebe Datei nach zielordner
+    Protokolliere: "{Dateiname} → {zielordner}"
+
+AUSGABE: Zusammenfassung (X Dateien sortiert, Y Warnungen)</code></pre>
+            </div>
+          </div>
+
+          <p class="exercise-task"><strong>Aufgabe:</strong> Schreiben Sie einen Algorithmus für: "Alle PDFs in einem Ordner nach der ersten Seite benennen". Berücksichtigen Sie Grenzfälle.</p>
+
+          <div class="reflection">
+            <strong>Reflexion:</strong>
+            <ul>
+              <li>Welche Grenzfälle haben Sie übersehen?</li>
+              <li>Ist Ihr Algorithmus präzise genug für ein LLM?</li>
+              <li>Wo brauchen Sie menschliche Entscheidung?</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exercise-block" id="exercise-CT-3">
+          <h3 class="exercise-title">CT-3: Muster erkennen und abstrahieren</h3>
+          <p class="exercise-summary">Von konkreten Fällen zu allgemeinen Lösungen.</p>
+
+          <div class="exercise-goals">
+            <strong>Lernziele:</strong>
+            <ul>
+              <li>Gemeinsame Strukturen in verschiedenen Problemen erkennen</li>
+              <li>Abstrakte Problemklassen identifizieren</li>
+              <li>Wiederverwendbare Lösungen formulieren</li>
+            </ul>
+          </div>
+
+          <div class="exercise-content">
+            <p><strong>Beobachtung:</strong> Diese drei Aufgaben sehen verschieden aus, folgen aber dem gleichen Muster:</p>
+
+            <div class="code-block">
+              <div class="code-header">
+                <span class="filename">muster.txt</span>
+                <button class="copy-btn" onclick="copyCode(this)">kopieren</button>
+              </div>
+              <pre><code># Aufgabe A: "Alle Namen in einer CSV großschreiben"
+# Aufgabe B: "Alle Datumsangaben von DD.MM.YYYY zu YYYY-MM-DD"
+# Aufgabe C: "Alle Währungen von EUR zu USD umrechnen"
+
+# Gemeinsames Muster:
+TRANSFORMATION = {
+  eingabe: Datei mit Spalte X
+  operation: Funktion F auf jeden Wert in X anwenden
+  ausgabe: Datei mit transformierter Spalte X
+}
+
+# Abstrakte Lösung:
+def transform_column(datei, spalte, funktion):
+    für jede zeile in datei:
+        zeile[spalte] = funktion(zeile[spalte])
+    speichere datei
+
+# Konkrete Anwendungen:
+transform_column("namen.csv", "name", str.upper)
+transform_column("daten.csv", "datum", convert_date)
+transform_column("preise.csv", "preis", eur_to_usd)</code></pre>
+            </div>
+          </div>
+
+          <p class="exercise-task"><strong>Aufgabe:</strong> Identifizieren Sie drei verschiedene Aufgaben aus Ihrer Arbeit, die demselben abstrakten Muster folgen. Beschreiben Sie das gemeinsame Muster.</p>
+        </div>
+      </section>
+
+      <!-- Vertiefung Section -->
+      <section class="content-section" id="vertiefung">
+        <h2 class="section-title">
+          <span class="section-marker" style="background: #4A7C7C"></span>
+          Vertiefung
+        </h2>
+
+        <div class="deep-dive-box">
+          <h3>CT und LLMs: Warum es zusammengehört</h3>
+          <p>Computational Thinking ist die Grundlage für effektive LLM-Nutzung:</p>
+          <ul>
+            <li><strong>Dekomposition</strong> macht Prompts fokussierter – ein Problem pro Anfrage</li>
+            <li><strong>Mustererkennung</strong> hilft, erfolgreiche Prompts wiederzuverwenden</li>
+            <li><strong>Abstraktion</strong> ermöglicht Transfer zwischen Domains</li>
+            <li><strong>Algorithmen</strong> führen zu präziseren Spezifikationen</li>
+          </ul>
+        </div>
+
+        <div class="deep-dive-box">
+          <h3>Häufige Denkfehler</h3>
+          <dl class="concepts-list">
+            <dt>Zu früh ins Detail</dt>
+            <dd>Lösung beginnen, bevor das Problem klar ist. Erst strukturieren, dann lösen.</dd>
+
+            <dt>Alles auf einmal</dt>
+            <dd>Das gesamte Problem in einem Prompt. Besser: Schritt für Schritt.</dd>
+
+            <dt>Muster übersehen</dt>
+            <dd>"Das ist komplett anders" – oft sind nur die Details anders, die Struktur ist gleich.</dd>
+
+            <dt>Keine Iteration</dt>
+            <dd>Erster Versuch muss perfekt sein. Besser: Schnell anfangen, iterativ verbessern.</dd>
+          </dl>
+        </div>
+
+        <div class="deep-dive-box">
+          <h3>CT in der Praxis: Ein Beispiel</h3>
+          <p><strong>Problem:</strong> "Ich muss 200 Aufsätze nach Thema kategorisieren."</p>
+
+          <h4>1. Dekomposition</h4>
+          <ul>
+            <li>Was sind die Kategorien? (müssen erst definiert werden)</li>
+            <li>Was ist der Input? (PDF, Text, Metadaten?)</li>
+            <li>Was ist der Output? (Liste, Ordner, Datenbank?)</li>
+            <li>Wie wird kategorisiert? (Titel, Abstract, Volltext?)</li>
+          </ul>
+
+          <h4>2. Mustererkennung</h4>
+          <p>Das ist ein Klassifikationsproblem. Ähnlich wie: Emails sortieren, Bilder taggen, Dokumente archivieren.</p>
+
+          <h4>3. Abstraktion</h4>
+          <p>Kern: Textklassifikation = Input-Text → Analyse → Kategorie-Label</p>
+
+          <h4>4. Algorithmus</h4>
+          <pre>FÜR JEDEN Aufsatz:
+  Extrahiere Abstract
+  Sende an LLM: "Kategorisiere nach Schema X"
+  Speichere Ergebnis
+  WENN unsicher: markiere zur manuellen Prüfung</pre>
+        </div>
+      </section>
+
+      <!-- Ressourcen Section -->
+      <section class="content-section" id="ressourcen">
+        <h2 class="section-title">
+          <span class="section-marker" style="background: #4A7C7C"></span>
+          Ressourcen
+        </h2>
+
+        <ul class="resources-list">
+          <li>
+            <a href="https://www.cs.cmu.edu/~15110-s13/Wing06-ct.pdf" target="_blank" rel="noopener">Wing, J. (2006): Computational Thinking</a>
+            <span class="resource-type">(paper)</span>
+            <p class="resource-note">Der Originalartikel, der CT als Kernkompetenz definiert</p>
+          </li>
+          <li>
+            <a href="https://cacm.acm.org/magazines/2011/3/105314-computational-thinking-for-all/fulltext" target="_blank" rel="noopener">Barr & Stephenson (2011): CT for All</a>
+            <span class="resource-type">(paper)</span>
+            <p class="resource-note">CT als allgemeine Problemlösungskompetenz</p>
+          </li>
+          <li>
+            <a href="https://www.bbc.co.uk/bitesize/guides/zp92mp3/revision/1" target="_blank" rel="noopener">BBC Bitesize: Computational Thinking</a>
+            <span class="resource-type">(documentation)</span>
+            <p class="resource-note">Praxisnahe Einführung mit Beispielen</p>
+          </li>
+        </ul>
+
+        <blockquote class="chapter-quote">
+          "Computational thinking is a way of solving problems, designing systems, and understanding human behavior that draws on concepts fundamental to computer science."
+          <cite>— Jeannette Wing</cite>
+        </blockquote>
+      </section>
+
+      <!-- Navigation zu anderen Kapiteln -->
+      <nav class="chapter-nav">
+        <span class="nav-prev disabled">← Vorheriges Kapitel</span>
+        <a href="/de/re.html" class="nav-next">Nächstes: Requirement Engineering →</a>
+      </nav>
+
+    </main>
+
+    <footer>
+      <a href="https://github.com/DigitalHumanitiesCraft/ai-coding-literacy">GitHub</a> ·
+      DigitalHumanitiesCraft · 2025
+    </footer>
+  </div>
+
+  <script>
+    // Simple copy function for code blocks
+    function copyCode(button) {
+      const codeBlock = button.closest('.code-block');
+      const code = codeBlock.querySelector('code').textContent;
+      navigator.clipboard.writeText(code).then(() => {
+        const originalText = button.textContent;
+        button.textContent = 'kopiert!';
+        setTimeout(() => {
+          button.textContent = originalText;
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>

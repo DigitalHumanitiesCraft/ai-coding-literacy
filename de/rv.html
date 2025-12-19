@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Review – AI Coding Literacy</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <a href="/de/">Übersicht</a>
+      <a href="/de/kompetenzmodell.html">Kompetenzmodell</a>
+      <a href="/de/referenz.html">Referenz</a>
+    </nav>
+    <div class="competency-bars">
+      <div class="competency-bar-wrapper">
+        <a href="/de/ct.html" class="competency-bar comp-CT" title="Computational Thinking"><span class="bar-label">CT</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/de/re.html" class="competency-bar comp-RE" title="Requirement Engineering"><span class="bar-label">RE</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/de/ce.html" class="competency-bar comp-CE" title="Context Engineering"><span class="bar-label">CE</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/de/pe.html" class="competency-bar comp-PE" title="Prompt Engineering"><span class="bar-label">PE</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/de/cl.html" class="competency-bar comp-CL" title="Code Literacy"><span class="bar-label">CL</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/de/rv.html" class="competency-bar comp-RV active" title="Review"><span class="bar-label">RV</span></a>
+      </div>
+    </div>
+  </aside>
+
+  <div class="page-wrapper">
+    <main id="content">
+      <nav class="breadcrumb">
+        <a href="/de/">Übersicht</a> → <span>Review</span>
+      </nav>
+
+      <div class="chapter-header-block" style="border-left: 4px solid #4A6B8C">
+        <span class="chapter-id-badge" style="background: #4A6B8C">RV</span>
+        <h1 class="chapter-title">Review</h1>
+        <p class="chapter-subtitle">Ergebnisse systematisch prüfen</p>
+      </div>
+
+      <div class="chapter-intro-block">
+        <p>Review bezeichnet die systematische Prüfung von generiertem Code gegen die definierten Anforderungen. LLM-generierter Code sieht oft korrekt aus, enthält aber systematisch Fehler. EvalPlus zeigt: Pass-Raten sinken um 19-28.9% bei gründlicherem Testing. Vertrauen ist gut, Prüfen ist besser.</p>
+      </div>
+
+      <nav class="detail-nav">
+        <a href="#theorie">Theorie</a>
+        <a href="#uebungen">Übungen</a>
+        <a href="#vertiefung">Vertiefung</a>
+        <a href="#ressourcen">Ressourcen</a>
+      </nav>
+
+      <section class="content-section" id="theorie">
+        <h2 class="section-title">
+          <span class="section-marker" style="background: #4A6B8C"></span>
+          Theorie
+        </h2>
+
+        <div class="keypoints">
+          <h3>Kernpunkte</h3>
+          <ul class="keypoints-list">
+            <li>EvalPlus: Pass-Raten sinken um 19-28.9% bei gründlicherem Testing</li>
+            <li>Tambon et al.: 10 Bug-Patterns in LLM-generiertem Code</li>
+            <li>29.5% Python-Snippets von Copilot haben Sicherheitslücken (Fu et al.)</li>
+            <li>5 Halluzinationskategorien: Intent Conflicting, Context Inconsistency, Dead Code, Knowledge Conflicting</li>
+            <li>Metamorphic Testing: Paraphrasierte Prompts zur Konsistenzprüfung</li>
+            <li>Systematisch testen: Normalfall, Grenzfall, Fehlerfall</li>
+          </ul>
+        </div>
+
+        <div class="concepts">
+          <h3>Konzepte</h3>
+          <dl class="concepts-list">
+            <dt>Halluzinierte Objekte</dt>
+            <dd>Nicht existierende Funktionen oder Bibliotheken, die das LLM erfindet</dd>
+
+            <dt>Intent Conflicting</dt>
+            <dd>Code widerspricht der Anforderung – macht etwas anderes als gewünscht</dd>
+
+            <dt>Context Inconsistency</dt>
+            <dd>Code widerspricht dem bereitgestellten Kontext (Beispieldaten, Dokumentation)</dd>
+
+            <dt>Metamorphic Testing</dt>
+            <dd>Paraphrasierte Prompts zur Konsistenzprüfung – erkennt 75% fehlerhafter Programme</dd>
+
+            <dt>Traceback</dt>
+            <dd>Die Fehlerspur, die zeigt, wo der Fehler aufgetreten ist – von unten nach oben lesen</dd>
+
+            <dt>Logischer Fehler</dt>
+            <dd>Code läuft, aber das Ergebnis ist falsch – am schwierigsten zu finden</dd>
+          </dl>
+        </div>
+
+        <div class="theory-deep-dive">
+          <h3>Die 5 Halluzinationskategorien</h3>
+
+          <div class="example-box">
+            <strong>1. Intent Conflicting</strong>
+            <p>Der Code macht etwas anderes als gefordert.</p>
+            <ul>
+              <li>Gefordert: "Sortiere absteigend" → Code sortiert aufsteigend</li>
+              <li>Gefordert: "Nur .jpg" → Code verarbeitet alle Bildformate</li>
+            </ul>
+          </div>
+
+          <div class="example-box">
+            <strong>2. Context Inconsistency</strong>
+            <p>Der Code ignoriert den bereitgestellten Kontext.</p>
+            <ul>
+              <li>Beispieldaten haben Spalte "ID" → Code erwartet "id"</li>
+              <li>Dokumentation sagt UTF-8 → Code verwendet Latin-1</li>
+            </ul>
+          </div>
+
+          <div class="example-box">
+            <strong>3. Dead Code</strong>
+            <p>Code, der nie ausgeführt wird.</p>
+            <ul>
+              <li>Funktionen die definiert aber nie aufgerufen werden</li>
+              <li>Bedingungen die immer wahr/falsch sind</li>
+            </ul>
+          </div>
+
+          <div class="example-box">
+            <strong>4. Knowledge Conflicting</strong>
+            <p>Widerspruch zu allgemeinem Wissen.</p>
+            <ul>
+              <li>Falsche API-Signaturen</li>
+              <li>Veraltete Syntax</li>
+              <li>Erfundene Bibliotheken</li>
+            </ul>
+          </div>
+
+          <div class="example-box">
+            <strong>5. Halluzinierte Objekte</strong>
+            <p>Komplett erfundene Dinge.</p>
+            <ul>
+              <li>`import fictional_library`</li>
+              <li>`pandas.magic_transform()` – existiert nicht</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" id="uebungen">
+        <h2 class="section-title">
+          <span class="section-marker" style="background: #4A6B8C"></span>
+          Übungen
+        </h2>
+
+        <div class="exercise-block" id="exercise-RV-1">
+          <h3 class="exercise-title">RV-1: Fehlermeldungen lesen</h3>
+          <p class="exercise-summary">Tracebacks verstehen und die Ursache lokalisieren.</p>
+
+          <div class="exercise-goals">
+            <strong>Lernziele:</strong>
+            <ul>
+              <li>Tracebacks von unten nach oben lesen</li>
+              <li>Die relevante Zeile identifizieren</li>
+              <li>Fehlertypen unterscheiden</li>
+            </ul>
+          </div>
+
+          <div class="exercise-content">
+            <div class="code-block">
+              <div class="code-header">
+                <span class="filename">traceback.txt</span>
+                <button class="copy-btn" onclick="copyCode(this)">kopieren</button>
+              </div>
+              <pre><code>Traceback (most recent call last):
+  File "script.py", line 15, in <module>
+    result = process_data(data)
+  File "script.py", line 8, in process_data
+    return data["name"].upper()
+KeyError: 'name'
+
+# Interpretation:
+# 1. Letzte Zeile: Der Fehler (KeyError: 'name')
+# 2. Zeile davor: Wo es passierte (Zeile 8, data["name"])
+# 3. Das Dictionary 'data' hat keinen Key 'name'
+# 4. Lösung: Prüfen welche Keys tatsächlich existieren</code></pre>
+            </div>
+          </div>
+
+          <p class="exercise-task"><strong>Aufgabe:</strong> Lassen Sie vom LLM Code generieren und provozieren Sie absichtlich einen Fehler (z.B. falsche Datei). Lesen Sie den Traceback und lokalisieren Sie das Problem.</p>
+
+          <div class="reflection">
+            <strong>Reflexion:</strong>
+            <ul>
+              <li>Welche Information steht in der letzten Zeile?</li>
+              <li>Wie finden Sie die fehlerhafte Zeile in Ihrem Code?</li>
+              <li>War der Fehler im generierten Code oder in Ihrer Verwendung?</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exercise-block" id="exercise-RV-2">
+          <h3 class="exercise-title">RV-2: Systematische Code-Prüfung</h3>
+          <p class="exercise-summary">Eine Checkliste für LLM-generierten Code durcharbeiten.</p>
+
+          <div class="exercise-goals">
+            <strong>Lernziele:</strong>
+            <ul>
+              <li>Systematisch statt intuitiv prüfen</li>
+              <li>Typische LLM-Fehler erkennen</li>
+              <li>Eigene Checklisten entwickeln</li>
+            </ul>
+          </div>
+
+          <div class="exercise-content">
+            <div class="code-block">
+              <div class="code-header">
+                <span class="filename">review_checkliste.md</span>
+                <button class="copy-btn" onclick="copyCode(this)">kopieren</button>
+              </div>
+              <pre><code># Review-Checkliste für LLM-Code
+
+## 1. Läuft es?
+- [ ] Code startet ohne Syntaxfehler
+- [ ] Alle Imports sind verfügbar
+- [ ] Keine erfundenen Bibliotheken
+
+## 2. Macht es das Richtige?
+- [ ] Ausgabe entspricht Anforderung
+- [ ] Normalfall funktioniert
+- [ ] Grenzfälle getestet (leere Eingabe, große Daten)
+
+## 3. Macht es nichts Falsches?
+- [ ] Keine unerwarteten Nebeneffekte
+- [ ] Originaldaten werden nicht überschrieben
+- [ ] Keine Sicherheitslücken (Paths, Injections)
+
+## 4. Ist es robust?
+- [ ] Fehlerbehandlung vorhanden
+- [ ] Fehlermeldungen sind hilfreich
+- [ ] Keine hardcodierten Pfade/Werte</code></pre>
+            </div>
+          </div>
+
+          <p class="exercise-task"><strong>Aufgabe:</strong> Nehmen Sie Code aus einer vorherigen Übung und arbeiten Sie die Checkliste durch. Dokumentieren Sie jeden Punkt.</p>
+
+          <div class="reflection">
+            <strong>Reflexion:</strong>
+            <ul>
+              <li>Welche Probleme hätten Sie ohne Checkliste übersehen?</li>
+              <li>Wie würden Sie die Checkliste für Ihre Projekte anpassen?</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" id="vertiefung">
+        <h2 class="section-title">
+          <span class="section-marker" style="background: #4A6B8C"></span>
+          Vertiefung
+        </h2>
+
+        <div class="deep-dive-box">
+          <h3>Die drei Testfälle</h3>
+          <p>Jeder Code sollte mindestens mit diesen drei Szenarien getestet werden:</p>
+          <dl class="concepts-list">
+            <dt>Normalfall</dt>
+            <dd>Typische, erwartete Eingabe. "Das sollte funktionieren."</dd>
+
+            <dt>Grenzfall</dt>
+            <dd>Extreme Werte: leere Liste, sehr große Datei, Sonderzeichen, Umlaute.</dd>
+
+            <dt>Fehlerfall</dt>
+            <dd>Ungültige Eingabe: Datei existiert nicht, falsches Format, fehlende Rechte.</dd>
+          </dl>
+        </div>
+
+        <div class="deep-dive-box">
+          <h3>Metamorphic Testing</h3>
+          <p>Eine einfache Technik um LLM-Konsistenz zu prüfen:</p>
+          <ol>
+            <li>Stellen Sie dieselbe Anfrage mit anderen Worten</li>
+            <li>Vergleichen Sie die Ergebnisse</li>
+            <li>Bei unterschiedlichen Ergebnissen: mindestens eines ist falsch</li>
+          </ol>
+          <p><strong>Beispiel:</strong></p>
+          <ul>
+            <li>Prompt A: "Sortiere diese Liste absteigend"</li>
+            <li>Prompt B: "Ordne diese Werte vom größten zum kleinsten"</li>
+            <li>Wenn unterschiedliche Ergebnisse → Nachprüfen!</li>
+          </ul>
+        </div>
+
+        <div class="deep-dive-box">
+          <h3>10 häufige Bug-Patterns (nach Tambon et al.)</h3>
+          <ol>
+            <li><strong>Off-by-one</strong> – Schleife läuft einmal zu oft/zu wenig</li>
+            <li><strong>Missing Null Check</strong> – Keine Prüfung auf leere Werte</li>
+            <li><strong>Wrong Operator</strong> – `=` statt `==`, `>` statt `>=`</li>
+            <li><strong>Type Mismatch</strong> – String statt Integer, etc.</li>
+            <li><strong>Hardcoded Values</strong> – Feste Pfade, die nur lokal funktionieren</li>
+            <li><strong>Missing Error Handling</strong> – Keine try/except</li>
+            <li><strong>Resource Leak</strong> – Dateien nicht geschlossen</li>
+            <li><strong>Race Condition</strong> – Bei paralleler Verarbeitung</li>
+            <li><strong>Incorrect API Usage</strong> – Falsche Parameter, veraltete Syntax</li>
+            <li><strong>Security Vulnerabilities</strong> – SQL Injection, Path Traversal</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="content-section" id="ressourcen">
+        <h2 class="section-title">
+          <span class="section-marker" style="background: #4A6B8C"></span>
+          Ressourcen
+        </h2>
+
+        <ul class="resources-list">
+          <li>
+            <a href="https://arxiv.org/abs/2404.00971" target="_blank" rel="noopener">Liu et al. (2024): HalluCode Benchmark</a>
+            <span class="resource-type">(paper)</span>
+          </li>
+          <li>
+            <a href="https://arxiv.org/abs/2403.08937" target="_blank" rel="noopener">Tambon et al. (2024): Bug-Pattern Taxonomie</a>
+            <span class="resource-type">(paper)</span>
+          </li>
+          <li>
+            <a href="https://dl.acm.org/doi/10.1145/3643769" target="_blank" rel="noopener">Fu et al. (2024): Security Analysis of Copilot</a>
+            <span class="resource-type">(paper)</span>
+          </li>
+          <li>
+            <a href="https://www.oneusefulthing.org/" target="_blank" rel="noopener">Mollick, E. (2024): Co-Intelligence</a>
+            <span class="resource-type">(book)</span>
+          </li>
+        </ul>
+
+        <blockquote class="chapter-quote">
+          "Trust, but verify. Especially with AI-generated code."
+          <cite>— Adapted from Reagan</cite>
+        </blockquote>
+      </section>
+
+      <nav class="chapter-nav">
+        <a href="/de/cl.html" class="nav-prev">← Code Literacy</a>
+        <span class="nav-next disabled">Letztes Kapitel</span>
+      </nav>
+    </main>
+
+    <footer>
+      <a href="https://github.com/DigitalHumanitiesCraft/ai-coding-literacy">GitHub</a> ·
+      DigitalHumanitiesCraft · 2025
+    </footer>
+  </div>
+
+  <script>
+    function copyCode(button) {
+      const codeBlock = button.closest('.code-block');
+      const code = codeBlock.querySelector('code').textContent;
+      navigator.clipboard.writeText(code).then(() => {
+        const originalText = button.textContent;
+        button.textContent = 'kopiert!';
+        setTimeout(() => { button.textContent = originalText; }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>

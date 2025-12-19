@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Requirement Engineering – AI Coding Literacy</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <a href="/de/">Übersicht</a>
+      <a href="/de/kompetenzmodell.html">Kompetenzmodell</a>
+      <a href="/de/referenz.html">Referenz</a>
+    </nav>
+    <div class="competency-bars">
+      <div class="competency-bar-wrapper">
+        <a href="/de/ct.html" class="competency-bar comp-CT" title="Computational Thinking"><span class="bar-label">CT</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/de/re.html" class="competency-bar comp-RE active" title="Requirement Engineering"><span class="bar-label">RE</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/de/ce.html" class="competency-bar comp-CE" title="Context Engineering"><span class="bar-label">CE</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/de/pe.html" class="competency-bar comp-PE" title="Prompt Engineering"><span class="bar-label">PE</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/de/cl.html" class="competency-bar comp-CL" title="Code Literacy"><span class="bar-label">CL</span></a>
+      </div>
+      <div class="competency-bar-wrapper">
+        <a href="/de/rv.html" class="competency-bar comp-RV" title="Review"><span class="bar-label">RV</span></a>
+      </div>
+    </div>
+  </aside>
+
+  <div class="page-wrapper">
+    <main id="content">
+      <nav class="breadcrumb">
+        <a href="/de/">Übersicht</a> → <span>Requirement Engineering</span>
+      </nav>
+
+      <div class="chapter-header-block" style="border-left: 4px solid #8B4557">
+        <span class="chapter-id-badge" style="background: #8B4557">RE</span>
+        <h1 class="chapter-title">Requirement Engineering</h1>
+        <p class="chapter-subtitle">Anforderungen präzise formulieren</p>
+      </div>
+
+      <div class="chapter-intro-block">
+        <p>Requirement Engineering bezeichnet die systematische Formulierung von Anforderungen. Für die Arbeit mit LLMs ist das entscheidend, weil ein Prompt funktional ein Requirements-Dokument ist. Wer präzise Anforderungen formulieren kann, schreibt bessere Prompts.</p>
+      </div>
+
+      <nav class="detail-nav">
+        <a href="#theorie">Theorie</a>
+        <a href="#uebungen">Übungen</a>
+        <a href="#vertiefung">Vertiefung</a>
+        <a href="#ressourcen">Ressourcen</a>
+      </nav>
+
+      <section class="content-section" id="theorie">
+        <h2 class="section-title">
+          <span class="section-marker" style="background: #8B4557"></span>
+          Theorie
+        </h2>
+
+        <div class="keypoints">
+          <h3>Kernpunkte</h3>
+          <ul class="keypoints-list">
+            <li>Ein Prompt ist funktional ein Requirements-Dokument</li>
+            <li>User Stories sind niedrigschwelliger als formale Spezifikationen</li>
+            <li>LLMs raten bei vagen Anforderungen – sie füllen Lücken mit Annahmen</li>
+            <li>Akzeptanzkriterien definieren, bevor Code generiert wird</li>
+            <li>Grenzfälle und Ausnahmen antizipieren</li>
+            <li>Das LLM kann nur liefern, was Sie spezifizieren</li>
+          </ul>
+        </div>
+
+        <div class="concepts">
+          <h3>Konzepte</h3>
+          <dl class="concepts-list">
+            <dt>User Story</dt>
+            <dd>Leichtgewichtiges Anforderungsformat: "Als [Rolle] möchte ich [Funktion], damit [Nutzen]"</dd>
+
+            <dt>INVEST-Kriterien</dt>
+            <dd>Gute Anforderungen sind: Independent, Negotiable, Valuable, Estimable, Small, Testable</dd>
+
+            <dt>Kernfragen</dt>
+            <dd>Was tun? Was nicht? Eingabe? Ausgabe? Woran erkenne ich Erfolg?</dd>
+
+            <dt>Funktionale Anforderung</dt>
+            <dd>Was das System tun soll (Eingabe → Verarbeitung → Ausgabe)</dd>
+
+            <dt>Akzeptanzkriterium</dt>
+            <dd>Messbarer Maßstab, ob eine Anforderung erfüllt ist</dd>
+
+            <dt>Grenzfall</dt>
+            <dd>Extreme oder ungewöhnliche Eingaben, die getestet werden müssen</dd>
+          </dl>
+        </div>
+
+        <div class="theory-deep-dive">
+          <h3>Die fünf Kernfragen</h3>
+          <p>Bevor Sie ein LLM ansprechen, beantworten Sie diese Fragen:</p>
+
+          <div class="example-box">
+            <ol>
+              <li><strong>Was soll es tun?</strong> Die Hauptfunktion in einem Satz.</li>
+              <li><strong>Was soll es nicht tun?</strong> Explizite Abgrenzungen.</li>
+              <li><strong>Was ist die Eingabe?</strong> Format, Quelle, Beispiele.</li>
+              <li><strong>Was ist die Ausgabe?</strong> Format, Ziel, Beispiele.</li>
+              <li><strong>Woran erkenne ich Erfolg?</strong> Messbare Kriterien.</li>
+            </ol>
+          </div>
+
+          <h3>User Stories für Prompts</h3>
+          <p>Das User-Story-Format aus der Softwareentwicklung eignet sich hervorragend für Prompts:</p>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="filename">user_story.txt</span>
+            </div>
+            <pre><code>"Als [WER bin ich / meine Rolle]
+möchte ich [WAS soll passieren]
+damit [WARUM / welchen Nutzen habe ich]"
+
+Beispiel:
+"Als Historikerin möchte ich
+eine CSV-Datei mit Archivdaten in eine formatierte Bibliografie umwandeln,
+damit ich sie direkt in meine Publikation übernehmen kann."</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" id="uebungen">
+        <h2 class="section-title">
+          <span class="section-marker" style="background: #8B4557"></span>
+          Übungen
+        </h2>
+
+        <div class="exercise-block" id="exercise-RE-1">
+          <h3 class="exercise-title">RE-1: User Stories schreiben</h3>
+          <p class="exercise-summary">Anforderungen im User-Story-Format formulieren, bevor Sie prompten.</p>
+
+          <div class="exercise-goals">
+            <strong>Lernziele:</strong>
+            <ul>
+              <li>Das User-Story-Format anwenden</li>
+              <li>Akzeptanzkriterien definieren</li>
+              <li>Abgrenzungen explizit machen</li>
+            </ul>
+          </div>
+
+          <div class="exercise-content">
+            <p><strong>Szenario:</strong> Sie möchten ein Tool, das Ihre Bibliografie verwaltet.</p>
+
+            <div class="code-block">
+              <div class="code-header">
+                <span class="filename">anforderung.txt</span>
+                <button class="copy-btn" onclick="copyCode(this)">kopieren</button>
+              </div>
+              <pre><code># Vage Anforderung (schlecht):
+"Ich brauche was, um meine Bibliografie zu verwalten"
+
+# User Story (besser):
+"Als Forschende möchte ich eine CSV-Datei mit
+Bibliografiedaten in eine formatierte HTML-Seite
+umwandeln, damit ich meine Publikationsliste
+auf meiner Website anzeigen kann."
+
+# Präzise Spezifikation (am besten):
+# Eingabe: CSV mit Spalten (Autor, Titel, Jahr, Zeitschrift)
+# Ausgabe: HTML mit alphabetisch sortierter Liste
+# Format: Autor (Jahr): Titel. In: Zeitschrift.
+# Nicht im Scope: PDF-Verlinkung, Dubletten-Erkennung</code></pre>
+            </div>
+          </div>
+
+          <p class="exercise-task"><strong>Aufgabe:</strong> Schreiben Sie für Ihr eigenes Projekt: 1) Eine User Story, 2) Eingabe und Ausgabe, 3) Drei Akzeptanzkriterien, 4) Zwei Abgrenzungen (Was soll es nicht tun?)</p>
+
+          <div class="reflection">
+            <strong>Reflexion:</strong>
+            <ul>
+              <li>Welche Anforderungen waren implizit (in Ihrem Kopf)?</li>
+              <li>Was hätte das LLM ohne diese Spezifikation geraten?</li>
+              <li>Wie schwer war es, Abgrenzungen zu formulieren?</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exercise-block" id="exercise-RE-2">
+          <h3 class="exercise-title">RE-2: Akzeptanzkriterien testen</h3>
+          <p class="exercise-summary">Code systematisch gegen definierte Kriterien prüfen.</p>
+
+          <div class="exercise-goals">
+            <strong>Lernziele:</strong>
+            <ul>
+              <li>Testfälle aus Anforderungen ableiten</li>
+              <li>Systematisch Grenzfälle durchspielen</li>
+              <li>Abweichungen dokumentieren</li>
+            </ul>
+          </div>
+
+          <p class="exercise-task"><strong>Aufgabe:</strong> Nehmen Sie den generierten Code aus RE-1 und testen Sie ihn gegen Ihre Akzeptanzkriterien. Erstellen Sie eine Checkliste und prüfen Sie jeden Punkt.</p>
+
+          <div class="reflection">
+            <strong>Reflexion:</strong>
+            <ul>
+              <li>Wie viele Ihrer Kriterien wurden erfüllt?</li>
+              <li>Welche Fehler hätten Sie ohne Kriterien übersehen?</li>
+              <li>Was müssen Sie im Prompt anpassen?</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" id="vertiefung">
+        <h2 class="section-title">
+          <span class="section-marker" style="background: #8B4557"></span>
+          Vertiefung
+        </h2>
+
+        <div class="deep-dive-box">
+          <h3>INVEST-Kriterien für Prompts</h3>
+          <p>Die INVEST-Kriterien helfen, gute Anforderungen zu schreiben:</p>
+          <dl class="concepts-list">
+            <dt>Independent (Unabhängig)</dt>
+            <dd>Eine Anfrage pro Prompt. Nicht: "Mach A und dann B und C".</dd>
+
+            <dt>Negotiable (Verhandelbar)</dt>
+            <dd>Details können angepasst werden. Das LLM kann Rückfragen stellen.</dd>
+
+            <dt>Valuable (Wertvoll)</dt>
+            <dd>Jede Anforderung liefert konkreten Nutzen.</dd>
+
+            <dt>Estimable (Schätzbar)</dt>
+            <dd>Sie können einschätzen, ob es in einem Prompt lösbar ist.</dd>
+
+            <dt>Small (Klein)</dt>
+            <dd>Eine überschaubare Aufgabe. Komplexes in Teile zerlegen.</dd>
+
+            <dt>Testable (Testbar)</dt>
+            <dd>Sie wissen vorher, wie Sie prüfen, ob es funktioniert.</dd>
+          </dl>
+        </div>
+
+        <div class="deep-dive-box">
+          <h3>Typische Fehler bei Anforderungen</h3>
+          <ul>
+            <li><strong>"Es soll gut aussehen"</strong> – Was bedeutet "gut"? Konkretisieren!</li>
+            <li><strong>"Wie bei X"</strong> – Das LLM kennt X vielleicht nicht oder anders.</li>
+            <li><strong>Implizite Annahmen</strong> – "Natürlich soll es auch Y können" – nein, nicht natürlich.</li>
+            <li><strong>Keine Grenzfälle</strong> – Was bei leerer Eingabe? Bei Sonderzeichen?</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="content-section" id="ressourcen">
+        <h2 class="section-title">
+          <span class="section-marker" style="background: #8B4557"></span>
+          Ressourcen
+        </h2>
+
+        <ul class="resources-list">
+          <li>
+            <a href="https://arxiv.org/abs/2402.13823" target="_blank" rel="noopener">Vogelsang & Fischbach (2024): LLMs for RE Tasks</a>
+            <span class="resource-type">(paper)</span>
+          </li>
+          <li>
+            <a href="https://link.springer.com/chapter/10.1007/978-3-319-30282-9_14" target="_blank" rel="noopener">Lucassen et al. (2016): User Stories in Practice</a>
+            <span class="resource-type">(paper)</span>
+          </li>
+          <li>
+            <a href="https://www.mountaingoatsoftware.com/books/user-stories-applied" target="_blank" rel="noopener">User Stories Applied (Mike Cohn)</a>
+            <span class="resource-type">(book)</span>
+          </li>
+        </ul>
+
+        <blockquote class="chapter-quote">
+          "The hardest single part of building a software system is deciding precisely what to build."
+          <cite>— Fred Brooks</cite>
+        </blockquote>
+      </section>
+
+      <nav class="chapter-nav">
+        <a href="/de/ct.html" class="nav-prev">← Computational Thinking</a>
+        <a href="/de/ce.html" class="nav-next">Context Engineering →</a>
+      </nav>
+    </main>
+
+    <footer>
+      <a href="https://github.com/DigitalHumanitiesCraft/ai-coding-literacy">GitHub</a> ·
+      DigitalHumanitiesCraft · 2025
+    </footer>
+  </div>
+
+  <script>
+    function copyCode(button) {
+      const codeBlock = button.closest('.code-block');
+      const code = codeBlock.querySelector('code').textContent;
+      navigator.clipboard.writeText(code).then(() => {
+        const originalText = button.textContent;
+        button.textContent = 'kopiert!';
+        setTimeout(() => { button.textContent = originalText; }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>

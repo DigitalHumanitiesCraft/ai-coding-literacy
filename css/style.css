@@ -1112,3 +1112,171 @@ footer a {
     padding: 1rem;
   }
 }
+
+/* ============================================================
+   DETAIL PAGES
+   ============================================================ */
+
+/* Breadcrumb */
+.breadcrumb {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.breadcrumb a {
+  color: var(--link);
+}
+
+/* Detail Page Navigation */
+.detail-nav {
+  display: flex;
+  gap: 1.5rem;
+  margin: 2rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.detail-nav a {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 14px;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.detail-nav a:hover {
+  color: var(--text);
+}
+
+/* Theory Deep Dive */
+.theory-deep-dive {
+  margin-top: 2rem;
+}
+
+.theory-deep-dive h3 {
+  font-size: 18px;
+  margin: 2rem 0 1rem;
+}
+
+.theory-deep-dive h4 {
+  font-size: 16px;
+  margin: 1.5rem 0 0.75rem;
+  color: var(--text);
+}
+
+.theory-deep-dive p {
+  margin-bottom: 1rem;
+}
+
+/* Example Box */
+.example-box {
+  background: var(--code-bg);
+  border-left: 3px solid var(--border);
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.example-box strong {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.example-box ol,
+.example-box ul {
+  margin: 0.5rem 0 0 1.5rem;
+}
+
+/* Deep Dive Box */
+.deep-dive-box {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.deep-dive-box h3 {
+  font-size: 18px;
+  margin: 0 0 1rem;
+}
+
+.deep-dive-box h4 {
+  font-size: 16px;
+  margin: 1.5rem 0 0.5rem;
+}
+
+.deep-dive-box pre {
+  background: var(--bg);
+  padding: 1rem;
+  margin: 1rem 0;
+  overflow-x: auto;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 14px;
+}
+
+/* Resource Notes */
+.resource-note {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0.25rem 0 0.75rem 0;
+}
+
+/* Chapter Navigation */
+.chapter-nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 3rem 0 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.chapter-nav a,
+.chapter-nav span {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 14px;
+}
+
+.chapter-nav a {
+  color: var(--link);
+}
+
+.chapter-nav .disabled {
+  color: var(--text-muted);
+}
+
+/* Exercise Content */
+.exercise-content {
+  margin: 1rem 0;
+}
+
+.exercise-content p {
+  margin-bottom: 1rem;
+}
+
+/* Reflection in Exercises */
+.reflection {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border);
+}
+
+.reflection ul {
+  margin: 0.5rem 0 0 1.5rem;
+}
+
+/* Mobile adjustments for detail pages */
+@media (max-width: 600px) {
+  .detail-nav {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .chapter-nav {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .chapter-nav .nav-prev {
+    order: 2;
+  }
+}
