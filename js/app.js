@@ -204,6 +204,9 @@ function createInputPanel(chapter) {
   const panel = document.createElement('div');
   panel.className = 'loop-panel panel-input';
 
+  // Hole theory.description als Einführungstext
+  const introText = chapter.theory?.description || '';
+
   panel.innerHTML = `
     <span class="panel-phase">Input</span>
     <div class="chapter-header">
@@ -212,7 +215,8 @@ function createInputPanel(chapter) {
     </div>
     <h3>${chapter.name}</h3>
     <p class="chapter-short">${chapter.short}</p>
-    <button class="loop-start-btn" type="button">Loop starten</button>
+    ${introText ? `<p class="chapter-intro">${introText}</p>` : ''}
+    <button class="loop-start-btn" type="button">Weiter zur Theorie</button>
   `;
 
   // Click handler for start button
@@ -230,11 +234,11 @@ function createProcessPanel(chapter) {
   panel.className = 'loop-panel panel-process';
 
   let html = `<span class="panel-phase">Process</span>`;
-  html += `<p>${chapter.theory.description}</p>`;
+  html += `<h4>${chapter.name}: Theorie</h4>`;
 
   // Key Points
   if (chapter.theory.keyPoints && chapter.theory.keyPoints.length > 0) {
-    html += `<h4>Kernpunkte</h4><ul class="goals-list">`;
+    html += `<h5>Kernpunkte</h5><ul class="goals-list">`;
     chapter.theory.keyPoints.forEach(point => {
       html += `<li>${point}</li>`;
     });
@@ -243,7 +247,7 @@ function createProcessPanel(chapter) {
 
   // Concepts
   if (chapter.theory.concepts && chapter.theory.concepts.length > 0) {
-    html += `<div class="concepts"><h4>Konzepte</h4>`;
+    html += `<div class="concepts"><h5>Konzepte</h5>`;
     chapter.theory.concepts.forEach(concept => {
       html += `<p class="concept"><span class="concept-term">${concept.term}</span> – ${concept.definition}</p>`;
     });
