@@ -1,0 +1,720 @@
+{
+  "meta": {
+    "title": "AI Coding Literacy",
+    "subtitle": "Eine Lernplattform für Wissenschaftler·innen zur systematischen Entwicklung von Kompetenzen im Umgang mit KI-gestützter Programmierung.",
+    "description": "AI Coding Literacy bezeichnet die Kompetenz, Large Language Models als Werkzeuge zur Codeentwicklung einzusetzen. Das Ziel ist nicht professionelle Softwareentwicklung, sondern Scripting und Prototyping: kleine, funktionale Lösungen für konkrete Probleme aus dem eigenen Arbeitsbereich."
+  },
+
+  "audience": {
+    "description": "Fachwissenschaftler·innen aus dem geisteswissenschaftlich-kulturwissenschaftlichen Bereich, die ohne Programmiervorerfahrung kleine, funktionale Tools für ihre Arbeit entwickeln wollen.",
+    "prerequisites": [
+      "Keine Programmiervorerfahrung erforderlich",
+      "Grundlegende Computerkenntnisse (Dateisystem, Browser)",
+      "Erfahrung mit einem LLM (Chat-Interface)",
+      "Konkrete Probleme aus dem eigenen Arbeitsbereich"
+    ]
+  },
+
+  "chapters": [
+    {
+      "id": "CT",
+      "name": "Computational Thinking",
+      "color": "#4A7C7C",
+      "short": "Probleme strukturieren und zerlegen",
+
+      "theory": {
+        "description": "Problemzerlegung, Mustererkennung und Abstraktion – unabhängig von konkreter Programmiersyntax. Das eigene Domänenwissen wird zum Ausgangspunkt: Probleme so strukturieren, dass sie in ausführbare Schritte übersetzt werden können.",
+        "keyPoints": [
+          "Computational Thinking ist keine Programmierung, sondern eine Denkweise",
+          "Die vier Kernelemente: Dekomposition, Mustererkennung, Abstraktion, Algorithmus",
+          "LLMs verstehen Probleme besser, wenn Sie sie selbst verstanden haben",
+          "Pseudocode und Flussdiagramme helfen, bevor Code generiert wird"
+        ],
+        "concepts": [
+          {
+            "term": "Dekomposition",
+            "definition": "Ein großes Problem in kleinere, handhabbare Teile zerlegen"
+          },
+          {
+            "term": "Mustererkennung",
+            "definition": "Wiederkehrende Strukturen und Ähnlichkeiten identifizieren"
+          },
+          {
+            "term": "Abstraktion",
+            "definition": "Das Wesentliche herausarbeiten, irrelevante Details ausblenden"
+          },
+          {
+            "term": "Algorithmus",
+            "definition": "Eine Schritt-für-Schritt-Anleitung zur Lösung eines Problems"
+          },
+          {
+            "term": "Pseudocode",
+            "definition": "Informelle Beschreibung eines Ablaufs in natürlicher Sprache"
+          }
+        ]
+      },
+
+      "handsOn": [
+        {
+          "id": "CT-1",
+          "title": "Code als Lesestoff",
+          "summary": "Code als Text betrachten, der gelesen und verstanden werden kann – ähnlich wie Quellentexte in der wissenschaftlichen Arbeit.",
+          "goals": [
+            "Die Grundstruktur eines Python-Programms erkennen",
+            "Zeilennummern und Einrückungen als Strukturelemente verstehen",
+            "Kommentare als Annotationen interpretieren"
+          ],
+          "exercise": {
+            "description": "Betrachten Sie das folgende Python-Programm. Es lädt ein Bild und zeigt dessen Dimensionen an.",
+            "code": "# Bildanalyse-Skript\nfrom PIL import Image\nimport os\n\ndef analyse_image(pfad):\n    \"\"\"Analysiert ein Bild und gibt Dimensionen zurück.\"\"\"\n    bild = Image.open(pfad)\n    breite, hoehe = bild.size\n    return breite, hoehe\n\n# Hauptprogramm\nif __name__ == \"__main__\":\n    b, h = analyse_image(\"beispiel.jpg\")\n    print(f\"Größe: {b} x {h} Pixel\")",
+            "filename": "bildanalyse.py",
+            "task": "Formulieren Sie einen Prompt, der diesen Code erklärt. Nutzen Sie das Muster: 'Erkläre mir den folgenden Python-Code Zeile für Zeile. Ich bin [Ihre Fachrichtung] und habe keine Programmiererfahrung.'"
+          },
+          "reflection": [
+            "Welche Teile des Codes haben Sie auch ohne Erklärung verstanden?",
+            "Welche Begriffe waren unbekannt?",
+            "Wie hilfreich war die LLM-Erklärung? Was hat gefehlt?"
+          ]
+        },
+        {
+          "id": "CT-2",
+          "title": "Probleme zerlegen",
+          "summary": "Wie man Probleme so strukturiert, dass LLMs sie verstehen und lösen können.",
+          "goals": [
+            "Probleme in Teilschritte zerlegen (Dekomposition)",
+            "Wiederkehrende Muster erkennen",
+            "Vom konkreten Problem zur allgemeinen Lösung abstrahieren"
+          ],
+          "exercise": {
+            "description": "Nehmen Sie ein Problem aus Ihrem Arbeitsbereich und zerlegen Sie es in Teilschritte.",
+            "task": "Schreiben Sie Pseudocode, bevor Sie einen Prompt formulieren. Das zwingt Sie, das Problem wirklich zu verstehen."
+          },
+          "reflection": [
+            "Hat das Zerlegen geholfen, das Problem klarer zu sehen?",
+            "Wo waren die Grenzen zwischen den Teilschritten unklar?",
+            "Was haben Sie über Ihr eigenes Problemverständnis gelernt?"
+          ]
+        },
+        {
+          "id": "CT-3",
+          "title": "Workflow-Automatisierung",
+          "summary": "Wiederkehrende Aufgaben automatisieren. Vom Einzelskript zum wiederverwendbaren Workflow.",
+          "goals": [
+            "Automatisierungspotenzial erkennen",
+            "Batch-Verarbeitung verstehen",
+            "Einfache Workflow-Skripte lesen"
+          ],
+          "exercise": {
+            "description": "Verstehen Sie diesen Batch-Verarbeitungs-Workflow.",
+            "code": "from pathlib import Path\nimport pandas as pd\n\n# Alle CSV-Dateien im Ordner finden\neingabe_ordner = Path(\"rohdaten\")\nausgabe_ordner = Path(\"verarbeitet\")\nausgabe_ordner.mkdir(exist_ok=True)\n\nfor datei in eingabe_ordner.glob(\"*.csv\"):\n    print(f\"Verarbeite: {datei.name}\")\n    \n    # Laden und bereinigen\n    df = pd.read_csv(datei)\n    df = df.dropna()\n    df.columns = [c.lower().strip() for c in df.columns]\n    \n    # Speichern\n    ausgabe = ausgabe_ordner / datei.name\n    df.to_csv(ausgabe, index=False)\n    \nprint(f\"Fertig! {len(list(eingabe_ordner.glob('*.csv')))} Dateien verarbeitet.\")",
+            "filename": "batch_workflow.py",
+            "task": "Was macht das Skript? Welche Schritte werden für jede Datei ausgeführt?"
+          },
+          "reflection": [
+            "Wo in Ihrer Arbeit gibt es wiederkehrende Aufgaben?",
+            "Was müsste angepasst werden für Ihre Dateien?",
+            "Wie würden Sie den Workflow erweitern?"
+          ]
+        }
+      ],
+
+      "resources": [
+        {
+          "title": "Wing, J. (2006). Computational Thinking",
+          "url": "https://www.cs.cmu.edu/~15110-s13/Wing06-ct.pdf",
+          "type": "paper"
+        },
+        {
+          "title": "Denning, P. & Tedre, M. (2019). Computational Thinking",
+          "url": "https://mitpress.mit.edu/books/computational-thinking",
+          "type": "book"
+        }
+      ],
+
+      "quote": {
+        "text": "Computational thinking is a way of solving problems, designing systems, and understanding human behavior that draws on concepts fundamental to computer science.",
+        "source": "Jeannette Wing, 2006"
+      }
+    },
+
+    {
+      "id": "RE",
+      "name": "Requirement Engineering",
+      "color": "#8B4557",
+      "short": "Anforderungen präzise formulieren",
+
+      "theory": {
+        "description": "Präzise Formulierung von Anforderungen und Akzeptanzkriterien. Was soll das Tool tun? Was nicht? Welche Eingaben, welche Ausgaben? Woran erkennt man, dass es korrekt funktioniert?",
+        "keyPoints": [
+          "Unklare Anforderungen führen zu unbrauchbarem Code",
+          "Akzeptanzkriterien definieren, bevor Code generiert wird",
+          "Grenzfälle und Ausnahmen antizipieren",
+          "Das LLM kann nur liefern, was Sie spezifizieren"
+        ],
+        "concepts": [
+          {
+            "term": "Funktionale Anforderung",
+            "definition": "Was das System tun soll (Eingabe → Verarbeitung → Ausgabe)"
+          },
+          {
+            "term": "Akzeptanzkriterium",
+            "definition": "Messbarer Maßstab, ob eine Anforderung erfüllt ist"
+          },
+          {
+            "term": "Grenzfall",
+            "definition": "Extreme oder ungewöhnliche Eingaben, die getestet werden müssen"
+          },
+          {
+            "term": "Nicht-funktionale Anforderung",
+            "definition": "Qualitätseigenschaften wie Geschwindigkeit, Lesbarkeit, Wartbarkeit"
+          }
+        ]
+      },
+
+      "handsOn": [
+        {
+          "id": "RE-1",
+          "title": "Anforderungen spezifizieren",
+          "summary": "Eine vollständige Anforderungsspezifikation schreiben, bevor Sie prompten.",
+          "goals": [
+            "Funktionale Anforderungen klar beschreiben",
+            "Akzeptanzkriterien definieren",
+            "Grenzfälle identifizieren"
+          ],
+          "exercise": {
+            "description": "Sie möchten ein Skript, das CSV-Dateien in JSON konvertiert. Schreiben Sie die Anforderungen auf.",
+            "task": "Beantworten Sie: Was ist die Eingabe? Was ist die Ausgabe? Was passiert bei leeren Dateien? Bei fehlenden Spalten? Bei Sonderzeichen?"
+          },
+          "reflection": [
+            "Wie viele Grenzfälle haben Sie gefunden?",
+            "Welche Anforderungen waren implizit (in Ihrem Kopf)?",
+            "Was hätte das LLM falsch gemacht ohne diese Spezifikation?"
+          ]
+        },
+        {
+          "id": "RE-2",
+          "title": "Akzeptanzkriterien testen",
+          "summary": "Code systematisch gegen definierte Kriterien prüfen.",
+          "goals": [
+            "Testfälle aus Anforderungen ableiten",
+            "Systematisch Grenzfälle durchspielen",
+            "Abweichungen dokumentieren"
+          ],
+          "exercise": {
+            "description": "Nehmen Sie den generierten Code aus RE-1 und testen Sie ihn gegen Ihre Akzeptanzkriterien.",
+            "task": "Erstellen Sie eine Checkliste und prüfen Sie jeden Punkt. Dokumentieren Sie, was funktioniert und was nicht."
+          },
+          "reflection": [
+            "Wie viele Ihrer Kriterien wurden erfüllt?",
+            "Welche Fehler hätten Sie ohne Kriterien übersehen?",
+            "Was müssen Sie im Prompt anpassen?"
+          ]
+        }
+      ],
+
+      "resources": [
+        {
+          "title": "IEEE Guide to Software Requirements Specifications",
+          "url": "https://standards.ieee.org/standard/830-1998.html",
+          "type": "standard"
+        },
+        {
+          "title": "User Stories Applied (Mike Cohn)",
+          "url": "https://www.mountaingoatsoftware.com/books/user-stories-applied",
+          "type": "book"
+        }
+      ],
+
+      "quote": {
+        "text": "The hardest single part of building a software system is deciding precisely what to build.",
+        "source": "Fred Brooks, No Silver Bullet"
+      }
+    },
+
+    {
+      "id": "CE",
+      "name": "Context Engineering",
+      "color": "#5B7355",
+      "short": "Kontext für LLMs gestalten",
+
+      "theory": {
+        "description": "Systematische Gestaltung des Informationskontexts für das LLM. Auswahl, Kompression und Anordnung relevanter Informationen: Codebasis-Ausschnitte, Dokumentation, Beispiele, Projektkonventionen.",
+        "keyPoints": [
+          "Das Kontextfenster ist begrenzt – wählen Sie weise",
+          "Relevante Informationen priorisieren und komprimieren",
+          "Beispiele sind oft wirksamer als Beschreibungen",
+          "Projektkonventionen explizit machen"
+        ],
+        "concepts": [
+          {
+            "term": "Kontextfenster",
+            "definition": "Die maximale Textmenge, die ein LLM gleichzeitig verarbeiten kann"
+          },
+          {
+            "term": "Few-Shot Learning",
+            "definition": "Dem LLM Beispiele geben, um das gewünschte Verhalten zu zeigen"
+          },
+          {
+            "term": "Retrieval",
+            "definition": "Gezieltes Abrufen relevanter Informationen für den Kontext"
+          },
+          {
+            "term": "Destillation",
+            "definition": "Komplexe Informationen auf das Wesentliche komprimieren"
+          }
+        ]
+      },
+
+      "handsOn": [
+        {
+          "id": "CE-1",
+          "title": "Wissen destillieren",
+          "summary": "Einen komplexen Standard so aufbereiten, dass er ins Kontextfenster passt.",
+          "goals": [
+            "Relevante Informationen identifizieren",
+            "Kontext strukturiert komprimieren",
+            "Wirksamkeit testen"
+          ],
+          "exercise": {
+            "description": "Besuchen Sie die Darwin-Core-Dokumentation (dwc.tdwg.org) und destillieren Sie die relevanten Felder für eine Museumssammlung.",
+            "task": "Erstellen Sie ein kompaktes Referenzdokument mit Feldname, Definition und Beispielwert. Testen Sie: Kann das LLM damit korrekt arbeiten?"
+          },
+          "reflection": [
+            "Wie viel kürzer wurde das Dokument?",
+            "Welche Informationen haben Sie weggelassen?",
+            "Hat das LLM mit dem destillierten Kontext korrekt gearbeitet?"
+          ]
+        },
+        {
+          "id": "CE-2",
+          "title": "Textanalyse mit Kontext",
+          "summary": "Text als Daten verarbeiten – mit dem richtigen Kontext für das LLM.",
+          "goals": [
+            "Tokenisierung verstehen",
+            "Textbereinigung nachvollziehen",
+            "Domänenspezifischen Kontext bereitstellen"
+          ],
+          "exercise": {
+            "description": "Verstehen Sie diese einfache Textanalyse.",
+            "code": "from collections import Counter\nimport re\n\ntext = \"\"\"Die Vase stammt aus dem 5. Jahrhundert.\nDie Vase zeigt mythologische Szenen.\"\"\"\n\n# Tokenisieren\nwoerter = re.findall(r'\\b\\w+\\b', text.lower())\n\n# Stopwörter entfernen\nstopwoerter = {'die', 'der', 'das', 'aus', 'dem'}\nwoerter_bereinigt = [w for w in woerter if w not in stopwoerter]\n\n# Häufigkeiten zählen\nhaeufigkeiten = Counter(woerter_bereinigt)\nprint(haeufigkeiten.most_common(5))",
+            "filename": "textanalyse.py",
+            "task": "Was passiert in jedem Schritt? Wie würden Sie domänenspezifische Stopwörter ergänzen?"
+          },
+          "reflection": [
+            "Welcher Kontext würde die Analyse verbessern?",
+            "Welche Informationen gehen durch die Normalisierung verloren?",
+            "Wie würden Sie das LLM auf Ihre Domäne spezialisieren?"
+          ]
+        }
+      ],
+
+      "resources": [
+        {
+          "title": "Mei et al. (2025). A Survey of Context Engineering for LLMs",
+          "url": "https://arxiv.org/abs/2507.13334",
+          "type": "paper"
+        },
+        {
+          "title": "Anthropic: Prompt Engineering Guide",
+          "url": "https://docs.anthropic.com/claude/docs/prompt-engineering",
+          "type": "documentation"
+        }
+      ],
+
+      "quote": {
+        "text": "Context is everything. The same prompt with different context produces completely different results.",
+        "source": "Anthropic Documentation"
+      }
+    },
+
+    {
+      "id": "PE",
+      "name": "Prompt Engineering",
+      "color": "#7B6B8D",
+      "short": "Effektive Prompts entwickeln",
+
+      "theory": {
+        "description": "Entwicklung und Optimierung von Eingabeaufforderungen. Auswahl von Prompting-Techniken, um LLMs effektiv zu steuern und die Qualität der generierten Ausgaben zu maximieren.",
+        "keyPoints": [
+          "Klarheit und Präzision schlagen Länge",
+          "Struktur hilft: Rolle, Aufgabe, Format, Einschränkungen",
+          "Iterativ verbessern durch Dialog",
+          "Ausgabeformat explizit spezifizieren"
+        ],
+        "concepts": [
+          {
+            "term": "System-Prompt",
+            "definition": "Grundlegende Anweisungen, die das Verhalten des LLM steuern"
+          },
+          {
+            "term": "Chain-of-Thought",
+            "definition": "Das LLM bitten, Schritt für Schritt zu denken"
+          },
+          {
+            "term": "Few-Shot",
+            "definition": "Beispiele im Prompt, die das gewünschte Format zeigen"
+          },
+          {
+            "term": "Iteration",
+            "definition": "Schrittweise Verbesserung durch Dialog und Anpassung"
+          }
+        ]
+      },
+
+      "handsOn": [
+        {
+          "id": "PE-1",
+          "title": "Prompt-Struktur",
+          "summary": "Einen strukturierten Prompt nach bewährtem Muster aufbauen.",
+          "goals": [
+            "Die Elemente eines guten Prompts kennen",
+            "Rolle, Aufgabe, Format unterscheiden",
+            "Einschränkungen explizit machen"
+          ],
+          "exercise": {
+            "description": "Strukturieren Sie diesen chaotischen Prompt neu.",
+            "code": "# Chaotischer Prompt:\n\"Ich hab da so CSV-Dateien mit Museumsdaten und brauch die als JSON, \nkannst du mir da was schreiben? Ach ja, und die Spaltennamen \nsind auf Deutsch und haben Umlaute...\"",
+            "task": "Schreiben Sie den Prompt neu mit: 1) Rolle, 2) Aufgabe, 3) Eingabe, 4) Ausgabe, 5) Einschränkungen, 6) Beispiel."
+          },
+          "reflection": [
+            "Wie viel länger wurde der Prompt?",
+            "Welche impliziten Annahmen haben Sie explizit gemacht?",
+            "Ist der Code besser geworden?"
+          ]
+        },
+        {
+          "id": "PE-2",
+          "title": "Iteratives Prompting",
+          "summary": "Durch Dialog schrittweise zum gewünschten Ergebnis.",
+          "goals": [
+            "Feedback präzise formulieren",
+            "Anpassungen gezielt anfordern",
+            "Wissen, wann man neu anfangen sollte"
+          ],
+          "exercise": {
+            "description": "Starten Sie mit einem einfachen Prompt und verbessern Sie iterativ.",
+            "task": "Generieren Sie Code, identifizieren Sie ein Problem, formulieren Sie eine Anpassung. Wiederholen Sie 3x. Dokumentieren Sie jeden Schritt."
+          },
+          "reflection": [
+            "Wie viele Iterationen brauchten Sie?",
+            "Welche Art von Feedback war am effektivsten?",
+            "Wann hätten Sie besser neu angefangen?"
+          ]
+        }
+      ],
+
+      "resources": [
+        {
+          "title": "Schulhoff et al. (2025). The Prompt Report",
+          "url": "https://arxiv.org/abs/2406.06608",
+          "type": "paper"
+        },
+        {
+          "title": "OpenAI: Prompt Engineering Guide",
+          "url": "https://platform.openai.com/docs/guides/prompt-engineering",
+          "type": "documentation"
+        },
+        {
+          "title": "Learn Prompting",
+          "url": "https://learnprompting.org/",
+          "type": "tutorial"
+        }
+      ],
+
+      "quote": {
+        "text": "The quality of your output is directly proportional to the quality of your input.",
+        "source": "Prompt Engineering Wisdom"
+      }
+    },
+
+    {
+      "id": "CL",
+      "name": "Code Literacy",
+      "color": "#8B7355",
+      "short": "Generierten Code verstehen",
+
+      "theory": {
+        "description": "Generierten Code lesen und verstehen: Ablauf nachvollziehen, Eingaben und Ausgaben identifizieren, Logik erkennen, Unstimmigkeiten bemerken. Setzt nicht voraus, denselben Code selbst schreiben zu können.",
+        "keyPoints": [
+          "Lesen ist einfacher als Schreiben",
+          "Code hat Struktur: Variablen, Funktionen, Kontrollfluss",
+          "Fehlermeldungen sind Informationen, keine Katastrophen",
+          "Sie müssen nicht alles verstehen – nur genug, um zu prüfen"
+        ],
+        "concepts": [
+          {
+            "term": "Variable",
+            "definition": "Ein Name, der auf einen Wert im Speicher verweist"
+          },
+          {
+            "term": "Funktion",
+            "definition": "Ein benannter Code-Block, der eine bestimmte Aufgabe ausführt"
+          },
+          {
+            "term": "Kontrollstruktur",
+            "definition": "Anweisungen, die den Ablauf steuern (if, for, while)"
+          },
+          {
+            "term": "Bibliothek",
+            "definition": "Sammlung von vorgefertigtem Code für bestimmte Aufgaben"
+          },
+          {
+            "term": "API",
+            "definition": "Schnittstelle, über die Programme miteinander kommunizieren"
+          }
+        ]
+      },
+
+      "handsOn": [
+        {
+          "id": "CL-1",
+          "title": "Variablen und Datentypen",
+          "summary": "Verstehen, wie Daten gespeichert und verarbeitet werden.",
+          "goals": [
+            "Variablen als benannte Container verstehen",
+            "Grundlegende Datentypen unterscheiden",
+            "Datenfluss im Code nachvollziehen"
+          ],
+          "exercise": {
+            "description": "Analysieren Sie diesen Code-Ausschnitt.",
+            "code": "# Sammlungsobjekt\nobjekt = {\n    \"inventar_nr\": \"2024-001\",\n    \"titel\": \"Bronzefibel\",\n    \"datierung\": -500,\n    \"materialien\": [\"Bronze\", \"Eisen\"]\n}\n\nprint(f\"Objekt {objekt['inventar_nr']}: {objekt['titel']}\")",
+            "filename": "sammlung.py",
+            "task": "Welche Variablen gibt es? Welche Datentypen haben sie? Was passiert in der letzten Zeile?"
+          },
+          "reflection": [
+            "Konnten Sie den Datenfluss nachvollziehen?",
+            "Was würde passieren, wenn 'datierung' ein String wäre?",
+            "Welche Teile waren intuitiv verständlich?"
+          ]
+        },
+        {
+          "id": "CL-2",
+          "title": "Kontrollstrukturen lesen",
+          "summary": "Code verzweigt und wiederholt sich. Kontrollstrukturen steuern den Fluss.",
+          "goals": [
+            "If-else-Verzweigungen verstehen",
+            "Schleifen nachvollziehen",
+            "Verschachtelte Strukturen entwirren"
+          ],
+          "exercise": {
+            "description": "Verfolgen Sie den Ablauf dieses Codes.",
+            "code": "objekte = [\n    {\"titel\": \"Vase\", \"zustand\": \"gut\"},\n    {\"titel\": \"Münze\", \"zustand\": \"beschädigt\"},\n    {\"titel\": \"Ring\", \"zustand\": \"gut\"}\n]\n\nfuer_ausstellung = []\nfuer_restaurierung = []\n\nfor obj in objekte:\n    if obj[\"zustand\"] == \"gut\":\n        fuer_ausstellung.append(obj[\"titel\"])\n    else:\n        fuer_restaurierung.append(obj[\"titel\"])\n\nprint(f\"Ausstellung: {fuer_ausstellung}\")\nprint(f\"Restaurierung: {fuer_restaurierung}\")",
+            "filename": "sortierung.py",
+            "task": "Was steht am Ende in 'fuer_ausstellung' und 'fuer_restaurierung'? Zeichnen Sie den Ablauf auf Papier."
+          },
+          "reflection": [
+            "Konnten Sie vorhersagen, was der Code ausgibt?",
+            "Wo hat das Aufzeichnen geholfen?",
+            "Was wäre anders bei einer anderen Bedingung?"
+          ]
+        },
+        {
+          "id": "CL-3",
+          "title": "Funktionen und Bibliotheken",
+          "summary": "Wiederverwendbare Bausteine und externe Pakete verstehen.",
+          "goals": [
+            "Funktionsdefinitionen erkennen",
+            "Parameter und Rückgabewerte identifizieren",
+            "Import-Statements verstehen"
+          ],
+          "exercise": {
+            "description": "Analysieren Sie diese Funktion zur Textbereinigung.",
+            "code": "def bereinige_text(text, lowercase=True):\n    \"\"\"Bereinigt einen Text für die Analyse.\"\"\"\n    text = text.strip()\n    \n    if lowercase:\n        text = text.lower()\n    \n    import re\n    text = re.sub(r'\\s+', ' ', text)\n    \n    return text\n\n# Verwendung\noriginal = \"  Hallo    WELT  \"\nbereinigt = bereinige_text(original)\nprint(bereinigt)  # \"hallo welt\"",
+            "filename": "textbereinigung.py",
+            "task": "Was sind die Parameter? Was ist der Rückgabewert? Was macht die Bibliothek 're'?"
+          },
+          "reflection": [
+            "Könnten Sie die Funktion mit anderen Parametern aufrufen?",
+            "Wo würde diese Funktion in Ihrer Arbeit nützlich sein?",
+            "Welche Teile waren schwer zu verstehen?"
+          ]
+        },
+        {
+          "id": "CL-4",
+          "title": "Pandas für Datenverarbeitung",
+          "summary": "DataFrames sind wie Excel-Tabellen, aber mächtiger.",
+          "goals": [
+            "DataFrames als Datenstruktur verstehen",
+            "Filtern, Sortieren, Gruppieren lesen",
+            "Daten einlesen und exportieren"
+          ],
+          "exercise": {
+            "description": "Verstehen Sie diese Datenanalyse.",
+            "code": "import pandas as pd\n\ndf = pd.read_csv(\"sammlung.csv\")\n\n# Nur Objekte aus Bronze\nbronze = df[df[\"material\"] == \"Bronze\"]\n\n# Nach Datierung sortieren\nbronze_sortiert = bronze.sort_values(\"datierung\")\n\nprint(f\"Anzahl Bronze-Objekte: {len(bronze)}\")\nprint(f\"Ältestes: {bronze_sortiert.iloc[0]['titel']}\")",
+            "filename": "pandas_analyse.py",
+            "task": "Was passiert in jeder Zeile? Was ist df, bronze, bronze_sortiert?"
+          },
+          "reflection": [
+            "Was bedeutet die eckige Klammer-Notation?",
+            "Wie würden Sie nach einem anderen Material filtern?",
+            "Welche Operationen könnten Sie für Ihre Daten brauchen?"
+          ]
+        },
+        {
+          "id": "CL-5",
+          "title": "Visualisierung mit Matplotlib",
+          "summary": "Daten sichtbar machen.",
+          "goals": [
+            "Grundstruktur von Matplotlib-Code verstehen",
+            "Figure und Axes unterscheiden",
+            "Anpassungen lesen"
+          ],
+          "exercise": {
+            "description": "Verstehen Sie diese Visualisierung.",
+            "code": "import matplotlib.pyplot as plt\nimport pandas as pd\n\ndf = pd.read_csv(\"objekte_pro_jahr.csv\")\n\nfig, ax = plt.subplots(figsize=(10, 6))\n\nax.bar(df[\"jahr\"], df[\"anzahl\"], color=\"#4A7C7C\")\nax.set_xlabel(\"Jahr\")\nax.set_ylabel(\"Anzahl Objekte\")\nax.set_title(\"Sammlungszuwachs über Zeit\")\n\nplt.tight_layout()\nplt.savefig(\"zuwachs.png\", dpi=150)",
+            "filename": "visualisierung.py",
+            "task": "Was wird visualisiert? Wie würden Sie die Farbe ändern?"
+          },
+          "reflection": [
+            "Konnten Sie sich das Ergebnis vorstellen?",
+            "Was wäre anders bei einem Liniendiagramm?",
+            "Welche Visualisierungen brauchen Sie für Ihre Daten?"
+          ]
+        }
+      ],
+
+      "resources": [
+        {
+          "title": "Hermans, F. (2021). The Programmer's Brain",
+          "url": "https://www.manning.com/books/the-programmers-brain",
+          "type": "book"
+        },
+        {
+          "title": "Python Tutorial (offiziell)",
+          "url": "https://docs.python.org/3/tutorial/",
+          "type": "documentation"
+        },
+        {
+          "title": "Pandas Getting Started",
+          "url": "https://pandas.pydata.org/docs/getting_started/",
+          "type": "tutorial"
+        }
+      ],
+
+      "quote": {
+        "text": "Reading code is a skill. Like reading a foreign language, it gets easier with practice.",
+        "source": "Felienne Hermans"
+      }
+    },
+
+    {
+      "id": "RV",
+      "name": "Review",
+      "color": "#4A6B8C",
+      "short": "Ergebnisse systematisch prüfen",
+
+      "theory": {
+        "description": "Systematische Prüfung gegen die definierten Anforderungen. Validieren, ob der Code die Akzeptanzkriterien erfüllt. Lücken identifizieren. Den Entwicklungszyklus durch Iteration schließen.",
+        "keyPoints": [
+          "Vertrauen ist gut, Prüfen ist besser",
+          "Fehler sind Informationen, keine Katastrophen",
+          "Systematisch testen: Normalfall, Grenzfall, Fehlerfall",
+          "Die eigenen Grenzen erkennen"
+        ],
+        "concepts": [
+          {
+            "term": "Syntax Error",
+            "definition": "Tippfehler oder falsche Struktur – Code kann nicht ausgeführt werden"
+          },
+          {
+            "term": "Runtime Error",
+            "definition": "Fehler während der Ausführung, z.B. Division durch Null"
+          },
+          {
+            "term": "Logischer Fehler",
+            "definition": "Code läuft, aber das Ergebnis ist falsch"
+          },
+          {
+            "term": "Traceback",
+            "definition": "Die Fehlerspur, die zeigt, wo der Fehler aufgetreten ist"
+          },
+          {
+            "term": "Halluzination",
+            "definition": "Das LLM erfindet plausibel klingende aber falsche Informationen"
+          }
+        ]
+      },
+
+      "handsOn": [
+        {
+          "id": "RV-1",
+          "title": "Fehlermeldungen lesen",
+          "summary": "Fehlermeldungen sind Informationen. Lesen lernen ist eine Kernkompetenz.",
+          "goals": [
+            "Fehlermeldungen strukturiert lesen",
+            "Häufige Fehlertypen unterscheiden",
+            "Systematisch nach Ursachen suchen"
+          ],
+          "exercise": {
+            "description": "Lesen Sie diese Fehlermeldung und finden Sie die Ursache.",
+            "code": "Traceback (most recent call last):\n  File \"analyse.py\", line 12, in <module>\n    ergebnis = berechne_durchschnitt(werte)\n  File \"analyse.py\", line 5, in berechne_durchschnitt\n    return sum(zahlen) / len(zahlen)\nZeroDivisionError: division by zero",
+            "filename": "fehler.txt",
+            "task": "Was ist passiert? In welcher Zeile? Warum? Wie würden Sie das Problem beheben?"
+          },
+          "reflection": [
+            "Konnten Sie den Traceback von unten nach oben lesen?",
+            "War die Fehlerursache klar?",
+            "Wie würden Sie diesen Fehler im Dialog mit dem LLM beheben?"
+          ]
+        },
+        {
+          "id": "RV-2",
+          "title": "Halluzinationen erkennen",
+          "summary": "LLMs erfinden manchmal plausibel klingende aber falsche Informationen.",
+          "goals": [
+            "Halluzinationsrisiken erkennen",
+            "Kritische Bereiche identifizieren",
+            "Strategien zur Absicherung entwickeln"
+          ],
+          "exercise": {
+            "description": "Historische Abkürzungen sind anfällig für Halluzinationen.",
+            "code": "# Historische Fundortangaben mit Abkürzungen:\n# B Jenesien: auf Porphyr.\n# O Stanzerthal in Spuren.\n# T Innsbruck: am Patscherkofel.\n\n# Prompten Sie ein LLM ohne Kontext:\n# \"Was bedeuten die Abkürzungen B, O, T \n#  in diesen historischen Fundortangaben?\"",
+            "task": "Vergleichen Sie die LLM-Antwort mit einer verlässlichen Quelle. Was wurde halluziniert?"
+          },
+          "reflection": [
+            "Wie selbstsicher präsentierte das LLM falsche Informationen?",
+            "Welche Strategie hätte das verhindert?",
+            "Bei welchen Daten in Ihrer Arbeit besteht Halluzinationsrisiko?"
+          ]
+        },
+        {
+          "id": "RV-3",
+          "title": "Systematisches Review",
+          "summary": "Code gegen Anforderungen prüfen – mit Checkliste.",
+          "goals": [
+            "Review-Checkliste anwenden",
+            "Grenzfälle systematisch testen",
+            "Verbesserungen gezielt anfordern"
+          ],
+          "exercise": {
+            "description": "Prüfen Sie generierten Code gegen diese Checkliste.",
+            "task": "1) Erfüllt der Code alle Anforderungen? 2) Sind Grenzfälle behandelt? 3) Sind Fehlermeldungen hilfreich? 4) Ist der Code lesbar? 5) Gibt es Sicherheitsrisiken?"
+          },
+          "reflection": [
+            "Wie viele Punkte waren erfüllt?",
+            "Welche Probleme hätten Sie ohne Checkliste übersehen?",
+            "Wie würden Sie die Checkliste für Ihre Projekte anpassen?"
+          ]
+        }
+      ],
+
+      "resources": [
+        {
+          "title": "Dell'Acqua et al. (2023). Navigating the Jagged Technological Frontier",
+          "url": "https://www.hbs.edu/faculty/Pages/item.aspx?num=64700",
+          "type": "paper"
+        },
+        {
+          "title": "Mollick, E. (2024). Co-Intelligence",
+          "url": "https://www.oneusefulthing.org/",
+          "type": "book"
+        }
+      ],
+
+      "quote": {
+        "text": "Trust, but verify. Especially with AI-generated code.",
+        "source": "Adapted from Reagan"
+      }
+    }
+  ]
+}

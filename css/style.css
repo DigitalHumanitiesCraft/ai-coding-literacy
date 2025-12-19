@@ -1,0 +1,359 @@
+/* AI Coding Literacy – Style
+   Tufte-inspiriert: Maximale Information, minimale Dekoration
+   Spezifikationskonform */
+
+/* === Foundation === */
+:root {
+  --bg: #FFFFF8;
+  --text: #222222;
+  --text-muted: #666666;
+  --link: #0000CC;
+  --link-visited: #551A8B;
+  --border: #999999;
+  --code-bg: #F0F0F0;
+  --prompt-bg: #FFFDE7;
+  --table-header: #F5F5F5;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* === Body === */
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--text);
+  background: var(--bg);
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* === Typography === */
+h1 {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0 0 1.5rem;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 2.5rem 0 1rem;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 2rem 0 0.75rem;
+}
+
+p {
+  margin: 0 0 1rem;
+  max-width: 75ch;
+}
+
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
+
+/* === Links === */
+a {
+  color: var(--link);
+  text-decoration: underline;
+}
+
+a:visited {
+  color: var(--link-visited);
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/* === Navigation === */
+nav {
+  margin-bottom: 2rem;
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 16px;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text);
+}
+
+nav a::before { content: '['; }
+nav a::after { content: ']'; }
+
+nav a:hover {
+  color: var(--link);
+}
+
+nav a.active {
+  font-weight: bold;
+}
+
+/* Spacing between nav links */
+nav a + a {
+  margin-left: 1rem;
+}
+
+/* === Horizontal Rules === */
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2.5rem 0;
+}
+
+/* === Lists === */
+ul, ol {
+  margin: 0 0 1rem;
+  padding-left: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.4rem;
+}
+
+/* === Tables === */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0 1.5rem;
+}
+
+th, td {
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background: var(--table-header);
+  font-weight: bold;
+}
+
+/* Session list table */
+.session-list {
+  border: 1px solid var(--border);
+}
+
+.session-list td:first-child {
+  width: 2.5rem;
+  text-align: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 16px;
+}
+
+.session-list td:last-child {
+  width: 2rem;
+  text-align: center;
+}
+
+/* === Code === */
+code {
+  font-family: 'IBM Plex Mono', 'Source Code Pro', 'Courier New', monospace;
+  font-size: 16px;
+  background: var(--code-bg);
+  padding: 0.1rem 0.3rem;
+  border: 1px solid #DDDDDD;
+}
+
+pre {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  padding: 1rem;
+  overflow-x: auto;
+  margin: 1rem 0 1.5rem;
+  line-height: 1.5;
+  max-width: 860px;
+}
+
+pre code {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+/* === Code Block with Header === */
+.code-block {
+  margin: 1.5rem 0;
+  max-width: 860px;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--table-header);
+  border: 1px solid var(--border);
+  border-bottom: none;
+  padding: 0.35rem 0.75rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 14px;
+}
+
+.code-header .filename {
+  font-weight: bold;
+}
+
+.copy-btn {
+  font-family: Georgia, serif;
+  font-size: 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 0.15rem 0.5rem;
+  cursor: pointer;
+}
+
+.copy-btn:hover {
+  background: var(--code-bg);
+}
+
+.code-block pre {
+  margin: 0;
+}
+
+/* Line numbers */
+.code-block .line {
+  display: block;
+}
+
+.code-block .line::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 2rem;
+  margin-right: 1rem;
+  text-align: right;
+  color: var(--text-muted);
+  border-right: 1px solid #CCCCCC;
+  padding-right: 0.75rem;
+  user-select: none;
+}
+
+.code-block pre {
+  counter-reset: line;
+}
+
+/* Code annotations */
+.code-annotations {
+  background: var(--table-header);
+  border: 1px solid var(--border);
+  border-top: none;
+  padding: 0.75rem 1rem;
+  font-size: 15px;
+}
+
+.code-annotations p {
+  margin: 0.25rem 0;
+}
+
+.annotation-ref {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  color: var(--link);
+}
+
+/* === Blockquote === */
+blockquote {
+  border-left: 4px solid var(--border);
+  margin: 1.5rem 0;
+  padding: 0 0 0 1rem;
+  color: var(--text-muted);
+}
+
+blockquote p {
+  margin: 0;
+}
+
+/* === Callout Box (nur für wichtige Hinweise) === */
+.callout {
+  background: var(--prompt-bg);
+  border: 1px solid var(--border);
+  padding: 1rem;
+  margin: 1.5rem 0;
+}
+
+.callout p {
+  margin: 0;
+}
+
+/* === Session Page === */
+.session-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 15px;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.section-nav {
+  font-size: 16px;
+  color: var(--text-muted);
+  margin: 1rem 0 0;
+}
+
+/* === Page Navigation === */
+.page-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.page-nav a {
+  font-size: 16px;
+}
+
+/* === Footer === */
+footer {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+footer a {
+  color: var(--text-muted);
+}
+
+/* === Responsive === */
+@media (max-width: 600px) {
+  body {
+    padding: 1rem;
+    font-size: 16px;
+  }
+
+  h1 { font-size: 24px; }
+  h2 { font-size: 20px; }
+  h3 { font-size: 18px; }
+
+  nav a {
+    display: block;
+    margin: 0.5rem 0;
+  }
+
+  nav a + a {
+    margin-left: 0;
+  }
+
+  .page-nav {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  pre, .code-block {
+    max-width: 100%;
+  }
+}
