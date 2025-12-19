@@ -49,18 +49,6 @@ ai-coding-literacy/
     └── hands-on.md         # Übungsübersicht
 ```
 
-## Lokale Entwicklung
-
-```bash
-# Repository klonen
-git clone https://github.com/DigitalHumanitiesCraft/ai-coding-literacy.git
-
-# Live Server starten (VS Code Extension oder npx)
-npx live-server
-```
-
-Die Seite ist unter `http://localhost:8080/de/` erreichbar.
-
 ## Dokumentation
 
 - [Konzept](knowledge/concept.md) – Theoretische Grundlagen
@@ -70,7 +58,7 @@ Die Seite ist unter `http://localhost:8080/de/` erreichbar.
 
 ## Lizenz
 
-MIT
+CC-BY
 
 ---
 

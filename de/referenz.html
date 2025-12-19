@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Referenz | AI Coding Literacy</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <a href="/de/">Übersicht</a>
+      <a href="/de/kompetenzmodell.html">Kompetenzmodell</a>
+      <a href="/de/referenz.html" class="active">Referenz</a>
+    </nav>
+    <div class="competency-bars" id="sidebar-bars">
+      <!-- Wird dynamisch aus JSON gefüllt -->
+    </div>
+  </aside>
+
+  <!-- Page Content -->
+  <div class="page-wrapper">
+    <main>
+      <h1>Referenz</h1>
+      <p>Schnellübersicht aller Konzepte, Übungen und Ressourcen des Curriculums.</p>
+
+      <section id="concepts">
+        <h2>Konzepte</h2>
+        <p>Alle zentralen Begriffe, geordnet nach Kompetenzbereich.</p>
+        <div id="concepts-container">
+          <!-- Wird dynamisch gefüllt -->
+        </div>
+      </section>
+
+      <hr>
+
+      <section id="exercises">
+        <h2>Übungen</h2>
+        <p>Alle Hands-On-Übungen im Überblick.</p>
+        <table class="exercise-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Titel</th>
+              <th>Kompetenz</th>
+              <th>Fokus</th>
+            </tr>
+          </thead>
+          <tbody id="exercises-table">
+            <!-- Wird dynamisch gefüllt -->
+          </tbody>
+        </table>
+      </section>
+
+      <hr>
+
+      <section id="resources">
+        <h2>Ressourcen</h2>
+        <p>Weiterführende Literatur und Dokumentation.</p>
+        <div id="resources-container">
+          <!-- Wird dynamisch gefüllt -->
+        </div>
+      </section>
+
+      <hr>
+
+      <section id="quotes">
+        <h2>Zitate</h2>
+        <p>Prägende Aussagen zu den einzelnen Kompetenzbereichen.</p>
+        <div id="quotes-container">
+          <!-- Wird dynamisch gefüllt -->
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <a href="https://github.com/DigitalHumanitiesCraft/ai-coding-literacy">GitHub</a> ·
+      DigitalHumanitiesCraft · 2025
+    </footer>
+  </div>
+
+  <script src="/js/referenz.js"></script>
+</body>
+</html>
