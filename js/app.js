@@ -162,7 +162,7 @@ function createLoopProgress() {
   const progress = document.createElement('div');
   progress.className = 'loop-progress';
 
-  const steps = ['INPUT', 'PROCESS', 'EXECUTE', 'OUTPUT'];
+  const steps = ['Überblick', 'Theorie', 'Übungen', 'Ressourcen'];
   steps.forEach((step, i) => {
     const stepEl = document.createElement('span');
     stepEl.className = `loop-step ${i === 0 ? 'active' : ''}`;
@@ -208,7 +208,7 @@ function createInputPanel(chapter) {
   const introText = chapter.theory?.description || '';
 
   panel.innerHTML = `
-    <span class="panel-phase">Input</span>
+    <span class="panel-phase">Überblick</span>
     <div class="chapter-header">
       <span class="chapter-id">${chapter.id}</span>
       <span class="chapter-color" style="background: ${chapter.color}"></span>
@@ -233,8 +233,8 @@ function createProcessPanel(chapter) {
   const panel = document.createElement('div');
   panel.className = 'loop-panel panel-process';
 
-  let html = `<span class="panel-phase">Process</span>`;
-  html += `<h4>${chapter.name}: Theorie</h4>`;
+  let html = `<span class="panel-phase">Theorie</span>`;
+  html += `<h4>${chapter.name}</h4>`;
 
   // Key Points
   if (chapter.theory.keyPoints && chapter.theory.keyPoints.length > 0) {
@@ -278,7 +278,7 @@ function createExecutePanel(chapter) {
   const panel = document.createElement('div');
   panel.className = 'loop-panel panel-execute';
 
-  let html = `<span class="panel-phase">Execute</span>`;
+  let html = `<span class="panel-phase">Übungen</span>`;
 
   chapter.handsOn.forEach(exercise => {
     html += `
@@ -353,7 +353,7 @@ function createOutputPanel(chapter) {
   const panel = document.createElement('div');
   panel.className = 'loop-panel panel-output';
 
-  let html = `<span class="panel-phase">Output</span>`;
+  let html = `<span class="panel-phase">Ressourcen</span>`;
 
   // Resources
   if (chapter.resources && chapter.resources.length > 0) {
