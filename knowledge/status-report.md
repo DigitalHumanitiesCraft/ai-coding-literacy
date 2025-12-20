@@ -1,13 +1,13 @@
 # Status-Report: AI Coding Literacy
 
-**Datum:** 2025-12-19
-**Phase:** Detailseiten implementiert, Scroll-Spy optimiert
+**Datum:** 2025-12-20
+**Phase:** Setup-Seiten implementiert, Sidebar-Labels erweitert
 
 ---
 
 ## Zusammenfassung
 
-Die AI Coding Literacy Lernplattform hat ein **vertikales Scroll-Layout** mit **ausklappbaren Sub-Links** in der Sidebar. Zusätzlich wurden **6 Detailseiten** (ct.html bis rv.html) mit vertiefenden Inhalten erstellt. Der Scroll-Spy wurde refactored für präzisere Synchronisation.
+Die AI Coding Literacy Lernplattform hat ein **vertikales Scroll-Layout** mit **ausklappbaren Sub-Links** in der Sidebar. Zusätzlich wurden **6 Detailseiten** (ct.html bis rv.html) mit vertiefenden Inhalten erstellt. Neu: **Setup-Seiten** (DE/EN) mit kompetenz-farbigen Icons und **erweiterte Sidebar-Labels** mit vollständigen Kompetenznamen.
 
 ---
 
@@ -54,7 +54,23 @@ Die AI Coding Literacy Lernplattform hat ein **vertikales Scroll-Layout** mit **
 | Debug-Logging entfernt | ✅ |
 | Duplikation reduziert | ✅ |
 
-### 5. Dokumentation aktualisiert
+### 5. Setup-Seiten (100%)
+
+| Seite | Status | Inhalt |
+|-------|--------|--------|
+| de/setup.html | ✅ | Python, VS Code, LLM, Terminal, pip Anleitungen |
+| en/setup.html | ✅ | English version with same structure |
+
+### 6. Sidebar-Erweiterungen (100%)
+
+| Feature | Status |
+|---------|--------|
+| Kompetenz-farbige Setup-Icons | ✅ |
+| Tooltips mit Kompetenzname | ✅ |
+| Bar-Labels mit vollständigen Namen | ✅ |
+| Persönliche Claude-Empfehlung | ✅ |
+
+### 7. Dokumentation aktualisiert
 
 | Datei | Status |
 |-------|--------|
@@ -62,6 +78,7 @@ Die AI Coding Literacy Lernplattform hat ein **vertikales Scroll-Layout** mit **
 | status-report.md | ✅ |
 | implementation-plan.md | ✅ |
 | design.md | ✅ |
+| journal.md | ✅ (NEU) |
 
 ---
 

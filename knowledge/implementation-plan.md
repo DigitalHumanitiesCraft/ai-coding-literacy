@@ -286,7 +286,10 @@ Zwei IntersectionObserver:
 
 ### Offen
 
-- [ ] Detailseiten erstellen (ct.html, re.html, etc.)
+- [x] Detailseiten erstellen (ct.html, re.html, etc.) ✅
+- [x] Setup-Seiten (de/setup.html, en/setup.html) ✅
+- [x] Sidebar-Labels mit vollständigen Namen ✅
+- [x] Englische Version ✅
 - [ ] GitHub Pages – Deployment konfigurieren
 - [ ] Final-Test aller Seiten
 - [ ] Mobile-Test
@@ -295,7 +298,6 @@ Zwei IntersectionObserver:
 
 ## 8. Nicht im Scope
 
-- Englische Version (Struktur vorbereitet mit /de/ Pfad)
 - Logbuch-Komponente (Phase 2)
 - Syntax-Highlighting für Code (optional)
 - Interaktive Code-Ausführung
@@ -310,6 +312,7 @@ Zwei IntersectionObserver:
 | design.md | Visuelle Identität, Layout, Komponenten |
 | hands-on.md | Übersicht aller Hands-On-Übungen |
 | status-report.md | Aktueller Projektstatus |
+| journal.md | Session-Logs und Erkenntnisse |
 | grundlagen-computational-thinking.md | CT-Theorie im Detail |
 | grundlagen-kompetenzbereiche.md | RE, CE, PE, CL, RV-Theorie |
 | grundlagen-oekosystem.md | LLM-Ökosystem, Tools |
