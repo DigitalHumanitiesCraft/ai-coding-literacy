@@ -23,10 +23,15 @@
   --comp-CL: #8B7355;
   --comp-RV: #4A6B8C;
 
+  /* Glossar-Kategorien-Farben */
+  --gloss-llm-basics: #6B8E9D;
+  --gloss-coding-approaches: #9D7B6B;
+
   /* Layout */
   --sidebar-width: 200px;
   --content-width: 780px;
   --content-width-narrow: 720px;
+  --info-panel-width: 320px;
 }
 
 *, *::before, *::after {
@@ -1997,5 +2002,210 @@ footer a {
   .tutorial-item {
     flex-direction: column;
     gap: 0.5rem;
+  }
+}
+
+/* ============================================================
+   GLOSSAR & INFO PANEL
+   ============================================================ */
+
+/* Glossar-Begriffe im Text */
+.glossary-term {
+  cursor: help;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 2px;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.glossary-term:hover {
+  text-decoration-style: solid;
+}
+
+/* Farben für Glossar-Kategorien */
+.glossary-term[data-category="llm-basics"] {
+  text-decoration-color: var(--gloss-llm-basics);
+  color: var(--gloss-llm-basics);
+}
+
+.glossary-term[data-category="coding-approaches"] {
+  text-decoration-color: var(--gloss-coding-approaches);
+  color: var(--gloss-coding-approaches);
+}
+
+/* Kompetenz-spezifische Glossar-Begriffe */
+.glossary-term[data-category="CT"] {
+  text-decoration-color: var(--comp-CT);
+  color: var(--comp-CT);
+}
+
+.glossary-term[data-category="RE"] {
+  text-decoration-color: var(--comp-RE);
+  color: var(--comp-RE);
+}
+
+.glossary-term[data-category="CE"] {
+  text-decoration-color: var(--comp-CE);
+  color: var(--comp-CE);
+}
+
+.glossary-term[data-category="PE"] {
+  text-decoration-color: var(--comp-PE);
+  color: var(--comp-PE);
+}
+
+.glossary-term[data-category="CL"] {
+  text-decoration-color: var(--comp-CL);
+  color: var(--comp-CL);
+}
+
+.glossary-term[data-category="RV"] {
+  text-decoration-color: var(--comp-RV);
+  color: var(--comp-RV);
+}
+
+/* Info Panel */
+.info-panel {
+  position: fixed;
+  right: -340px;
+  top: 0;
+  width: var(--info-panel-width);
+  height: 100vh;
+  background: var(--bg);
+  border-left: 2px solid var(--border);
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  overflow-y: auto;
+  transition: right 0.3s ease;
+  padding: 2rem 1.5rem;
+}
+
+.info-panel.visible {
+  right: 0;
+}
+
+.info-panel.pinned {
+  right: 0;
+}
+
+/* Close Button */
+.info-panel-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  font-size: 28px;
+  line-height: 1;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  transition: color 0.2s ease;
+}
+
+.info-panel-close:hover {
+  color: var(--text);
+}
+
+/* Info Panel Content */
+.info-panel-content {
+  padding-top: 2rem;
+}
+
+.info-panel-header {
+  margin-bottom: 1.5rem;
+}
+
+.glossary-term-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 0 0.5rem;
+  color: var(--text);
+}
+
+.glossary-category-badge {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.glossary-category-badge[data-category="llm-basics"] {
+  background: var(--gloss-llm-basics);
+}
+
+.glossary-category-badge[data-category="coding-approaches"] {
+  background: var(--gloss-coding-approaches);
+}
+
+.glossary-category-badge[data-category="CT"] { background: var(--comp-CT); }
+.glossary-category-badge[data-category="RE"] { background: var(--comp-RE); }
+.glossary-category-badge[data-category="CE"] { background: var(--comp-CE); }
+.glossary-category-badge[data-category="PE"] { background: var(--comp-PE); }
+.glossary-category-badge[data-category="CL"] { background: var(--comp-CL); }
+.glossary-category-badge[data-category="RV"] { background: var(--comp-RV); }
+
+.glossary-definition {
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.glossary-related {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.glossary-related h4 {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0 0 0.75rem;
+}
+
+.glossary-related-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.glossary-related-list li {
+  margin-bottom: 0.5rem;
+}
+
+.glossary-related-link {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 14px;
+  color: var(--link);
+  text-decoration: none;
+}
+
+.glossary-related-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .info-panel {
+    width: 280px;
+    right: -300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .info-panel {
+    width: 100%;
+    right: -100%;
+    border-left: none;
+    border-top: 2px solid var(--border);
+  }
+
+  .info-panel.visible,
+  .info-panel.pinned {
+    right: 0;
   }
 }

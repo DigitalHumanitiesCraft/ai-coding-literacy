@@ -1,7 +1,7 @@
 # Status-Report: AI Coding Literacy
 
 **Datum:** 2025-12-20
-**Phase:** Setup-Seiten implementiert, Sidebar-Labels erweitert
+**Phase:** Glossar-System implementiert, Info-Panel integriert
 
 ---
 
@@ -70,15 +70,34 @@ Die AI Coding Literacy Lernplattform hat ein **vertikales Scroll-Layout** mit **
 | Bar-Labels mit vollständigen Namen | ✅ |
 | Persönliche Claude-Empfehlung | ✅ |
 
-### 7. Dokumentation aktualisiert
+### 7. Glossar-System (100%)
+
+| Feature | Status | Datei |
+|---------|--------|-------|
+| Glossar-Datenstruktur (DE/EN) | ✅ | data/glossar.json, data/glossar-en.json |
+| Info-Panel HTML | ✅ | de/index.html, en/index.html |
+| CSS Styling (farbcodiert) | ✅ | css/style.css |
+| JavaScript Auto-Markup | ✅ | js/glossary.js |
+| Hover & Pinning Mechanik | ✅ | js/glossary.js |
+| Verwandte Begriffe Links | ✅ | js/glossary.js |
+
+**Features:**
+- Automatisches Erkennen und Markieren von Glossar-Begriffen im Text
+- Farbcodierung nach Kategorien (llm-basics, coding-approaches, oder Kompetenz-ID)
+- Hover → sofortiges Öffnen des Info-Panels
+- 1 Sekunde Hover → Panel wird "gepinnt" (bleibt offen, scrollbar, klickbar)
+- Verwandte Begriffe sind verlinkt
+- Schließen via X-Button oder Klick außerhalb
+
+### 8. Dokumentation aktualisiert
 
 | Datei | Status |
 |-------|--------|
 | README.md | ✅ |
 | status-report.md | ✅ |
 | implementation-plan.md | ✅ |
-| design.md | ✅ |
-| journal.md | ✅ (NEU) |
+| design.md | ✅ (Glossar-System dokumentiert) |
+| journal.md | ✅ |
 
 ---
 

@@ -1,0 +1,52 @@
+{
+  "categories": [
+    {
+      "id": "llm-basics",
+      "name": "LLM Basics",
+      "color": "#6B8E9D"
+    },
+    {
+      "id": "coding-approaches",
+      "name": "Coding Approaches",
+      "color": "#9D7B6B"
+    }
+  ],
+  "terms": [
+    {
+      "id": "llm",
+      "term": "Large Language Models",
+      "short": "LLMs",
+      "category": "llm-basics",
+      "definition": "AI systems trained on large amounts of text that can process natural language. Examples include ChatGPT, Claude, or Gemini. In this context, they serve as tools that generate functional code from descriptions.",
+      "relatedTerms": ["vibe-coding", "prompt-engineering"],
+      "detailPage": null
+    },
+    {
+      "id": "vibe-coding",
+      "term": "Vibe Coding",
+      "short": "Vibe Coding",
+      "category": "coding-approaches",
+      "definition": "A term coined by Andrej Karpathy for an approach where users describe what they want to the AI, adopt the generated code without careful review, and when errors occur, send the error message back to the AI.",
+      "relatedTerms": ["llm", "review"],
+      "detailPage": null
+    },
+    {
+      "id": "scripting",
+      "term": "Scripting",
+      "short": "Scripting",
+      "category": "coding-approaches",
+      "definition": "Writing small programs to automate specific tasks. Unlike larger software projects, these are practical tools for personal use.",
+      "relatedTerms": ["prototyping"],
+      "detailPage": null
+    },
+    {
+      "id": "prototyping",
+      "term": "Prototyping",
+      "short": "Prototyping",
+      "category": "coding-approaches",
+      "definition": "Quickly creating a working preliminary version to test an idea. The prototype shows whether an approach works, without claiming to be complete.",
+      "relatedTerms": ["scripting"],
+      "detailPage": null
+    }
+  ]
+}

@@ -47,6 +47,15 @@ Tufte-inspiriert mit Early-Web-Ästhetik: Direktheit, Lesbarkeit, funktionale Eh
 | CL | Code Literacy | `#8B7355` (Bronze) |
 | RV | Review | `#4A6B8C` (Steel Blue) |
 
+### Glossar-Kategorien-Farben
+
+| ID | Name | Farbe |
+|----|------|-------|
+| llm-basics | LLM-Grundlagen | `#6B8E9D` (Light Steel) |
+| coding-approaches | Coding-Ansätze | `#9D7B6B` (Warm Brown) |
+
+Glossar-Begriffe können entweder zu thematischen Kategorien oder direkt zu Kompetenzbereichen gehören.
+
 ## 4. Typografie
 
 | Element | Schrift | Größe |
@@ -92,6 +101,38 @@ Tufte-inspiriert mit Early-Web-Ästhetik: Direktheit, Lesbarkeit, funktionale Eh
 - Zentriert rechts neben Sidebar
 - Kapitel als vertikaler Scroll
 - 3px schwarze Linie + 3rem Margin zwischen Kapiteln
+
+### Info Panel (320px, fixed rechts)
+
+```
+                              ┌──────────────┐
+                              │      ×       │
+                              ├──────────────┤
+                              │ Begriff      │
+                              │ [Badge]      │
+                              │              │
+                              │ Definition   │
+                              │              │
+                              │ Verwandte:   │
+                              │ • Begriff 1  │
+                              │ • Begriff 2  │
+                              └──────────────┘
+```
+
+**Zweck:**
+- Zeigt Glossar-Definitionen
+- Kann für weitere Zusatzinformationen genutzt werden (Vertiefungen, etc.)
+
+**Verhalten:**
+- Hover über Glossar-Begriff → Panel öffnet sich sofort
+- Nach 1 Sekunde Hover → Panel wird "gepinnt" (bleibt offen)
+- Schließen: X-Button oder Klick außerhalb
+- Verwandte Begriffe sind klickbar
+
+**Position:**
+- Fixed rechts, außerhalb Viewport wenn geschlossen
+- Slide-in Animation (0.3s ease)
+- Z-index: 1000
 
 ### Responsive (<1000px)
 
@@ -248,6 +289,28 @@ Term
 - Background: code-bg
 - Border-left: 4px
 
+### Glossar-Begriff
+
+```
+Begriff ist farbcodiert und unterstrichen (dotted)
+```
+
+**Visuelle Eigenschaften:**
+- `text-decoration: underline dotted`
+- Thickness: 1.5px
+- `cursor: help`
+- Farbe basiert auf Kategorie (llm-basics, coding-approaches, oder Kompetenz-ID)
+- Hover: dotted → solid underline
+
+**Markup:**
+```html
+<span class="glossary-term" data-term-id="llm" data-category="llm-basics">
+  Large Language Models
+</span>
+```
+
+Begriffe werden automatisch via JavaScript erkannt und markiert (`glossary.js`).
+
 ## 8. Interaktion
 
 ### Sidebar-Navigation
@@ -273,12 +336,28 @@ Zwei IntersectionObserver:
 - Button in Code-Header
 - Feedback: "kopiert!" für 2 Sekunden
 
+### Glossar & Info Panel
+
+**Hover-Mechanik:**
+1. `mouseenter` auf `.glossary-term` → Panel öffnet sofort
+2. Nach 1000ms Hover → Panel wird gepinnt (`.pinned` class)
+3. `mouseleave` → Timeout löschen, Panel schließt (nur wenn nicht gepinnt)
+
+**Pinning:**
+- Click auf Begriff → Panel sofort gepinnt
+- Click außerhalb oder X-Button → Panel schließt, unpinnen
+- Im gepinnten Zustand: scrollbar, Links klickbar
+
+**Verwandte Begriffe:**
+- Klick auf verwandten Begriff → Lädt neue Definition, bleibt gepinnt
+
 ## 9. Technik
 
 **Stack**
 - Vanilla HTML/CSS/JavaScript
-- JSON für Inhalte (`/data/content.json`)
+- JSON für Inhalte (`/data/content.json`, `/data/glossar.json`)
 - Intersection Observer für Scroll-Spy
+- Automatisches Text-Markup für Glossar-Begriffe
 - Keine Build-Tools, keine Frameworks
 
 **Warum?**
@@ -288,7 +367,57 @@ Maximale Transparenz – was geschrieben wird, ist was im Browser läuft. Ideal 
 
 ```
 de/index.html          # Übersicht mit vertikalem Scroll
-css/style.css          # Globale Styles
+en/index.html          # Englische Version
+css/style.css          # Globale Styles (inkl. Glossar & Info Panel)
 js/app.js              # Scroll-Spy, Sidebar-Logik
-data/content.json      # Alle Inhalte strukturiert
+js/glossary.js         # Glossar-System, Info Panel, Auto-Markup
+data/content.json      # Alle Inhalte strukturiert (DE)
+data/content-en.json   # Alle Inhalte strukturiert (EN)
+data/glossar.json      # Glossar-Begriffe (DE)
+data/glossar-en.json   # Glossar-Begriffe (EN)
 ```
+
+## 11. Glossar-System
+
+### Datenstruktur (`glossar.json`)
+
+```json
+{
+  "categories": [
+    {
+      "id": "llm-basics",
+      "name": "LLM-Grundlagen",
+      "color": "#6B8E9D"
+    }
+  ],
+  "terms": [
+    {
+      "id": "llm",
+      "term": "Large Language Models",
+      "short": "LLMs",
+      "category": "llm-basics",
+      "definition": "KI-Systeme, die auf großen Textmengen...",
+      "relatedTerms": ["vibe-coding", "prompt-engineering"],
+      "detailPage": null
+    }
+  ]
+}
+```
+
+### Workflow
+
+1. **Beim Laden**: `glossary.js` lädt entsprechende JSON (de/en)
+2. **Auto-Markup**: Durchsucht `#content`, findet alle Vorkommen der Begriffe
+3. **Markup**: Wraps Begriffe in `<span class="glossary-term" data-term-id="..." data-category="...">`
+4. **Event-Delegation**: Hover/Click Events auf `.glossary-term`
+5. **Panel**: Zeigt Definition im rechten Info-Panel
+
+### Erweiterbarkeit
+
+Das Info-Panel ist nicht auf Glossar beschränkt. Es kann auch für:
+- Vertiefende Informationen zu Konzepten
+- Literaturhinweise
+- Code-Beispiele mit Erklärungen
+- Alle Arten von "zweiter Ebene" Information
+
+genutzt werden.
