@@ -74,7 +74,7 @@ function initPage() {
     link.href = `#chapter-${chapter.id}`;
     link.className = `competency-bar comp-${chapter.id}`;
     link.title = chapter.name;
-    link.innerHTML = `<span class="bar-label">${chapter.id}</span>`;
+    link.innerHTML = `<span class="bar-label"><span class="bar-label-id">${chapter.id}</span><span class="bar-label-name">${chapter.name}</span></span>`;
     link.addEventListener('click', (e) => {
       e.preventDefault();
       scrollToChapter(chapter.id);

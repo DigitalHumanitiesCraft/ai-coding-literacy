@@ -364,12 +364,30 @@ footer a {
 }
 
 .bar-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   font-family: 'IBM Plex Mono', monospace;
+  color: rgba(255,255,255,0.95);
+  padding-left: 10px;
+  width: 100%;
+}
+
+.bar-label-id {
   font-size: 11px;
   font-weight: bold;
-  color: rgba(255,255,255,0.95);
-  padding-left: 12px;
   letter-spacing: 1px;
+  flex-shrink: 0;
+}
+
+.bar-label-name {
+  font-size: 9px;
+  font-weight: normal;
+  opacity: 0.85;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Kompetenzfarben */
@@ -1308,5 +1326,676 @@ footer a {
 
   .chapter-nav .nav-prev {
     order: 2;
+  }
+}
+
+/* ===== SETUP PAGE STYLES ===== */
+
+/* Setup Header */
+.setup-header {
+  border-left: 4px solid var(--comp-CT);
+}
+
+/* Quick Check Box */
+.quick-check-box {
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+}
+
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0 0;
+}
+
+.checklist-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.checklist-item:last-child {
+  border-bottom: none;
+}
+
+.check-box {
+  font-size: 1.2rem;
+  width: 1.5rem;
+}
+
+.check-label {
+  font-weight: 600;
+  flex: 1;
+  min-width: 200px;
+}
+
+.check-hint {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  width: 100%;
+  margin-left: 2rem;
+  margin-top: 0.25rem;
+}
+
+/* Setup Item */
+.setup-item {
+  margin: 1.5rem 0;
+}
+
+.setup-item-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.setup-icon {
+  font-size: 2rem;
+}
+
+.setup-item-info {
+  flex: 1;
+  min-width: 200px;
+}
+
+.setup-item-info h3 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.setup-short {
+  margin: 0.25rem 0 0 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.setup-item-content {
+  margin-top: 1.5rem;
+  padding-left: 0;
+}
+
+/* Badges */
+.badge {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge.required {
+  background: var(--comp-RE);
+  color: white;
+}
+
+.badge.recommended {
+  background: var(--comp-CE);
+  color: white;
+}
+
+/* Download Box */
+.download-box {
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1rem 1.5rem;
+  margin: 1rem 0;
+}
+
+.download-link {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--link);
+}
+
+.download-note {
+  margin: 0.5rem 0 0 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* Warning Box */
+.warning-box {
+  background: #fff3cd;
+  border: 1px solid #ffc107;
+  border-left: 4px solid #ffc107;
+  border-radius: 4px;
+  padding: 1rem 1.5rem;
+  margin: 1rem 0;
+}
+
+.warning-box strong {
+  color: #856404;
+}
+
+.warning-box p {
+  margin: 0.5rem 0 0 0;
+}
+
+/* Info Box */
+.info-box {
+  background: #e7f3ff;
+  border: 1px solid #b3d7ff;
+  border-left: 4px solid #007bff;
+  border-radius: 4px;
+  padding: 1rem 1.5rem;
+  margin: 1rem 0;
+}
+
+.info-box strong {
+  color: #004085;
+}
+
+.info-box p {
+  margin: 0.5rem 0 0 0;
+}
+
+.info-box.personal-note {
+  background: linear-gradient(135deg, #f5f0ff 0%, #efe8f8 100%);
+  border: 1px solid #d4c5e8;
+  border-left: 4px solid var(--comp-PE);
+}
+
+.info-box.personal-note strong {
+  color: var(--comp-PE);
+}
+
+/* Success Box */
+.success-box {
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+  border-left: 4px solid #28a745;
+  border-radius: 4px;
+  padding: 1rem 1.5rem;
+  margin: 1rem 0;
+}
+
+.success-box strong {
+  color: #155724;
+}
+
+.success-box pre {
+  background: rgba(255,255,255,0.5);
+  padding: 0.75rem;
+  border-radius: 3px;
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+.success-box p {
+  margin: 0.5rem 0 0 0;
+}
+
+/* Verify Box */
+.verify-box {
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1rem 1.5rem;
+  margin: 1rem 0;
+}
+
+.verify-box h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+}
+
+/* Tutorial Placeholder */
+.tutorial-placeholder {
+  margin: 1.5rem 0;
+}
+
+.tutorial-placeholder h4 {
+  margin: 0 0 1rem 0;
+}
+
+.video-placeholder {
+  background: var(--bg-light);
+  border: 2px dashed var(--border);
+  border-radius: 4px;
+  padding: 1.5rem;
+  margin: 0.5rem 0;
+  text-align: center;
+}
+
+.video-placeholder p {
+  margin: 0;
+}
+
+.placeholder-note {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-top: 0.5rem !important;
+}
+
+/* Extension List */
+.extension-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.extension-item {
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1rem;
+  margin: 0.5rem 0;
+}
+
+.extension-item strong {
+  font-size: 1rem;
+}
+
+.extension-item code {
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+}
+
+.extension-item p {
+  margin: 0.5rem 0 0 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* LLM Options */
+.llm-options {
+  display: grid;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.llm-option {
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1.25rem;
+}
+
+.llm-option.recommended {
+  border-color: var(--comp-CE);
+  border-width: 2px;
+}
+
+.llm-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.llm-header h4 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.llm-provider {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0 0 0.5rem 0;
+}
+
+.llm-option p {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+}
+
+.llm-link {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.9rem;
+}
+
+/* Package List */
+.package-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.package-item {
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1rem;
+  margin: 0.5rem 0;
+}
+
+.package-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.package-header strong {
+  font-size: 1rem;
+}
+
+.package-header code {
+  font-size: 0.85rem;
+}
+
+.package-item p {
+  margin: 0.5rem 0 0 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* Numbered Steps */
+.numbered-steps {
+  counter-reset: step;
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.numbered-steps li {
+  position: relative;
+  padding-left: 2.5rem;
+  margin: 1.5rem 0;
+}
+
+.numbered-steps li::before {
+  counter-increment: step;
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1.75rem;
+  height: 1.75rem;
+  background: var(--comp-CT);
+  color: white;
+  border-radius: 50%;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.numbered-steps strong {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.numbered-steps p {
+  margin: 0.25rem 0;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+/* FAQ List */
+.faq-list {
+  margin: 1rem 0;
+}
+
+.faq-item {
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1rem 1.25rem;
+  margin: 0.75rem 0;
+}
+
+.faq-item h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  color: var(--comp-RE);
+}
+
+.faq-item p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* Next Steps Box */
+.next-steps-box {
+  background: var(--bg-light);
+  border: 2px solid var(--comp-CT);
+  border-radius: 4px;
+  padding: 2rem;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.cta-button {
+  display: inline-block;
+  background: var(--comp-CT);
+  color: white;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  border-radius: 4px;
+  text-decoration: none;
+  margin: 1rem 0;
+  transition: background 0.2s;
+}
+
+.cta-button:hover {
+  background: #3d6a6a;
+  color: white;
+}
+
+.next-hint {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* Tutorials Box */
+.tutorials-box {
+  margin: 1.5rem 0;
+}
+
+.tutorials-box h4 {
+  margin: 0 0 1rem 0;
+}
+
+.tutorial-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  margin: 0.5rem 0;
+}
+
+.tutorial-item.recommended {
+  border-color: var(--comp-CE);
+  border-width: 2px;
+}
+
+.tutorial-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.tutorial-info {
+  flex: 1;
+}
+
+.tutorial-info a {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.tutorial-info p {
+  margin: 0.25rem 0 0 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.tutorial-info .badge {
+  margin-top: 0.5rem;
+}
+
+/* Resource List (for setup page) */
+.resources-category {
+  margin: 2rem 0;
+}
+
+.resources-category h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.resources-category > p {
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.resource-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.resource-item {
+  padding: 1rem;
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  margin: 0.5rem 0;
+}
+
+.resource-item.recommended {
+  border-color: var(--comp-CE);
+  border-width: 2px;
+}
+
+.resource-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.resource-item a {
+  font-weight: 600;
+}
+
+.resource-item p {
+  margin: 0.25rem 0 0 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.resource-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  color: var(--text-muted);
+  margin-left: 0.5rem;
+}
+
+/* ===== COMPETENCY-COLORED SETUP ICONS ===== */
+
+/* Setup Icon with competency color background */
+.setup-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 6px;
+  font-size: 1.5rem;
+  color: white;
+  position: relative;
+  cursor: help;
+}
+
+/* Kompetenz-spezifische Icon-Farben */
+.setup-icon.comp-CL { background: var(--comp-CL); }
+.setup-icon.comp-PE { background: var(--comp-PE); }
+.setup-icon.comp-RV { background: var(--comp-RV); }
+.setup-icon.comp-CE { background: var(--comp-CE); }
+.setup-icon.comp-CT { background: var(--comp-CT); }
+.setup-icon.comp-RE { background: var(--comp-RE); }
+
+/* Tooltip für Kompetenz-Erklärung */
+.setup-icon[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  background: var(--text);
+  color: var(--bg);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: normal;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 10;
+  margin-left: 8px;
+}
+
+/* Tooltip-Pfeil */
+.setup-icon[data-tooltip]::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  border: 5px solid transparent;
+  border-right-color: var(--text);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 10;
+  margin-left: -2px;
+}
+
+/* Tooltip bei Hover anzeigen */
+.setup-icon[data-tooltip]:hover::after,
+.setup-icon[data-tooltip]:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Mobile adjustments for setup page */
+@media (max-width: 600px) {
+  .setup-item-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .check-hint {
+    margin-left: 0;
+  }
+
+  .package-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .llm-options {
+    grid-template-columns: 1fr;
+  }
+
+  .tutorial-item {
+    flex-direction: column;
+    gap: 0.5rem;
   }
 }
