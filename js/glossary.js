@@ -86,6 +86,7 @@ class GlossaryManager {
     // Click outside to close
     document.addEventListener('click', (e) => {
       if (this.isPinned &&
+          this.infoPanel &&
           !this.infoPanel.contains(e.target) &&
           !e.target.classList.contains('glossary-term')) {
         this.closePanel();
@@ -141,7 +142,7 @@ class GlossaryManager {
     if (!this.isPinned) {
       // Small delay to allow moving to panel
       setTimeout(() => {
-        if (!this.isPinned && !this.infoPanel.matches(':hover')) {
+        if (!this.isPinned && this.infoPanel && !this.infoPanel.matches(':hover')) {
           this.closePanel();
         }
       }, 300);
@@ -154,6 +155,8 @@ class GlossaryManager {
   }
 
   showTerm(termId, pin = false) {
+    if (!this.infoPanel || !this.infoPanelContent) return;
+
     const term = this.glossaryData.terms.find(t => t.id === termId);
     if (!term) return;
 

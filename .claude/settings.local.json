@@ -4,7 +4,8 @@
       "Bash(node --version:*)",
       "Bash(npm:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(python -m http.server:*)"
     ]
   }
 }

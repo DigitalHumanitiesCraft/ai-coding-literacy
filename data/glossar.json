@@ -17,8 +17,8 @@
       "term": "Large Language Models",
       "short": "LLMs",
       "category": "llm-basics",
-      "definition": "KI-Systeme, die auf großen Textmengen trainiert wurden und natürliche Sprache verarbeiten können. Beispiele sind ChatGPT, Claude oder Gemini. In diesem Kontext dienen sie als Werkzeuge, die aus Beschreibungen funktionierenden Code erzeugen.",
-      "relatedTerms": ["vibe-coding", "prompt-engineering"],
+      "definition": "Ein Large Language Model ist ein auf neuronalen Netzen basierendes probabilistisches Modell, das auf umfangreichen Textmengen trainiert wurde, um statistische Muster der Sprache zu erlernen. Es zeichnet sich durch eine hohe Parameteranzahl und emergente Fähigkeiten aus, die über reine Sprachmodellierung hinausgehen. Im Kontext von AI Coding Literacy dienen LLMs als Werkzeuge, die aus natürlichsprachlichen Beschreibungen funktionierenden Code erzeugen. Die Qualität der Ergebnisse hängt davon ab, wie präzise die Aufgabe beschrieben wird und welcher Kontext bereitgestellt wird. LLMs generieren plausibel wirkende Ausgaben, die aber nicht zwingend korrekt sind.",
+      "relatedTerms": ["vibe-coding"],
       "detailPage": null
     },
     {
@@ -26,8 +26,8 @@
       "term": "Vibe Coding",
       "short": "Vibe Coding",
       "category": "coding-approaches",
-      "definition": "Ein von Andrej Karpathy geprägter Begriff für einen Ansatz, bei dem Nutzende der KI beschreiben was sie wollen, den generierten Code ohne genaue Prüfung übernehmen und bei Fehlern die Fehlermeldung an die KI zurückgeben.",
-      "relatedTerms": ["llm", "review"],
+      "definition": "Vibe Coding ist ein von Andrej Karpathy geprägter Begriff für einen Ansatz, bei dem Nutzende der KI beschreiben was sie wollen, den generierten Code ohne genaue Prüfung übernehmen und bei Fehlern die Fehlermeldung an die KI zurückgeben. Der Ansatz funktioniert für einfache Aufgaben, stößt aber bei komplexeren Problemen an Grenzen. AI Coding Literacy positioniert sich als Mittelweg zwischen Vibe Coding und dem Erlernen einer Programmiersprache.",
+      "relatedTerms": ["llm"],
       "detailPage": null
     },
     {
@@ -35,7 +35,7 @@
       "term": "Scripting",
       "short": "Scripting",
       "category": "coding-approaches",
-      "definition": "Das Schreiben kleiner Programme zur Automatisierung spezifischer Aufgaben. Im Unterschied zu größeren Softwareprojekten entstehen hier praktische Werkzeuge für den Eigenbedarf.",
+      "definition": "Ein Script ist eine kurze, einfache Folge von Anweisungen, die einen Prozess automatisiert, der sonst manuell Schritt für Schritt ausgeführt werden müsste. Scripting bezeichnet das Schreiben solcher Programme in einer interpretierten Hochsprache. Im Kontext von AI Coding Literacy geht es um praktische Werkzeuge für den Eigenbedarf, die eine konkrete Aufgabe lösen. Im Unterschied zu größeren Softwareprojekten sind Scripts nicht für den Einsatz durch andere oder für langfristige Wartung gedacht.",
       "relatedTerms": ["prototyping"],
       "detailPage": null
     },
@@ -44,8 +44,26 @@
       "term": "Prototyping",
       "short": "Prototyping",
       "category": "coding-approaches",
-      "definition": "Das schnelle Erstellen einer funktionierenden Vorabversion zum Testen einer Idee. Der Prototyp zeigt, ob ein Ansatz funktioniert, ohne Anspruch auf Vollständigkeit.",
+      "definition": "Ein Prototyp ist eine funktionsfähige Vorabversion, die zeigt ob ein Ansatz grundsätzlich funktioniert. Im Unterschied zu einer fertigen Lösung muss ein Prototyp nicht vollständig, robust oder schön sein. Er dient dazu, Ideen schnell zu testen und auf Basis der Ergebnisse anzupassen. Im Kontext von AI Coding Literacy ist Prototyping das zentrale Ziel. Es geht nicht darum, professionelle Software zu entwickeln, sondern kleine funktionale Lösungen zu bauen.",
       "relatedTerms": ["scripting"],
+      "detailPage": null
+    },
+    {
+      "id": "requirements-engineering",
+      "term": "Requirements Engineering",
+      "short": "Requirements Engineering",
+      "category": "RE",
+      "definition": "Requirements Engineering bezeichnet die systematische Übersetzung von Bedürfnissen und Zielen in formale Spezifikationen. Der Prozess umfasst vier Schritte: das Erheben von Anforderungen, ihre Analyse und Priorisierung, die präzise Dokumentation und die Überprüfung auf Vollständigkeit. Im Kontext von AI Coding Literacy geht es darum, eine Idee oder ein Problem so zu beschreiben, dass daraus eine umsetzbare Spezifikation entsteht.",
+      "relatedTerms": ["user-stories"],
+      "detailPage": null
+    },
+    {
+      "id": "user-stories",
+      "term": "User Stories",
+      "short": "User Stories",
+      "category": "RE",
+      "definition": "Eine User Story ist eine prägnante Beschreibung einer Funktionalität aus der Perspektive der Nutzenden. Sie folgt dem standardisierten Format 'Als [Benutzertyp] möchte ich [Ziel], damit [Grund]'. Im Requirements Engineering dienen User Stories dazu, umfassende Aufgabenbereiche in spezifische Anforderungen zu unterteilen. Im Kontext von AI Coding Literacy sind User Stories eine hilfreiche Technik für die Formulierung von Anforderungen.",
+      "relatedTerms": ["requirements-engineering"],
       "detailPage": null
     }
   ]

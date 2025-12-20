@@ -63,20 +63,31 @@ ai-coding-literacy/
 ├── index.html              # Redirect zu /de/
 ├── de/
 │   ├── index.html          # Übersicht mit vertikalem Scroll
+│   ├── setup.html          # Setup-Anleitung
 │   ├── kompetenzmodell.html # Detailseite Kompetenzen
 │   ├── referenz.html       # Referenzmaterial
-│   ├── ct.html             # CT-Detailseite (geplant)
-│   ├── re.html             # RE-Detailseite (geplant)
-│   ├── ce.html             # CE-Detailseite (geplant)
-│   ├── pe.html             # PE-Detailseite (geplant)
-│   ├── cl.html             # CL-Detailseite (geplant)
-│   └── rv.html             # RV-Detailseite (geplant)
+│   ├── ct.html             # CT-Detailseite
+│   ├── re.html             # RE-Detailseite
+│   ├── ce.html             # CE-Detailseite
+│   ├── pe.html             # PE-Detailseite
+│   ├── cl.html             # CL-Detailseite
+│   └── rv.html             # RV-Detailseite
+├── en/
+│   ├── index.html          # English overview
+│   ├── setup.html          # Setup guide
+│   ├── competency-model.html # Competency model
+│   └── reference.html      # Reference materials
 ├── css/
-│   └── style.css           # Globale Styles
+│   └── style.css           # Globale Styles (inkl. Glossar)
 ├── data/
-│   └── content.json        # Alle Inhalte strukturiert
+│   ├── content.json        # Alle Inhalte strukturiert (DE)
+│   ├── content-en.json     # Alle Inhalte strukturiert (EN)
+│   ├── glossar.json        # Glossar-Begriffe (DE)
+│   └── glossar-en.json     # Glossar-Begriffe (EN)
 ├── js/
 │   ├── app.js              # Hauptlogik für Übersicht
+│   ├── glossary.js         # Glossar-System
+│   ├── setup.js            # Setup-Seite
 │   ├── kompetenzmodell.js  # Kompetenzmodell-Seite
 │   └── referenz.js         # Referenz-Seite
 └── knowledge/              # Konzeptdokumente (nicht Teil der Website)
@@ -84,6 +95,7 @@ ai-coding-literacy/
     ├── design.md
     ├── implementation-plan.md
     ├── status-report.md
+    ├── journal.md
     ├── hands-on.md
     ├── grundlagen-computational-thinking.md
     ├── grundlagen-kompetenzbereiche.md
@@ -283,13 +295,17 @@ Zwei IntersectionObserver:
 - [x] Kompetenzmodell – de/kompetenzmodell.html
 - [x] Referenz – de/referenz.html
 - [x] Content erweitert: Alle 6 Kapitel
+- [x] Detailseiten erstellen (ct.html, re.html, etc.)
+- [x] Setup-Seiten (de/setup.html, en/setup.html)
+- [x] Sidebar-Labels mit vollständigen Namen
+- [x] Englische Version
+- [x] Glossar-System implementiert (glossary.js, glossar.json)
+- [x] Info-Panel für Glossar-Definitionen
+- [x] Kompetenzmodell longDescription-Felder
+- [x] 6 Glossar-Begriffe mit umfassenden Definitionen (DE/EN)
 
 ### Offen
 
-- [x] Detailseiten erstellen (ct.html, re.html, etc.) ✅
-- [x] Setup-Seiten (de/setup.html, en/setup.html) ✅
-- [x] Sidebar-Labels mit vollständigen Namen ✅
-- [x] Englische Version ✅
 - [ ] GitHub Pages – Deployment konfigurieren
 - [ ] Final-Test aller Seiten
 - [ ] Mobile-Test

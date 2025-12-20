@@ -114,7 +114,7 @@ function initPage() {
     const li = document.createElement('li');
     li.innerHTML = `
       <span class="comp-marker" style="background: ${chapter.color}"></span>
-      <strong>${chapter.name}</strong> – ${chapter.short}
+      <strong>${chapter.name}</strong> – ${chapter.longDescription || chapter.short}
     `;
     list.appendChild(li);
   });

@@ -87,37 +87,13 @@
           <p>Prüfen Sie diese Punkte. Wenn alle erfüllt sind, können Sie direkt mit den <a href="/de/#sessions-section">Übungen</a> starten.</p>
 
           <ul class="checklist">
-            <li class="checklist-item">
-              <span class="check-box">☐</span>
-              <span class="check-label">Python installiert</span>
-              <span class="check-hint">Terminal öffnen, tippen: <code>python --version</code></span>
-            </li>
-            <li class="checklist-item">
-              <span class="check-box">☐</span>
-              <span class="check-label">VS Code installiert</span>
-              <span class="check-hint">Können Sie VS Code öffnen?</span>
-            </li>
-            <li class="checklist-item">
-              <span class="check-box">☐</span>
-              <span class="check-label">Python-Extension in VS Code</span>
-              <span class="check-hint">Extensions-Tab → Suche "Python" → Installiert?</span>
-            </li>
-            <li class="checklist-item">
-              <span class="check-box">☐</span>
-              <span class="check-label">LLM-Zugang</span>
-              <span class="check-hint">Haben Sie Zugang zu einem LLM Ihrer Wahl?</span>
-            </li>
-            <li class="checklist-item">
-              <span class="check-box">☐</span>
-              <span class="check-label">Erstes Script ausgeführt</span>
-              <span class="check-hint">Erstellen Sie <code>test.py</code> mit <code>print('Hallo!')</code> und führen Sie es aus</span>
-            </li>
+            <!-- Wird dynamisch gefüllt -->
           </ul>
         </div>
       </section>
 
       <!-- Python Section -->
-      <section class="content-section" id="python">
+      <section class="content-section" id="setup-python">
         <h2 class="section-title">
           <span class="section-marker" style="background: #3776AB"></span>
           1. Python installieren
@@ -132,64 +108,12 @@
             </div>
             <span class="badge required">erforderlich</span>
           </div>
-
-          <div class="setup-item-content">
-            <p>Python ist die Programmiersprache, die wir in diesem Kurs verwenden. Sie ist bekannt für ihre Lesbarkeit und wird häufig in der Wissenschaft eingesetzt.</p>
-
-            <div class="download-box">
-              <a href="https://www.python.org/downloads/" target="_blank" rel="noopener" class="download-link">
-                → Python herunterladen (python.org)
-              </a>
-              <p class="download-note">Wir empfehlen Python 3.10 oder neuer.</p>
-            </div>
-
-            <div class="warning-box">
-              <strong>Wichtig bei der Installation (Windows):</strong>
-              <p>Aktivieren Sie unbedingt die Option <strong>"Add Python to PATH"</strong> am Anfang der Installation!</p>
-            </div>
-
-            <div class="tutorials-box">
-              <h4>Tutorials</h4>
-
-              <div class="tutorial-item video">
-                <span class="tutorial-icon"><i class="fa-solid fa-video"></i></span>
-                <div class="tutorial-info">
-                  <a href="https://www.youtube.com/watch?v=YYXdXT2l-Gg" target="_blank" rel="noopener">
-                    Corey Schafer: Python Installation (Windows & Mac)
-                  </a>
-                  <p>Beliebtes YouTube-Tutorial mit klaren Erklärungen</p>
-                </div>
-              </div>
-
-              <div class="tutorial-item text recommended">
-                <span class="tutorial-icon"><i class="fa-solid fa-book"></i></span>
-                <div class="tutorial-info">
-                  <a href="https://programminghistorian.org/en/lessons/introduction-and-installation" target="_blank" rel="noopener">
-                    Programming Historian: Python Introduction and Installation
-                  </a>
-                  <p>Schritt-für-Schritt-Anleitung speziell für Geisteswissenschaftler</p>
-                  <span class="badge recommended">empfohlen</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="verify-box">
-              <h4>Installation prüfen</h4>
-              <p>Öffnen Sie ein Terminal und geben Sie ein:</p>
-              <div class="code-block">
-                <div class="code-header">
-                  <span class="filename">Terminal</span>
-                </div>
-                <pre><code>python --version</code></pre>
-              </div>
-              <p>Erwartete Ausgabe: <code>Python 3.10.x</code> (oder neuer)</p>
-            </div>
-          </div>
+          <!-- Content wird dynamisch gefüllt -->
         </div>
       </section>
 
       <!-- VS Code Section -->
-      <section class="content-section" id="vscode">
+      <section class="content-section" id="setup-vscode">
         <h2 class="section-title">
           <span class="section-marker" style="background: #007ACC"></span>
           2. Visual Studio Code einrichten
@@ -204,79 +128,12 @@
             </div>
             <span class="badge required">erforderlich</span>
           </div>
-
-          <div class="setup-item-content">
-            <p>VS Code ist ein kostenloser, leichtgewichtiger Code-Editor von Microsoft. Er ist einfach zu bedienen und hat eine große Sammlung von Erweiterungen.</p>
-
-            <div class="download-box">
-              <a href="https://code.visualstudio.com/" target="_blank" rel="noopener" class="download-link">
-                → VS Code herunterladen (code.visualstudio.com)
-              </a>
-              <p class="download-note">Verfügbar für Windows, macOS und Linux.</p>
-            </div>
-
-            <div class="tutorials-box">
-              <h4>Tutorials</h4>
-
-              <div class="tutorial-item video recommended">
-                <span class="tutorial-icon"><i class="fa-solid fa-video"></i></span>
-                <div class="tutorial-info">
-                  <a href="https://learn.microsoft.com/en-us/shows/visual-studio-code/getting-started-with-python-in-vs-code-official-video" target="_blank" rel="noopener">
-                    Microsoft: Getting Started with Python in VS Code
-                  </a>
-                  <p>Offizielles 10-Minuten-Tutorial von Microsoft</p>
-                  <span class="badge recommended">empfohlen</span>
-                </div>
-              </div>
-
-              <div class="tutorial-item video">
-                <span class="tutorial-icon"><i class="fa-solid fa-video"></i></span>
-                <div class="tutorial-info">
-                  <a href="https://www.youtube.com/watch?v=W--_EOzdTHk" target="_blank" rel="noopener">
-                    Corey Schafer: VS Code Python Setup (Windows)
-                  </a>
-                  <p>Ausführliches Setup-Tutorial für Windows</p>
-                </div>
-              </div>
-
-              <div class="tutorial-item text">
-                <span class="tutorial-icon"><i class="fa-solid fa-book"></i></span>
-                <div class="tutorial-info">
-                  <a href="https://code.visualstudio.com/docs/python/python-quick-start" target="_blank" rel="noopener">
-                    VS Code: Quick Start Guide for Python
-                  </a>
-                  <p>Offizielle Dokumentation von Microsoft</p>
-                </div>
-              </div>
-            </div>
-
-            <h4>Empfohlene Erweiterungen</h4>
-            <p>Nach der Installation von VS Code, installieren Sie diese Erweiterungen:</p>
-
-            <ul class="extension-list">
-              <li class="extension-item">
-                <strong>Python</strong> <code>ms-python.python</code>
-                <p>Grundlegende Python-Unterstützung (Syntax-Highlighting, Debugging)</p>
-              </li>
-              <li class="extension-item">
-                <strong>Pylance</strong> <code>ms-python.vscode-pylance</code>
-                <p>Verbesserte Code-Vervollständigung und Fehlerprüfung</p>
-              </li>
-            </ul>
-
-            <p><strong>So installieren Sie Erweiterungen:</strong></p>
-            <ol>
-              <li>Öffnen Sie VS Code</li>
-              <li>Klicken Sie auf das Extensions-Symbol in der linken Leiste (oder <code>Ctrl+Shift+X</code>)</li>
-              <li>Suchen Sie nach "Python"</li>
-              <li>Klicken Sie auf "Install"</li>
-            </ol>
-          </div>
+          <!-- Content wird dynamisch gefüllt -->
         </div>
       </section>
 
       <!-- LLM Section -->
-      <section class="content-section" id="llm">
+      <section class="content-section" id="setup-llm">
         <h2 class="section-title">
           <span class="section-marker" style="background: #7B6B8D"></span>
           3. LLM-Zugang einrichten
@@ -291,88 +148,12 @@
             </div>
             <span class="badge required">erforderlich</span>
           </div>
-
-          <div class="setup-item-content">
-            <p>Für die Übungen brauchen Sie Zugang zu einem LLM. Es gibt verschiedene Anbieter – wählen Sie einen, der zu Ihren Bedürfnissen passt:</p>
-
-            <h4>Kommerzielle Anbieter (mit kostenloser Stufe)</h4>
-            <div class="llm-options">
-              <div class="llm-option">
-                <div class="llm-header">
-                  <h4>Claude</h4>
-                </div>
-                <p class="llm-provider">von Anthropic</p>
-                <p>Kostenloser Zugang mit Nutzungslimits. Gut für längere Gespräche und Code-Erklärungen.</p>
-                <a href="https://claude.ai" target="_blank" rel="noopener" class="llm-link">→ claude.ai</a>
-              </div>
-
-              <div class="llm-option">
-                <div class="llm-header">
-                  <h4>ChatGPT</h4>
-                </div>
-                <p class="llm-provider">von OpenAI</p>
-                <p>GPT-3.5 kostenlos, GPT-4 kostenpflichtig. Weit verbreitet mit großer Community.</p>
-                <a href="https://chat.openai.com" target="_blank" rel="noopener" class="llm-link">→ chat.openai.com</a>
-              </div>
-
-              <div class="llm-option">
-                <div class="llm-header">
-                  <h4>Gemini</h4>
-                </div>
-                <p class="llm-provider">von Google</p>
-                <p>Kostenloser Zugang. Gut integriert mit Google-Diensten.</p>
-                <a href="https://gemini.google.com" target="_blank" rel="noopener" class="llm-link">→ gemini.google.com</a>
-              </div>
-            </div>
-
-            <h4>Open-Source-Alternativen</h4>
-            <div class="llm-options">
-              <div class="llm-option">
-                <div class="llm-header">
-                  <h4>Mistral Le Chat</h4>
-                </div>
-                <p class="llm-provider">von Mistral AI (Frankreich)</p>
-                <p>Europäischer Anbieter mit Open-Source-Modellen. Kostenloser Chat-Zugang.</p>
-                <a href="https://chat.mistral.ai" target="_blank" rel="noopener" class="llm-link">→ chat.mistral.ai</a>
-              </div>
-
-              <div class="llm-option">
-                <div class="llm-header">
-                  <h4>HuggingChat</h4>
-                </div>
-                <p class="llm-provider">von Hugging Face</p>
-                <p>Zugang zu verschiedenen Open-Source-Modellen (Llama, Mistral, etc.).</p>
-                <a href="https://huggingface.co/chat" target="_blank" rel="noopener" class="llm-link">→ huggingface.co/chat</a>
-              </div>
-            </div>
-
-            <h4>IDE-Integration</h4>
-            <div class="llm-options">
-              <div class="llm-option">
-                <div class="llm-header">
-                  <h4>GitHub Copilot</h4>
-                </div>
-                <p class="llm-provider">von GitHub/Microsoft</p>
-                <p>Direkt in VS Code integriert. Kostenlos für Studierende und Open-Source-Beitragende.</p>
-                <a href="https://github.com/features/copilot" target="_blank" rel="noopener" class="llm-link">→ github.com/features/copilot</a>
-              </div>
-            </div>
-
-            <div class="info-box">
-              <strong>Hinweis:</strong>
-              <p>Alle genannten Optionen funktionieren für die Übungen. Wählen Sie einen Anbieter, bei dem Sie sich wohl fühlen. Die Konzepte sind übertragbar – Sie können jederzeit wechseln.</p>
-            </div>
-
-            <div class="info-box personal-note">
-              <strong>Persönliche Empfehlung:</strong>
-              <p>Aus meiner Erfahrung bietet die Bezahlversion von Claude (Claude Pro) die spannendste Lernerfahrung – besonders für längere Code-Erklärungen und iteratives Arbeiten. Wiewohl das natürlich ein proprietäres Modell ist, ist es für den Einstieg eine gute Wahl.</p>
-            </div>
-          </div>
+          <!-- Content wird dynamisch gefüllt -->
         </div>
       </section>
 
       <!-- Terminal Section -->
-      <section class="content-section" id="terminal">
+      <section class="content-section" id="setup-terminal">
         <h2 class="section-title">
           <span class="section-marker" style="background: #2D2D2D"></span>
           4. Terminal nutzen
@@ -387,50 +168,12 @@
             </div>
             <span class="badge required">erforderlich</span>
           </div>
-
-          <div class="setup-item-content">
-            <p>Das Terminal (auch Kommandozeile genannt) ist der Ort, wo Sie Python-Scripts ausführen und Pakete installieren.</p>
-
-            <div class="info-box">
-              <strong>Gute Nachricht:</strong>
-              <p>VS Code hat ein integriertes Terminal! Sie müssen kein separates Programm öffnen. Drücken Sie <code>Ctrl+`</code> (Backtick) oder gehen Sie zu <strong>Terminal → New Terminal</strong>.</p>
-            </div>
-
-            <div class="tutorial-placeholder">
-              <h4>Video-Tutorial</h4>
-              <div class="video-placeholder">
-                <p><i class="fa-solid fa-video"></i> Video: Terminal in Windows nutzen</p>
-                <p class="placeholder-note">[Video-URL wird noch ergänzt]</p>
-              </div>
-              <div class="video-placeholder">
-                <p><i class="fa-solid fa-video"></i> Video: Terminal in macOS nutzen</p>
-                <p class="placeholder-note">[Video-URL wird noch ergänzt]</p>
-              </div>
-            </div>
-
-            <h4>Wichtige Befehle</h4>
-            <div class="code-block">
-              <div class="code-header">
-                <span class="filename">Terminal-Befehle</span>
-              </div>
-              <pre><code># Python-Version prüfen
-python --version
-
-# Ein Python-Script ausführen
-python mein_script.py
-
-# Ein Paket installieren
-pip install pandas
-
-# Aktuelles Verzeichnis anzeigen
-cd</code></pre>
-            </div>
-          </div>
+          <!-- Content wird dynamisch gefüllt -->
         </div>
       </section>
 
       <!-- Pip Section -->
-      <section class="content-section" id="pip">
+      <section class="content-section" id="setup-pip">
         <h2 class="section-title">
           <span class="section-marker" style="background: #3775A9"></span>
           5. Pakete installieren (pip)
@@ -445,53 +188,7 @@ cd</code></pre>
             </div>
             <span class="badge required">erforderlich</span>
           </div>
-
-          <div class="setup-item-content">
-            <p><strong>pip</strong> wird automatisch mit Python installiert. Es ist der Paketmanager, mit dem Sie zusätzliche Bibliotheken installieren.</p>
-
-            <div class="verify-box">
-              <h4>Installation prüfen</h4>
-              <p>Öffnen Sie ein Terminal und geben Sie ein:</p>
-              <div class="code-block">
-                <div class="code-header">
-                  <span class="filename">Terminal</span>
-                </div>
-                <pre><code>pip --version</code></pre>
-              </div>
-            </div>
-
-            <h4>Häufig verwendete Pakete</h4>
-            <p>Diese Pakete werden in den Übungen verwendet:</p>
-
-            <ul class="package-list">
-              <li class="package-item">
-                <div class="package-header">
-                  <strong>pandas</strong>
-                  <code>pip install pandas</code>
-                </div>
-                <p>Datenanalyse und CSV/Excel-Verarbeitung</p>
-              </li>
-              <li class="package-item">
-                <div class="package-header">
-                  <strong>Pillow</strong>
-                  <code>pip install Pillow</code>
-                </div>
-                <p>Bildverarbeitung</p>
-              </li>
-              <li class="package-item">
-                <div class="package-header">
-                  <strong>matplotlib</strong>
-                  <code>pip install matplotlib</code>
-                </div>
-                <p>Diagramme und Visualisierungen</p>
-              </li>
-            </ul>
-
-            <div class="info-box">
-              <strong>Tipp:</strong>
-              <p>Sie müssen nicht alle Pakete vorab installieren. In den Übungen wird angegeben, welche Pakete benötigt werden.</p>
-            </div>
-          </div>
+          <!-- Content wird dynamisch gefüllt -->
         </div>
       </section>
 
@@ -504,50 +201,7 @@ cd</code></pre>
 
         <div class="setup-item">
           <div class="setup-item-content">
-            <p>Testen Sie Ihre Einrichtung mit einem einfachen Script:</p>
-
-            <ol class="numbered-steps">
-              <li>
-                <strong>Öffnen Sie VS Code</strong>
-              </li>
-              <li>
-                <strong>Erstellen Sie eine neue Datei</strong>
-                <p><code>File → New File</code> oder <code>Ctrl+N</code></p>
-              </li>
-              <li>
-                <strong>Fügen Sie diesen Code ein:</strong>
-                <div class="code-block">
-                  <div class="code-header">
-                    <span class="filename">test.py</span>
-                    <button class="copy-btn" onclick="copyCode(this)">kopieren</button>
-                  </div>
-                  <pre><code># Mein erstes Python-Script
-print("Hallo, AI Coding Literacy!")
-print("Python funktioniert!")
-
-# Eine einfache Berechnung
-ergebnis = 2 + 2
-print(f"2 + 2 = {ergebnis}")</code></pre>
-                </div>
-              </li>
-              <li>
-                <strong>Speichern Sie die Datei</strong>
-                <p><code>File → Save As</code> → Speichern als <code>test.py</code></p>
-              </li>
-              <li>
-                <strong>Führen Sie das Script aus</strong>
-                <p>Klicken Sie auf den Play-Button oben rechts, oder:</p>
-                <p>Terminal öffnen (<code>Ctrl+`</code>) und eingeben: <code>python test.py</code></p>
-              </li>
-            </ol>
-
-            <div class="success-box">
-              <strong>Erwartete Ausgabe:</strong>
-              <pre>Hallo, AI Coding Literacy!
-Python funktioniert!
-2 + 2 = 4</pre>
-              <p>Wenn Sie diese Ausgabe sehen, ist alles richtig eingerichtet!</p>
-            </div>
+            <!-- Wird dynamisch gefüllt -->
           </div>
         </div>
       </section>
@@ -560,25 +214,7 @@ Python funktioniert!
         </h2>
 
         <div class="faq-list">
-          <div class="faq-item">
-            <h4>"python" wird nicht erkannt (Windows)</h4>
-            <p>Python wurde nicht zum PATH hinzugefügt. Lösung: Python neu installieren und <strong>"Add Python to PATH"</strong> aktivieren.</p>
-          </div>
-
-          <div class="faq-item">
-            <h4>"python3" statt "python" (macOS/Linux)</h4>
-            <p>Auf manchen Systemen heißt der Befehl <code>python3</code> statt <code>python</code>. Probieren Sie: <code>python3 --version</code></p>
-          </div>
-
-          <div class="faq-item">
-            <h4>VS Code findet Python nicht</h4>
-            <p>Öffnen Sie die Command Palette (<code>Ctrl+Shift+P</code>) und suchen Sie "Python: Select Interpreter". Wählen Sie die installierte Python-Version aus.</p>
-          </div>
-
-          <div class="faq-item">
-            <h4>pip-Befehl funktioniert nicht</h4>
-            <p>Versuchen Sie <code>python -m pip --version</code> statt <code>pip --version</code>.</p>
-          </div>
+          <!-- Wird dynamisch gefüllt -->
         </div>
       </section>
 
@@ -670,9 +306,7 @@ Python funktioniert!
         </h2>
 
         <div class="next-steps-box">
-          <p>Wenn alles eingerichtet ist, können Sie mit dem Curriculum beginnen:</p>
-          <a href="/de/#sessions-section" class="cta-button">→ Zu den Übungen</a>
-          <p class="next-hint">Oder starten Sie direkt mit <a href="/de/ct.html">Computational Thinking</a>.</p>
+          <!-- Wird dynamisch gefüllt -->
         </div>
       </section>
 
@@ -684,19 +318,6 @@ Python funktioniert!
     </footer>
   </div>
 
-  <script>
-    // Simple copy function for code blocks
-    function copyCode(button) {
-      const codeBlock = button.closest('.code-block');
-      const code = codeBlock.querySelector('code').textContent;
-      navigator.clipboard.writeText(code).then(() => {
-        const originalText = button.textContent;
-        button.textContent = 'kopiert!';
-        setTimeout(() => {
-          button.textContent = originalText;
-        }, 2000);
-      });
-    }
-  </script>
+  <script src="/js/setup.js"></script>
 </body>
 </html>

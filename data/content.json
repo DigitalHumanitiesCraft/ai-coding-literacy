@@ -2,7 +2,7 @@
   "meta": {
     "title": "AI Coding Literacy",
     "subtitle": "Eine Lernplattform für Wissenschaftler·innen zur systematischen Entwicklung von Kompetenzen im Umgang mit KI-gestützter Programmierung.",
-    "description": "AI Coding Literacy bezeichnet die Kompetenz, Large Language Models als Werkzeuge zur Codeentwicklung einzusetzen. Das Ziel ist nicht professionelle Softwareentwicklung, sondern Scripting und Prototyping: kleine, funktionale Lösungen für konkrete Probleme aus dem eigenen Arbeitsbereich."
+    "description": "AI Coding Literacy bezeichnet die Kompetenz, Large Language Models als Werkzeuge zur Codeentwicklung einzusetzen. Der Begriff markiert einen Mittelweg zwischen Vibe Coding und dem Erlernen einer Programmiersprache. Das Ziel ist Scripting und Prototyping, also kleine, funktionale Lösungen für konkrete Probleme aus dem eigenen Arbeitsbereich."
   },
 
   "audience": {
@@ -327,6 +327,7 @@
       "name": "Computational Thinking",
       "color": "#4A7C7C",
       "short": "Probleme strukturieren und zerlegen",
+      "longDescription": "Computational Thinking befasst sich mit einer Denkweise für die strukturierte Arbeit mit LLMs, insbesondere dem Zerlegen von Problemen und dem Verständnis iterativer Lösungsprozesse.",
 
       "theory": {
         "description": "Computational Thinking ist die Fähigkeit, Probleme so zu strukturieren, dass sie systematisch gelöst werden können. Für die Arbeit mit LLMs ist das die wichtigste Grundkompetenz. Das eigene Domänenwissen wird zum Ausgangspunkt: Probleme so zerlegen, dass jeder Teilschritt ein präziser Prompt werden kann.",
@@ -449,6 +450,7 @@
       "name": "Requirement Engineering",
       "color": "#8B4557",
       "short": "Anforderungen präzise formulieren",
+      "longDescription": "Requirement Engineering befasst sich mit der Übersetzung von Ideen in formale Spezifikationen mit definierten Eingaben, Ausgaben und Randbedingungen.",
 
       "theory": {
         "description": "Requirement Engineering bezeichnet die systematische Formulierung von Anforderungen. Für die Arbeit mit LLMs ist das entscheidend, weil ein Prompt funktional ein Requirements-Dokument ist. Wer präzise Anforderungen formulieren kann, schreibt bessere Prompts. Die Kernfragen: Was soll das Tool tun? Was nicht? Welche Eingaben, welche Ausgaben? Woran erkennt man, dass es korrekt funktioniert?",
@@ -560,6 +562,7 @@
       "name": "Context Engineering",
       "color": "#5B7355",
       "short": "Kontext für LLMs gestalten",
+      "longDescription": "Context Engineering befasst sich mit der Aufbereitung aller Informationen, die ein LLM zur Bearbeitung einer Aufgabe benötigt.",
 
       "theory": {
         "description": "Context Engineering bezeichnet die systematische Gestaltung des Informationskontexts, den man einem LLM gibt. Das Kontextfenster ist begrenzt – was man hineinpackt und wie man es anordnet, bestimmt die Qualität der Ausgabe. Mehr ist nicht automatisch besser: LLMs können Informationen 'in der Mitte verlieren' (Lost in the Middle Problem).",
@@ -667,6 +670,7 @@
       "name": "Prompt Engineering",
       "color": "#7B6B8D",
       "short": "Effektive Prompts entwickeln",
+      "longDescription": "Prompt Engineering befasst sich mit der wirksamen Operationalisierung der Kommunikation mit dem LLM und deren Verfeinerung im Dialog.",
 
       "theory": {
         "description": "Prompt Engineering bezeichnet die Entwicklung und Optimierung von Eingabeaufforderungen. Ein Prompt ist mehr als eine Frage – die Art, wie man fragt, bestimmt die Art der Antwort. Schulhoff et al. (2024) dokumentieren 58 verschiedene Prompting-Techniken. Für die meisten Anwendungen genügen wenige Kernstrategien.",
@@ -776,6 +780,7 @@
       "name": "Code Literacy",
       "color": "#8B7355",
       "short": "Generierten Code verstehen",
+      "longDescription": "Code Literacy befasst sich mit dem Verstehen von generiertem Code und seinen Ausführungsergebnissen, einschließlich Fehlermeldungen.",
 
       "theory": {
         "description": "Code Literacy bezeichnet die Fähigkeit, Code zu lesen und zu verstehen. Das ist eine eigenständige Kompetenz, die dem Schreiben vorausgeht. Man muss nicht selbst Code schreiben können, um LLM-generierten Code zu bewerten. Die Skill-Hierarchie: Run → Trace → Explain → Write. Für AI Coding Literacy sind primär Trace und Explain relevant.",
@@ -957,6 +962,7 @@
       "name": "Review",
       "color": "#4A6B8C",
       "short": "Ergebnisse systematisch prüfen",
+      "longDescription": "Review befasst sich mit der systematischen Prüfung von Lösungen auf Korrektheit und Eignung für den Einsatzzweck.",
 
       "theory": {
         "description": "Review bezeichnet die systematische Prüfung von generiertem Code gegen die definierten Anforderungen. LLM-generierter Code sieht oft korrekt aus, enthält aber systematisch Fehler. EvalPlus zeigt: Pass-Raten sinken um 19-28.9% bei gründlicherem Testing. Tambon et al. identifizierten 10 Bug-Patterns. Vertrauen ist gut, Prüfen ist besser.",

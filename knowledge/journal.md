@@ -8,6 +8,10 @@ Kompakte Dokumentation aller Sessions und Erkenntnisse.
 
 Setup-Seiten (DE/EN) mit Python, VS Code, LLM, Terminal, pip. Kompetenz-farbige Icons zeigen didaktisches Mapping: Python/VS Code → CL, LLM → PE, Terminal → RV, pip → CE. Tooltips erklären Zuordnung bei Hover. Sidebar-Bars erweitert um vollständige Kompetenznamen (Format: "CT Computational Thinking"). Persönliche Claude-Pro-Empfehlung als separate Info-Box. Tooltip-Position auf rechts geändert wegen Sidebar-Überlappung.
 
+Kompetenzmodell-Integration: longDescription-Feld zu allen 6 Kapiteln in content.json und content-en.json hinzugefügt. JavaScript nutzt longDescription für Kompetenzliste statt short. Ermöglicht detaillierte Beschreibungen direkt in der Übersicht.
+
+Glossar-Inhalte: 6 Begriffe mit umfassenden Definitionen (DE/EN): Large Language Models (probabilistisches Modell, emergente Fähigkeiten), Vibe Coding (Karpathy-Begriff, Grenzen bei Komplexität), Scripting (Automation für Eigenbedarf), Prototyping (funktionale Vorabversion), Requirements Engineering (4-Schritte-Prozess), User Stories (standardisiertes Format). Kategorie "RE" zu Glossar-Kategorien hinzugefügt.
+
 ## 2025-12-19
 
 Englische Version mit Language Switcher. Sechs Detailseiten (ct.html bis rv.html) mit erweiterten Inhalten. Scroll-Spy refactored: Section Observer ist nun primäre Quelle, Chapter Observer als Fallback. Neue Konzepte: User Story, INVEST, RAG, Lost in Middle, Zero-Shot, Few-Shot, CoT, Skill-Hierarchie (Run→Trace→Explain→Write), Halluzinationskategorien, Metamorphic Testing.

@@ -4,9 +4,9 @@ Eine Lernplattform für Wissenschaftler·innen zur systematischen Entwicklung vo
 
 ## Über das Projekt
 
-AI Coding Literacy bezeichnet die Kompetenz, Large Language Models als Werkzeuge zur Codeentwicklung einzusetzen. Das Ziel ist nicht professionelle Softwareentwicklung, sondern Scripting und Prototyping: kleine, funktionale Lösungen für konkrete Probleme aus dem eigenen Arbeitsbereich.
+AI Coding Literacy bezeichnet die Kompetenz, Large Language Models als Werkzeuge zur Codeentwicklung einzusetzen. Der Begriff markiert einen Mittelweg zwischen Vibe Coding und dem Erlernen einer Programmiersprache. Das Ziel ist Scripting und Prototyping: kleine, funktionale Lösungen für konkrete Probleme aus dem eigenen Arbeitsbereich.
 
-**Zielgruppe:** Fachwissenschaftler·innen aus dem geisteswissenschaftlich-kulturwissenschaftlichen Bereich ohne Programmiervorerfahrung.
+Zielgruppe: Fachwissenschaftler·innen aus dem geisteswissenschaftlich-kulturwissenschaftlichen Bereich ohne Programmiervorerfahrung.
 
 ## Live-Demo
 
@@ -14,16 +14,7 @@ AI Coding Literacy bezeichnet die Kompetenz, Large Language Models als Werkzeuge
 
 ## Kompetenzmodell
 
-Das Curriculum umfasst 6 Kompetenzbereiche:
-
-| ID | Kompetenz | Beschreibung |
-|----|-----------|--------------|
-| CT | Computational Thinking | Probleme strukturieren und zerlegen |
-| RE | Requirement Engineering | Anforderungen präzise formulieren |
-| CE | Context Engineering | Kontext für LLMs gestalten |
-| PE | Prompt Engineering | Effektive Prompts entwickeln |
-| CL | Code Literacy | Generierten Code verstehen |
-| RV | Review | Ergebnisse systematisch prüfen |
+Das Curriculum entwickelt sechs Kompetenzbereiche. Computational Thinking vermittelt eine Denkweise für die strukturierte Arbeit mit LLMs, insbesondere das Zerlegen von Problemen und das Verständnis iterativer Lösungsprozesse. Requirement Engineering behandelt die Übersetzung von Ideen in formale Spezifikationen mit definierten Eingaben, Ausgaben und Randbedingungen. Context Engineering befasst sich mit der Aufbereitung aller Informationen, die ein LLM zur Bearbeitung einer Aufgabe benötigt. Prompt Engineering entwickelt die Fähigkeit, die Kommunikation mit dem LLM wirksam zu operationalisieren und im Dialog zu verfeinern. Code Literacy ermöglicht das Verstehen von generiertem Code und seinen Ausführungsergebnissen, einschließlich Fehlermeldungen. Review trainiert die systematische Prüfung, ob eine Lösung die ursprünglichen Anforderungen erfüllt und für den Einsatzzweck geeignet ist.
 
 ## Seitenstruktur
 
@@ -40,16 +31,16 @@ Das Curriculum umfasst 6 Kompetenzbereiche:
 └── rv.html              # RV-Detailseite (geplant)
 ```
 
-**Konzept:**
-- **Übersicht (index.html):** Alle 6 Kompetenzen auf einer Seite mit Theorie, Übungen, Ressourcen
-- **Detailseiten (ct.html etc.):** Vertiefende Inhalte, interaktive Übungen, Lernpfade
+Konzept:
+- Übersicht (index.html): Alle 6 Kompetenzen auf einer Seite mit Theorie, Übungen, Ressourcen
+- Detailseiten (ct.html etc.): Vertiefende Inhalte, interaktive Übungen, Lernpfade
 
 ## Technischer Stack
 
-- **Frontend:** Vanilla HTML/CSS/JavaScript
-- **Daten:** JSON (`/data/content.json`)
-- **Hosting:** GitHub Pages
-- **Design:** Tufte-inspirierte Ästhetik
+- Frontend: Vanilla HTML/CSS/JavaScript
+- Daten: JSON (/data/content.json)
+- Hosting: GitHub Pages
+- Design: Tufte-inspirierte Ästhetik
 
 Bewusst keine Build-Tools oder Frameworks – maximale Transparenz für ein Curriculum, das Code-Verständnis lehrt.
 
@@ -103,8 +94,8 @@ Die Übersichtsseite zeigt alle Kapitel vertikal untereinander:
 ### Sidebar-Navigation
 
 - 6 farbige Kompetenz-Balken (CT, RE, CE, PE, CL, RV)
-- Klick → scrollt zum Kapitel
-- **Ausklappbare Sub-Links:** Theorie, Übungen, Ressourcen
+- Klick scrollt zum Kapitel
+- Ausklappbare Sub-Links: Theorie, Übungen, Ressourcen
 - Scroll-Spy highlightet aktives Kapitel und aktive Sektion
 
 ## Dokumentation

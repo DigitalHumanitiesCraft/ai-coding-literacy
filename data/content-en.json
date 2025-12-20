@@ -2,7 +2,7 @@
   "meta": {
     "title": "AI Coding Literacy",
     "subtitle": "A learning platform for researchers to systematically develop skills in AI-assisted programming.",
-    "description": "AI Coding Literacy refers to the ability to use Large Language Models as tools for code development. The goal is not professional software development, but scripting and prototyping: small, functional solutions for specific problems in your field of work."
+    "description": "AI Coding Literacy refers to the ability to use Large Language Models as tools for code development. The term marks a middle ground between Vibe Coding and learning a programming language. The goal is scripting and prototyping, meaning small, functional solutions for specific problems in your field of work."
   },
 
   "audience": {
@@ -327,6 +327,7 @@
       "name": "Computational Thinking",
       "color": "#4A7C7C",
       "short": "Structure and decompose problems",
+      "longDescription": "Computational Thinking deals with a mindset for structured work with LLMs, particularly decomposing problems and understanding iterative solution processes.",
 
       "theory": {
         "description": "Computational Thinking is the ability to structure problems so they can be solved systematically. For working with LLMs, this is the most important foundational skill. Your domain knowledge becomes the starting point: decompose problems so that each step can become a precise prompt.",
@@ -449,6 +450,7 @@
       "name": "Requirement Engineering",
       "color": "#8B4557",
       "short": "Formulate requirements precisely",
+      "longDescription": "Requirement Engineering deals with translating ideas into formal specifications with defined inputs, outputs, and constraints.",
 
       "theory": {
         "description": "Requirement Engineering refers to the systematic formulation of requirements. For working with LLMs, this is crucial because a prompt is functionally a requirements document. Those who can formulate precise requirements write better prompts. The key questions: What should the tool do? What not? What inputs, what outputs? How do you know if it works correctly?",
@@ -560,6 +562,7 @@
       "name": "Context Engineering",
       "color": "#5B7355",
       "short": "Design context for LLMs",
+      "longDescription": "Context Engineering deals with preparing all information an LLM needs to process a task.",
 
       "theory": {
         "description": "Context Engineering refers to the systematic design of the information context provided to an LLM. The context window is limited – what you put in and how you arrange it determines the quality of the output. More is not automatically better: LLMs can 'lose' information in the middle of long contexts (Lost in the Middle problem).",
@@ -667,6 +670,7 @@
       "name": "Prompt Engineering",
       "color": "#7B6B8D",
       "short": "Develop effective prompts",
+      "longDescription": "Prompt Engineering deals with effectively operationalizing communication with the LLM and refining it through dialogue.",
 
       "theory": {
         "description": "Prompt Engineering refers to the development and optimization of input prompts. A prompt is more than a question – the way you ask determines the type of answer. Schulhoff et al. (2024) document 58 different prompting techniques. For most applications, a few core strategies suffice.",
@@ -776,6 +780,7 @@
       "name": "Code Literacy",
       "color": "#8B7355",
       "short": "Understand generated code",
+      "longDescription": "Code Literacy deals with understanding generated code and its execution results, including error messages.",
 
       "theory": {
         "description": "Code Literacy refers to the ability to read and understand code. This is an independent skill that precedes writing. You don't need to be able to write code yourself to evaluate LLM-generated code. The skill hierarchy: Run → Trace → Explain → Write. For AI Coding Literacy, primarily Trace and Explain are relevant.",
@@ -912,6 +917,7 @@
       "name": "Review",
       "color": "#4A6B8C",
       "short": "Systematically verify results",
+      "longDescription": "Review deals with systematically verifying solutions for correctness and suitability for their intended purpose.",
 
       "theory": {
         "description": "Review refers to the systematic verification of generated code against defined requirements. LLM-generated code often looks correct but contains systematic errors. EvalPlus shows: pass rates drop by 19-28.9% with more thorough testing. Tambon et al. identified 10 bug patterns. Trust is good, verification is better.",
