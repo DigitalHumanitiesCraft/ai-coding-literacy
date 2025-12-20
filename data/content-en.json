@@ -15,6 +15,312 @@
     ]
   },
 
+  "setup": {
+    "title": "Prerequisites & Setup",
+    "subtitle": "What you need to get started",
+    "description": "Before starting the exercises, you should set up your working environment. Here you'll find everything you need – from software to LLM access.",
+    "items": [
+      {
+        "id": "python",
+        "name": "Python",
+        "icon": "🐍",
+        "priority": 1,
+        "required": true,
+        "shortDescription": "The programming language for our code examples",
+        "checkCommand": "python --version",
+        "downloadUrl": "https://www.python.org/downloads/",
+        "tutorials": {
+          "windows": {
+            "title": "Installing Python on Windows",
+            "videoUrl": "https://www.youtube.com/watch?v=YYXdXT2l-Gg",
+            "videoTitle": "Corey Schafer: Python Tutorial for Beginners 1: Install and Setup",
+            "steps": [
+              "Download Python from python.org",
+              "Run the installer",
+              "Enable 'Add Python to PATH' (important!)",
+              "Click Install Now",
+              "Verify in terminal: python --version"
+            ]
+          },
+          "mac": {
+            "title": "Installing Python on macOS",
+            "videoUrl": "https://www.youtube.com/watch?v=YYXdXT2l-Gg",
+            "videoTitle": "Corey Schafer: Python Tutorial for Beginners 1: Install and Setup",
+            "steps": [
+              "Download Python from python.org",
+              "Run the PKG installer",
+              "Complete installation",
+              "Verify in terminal: python3 --version"
+            ]
+          },
+          "textTutorial": {
+            "title": "Programming Historian: Python Introduction and Installation",
+            "url": "https://programminghistorian.org/en/lessons/introduction-and-installation",
+            "description": "Step-by-step guide designed for humanities researchers"
+          }
+        },
+        "notes": "We recommend Python 3.10 or newer. During installation: Enable 'Add Python to PATH'!"
+      },
+      {
+        "id": "vscode",
+        "name": "Visual Studio Code",
+        "icon": "💻",
+        "priority": 2,
+        "required": true,
+        "shortDescription": "The code editor for writing and running scripts",
+        "downloadUrl": "https://code.visualstudio.com/",
+        "tutorials": {
+          "official": {
+            "title": "Getting Started with Python in VS Code (Microsoft)",
+            "videoUrl": "https://learn.microsoft.com/en-us/shows/visual-studio-code/getting-started-with-python-in-vs-code-official-video",
+            "description": "Official 10-minute tutorial from Microsoft"
+          },
+          "windows": {
+            "title": "Setting up VS Code on Windows",
+            "videoUrl": "https://www.youtube.com/watch?v=W--_EOzdTHk",
+            "videoTitle": "Corey Schafer: VS Code Python Setup",
+            "steps": [
+              "Download VS Code from code.visualstudio.com",
+              "Run the installer",
+              "Open Extensions tab (Ctrl+Shift+X)",
+              "Search for 'Python' and install",
+              "Select Python interpreter"
+            ]
+          },
+          "mac": {
+            "title": "Setting up VS Code on macOS",
+            "videoUrl": "https://www.youtube.com/watch?v=06I63_p-2A4",
+            "videoTitle": "Corey Schafer: VS Code Python Setup Mac",
+            "steps": [
+              "Download VS Code from code.visualstudio.com",
+              "Move app to Applications",
+              "Open Extensions tab (Cmd+Shift+X)",
+              "Search for 'Python' and install",
+              "Select Python interpreter"
+            ]
+          },
+          "textTutorial": {
+            "title": "VS Code: Quick Start Guide for Python",
+            "url": "https://code.visualstudio.com/docs/python/python-quick-start",
+            "description": "Official documentation from Microsoft"
+          }
+        },
+        "extensions": [
+          {
+            "name": "Python",
+            "id": "ms-python.python",
+            "description": "Basic Python support"
+          },
+          {
+            "name": "Pylance",
+            "id": "ms-python.vscode-pylance",
+            "description": "Improved code completion"
+          }
+        ],
+        "notes": "VS Code is free and runs on all operating systems."
+      },
+      {
+        "id": "llm",
+        "name": "LLM Access",
+        "icon": "🤖",
+        "priority": 3,
+        "required": true,
+        "shortDescription": "Access to a Large Language Model for code generation",
+        "options": [
+          {
+            "name": "ChatGPT",
+            "provider": "OpenAI",
+            "url": "https://chat.openai.com",
+            "free": true,
+            "freeTier": "GPT-3.5 free, GPT-4 paid",
+            "recommended": false,
+            "notes": ""
+          },
+          {
+            "name": "Claude",
+            "provider": "Anthropic",
+            "url": "https://claude.ai",
+            "free": true,
+            "freeTier": "Free access with usage limits",
+            "recommended": true,
+            "notes": ""
+          },
+          {
+            "name": "GitHub Copilot",
+            "provider": "GitHub/Microsoft",
+            "url": "https://github.com/features/copilot",
+            "free": false,
+            "freeTier": "Free for students and open-source",
+            "recommended": false,
+            "notes": "Directly integrated in VS Code"
+          }
+        ],
+        "notes": "For getting started, we recommend Claude or ChatGPT. Both have free versions."
+      },
+      {
+        "id": "terminal",
+        "name": "Terminal / Command Line",
+        "icon": "⌨️",
+        "priority": 4,
+        "required": true,
+        "shortDescription": "For running Python scripts and installing packages",
+        "tutorials": {
+          "windows": {
+            "title": "Using Terminal in Windows",
+            "videoUrl": "",
+            "steps": [
+              "In VS Code: Press Ctrl+`",
+              "Or: Terminal → New Terminal",
+              "PowerShell or Command Prompt opens"
+            ]
+          },
+          "mac": {
+            "title": "Using Terminal in macOS",
+            "videoUrl": "",
+            "steps": [
+              "In VS Code: Press Ctrl+`",
+              "Or: Terminal → New Terminal",
+              "zsh or bash opens"
+            ]
+          }
+        },
+        "notes": "VS Code has an integrated terminal – you don't need to open a separate program."
+      },
+      {
+        "id": "pip",
+        "name": "pip (Package Manager)",
+        "icon": "📦",
+        "priority": 5,
+        "required": true,
+        "shortDescription": "For installing Python libraries like Pandas, Pillow, etc.",
+        "checkCommand": "pip --version",
+        "tutorials": {
+          "general": {
+            "title": "Installing packages with pip",
+            "videoUrl": "",
+            "steps": [
+              "Open terminal",
+              "Type pip install packagename",
+              "Press Enter and wait"
+            ]
+          },
+          "textTutorial": {
+            "title": "Programming Historian: Installing Python Modules with pip",
+            "url": "https://programminghistorian.org/en/lessons/installing-python-modules-pip",
+            "description": "Detailed guide for beginners"
+          }
+        },
+        "commonPackages": [
+          {
+            "name": "pandas",
+            "command": "pip install pandas",
+            "description": "Data analysis and CSV/Excel processing"
+          },
+          {
+            "name": "Pillow",
+            "command": "pip install Pillow",
+            "description": "Image processing"
+          },
+          {
+            "name": "matplotlib",
+            "command": "pip install matplotlib",
+            "description": "Charts and visualizations"
+          }
+        ],
+        "notes": "pip is automatically installed with Python."
+      }
+    ],
+    "quickCheck": {
+      "title": "Quick Check: Are you ready?",
+      "items": [
+        {
+          "label": "Python installed",
+          "check": "Open a terminal and type: python --version"
+        },
+        {
+          "label": "VS Code installed",
+          "check": "Can you open VS Code?"
+        },
+        {
+          "label": "Python extension in VS Code",
+          "check": "Extensions tab → Search for 'Python' → Installed?"
+        },
+        {
+          "label": "LLM access",
+          "check": "Do you have access to an LLM of your choice?"
+        },
+        {
+          "label": "First script",
+          "check": "Create test.py with print('Hello!') and run it"
+        }
+      ]
+    },
+    "additionalResources": {
+      "title": "Additional Resources",
+      "forHumanities": [
+        {
+          "title": "Programming Historian",
+          "url": "https://programminghistorian.org/en/lessons/",
+          "description": "Peer-reviewed tutorials specifically for humanities researchers. Free and available in multiple languages.",
+          "recommended": true
+        },
+        {
+          "title": "Python for Digital Humanities",
+          "url": "https://pythonhumanities.com/python-for-dh-course/",
+          "description": "Comprehensive online course by W.J.B. Mattingly, designed for humanities students.",
+          "recommended": true
+        },
+        {
+          "title": "Humanities Programming",
+          "url": "https://humanitiesprogramming.github.io/",
+          "description": "Introduction to Python for humanities scholars with focus on text analysis."
+        },
+        {
+          "title": "Python Programming for the Humanities",
+          "url": "https://www.karsdorp.io/python-course/",
+          "description": "Folgert Karsdorp's course focusing on Natural Language Processing."
+        }
+      ],
+      "videoCourses": [
+        {
+          "title": "freeCodeCamp: Python for Beginners",
+          "url": "https://www.youtube.com/watch?v=rfscVS0vtbw",
+          "description": "Free 4-hour course on YouTube. Perfect for complete beginners.",
+          "duration": "4+ hours"
+        },
+        {
+          "title": "Corey Schafer: Python Tutorials",
+          "url": "https://www.youtube.com/playlist?list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU",
+          "description": "High-quality tutorial series with clear explanations.",
+          "duration": "Series"
+        },
+        {
+          "title": "Microsoft: Python for Beginners",
+          "url": "https://learn.microsoft.com/en-us/shows/intro-to-python-development/",
+          "description": "Official Microsoft series with 44 short videos.",
+          "duration": "44 videos"
+        }
+      ],
+      "documentation": [
+        {
+          "title": "Python Official Tutorial",
+          "url": "https://docs.python.org/3/tutorial/",
+          "description": "The official Python documentation – comprehensive but technical."
+        },
+        {
+          "title": "Real Python",
+          "url": "https://realpython.com/",
+          "description": "High-quality tutorials and articles for all levels."
+        },
+        {
+          "title": "W3Schools Python",
+          "url": "https://www.w3schools.com/python/",
+          "description": "Interactive tutorials with try-it-yourself editor."
+        }
+      ]
+    }
+  },
+
   "chapters": [
     {
       "id": "CT",
