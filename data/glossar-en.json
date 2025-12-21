@@ -31,7 +31,7 @@
       "term": "Vibe Coding",
       "short": "Vibe Coding",
       "category": "coding-approaches",
-      "definition": "Vibe Coding is a term coined by Andrej Karpathy for an approach where users describe to the AI what they want, accept the generated code without thorough review, and return error messages to the AI when things fail. This approach works for simple tasks but reaches its limits with more complex problems. AI Coding Literacy positions itself as a middle path between Vibe Coding and learning a programming language.",
+      "definition": "Vibe Coding is a term coined by Andrej Karpathy for an approach where users deliberately choose not to understand how the code works. They describe to the AI what they want, accept the generated code unchecked, and return error messages when things fail. Karpathy phrased it: 'fully give in to the vibes, embrace exponentials, and forget that the code even exists.' This approach works for simple tasks but reaches its limits with more complex problems. AI Coding Literacy positions itself as a middle path between Vibe Coding and learning a programming language.",
       "relatedTerms": ["llm"],
       "detailPage": null
     },

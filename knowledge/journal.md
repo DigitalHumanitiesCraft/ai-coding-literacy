@@ -4,6 +4,10 @@ Kompakte Dokumentation aller Sessions und Erkenntnisse.
 
 ---
 
+## 2025-12-21
+
+Content-Überarbeitung: Alle 6 Kompetenzbeschreibungen in research blog Stil überarbeitet. Wissenschaftliche Hintergründe narrativ integriert statt isolierte Faktenlisten. CT mit Wing (2006), RE mit 1990er Softwarekrise, CE mit 2024 Wendepunkt und Lost in the Middle, PE mit GPT-3 2020 und Wei/Zhou/Schulhoff, CL mit Lopez 2008 und Soloway/Ehrlich 1984, RV mit Copilot 2021 und Fu/Liu/Tambon/Nguyen. Intro-Texte (meta.subtitle + meta.description) verkürzt und präziser formuliert. Vibe Coding Glossar-Eintrag korrigiert mit Karpathy-Originalzitat ("fully give in to the vibes, forget that the code even exists").
+
 ## 2025-12-20
 
 Setup-Seiten (DE/EN) mit Python, VS Code, LLM, Terminal, pip. Kompetenz-farbige Icons zeigen didaktisches Mapping: Python/VS Code → CL, LLM → PE, Terminal → RV, pip → CE. Tooltips erklären Zuordnung bei Hover. Sidebar-Bars erweitert um vollständige Kompetenznamen (Format: "CT Computational Thinking"). Persönliche Claude-Pro-Empfehlung als separate Info-Box. Tooltip-Position auf rechts geändert wegen Sidebar-Überlappung.
@@ -19,6 +23,8 @@ Englische Version mit Language Switcher. Sechs Detailseiten (ct.html bis rv.html
 ---
 
 ## Erkenntnisse
+
+**Content:** Research blog Stil wirksamer als Faktenlisten. Narrativer Aufbau (historischer Einstieg → Problem → Lösung → Implikation für AI Coding Literacy) macht wissenschaftliche Grundlagen zugänglicher. Kürzere Intro-Texte fokussieren besser.
 
 **Didaktik:** Kompetenz-Mapping auf Setup-Tools macht Lernzusammenhang sichtbar. Persönliche Erfahrung einbringen statt nur neutrale Fakten.
 

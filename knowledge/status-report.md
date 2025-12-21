@@ -1,13 +1,13 @@
 # Status-Report: AI Coding Literacy
 
-**Datum:** 2025-12-20
-**Phase:** Glossar-System implementiert, Info-Panel integriert
+**Datum:** 2025-12-21
+**Phase:** Content narrativ überarbeitet, research blog Stil
 
 ---
 
 ## Zusammenfassung
 
-Die AI Coding Literacy Lernplattform hat ein **vertikales Scroll-Layout** mit **ausklappbaren Sub-Links** in der Sidebar. Zusätzlich wurden **6 Detailseiten** (ct.html bis rv.html) mit vertiefenden Inhalten erstellt. Neu: **Setup-Seiten** (DE/EN) mit kompetenz-farbigen Icons und **erweiterte Sidebar-Labels** mit vollständigen Kompetenznamen.
+Die AI Coding Literacy Lernplattform hat ein **vertikales Scroll-Layout** mit **ausklappbaren Sub-Links** in der Sidebar. Zusätzlich wurden **6 Detailseiten** (ct.html bis rv.html) mit vertiefenden Inhalten erstellt. **Setup-Seiten** (DE/EN) mit kompetenz-farbigen Icons und **erweiterte Sidebar-Labels** mit vollständigen Kompetenznamen. Neu: **Content im research blog Stil** – wissenschaftliche Hintergründe narrativ statt als Faktenlisten.
 
 ---
 
@@ -98,7 +98,21 @@ Die AI Coding Literacy Lernplattform hat ein **vertikales Scroll-Layout** mit **
 | Review longDescription umformuliert | ✅ | data/content.json, data/content-en.json |
 | Doppelpunkte durch Gedankenstriche ersetzt | ✅ | js/app.js |
 
-### 9. Dokumentation aktualisiert
+### 9. Content-Überarbeitung (100%)
+
+| Änderung | Status | Datei |
+|----------|--------|-------|
+| meta.subtitle verkürzt (DE/EN) | ✅ | data/content.json, data/content-en.json |
+| meta.description kompakter (DE/EN) | ✅ | data/content.json, data/content-en.json |
+| CT Theorie: Wing (2006) narrativ | ✅ | data/content.json, data/content-en.json |
+| RE Theorie: 1990er Softwarekrise | ✅ | data/content.json, data/content-en.json |
+| CE Theorie: 2024 Wendepunkt, Lost in Middle | ✅ | data/content.json, data/content-en.json |
+| PE Theorie: GPT-3 2020, Wei/Zhou/Schulhoff | ✅ | data/content.json, data/content-en.json |
+| CL Theorie: Lopez 2008, Soloway/Ehrlich 1984 | ✅ | data/content.json, data/content-en.json |
+| RV Theorie: Copilot 2021, Fu/Liu/Tambon/Nguyen | ✅ | data/content.json, data/content-en.json |
+| Vibe Coding: Karpathy-Zitat präziser | ✅ | data/glossar.json, data/glossar-en.json |
+
+### 10. Dokumentation aktualisiert
 
 | Datei | Status |
 |-------|--------|

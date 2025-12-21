@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "AI Coding Literacy",
-    "subtitle": "Eine Lernplattform für Wissenschaftler·innen zur systematischen Entwicklung von Kompetenzen im Umgang mit KI-gestützter Programmierung.",
-    "description": "AI Coding Literacy bezeichnet die Kompetenz, Large Language Models als Werkzeuge zur Codeentwicklung einzusetzen. Der Begriff markiert einen Mittelweg zwischen Vibe Coding und dem Erlernen einer Programmiersprache. Das Ziel ist Scripting und Prototyping, also kleine, funktionale Lösungen für konkrete Probleme aus dem eigenen Arbeitsbereich."
+    "subtitle": "Ein Curriculum für Wissenschaftler·innen, die mit LLMs kleine funktionale Tools entwickeln wollen.",
+    "description": "AI Coding Literacy markiert den Mittelweg zwischen Vibe Coding und dem Erlernen einer Programmiersprache. Das Ziel ist Scripting und Prototyping – kleine, funktionale Lösungen für konkrete Probleme aus dem eigenen Arbeitsbereich."
   },
 
   "audience": {
@@ -330,13 +330,13 @@
       "longDescription": "Computational Thinking befasst sich mit einer Denkweise für die strukturierte Arbeit mit LLMs, insbesondere dem Zerlegen von Problemen und dem Verständnis iterativer Lösungsprozesse.",
 
       "theory": {
-        "description": "Computational Thinking ist die Fähigkeit, Probleme so zu strukturieren, dass sie systematisch gelöst werden können. Für die Arbeit mit LLMs ist das die wichtigste Grundkompetenz. Das eigene Domänenwissen wird zum Ausgangspunkt: Probleme so zerlegen, dass jeder Teilschritt ein präziser Prompt werden kann.",
+        "description": "Als Jeannette Wing 2006 ihren einflussreichen Essay über Computational Thinking veröffentlichte, ging es ihr um eine fundamentale Denkweise, die weit über Informatik hinausgeht. Sie argumentierte, dass CT nicht das Programmieren selbst ist, sondern eine Art des Problemlösens, die auf den Möglichkeiten und Grenzen von Rechenverfahren aufbaut – unabhängig davon, ob ein Mensch, ein klassisches Programm oder ein LLM die Lösung ausführt. Für die Arbeit mit LLMs wird diese Denkweise zur entscheidenden Grundkompetenz. Es geht darum, Probleme aus dem eigenen Fachbereich so zu strukturieren und zu zerlegen, dass jeder Teilschritt zu einem präzisen, ausführbaren Prompt wird. Das eigene Domänenwissen wird dabei zum Ausgangspunkt, nicht zum Hindernis.",
         "keyPoints": [
-          "Computational Thinking ist keine Programmierung, sondern eine Denkweise",
+          "Computational Thinking builds on the power and limits of computing processes, whether they are executed by a human or by a machine (Wing, 2006)",
+          "CT ist keine Programmierung, sondern eine Denkweise",
           "Die vier Kernelemente: Dekomposition, Mustererkennung, Abstraktion, Algorithmus",
           "LLMs arbeiten am besten mit klaren, strukturierten Aufgaben – vage Anfragen führen zu unvorhersehbaren Ergebnissen",
-          "Dekomposition hilft: bessere Prompts schreiben, Fehler lokalisieren, iterativ verbessern",
-          "Pseudocode und Flussdiagramme helfen, bevor Code generiert wird"
+          "Dekomposition hilft: bessere Prompts schreiben, Fehler lokalisieren, iterativ verbessern"
         ],
         "concepts": [
           {
@@ -453,7 +453,7 @@
       "longDescription": "Requirement Engineering befasst sich mit der Übersetzung von Ideen in formale Spezifikationen mit definierten Eingaben, Ausgaben und Randbedingungen.",
 
       "theory": {
-        "description": "Requirement Engineering bezeichnet die systematische Formulierung von Anforderungen. Für die Arbeit mit LLMs ist das entscheidend, weil ein Prompt funktional ein Requirements-Dokument ist. Wer präzise Anforderungen formulieren kann, schreibt bessere Prompts. Die Kernfragen: Was soll das Tool tun? Was nicht? Welche Eingaben, welche Ausgaben? Woran erkennt man, dass es korrekt funktioniert?",
+        "description": "Requirement Engineering ist eine etablierte Disziplin der Softwareentwicklung, die sich mit der systematischen Formulierung von Anforderungen befasst. In den 1990er Jahren erkannte die Branche, dass die meisten Softwareprojekte nicht an technischen Problemen scheitern, sondern an unklaren oder widersprüchlichen Anforderungen. Für die Arbeit mit LLMs wird diese Erkenntnis besonders relevant. Ein Prompt ist funktional ein Requirements-Dokument – und LLMs raten bei vagen Anforderungen. Sie füllen Lücken mit plausibel klingenden Annahmen, die nicht unbedingt das sind, was Sie wollten. Die Kernfragen bleiben dieselben wie in klassischen RE-Prozessen: Was soll das Tool tun? Was explizit nicht? Welche Eingaben, welche Ausgaben? Woran erkennt man, dass es korrekt funktioniert?",
         "keyPoints": [
           "Ein Prompt ist funktional ein Requirements-Dokument",
           "User Stories sind niedrigschwelliger als formale Spezifikationen",
@@ -565,7 +565,7 @@
       "longDescription": "Context Engineering befasst sich mit der Aufbereitung aller Informationen, die ein LLM zur Bearbeitung einer Aufgabe benötigt.",
 
       "theory": {
-        "description": "Context Engineering bezeichnet die systematische Gestaltung des Informationskontexts, den man einem LLM gibt. Das Kontextfenster ist begrenzt – was man hineinpackt und wie man es anordnet, bestimmt die Qualität der Ausgabe. Mehr ist nicht automatisch besser: LLMs können Informationen 'in der Mitte verlieren' (Lost in the Middle Problem).",
+        "description": "2024 markierte einen Wendepunkt in der LLM-Entwicklung. Modelle wie GPT-4o, Claude 3.5 und Gemini 1.5 brachten massive Kontextfenster mit – bis zu einer Million Tokens. Doch schnell zeigte sich: Mehr Kontext ist nicht automatisch besser. Liu et al. (2024) dokumentierten das Lost in the Middle Problem: LLMs verlieren Informationen, die in der Mitte langer Kontexte stehen. Context Engineering befasst sich mit dieser Herausforderung. Es geht nicht darum, möglichst viel Information zu liefern, sondern die richtige Information an der richtigen Stelle. Retrieval-Augmented Generation (RAG) wurde als Antwort entwickelt – nur relevante Ausschnitte aus großen Wissensbasen abrufen, statt alles ins Kontextfenster zu packen. Für praktisches Scripting bedeutet das: Projekte brauchen eine klare Kontextstruktur (Rolle, Aufgabe, Informationen, Constraints, Format) und eine bewusste Auswahl dessen, was wirklich relevant ist.",
         "keyPoints": [
           "Kontextfenster: GPT-4o 128K, Claude 200K, Gemini 1M Tokens",
           "Mehr Kontext ist nicht automatisch besser – Lost in the Middle Problem",
@@ -673,7 +673,7 @@
       "longDescription": "Prompt Engineering befasst sich mit der wirksamen Operationalisierung der Kommunikation mit dem LLM und deren Verfeinerung im Dialog.",
 
       "theory": {
-        "description": "Prompt Engineering bezeichnet die Entwicklung und Optimierung von Eingabeaufforderungen. Ein Prompt ist mehr als eine Frage – die Art, wie man fragt, bestimmt die Art der Antwort. Schulhoff et al. (2024) dokumentieren 58 verschiedene Prompting-Techniken. Für die meisten Anwendungen genügen wenige Kernstrategien.",
+        "description": "Als GPT-3 2020 erschien, begannen Forschende systematisch zu untersuchen, wie man die Leistung von LLMs durch geschickte Formulierung verbessern kann. Wei et al. (2022) zeigten mit Chain-of-Thought Prompting, dass ein einfaches 'Denke Schritt für Schritt' die Leistung bei Reasoning-Aufgaben dramatisch steigern kann. Zhou et al. (2022) entwickelten Automatic Prompt Engineering (APE) – LLMs, die ihre eigenen Prompts optimieren. Schulhoff et al. (2024) dokumentieren mittlerweile 58 verschiedene Prompting-Techniken. Doch für praktisches Scripting genügen wenige Kernstrategien: Zero-Shot (direkte Anweisung ohne Beispiele) für einfache Aufgaben, Few-Shot (2-5 Beispiele) wenn das Format nicht offensichtlich ist, und Chain-of-Thought wenn das Problem mehrere Schritte erfordert. Die Kunst liegt nicht darin, alle Techniken zu kennen, sondern zu erkennen, welche Strategie für welches Problem passt.",
         "keyPoints": [
           "Schulhoff et al. dokumentieren 58 Prompting-Techniken – für die Praxis genügen wenige",
           "Zero-Shot: Direkte Anweisung ohne Beispiele – für einfache, eindeutige Aufgaben",
@@ -783,7 +783,7 @@
       "longDescription": "Code Literacy befasst sich mit dem Verstehen von generiertem Code und seinen Ausführungsergebnissen, einschließlich Fehlermeldungen.",
 
       "theory": {
-        "description": "Code Literacy bezeichnet die Fähigkeit, Code zu lesen und zu verstehen. Das ist eine eigenständige Kompetenz, die dem Schreiben vorausgeht. Man muss nicht selbst Code schreiben können, um LLM-generierten Code zu bewerten. Die Skill-Hierarchie: Run → Trace → Explain → Write. Für AI Coding Literacy sind primär Trace und Explain relevant.",
+        "description": "Lesen und Schreiben von Code sind zwei verschiedene Kompetenzen – das erkannten Lopez et al. bereits 2008. Ihre Studien zeigten, dass selbst Studierende, die keinen Code schreiben können, durchaus in der Lage sind, Code zu lesen und zu bewerten. Soloway und Ehrlich (1984) entwickelten die Idee von Delocalized Plans: Code, der zu einer einzigen Intention gehört, ist oft über mehrere Stellen im Programm verstreut. Das Verstehen erfordert Navigation und mentale Integration. Für die Arbeit mit LLMs ist genau diese Lesekompetenz zentral. Die Skill-Hierarchie (Run → Trace → Explain → Write) zeigt, dass Schreiben die höchste Stufe ist – für AI Coding Literacy genügen die Stufen Trace (Schritt für Schritt nachvollziehen) und Explain (Zweck verstehen). Interessant: Lau et al. (2024) berichten, dass 39% der Praktiker LLM-generierten Code lesbarer finden als menschlichen Code. Sie müssen nicht alles verstehen – nur genug, um zu prüfen, ob der Code das tut, was er soll.",
         "keyPoints": [
           "Lesen und Schreiben sind getrennte Kompetenzen (Lopez et al., 2008)",
           "Skill-Hierarchie: Run → Trace → Explain → Write",
@@ -965,7 +965,7 @@
       "longDescription": "Review befasst sich mit der systematischen Prüfung von Lösungen auf Korrektheit und Eignung für den Einsatzzweck.",
 
       "theory": {
-        "description": "Review bezeichnet die systematische Prüfung von generiertem Code gegen die definierten Anforderungen. LLM-generierter Code sieht oft korrekt aus, enthält aber systematisch Fehler. EvalPlus zeigt: Pass-Raten sinken um 19-28.9% bei gründlicherem Testing. Tambon et al. identifizierten 10 Bug-Patterns. Vertrauen ist gut, Prüfen ist besser.",
+        "description": "Als GitHub Copilot 2021 erschien, schien eine neue Ära anzubrechen. Doch schnell zeigten Studien die Grenzen. Fu et al. (2022) fanden Sicherheitslücken in 29.5% der Python-Snippets. Liu et al. (2023) entwickelten EvalPlus, ein rigoroseres Testing-Framework – die Pass-Raten von GPT-4 sanken um 19-28.9%. Tambon et al. (2024) identifizierten 10 systematische Bug-Patterns in LLM-generiertem Code. Das Problem sind nicht zufällige Fehler, sondern vorhersagbare Schwächen: halluzinierte Funktionen, Grenzfälle, die ignoriert werden, subtile logische Fehler. Nguyen et al. (2024) kategorisierten Halluzinationen in 5 Typen: Intent Conflicting (Code widerspricht der Anforderung), Context Inconsistency (Code widerspricht dem Kontext), Dead Code, Knowledge Conflicting und halluzinierte Objekte. Review bedeutet nicht, misstrauisch zu sein – sondern systematisch zu prüfen. Vertrauen ist gut, Prüfen ist besser.",
         "keyPoints": [
           "EvalPlus: Pass-Raten sinken um 19-28.9% bei gründlicherem Testing",
           "Tambon et al.: 10 Bug-Patterns in LLM-generiertem Code",
