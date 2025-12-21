@@ -88,6 +88,7 @@ class GlossaryManager {
       if (this.isPinned &&
           this.infoPanel &&
           !this.infoPanel.contains(e.target) &&
+          e.target.classList &&
           !e.target.classList.contains('glossary-term')) {
         this.closePanel();
       }
@@ -95,19 +96,19 @@ class GlossaryManager {
 
     // Delegate event listeners for glossary terms
     document.addEventListener('mouseenter', (e) => {
-      if (e.target.classList.contains('glossary-term')) {
+      if (e.target.classList && e.target.classList.contains('glossary-term')) {
         this.handleTermHover(e.target);
       }
     }, true);
 
     document.addEventListener('mouseleave', (e) => {
-      if (e.target.classList.contains('glossary-term')) {
+      if (e.target.classList && e.target.classList.contains('glossary-term')) {
         this.handleTermLeave(e.target);
       }
     }, true);
 
     document.addEventListener('click', (e) => {
-      if (e.target.classList.contains('glossary-term')) {
+      if (e.target.classList && e.target.classList.contains('glossary-term')) {
         this.handleTermClick(e.target);
       }
     });
@@ -124,6 +125,9 @@ class GlossaryManager {
     // Show panel immediately
     this.showTerm(termId, false);
 
+    // Add pinning class to start progress bar animation
+    this.infoPanel.classList.add('pinning');
+
     // Set timeout to pin after hover delay
     this.hoverTimeout = setTimeout(() => {
       if (!this.isPinned) {
@@ -137,6 +141,9 @@ class GlossaryManager {
     if (this.hoverTimeout) {
       clearTimeout(this.hoverTimeout);
     }
+
+    // Remove pinning animation class
+    this.infoPanel.classList.remove('pinning');
 
     // Only close if not pinned
     if (!this.isPinned) {
@@ -212,12 +219,13 @@ class GlossaryManager {
 
   pinPanel() {
     this.isPinned = true;
+    this.infoPanel.classList.remove('pinning');
     this.infoPanel.classList.add('pinned');
   }
 
   closePanel() {
     this.isPinned = false;
-    this.infoPanel.classList.remove('visible', 'pinned');
+    this.infoPanel.classList.remove('visible', 'pinned', 'pinning');
 
     if (this.hoverTimeout) {
       clearTimeout(this.hoverTimeout);

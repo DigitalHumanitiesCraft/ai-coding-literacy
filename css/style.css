@@ -28,10 +28,10 @@
   --gloss-coding-approaches: #9D7B6B;
 
   /* Layout */
-  --sidebar-width: 200px;
-  --content-width: 780px;
-  --content-width-narrow: 720px;
-  --info-panel-width: 320px;
+  --sidebar-width: 240px;
+  --content-width: 720px;
+  --content-width-narrow: 680px;
+  --info-panel-width: 440px;
 }
 
 *, *::before, *::after {
@@ -85,7 +85,7 @@ h4 {
 
 p {
   margin: 0 0 1rem;
-  max-width: 75ch;
+  max-width: 65ch;
 }
 
 strong {
@@ -310,16 +310,18 @@ footer a {
 
 /* Sidebar Navigation */
 .sidebar-nav {
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .sidebar-nav a {
   display: block;
   text-decoration: none;
   color: var(--text-muted);
-  padding: 0.4rem 0;
+  padding: 0.5rem 0;
   border-bottom: 1px solid transparent;
 }
 
@@ -902,6 +904,13 @@ footer a {
   font-family: 'IBM Plex Mono', monospace;
 }
 
+/* Kompetenzmodell-Übersicht mit visueller Trennung */
+#competencies-overview {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
 /* Kompetenz-Liste im Intro */
 .competency-list {
   list-style: none;
@@ -915,11 +924,16 @@ footer a {
   margin-bottom: 0.4rem;
 }
 
+.competency-list li strong {
+  white-space: nowrap;
+}
+
 .comp-marker {
   display: inline-block;
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   flex-shrink: 0;
+  border-radius: 2px;
 }
 
 /* ============================================================
@@ -2012,64 +2026,63 @@ footer a {
 /* Glossar-Begriffe im Text */
 .glossary-term {
   cursor: help;
-  text-decoration: underline;
-  text-decoration-style: dotted;
-  text-decoration-thickness: 1.5px;
-  text-underline-offset: 2px;
+  text-decoration: none;
   position: relative;
   transition: all 0.2s ease;
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.2);
 }
 
 .glossary-term:hover {
-  text-decoration-style: solid;
+  border-bottom-style: solid;
+  border-bottom-width: 1.5px;
 }
 
 /* Farben für Glossar-Kategorien */
 .glossary-term[data-category="llm-basics"] {
-  text-decoration-color: var(--gloss-llm-basics);
+  border-bottom-color: var(--gloss-llm-basics);
   color: var(--gloss-llm-basics);
 }
 
 .glossary-term[data-category="coding-approaches"] {
-  text-decoration-color: var(--gloss-coding-approaches);
+  border-bottom-color: var(--gloss-coding-approaches);
   color: var(--gloss-coding-approaches);
 }
 
 /* Kompetenz-spezifische Glossar-Begriffe */
 .glossary-term[data-category="CT"] {
-  text-decoration-color: var(--comp-CT);
+  border-bottom-color: var(--comp-CT);
   color: var(--comp-CT);
 }
 
 .glossary-term[data-category="RE"] {
-  text-decoration-color: var(--comp-RE);
+  border-bottom-color: var(--comp-RE);
   color: var(--comp-RE);
 }
 
 .glossary-term[data-category="CE"] {
-  text-decoration-color: var(--comp-CE);
+  border-bottom-color: var(--comp-CE);
   color: var(--comp-CE);
 }
 
 .glossary-term[data-category="PE"] {
-  text-decoration-color: var(--comp-PE);
+  border-bottom-color: var(--comp-PE);
   color: var(--comp-PE);
 }
 
 .glossary-term[data-category="CL"] {
-  text-decoration-color: var(--comp-CL);
+  border-bottom-color: var(--comp-CL);
   color: var(--comp-CL);
 }
 
 .glossary-term[data-category="RV"] {
-  text-decoration-color: var(--comp-RV);
+  border-bottom-color: var(--comp-RV);
   color: var(--comp-RV);
 }
 
 /* Info Panel */
 .info-panel {
   position: fixed;
-  right: -340px;
+  right: -460px;
   top: 0;
   width: var(--info-panel-width);
   height: 100vh;
@@ -2080,6 +2093,35 @@ footer a {
   overflow-y: auto;
   transition: right 0.3s ease;
   padding: 2rem 1.5rem;
+}
+
+/* Progress Bar for Pin Indicator */
+.info-panel-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: var(--text);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 10;
+}
+
+.info-panel.pinning .info-panel-progress {
+  opacity: 1;
+  animation: fillProgress 1s linear forwards;
+}
+
+.info-panel.pinned .info-panel-progress {
+  width: 100%;
+  opacity: 1;
+  background: var(--comp-CT);
+}
+
+@keyframes fillProgress {
+  from { width: 0; }
+  to { width: 100%; }
 }
 
 .info-panel.visible {

@@ -5,7 +5,9 @@
       "Bash(npm:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(python -m http.server:*)"
+      "Bash(python -m http.server:*)",
+      "Bash(dir /b c:UserschrisDocumentsGitHubDHCraftai-coding-literacy)",
+      "Bash(git push)"
     ]
   }
 }
