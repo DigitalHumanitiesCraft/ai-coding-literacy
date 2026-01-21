@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide Viewer</title>
+    <!-- Basis-Styles aus dem Projekt -->
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Slide-spezifische Erweiterungen -->
+    <link rel="stylesheet" href="viewer.css">
+</head>
+<body class="slide-viewer-body">
+    <!-- Slide Container -->
+    <div class="slide-container">
+        <div class="slide" id="slide-content">
+            <p class="loading">Lade Präsentation...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="slide-controls">
+        <button id="prev" class="slide-btn" aria-label="Vorherige Folie">[←]</button>
+        <span class="slide-progress">
+            <span id="current">1</span>/<span id="total">1</span>
+        </span>
+        <button id="next" class="slide-btn" aria-label="Nächste Folie">[→]</button>
+    </nav>
+
+    <!-- Meta-Info (Titel, Kompetenz) -->
+    <div class="slide-meta" id="meta">
+        <span class="slide-competency" id="deck-competency"></span>
+        <span class="slide-title" id="deck-title"></span>
+    </div>
+
+    <!-- Glossar-Tooltip -->
+    <div class="glossar-tooltip" id="glossar-tooltip">
+        <strong id="glossar-term"></strong>
+        <p id="glossar-definition"></p>
+    </div>
+
+    <!-- Markdown Parser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="viewer.js"></script>
+</body>
+</html>
