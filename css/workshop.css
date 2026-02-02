@@ -135,6 +135,7 @@ body.workshop-page {
   color: #ffffff;
   text-align: center;
   padding: 2rem 1rem;
+  margin-top: -0.5rem; /* Leichte Ueberlappung fuer visuellen Flow */
   margin-bottom: 0;
 }
 
