@@ -1,7 +1,7 @@
 # Status-Report: AI Coding Literacy
 
 Datum: 2026-02-02
-Phase: Repository-Konsolidierung abgeschlossen
+Phase: Workshop-UI implementiert
 
 ---
 
@@ -66,7 +66,8 @@ ai-coding-literacy/
 ├── CLAUDE.md
 ├── ReadMe.md
 ├── css/
-│   └── style.css
+│   ├── style.css               (Curriculum)
+│   └── workshop.css            (Workshop)
 ├── js/
 │   ├── app.js              (vereinfacht, nur DE)
 │   ├── glossary.js         (vereinfacht, nur DE)
@@ -81,7 +82,9 @@ ai-coding-literacy/
 │       ├── workshop_objekte.csv
 │       └── kriminalmuseum_komplett.csv
 ├── de/
-│   ├── index.html          (ohne Sprachumschalter)
+│   ├── index.html              (Curriculum-Uebersicht)
+│   ├── workshop.html           (Workshop-Landingpage)
+│   ├── informed-vibe-coding.html (Leitgedanke-Erklaerung)
 │   ├── setup.html
 │   ├── kompetenzmodell.html
 │   ├── referenz.html
@@ -142,8 +145,11 @@ Web-Grundlagen (web-basics):
 ## Workshop-Materialien
 
 Google Slides:
-- Hauptpraesentation: https://docs.google.com/presentation/d/17fkBHPcBMlCBbg2GiV7kDaD-cnDAkfaIRSFCudFgXPQ/
-- Vorbereitungstreffen: https://docs.google.com/presentation/d/1TlCBDJDUQNqsQOiEbHR2MhDC0eL10RKjHfmKhYA6wOs/
+- Hauptpraesentation: https://docs.google.com/presentation/d/1pP-4I7VXCbQSOfVaeYPpOBQE5ZeY7590NuDBK2gGTow
+- Vorbereitungstreffen: https://docs.google.com/presentation/d/1gvhQtVVRV7btvqd2b-YIPsRNQJk0umt6C8un3ONnnLY
+
+Vorbereitungslektuere:
+- https://chpollin.github.io/llmdh
 
 Repository-Materialien:
 - Python-Beispiele: /workshops/programmieren-2-0/python/
@@ -157,17 +163,41 @@ Datensatz Hans Gross Kriminalmuseum:
 
 ---
 
+## Workshop-UI (Februar 2026)
+
+Workshop-Seite implementiert:
+- /de/workshop.html - Vollstaendige Workshop-Landingpage
+- /css/workshop.css - Eigenes Stylesheet (ca. 850 Zeilen)
+
+Features:
+- Header mit AI Coding Literacy Branding
+- Workshop-Banner (Programmieren 2.0)
+- Context-Cards (Datum, Ort, Zielgruppe, Leitgedanke)
+- Transformationsprozess-Visualisierung (4 Schritte mit Icons)
+- Lernziele-Liste
+- 3 Praxisbloecke mit Kompetenz-Tags
+- Datensatz-Sektion (Hans Gross Kriminalmuseum)
+- Ressourcen-Grid (Vorlagen, Cheatsheets, Python-Beispiele, Externe Links)
+- Kompetenz-Grid (7 Dimensionen mit Gewichtung)
+
+Informed Vibe Coding Seite:
+- /de/informed-vibe-coding.html - Erklaerung des Leitgedankens
+- Drei Saeulen: Ergebnisse einordnen, Fehler erkennen, Gezielt nachbessern
+- Video-Platzhalter fuer spaetere Ergaenzung
+
+Design-Entscheidungen:
+- Tufte-inspirierte Aesthetik beibehalten
+- Playfair Display fuer Ueberschriften
+- JetBrains Mono fuer Code/technische Elemente
+- DM Sans fuer Fliesstext
+- Terracotta (#C4725A) als Akzentfarbe
+- Petrol (#7A9BB5) fuer Downloads/Actions
+
 ## Naechste Schritte
 
-1. Workshop-UI Landingpage entwickeln (wartet auf Designvorschlag)
-   - Spezifisch fuer Workshop "Programmieren 2.0" am NHM Wien (12.02.2026)
-   - Soll alle Materialien zur Verfuegung stellen
-   - Soll die 7 Kompetenzdimensionen visuell im Interface abbilden
-
-2. Verifizierung
-   - Lokalen Server starten und /de/index.html testen
-   - Glossar-Begriffe pruefen (Hover-Funktion)
-   - Workshop-Materialien pruefen
+1. Video zu "Informed Vibe Coding" erstellen und einbetten
+2. Workshop durchfuehren (12. Februar 2026)
+3. Feedback sammeln und Materialien iterieren
 
 ---
 

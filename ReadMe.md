@@ -6,26 +6,33 @@ Eine Lernplattform fuer Wissenschaftler und Wissenschaftlerinnen zur systematisc
 
 AI Coding Literacy bezeichnet die Kompetenz, Large Language Models als Werkzeuge zur Codeentwicklung einzusetzen. Der Begriff markiert einen Mittelweg zwischen Vibe Coding und dem Erlernen einer Programmiersprache. Das Ziel ist Scripting und Prototyping: kleine, funktionale Loesungen fuer konkrete Probleme aus dem eigenen Arbeitsbereich.
 
+Leitgedanke: Informed Vibe Coding - Ergebnisse einordnen, Fehler erkennen, gezielt nachbessern.
+
 Zielgruppe: Fachwissenschaftler und Fachwissenschaftlerinnen aus dem geisteswissenschaftlich-kulturwissenschaftlichen Bereich ohne Programmiervorerfahrung.
 
 ## Live-Demo
 
-https://digitalhumanitiescraft.github.io/ai-coding-literacy/de/
+- Curriculum: https://digitalhumanitiescraft.github.io/ai-coding-literacy/de/
+- Workshop-Seite: https://digitalhumanitiescraft.github.io/ai-coding-literacy/de/workshop.html
 
 ## Workshop: Programmieren 2.0
 
-Der Workshop "Programmieren 2.0: AI Coding Literacy fuer die Geisteswissenschaften" vermittelt praktische Kompetenzen zur Arbeit mit LLMs.
+Der Workshop "Programmieren 2.0: LLMs fuer Forschungsdaten im Museum" findet am 12. Februar 2026 im Naturhistorischen Museum Wien statt (Museumsbund Oesterreich).
 
-Materialien:
-- Google Slides Hauptpraesentation: https://docs.google.com/presentation/d/17fkBHPcBMlCBbg2GiV7kDaD-cnDAkfaIRSFCudFgXPQ/
-- Google Slides Vorbereitungstreffen: https://docs.google.com/presentation/d/1TlCBDJDUQNqsQOiEbHR2MhDC0eL10RKjHfmKhYA6wOs/
+Workshop-Seite mit allen Materialien:
+/de/workshop.html
+
+Externe Links:
+- Google Slides Hauptpraesentation: https://docs.google.com/presentation/d/1pP-4I7VXCbQSOfVaeYPpOBQE5ZeY7590NuDBK2gGTow
+- Google Slides Vorbereitungstreffen: https://docs.google.com/presentation/d/1gvhQtVVRV7btvqd2b-YIPsRNQJk0umt6C8un3ONnnLY
+- Vorbereitungslektuere: https://chpollin.github.io/llmdh
 
 Workshop-Materialien im Repository:
 - Python-Beispiele: /workshops/programmieren-2-0/python/
 - Web-Beispiele: /workshops/programmieren-2-0/web/
 - Handouts und Vorlagen: /workshops/programmieren-2-0/handouts/
 
-Datensatz (Hans Gross Kriminalmuseum):
+Datensatz (Hans Gross Kriminalmuseum, Universitaet Graz):
 - Workshop-Objekte (25 Stueck): /data/kriminalmuseum/workshop_objekte.json
 - Workshop-Objekte CSV: /data/kriminalmuseum/workshop_objekte.csv
 - Kompletter Datensatz (3892 Eintraege): /data/kriminalmuseum/kriminalmuseum_komplett.csv
@@ -47,37 +54,39 @@ Das Curriculum entwickelt sieben Kompetenzbereiche:
 ```
 ai-coding-literacy/
 ├── de/
-│   ├── index.html          # Uebersicht mit vertikalem Scroll
-│   ├── setup.html          # Setup-Anleitung
-│   ├── kompetenzmodell.html
-│   ├── referenz.html
-│   └── ct.html, re.html, ce.html, pe.html, cl.html, rv.html
+│   ├── index.html              # Curriculum-Uebersicht (Landing Page)
+│   ├── workshop.html           # Workshop-Seite mit allen Materialien
+│   ├── informed-vibe-coding.html  # Erklaerung des Leitgedankens
+│   ├── setup.html              # Setup-Anleitung
+│   ├── kompetenzmodell.html    # Kompetenzmodell-Detailseite
+│   ├── referenz.html           # Referenz/Glossar
+│   └── ct.html, re.html, ...   # Einzelne Kompetenzseiten
 ├── css/
-│   └── style.css           # Globale Styles
+│   ├── style.css               # Globale Styles (Curriculum)
+│   └── workshop.css            # Workshop-spezifische Styles
 ├── data/
-│   ├── content.json        # Alle Inhalte strukturiert
-│   ├── glossar.json        # Glossar-Begriffe (21 Eintraege)
-│   └── kriminalmuseum/     # Workshop-Datensatz
+│   ├── content.json            # Curriculum-Inhalte
+│   ├── glossar.json            # Glossar-Begriffe (21 Eintraege)
+│   └── kriminalmuseum/         # Workshop-Datensatz
 ├── js/
-│   ├── app.js              # Hauptlogik
-│   ├── glossary.js         # Glossar-System
+│   ├── app.js                  # Curriculum-Hauptlogik
+│   ├── glossary.js             # Glossar-System
 │   ├── kompetenzmodell.js
 │   ├── referenz.js
 │   └── setup.js
-├── knowledge/              # Konzeptdokumente
+├── knowledge/                  # Konzeptdokumente
 │   ├── concept.md
 │   ├── design.md
 │   ├── implementation-plan.md
 │   ├── status-report.md
-│   ├── hands-on.md
-│   ├── journal.md
 │   └── workshops/
-│       └── programmieren-2-0.md  # Autoritatives Workshop-Dokument
-└── workshops/
-    └── programmieren-2-0/
-        ├── handouts/
-        ├── python/
-        └── web/
+│       └── programmieren-2-0.md
+├── workshops/
+│   └── programmieren-2-0/
+│       ├── handouts/           # Vorlagen und Cheatsheets
+│       ├── python/             # Python-Beispielskripte
+│       └── web/                # Web-Beispiele
+└── docs/                       # GitHub Pages Deployment-Ordner
 ```
 
 ## Technischer Stack
@@ -104,13 +113,32 @@ Die Plattform verfuegt ueber ein automatisches Glossar-System:
 - Technische Grundlagen: API, API-Key, CSV, Extension, Git, GitHub, JSON, Live Server, PATH, Terminal
 - Web-Grundlagen: CORS, CSS, HTML, JavaScript
 
+## Seitenstruktur
+
+Die Plattform besteht aus zwei Hauptbereichen:
+
+Curriculum (de/index.html):
+- Landing Page mit Projektbeschreibung
+- Kompetenzmodell-Uebersicht (7 Dimensionen)
+- Sessions-Bereich (dynamisch aus content.json)
+- Sidebar mit Navigation und Kompetenz-Bars
+- Info-Panel fuer Glossar-Begriffe
+
+Workshop (de/workshop.html):
+- Workshop-Seite "Programmieren 2.0"
+- Context-Cards (Datum, Ort, Zielgruppe, Leitgedanke)
+- Transformationsprozess-Visualisierung
+- Lernziele und Praxisbloecke
+- Datensatz-Information
+- Handouts und Ressourcen
+- Kompetenz-Grid mit Gewichtungen
+
 ## Dokumentation
 
 - Konzept: /knowledge/concept.md
 - Design: /knowledge/design.md
 - Implementierung: /knowledge/implementation-plan.md
 - Status: /knowledge/status-report.md
-- Hands-On: /knowledge/hands-on.md
 - Workshop: /knowledge/workshops/programmieren-2-0.md
 
 ## Lokale Entwicklung
@@ -136,4 +164,4 @@ CC-BY
 
 ---
 
-DigitalHumanitiesCraft - 2025
+DigitalHumanitiesCraft - 2025/2026
