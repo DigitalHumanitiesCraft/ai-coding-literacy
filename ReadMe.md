@@ -61,7 +61,8 @@ ai-coding-literacy/
 │   ├── setup.html              # Setup-Anleitung
 │   ├── kompetenzmodell.html    # Kompetenzmodell-Detailseite
 │   ├── referenz.html           # Referenz/Glossar
-│   └── ct.html, re.html, ...   # Einzelne Kompetenzseiten
+│   ├── ct.html, re.html, ...   # Einzelne Kompetenzseiten (CT-RV)
+│   └── ew.html                 # Expert:innenwissen
 ├── css/
 │   ├── style.css               # Globale Styles (Curriculum)
 │   └── workshop.css            # Workshop-spezifische Styles
@@ -112,7 +113,7 @@ Die Plattform verfuegt ueber ein automatisches Glossar-System:
 - 1 Sekunde Hover pinnt das Panel (bleibt offen, scrollbar)
 - Verwandte Begriffe sind verlinkt
 
-21 Begriffe in 4 Kategorien:
+28 Begriffe in 4 Kategorien:
 - LLM-Grundlagen: LLM, Prompt, Token
 - Coding-Ansaetze: Vibe Coding, Scripting, Prototyping, Requirements Engineering
 - Technische Grundlagen: API, API-Key, CSV, Extension, Git, GitHub, JSON, Live Server, PATH, Terminal

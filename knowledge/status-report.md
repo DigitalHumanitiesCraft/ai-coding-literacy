@@ -1,7 +1,7 @@
 # Status-Report: AI Coding Literacy
 
-Datum: 2026-02-02
-Phase: Workshop-UI implementiert
+Datum: 2026-02-02 (aktualisiert Abend)
+Phase: Design-Optimierung abgeschlossen
 
 ---
 
@@ -88,16 +88,18 @@ ai-coding-literacy/
 │   ├── setup.html
 │   ├── kompetenzmodell.html
 │   ├── referenz.html
-│   └── ct.html, re.html, ce.html, pe.html, cl.html, rv.html
+│   ├── ct.html, re.html, ce.html, pe.html, cl.html, rv.html
+│   └── ew.html                    (Expert:innenwissen)
 ├── knowledge/
 │   ├── concept.md
 │   ├── design.md
 │   ├── implementation-plan.md
 │   ├── status-report.md
-│   ├── journal.md
 │   ├── hands-on.md
 │   └── workshops/
 │       └── programmieren-2-0.md    (AUTORITATIV)
+├── .github/
+│   └── DEVELOPMENT_LOG.md          (Journal)
 └── workshops/
     └── programmieren-2-0/
         ├── handouts/
@@ -193,11 +195,27 @@ Design-Entscheidungen:
 - Terracotta (#C4725A) als Akzentfarbe
 - Petrol (#7A9BB5) fuer Downloads/Actions
 
+## Design-Optimierung (Abend 2026-02-02)
+
+Abgeschlossen:
+- GitHub Pages Deployment repariert (alle absoluten Pfade zu relativen)
+- Site-Navigation zu Workshop-Seiten hinzugefuegt
+- CSS-Fonts und --bg-light Variable ergaenzt
+- EW-Detailseite (ew.html) erstellt
+- Kompetenz-Items auf workshop.html klickbar gemacht
+
+Offen:
+- Mobile Navigation (Hamburger-Menu)
+- Glossar-Integration auf Curriculum-Seiten
+- Datensatz-Dokumentation (datensatz-agnostisch)
+
 ## Naechste Schritte
 
-1. Video zu "Informed Vibe Coding" erstellen und einbetten
-2. Workshop durchfuehren (12. Februar 2026)
-3. Feedback sammeln und Materialien iterieren
+1. Mobile Navigation implementieren
+2. Glossar auf weitere Seiten integrieren
+3. Video zu "Informed Vibe Coding" erstellen
+4. Workshop durchfuehren (12. Februar 2026)
+5. Feedback sammeln und Materialien iterieren
 
 ---
 

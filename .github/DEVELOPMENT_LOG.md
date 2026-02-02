@@ -4,6 +4,16 @@ Kompakte Dokumentation aller Sessions und Erkenntnisse.
 
 ---
 
+## 2026-02-02 (Abend)
+
+Design-Optimierung und Bugfixes: GitHub Pages Deployment vollstaendig repariert. Alle absoluten Pfade (/css/, /js/, /de/) durch relative Pfade ersetzt (../css/, ../js/, ./, ct.html). Pfad-Fixes in shared.js (fetch, Sidebar-Links), referenz.js (Uebungs-Links), setup.js (Naechste-Schritte-Links). Site-Navigation zu allen Workshop-Seiten hinzugefuegt (workshop.html, informed-vibe-coding.html, ueber.html). CSS-Fonts (@import DM Sans, Playfair Display) und --bg-light Variable in style.css ergaenzt. Kompetenz-Items auf workshop.html von div zu klickbaren Links geaendert.
+
+EW-Detailseite erstellt: /docs/de/ew.html (Expert:innenwissen) als 7. Kompetenzdimension. Inhalte: Domaenenwissen als Ressource, Kontextualisierung, Qualitaetskontrolle, Grenzen erkennen (wann professionelle Hilfe holen), Weiterbildungspfade (Data Steward, Digital Humanist, RSE). Zitat: Fei-Fei Li. EW-Link auf workshop.html aktiviert.
+
+Plan fuer weitere Optimierungen erstellt: Datensatz-Dokumentation (Workshop datensatz-agnostisch machen), Glossar-Integration auf Curriculum-Seiten, Mobile Navigation mit Hamburger-Menu.
+
+---
+
 ## 2026-02-02 (Nachmittag, spaet)
 
 Workshop-Seite Verlinkungen: "KI-gestuetzt" zu "LLM-gestuetzt" geaendert. Informed Vibe Coding Link auch im Intro-Text hinzugefuegt. Praxisbloecke-Karten UI alignment optimiert (Flexbox, min-height, margin-top:auto fuer Buttons). Neue Verlinkungen: Digital Humanities Craft (dhcraft.org), Christopher Pollin (chpollin.github.io), Museumsbund (museumsbund.at). Neue context-note Sektion erklaert Zusammenhang zur "KI im Museum" Webinar-Reihe. CSS erweitert um .context-note, .context-sub a, .banner-meta a, .workshop-tagline a Styles.
@@ -68,8 +78,8 @@ Kompetenzmodell: 7 Dimensionen (CT, RE, CE, PE, CL, RV, EW). EW (Expertenwissen)
 
 ## Offen
 
-- GitHub Pages Deployment verifizieren
-- Mobile-Test (<600px)
+- Mobile Navigation (Hamburger-Menu fuer < 768px)
+- Glossar-Integration auf Curriculum-Seiten
+- Datensatz-Dokumentation (Workshop datensatz-agnostisch)
 - Cross-Browser-Test
-- Workshop-UI Live-Test mit echten Daten
-- docs/ Ordner vollstaendig synchronisieren
+- Video fuer informed-vibe-coding.html
