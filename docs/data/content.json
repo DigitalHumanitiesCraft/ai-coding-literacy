@@ -1,0 +1,1215 @@
+{
+  "meta": {
+    "title": "AI Coding Literacy",
+    "subtitle": "Ein Curriculum für Wissenschaftler·innen, die mit LLMs kleine funktionale Tools entwickeln wollen.",
+    "description": "AI Coding Literacy markiert den Mittelweg zwischen Vibe Coding und dem Erlernen einer Programmiersprache. Das Ziel ist Scripting und Prototyping – kleine, funktionale Lösungen für konkrete Probleme aus dem eigenen Arbeitsbereich."
+  },
+
+  "audience": {
+    "description": "Fachwissenschaftler·innen aus dem geisteswissenschaftlich-kulturwissenschaftlichen Bereich, die ohne Programmiervorerfahrung kleine, funktionale Tools für ihre Arbeit entwickeln wollen.",
+    "prerequisites": [
+      "Keine Programmiervorerfahrung erforderlich",
+      "Grundlegende Computerkenntnisse (Dateisystem, Browser)",
+      "Erfahrung mit einem LLM (Chat-Interface)",
+      "Konkrete Probleme aus dem eigenen Arbeitsbereich"
+    ]
+  },
+
+  "setup": {
+    "title": "Voraussetzungen & Setup",
+    "subtitle": "Was Sie brauchen, um loszulegen",
+    "description": "Bevor Sie mit den Übungen starten, sollten Sie Ihre Arbeitsumgebung einrichten. Hier finden Sie alles, was Sie brauchen – von der Software bis zum LLM-Zugang.",
+    "items": [
+      {
+        "id": "python",
+        "name": "Python",
+        "icon": "🐍",
+        "priority": 1,
+        "required": true,
+        "shortDescription": "Die Programmiersprache für unsere Code-Beispiele",
+        "checkCommand": "python --version",
+        "downloadUrl": "https://www.python.org/downloads/",
+        "tutorials": {
+          "windows": {
+            "title": "Python unter Windows installieren",
+            "videoUrl": "https://www.youtube.com/watch?v=YYXdXT2l-Gg",
+            "videoTitle": "Corey Schafer: Python Tutorial for Beginners 1: Install and Setup",
+            "steps": [
+              "Python von python.org herunterladen",
+              "Installer starten",
+              "'Add Python to PATH' aktivieren (wichtig!)",
+              "Install Now klicken",
+              "Im Terminal prüfen: python --version"
+            ]
+          },
+          "mac": {
+            "title": "Python unter macOS installieren",
+            "videoUrl": "https://www.youtube.com/watch?v=YYXdXT2l-Gg",
+            "videoTitle": "Corey Schafer: Python Tutorial for Beginners 1: Install and Setup",
+            "steps": [
+              "Python von python.org herunterladen",
+              "PKG-Installer ausführen",
+              "Installation abschließen",
+              "Im Terminal prüfen: python3 --version"
+            ]
+          },
+          "textTutorial": {
+            "title": "Programming Historian: Python Introduction and Installation",
+            "url": "https://programminghistorian.org/en/lessons/introduction-and-installation",
+            "description": "Schritt-für-Schritt-Anleitung speziell für Geisteswissenschaftler"
+          }
+        },
+        "notes": "Wir empfehlen Python 3.10 oder neuer. Bei der Installation: 'Add Python to PATH' aktivieren!"
+      },
+      {
+        "id": "vscode",
+        "name": "Visual Studio Code",
+        "icon": "💻",
+        "priority": 2,
+        "required": true,
+        "shortDescription": "Der Code-Editor zum Schreiben und Ausführen von Scripts",
+        "downloadUrl": "https://code.visualstudio.com/",
+        "tutorials": {
+          "official": {
+            "title": "Getting Started with Python in VS Code (Microsoft)",
+            "videoUrl": "https://learn.microsoft.com/en-us/shows/visual-studio-code/getting-started-with-python-in-vs-code-official-video",
+            "description": "Offizielles 10-Minuten-Tutorial von Microsoft"
+          },
+          "windows": {
+            "title": "VS Code unter Windows einrichten",
+            "videoUrl": "https://www.youtube.com/watch?v=W--_EOzdTHk",
+            "videoTitle": "Corey Schafer: VS Code Python Setup",
+            "steps": [
+              "VS Code von code.visualstudio.com herunterladen",
+              "Installer ausführen",
+              "Extensions-Tab öffnen (Ctrl+Shift+X)",
+              "Nach 'Python' suchen und installieren",
+              "Python-Interpreter auswählen"
+            ]
+          },
+          "mac": {
+            "title": "VS Code unter macOS einrichten",
+            "videoUrl": "https://www.youtube.com/watch?v=06I63_p-2A4",
+            "videoTitle": "Corey Schafer: VS Code Python Setup Mac",
+            "steps": [
+              "VS Code von code.visualstudio.com herunterladen",
+              "App in Applications verschieben",
+              "Extensions-Tab öffnen (Cmd+Shift+X)",
+              "Nach 'Python' suchen und installieren",
+              "Python-Interpreter auswählen"
+            ]
+          },
+          "textTutorial": {
+            "title": "VS Code: Quick Start Guide for Python",
+            "url": "https://code.visualstudio.com/docs/python/python-quick-start",
+            "description": "Offizielle Dokumentation von Microsoft"
+          }
+        },
+        "extensions": [
+          {
+            "name": "Python",
+            "id": "ms-python.python",
+            "description": "Grundlegende Python-Unterstützung"
+          },
+          {
+            "name": "Pylance",
+            "id": "ms-python.vscode-pylance",
+            "description": "Verbesserte Code-Vervollständigung"
+          }
+        ],
+        "notes": "VS Code ist kostenlos und läuft auf allen Betriebssystemen."
+      },
+      {
+        "id": "llm",
+        "name": "LLM-Zugang",
+        "icon": "🤖",
+        "priority": 3,
+        "required": true,
+        "shortDescription": "Zugang zu einem Large Language Model für Code-Generierung",
+        "options": [
+          {
+            "name": "ChatGPT",
+            "provider": "OpenAI",
+            "url": "https://chat.openai.com",
+            "free": true,
+            "freeTier": "GPT-3.5 kostenlos, GPT-4 kostenpflichtig",
+            "recommended": false,
+            "notes": ""
+          },
+          {
+            "name": "Claude",
+            "provider": "Anthropic",
+            "url": "https://claude.ai",
+            "free": true,
+            "freeTier": "Kostenloser Zugang mit Nutzungslimits",
+            "recommended": true,
+            "notes": ""
+          },
+          {
+            "name": "GitHub Copilot",
+            "provider": "GitHub/Microsoft",
+            "url": "https://github.com/features/copilot",
+            "free": false,
+            "freeTier": "Kostenlos für Studierende und Open-Source",
+            "recommended": false,
+            "notes": "Direkt in VS Code integriert"
+          }
+        ],
+        "notes": "Für den Einstieg empfehlen wir Claude oder ChatGPT. Beide haben kostenlose Versionen."
+      },
+      {
+        "id": "terminal",
+        "name": "Terminal / Kommandozeile",
+        "icon": "⌨️",
+        "priority": 4,
+        "required": true,
+        "shortDescription": "Zum Ausführen von Python-Scripts und Installieren von Paketen",
+        "tutorials": {
+          "windows": {
+            "title": "Terminal in Windows nutzen",
+            "videoUrl": "",
+            "steps": [
+              "In VS Code: Ctrl+` drücken",
+              "Oder: Terminal → New Terminal",
+              "PowerShell oder Command Prompt öffnet sich"
+            ]
+          },
+          "mac": {
+            "title": "Terminal in macOS nutzen",
+            "videoUrl": "",
+            "steps": [
+              "In VS Code: Ctrl+` drücken",
+              "Oder: Terminal → New Terminal",
+              "zsh oder bash öffnet sich"
+            ]
+          }
+        },
+        "notes": "In VS Code ist ein Terminal integriert – Sie müssen kein separates Programm öffnen."
+      },
+      {
+        "id": "pip",
+        "name": "pip (Paketmanager)",
+        "icon": "📦",
+        "priority": 5,
+        "required": true,
+        "shortDescription": "Zum Installieren von Python-Bibliotheken wie Pandas, Pillow etc.",
+        "checkCommand": "pip --version",
+        "tutorials": {
+          "general": {
+            "title": "Pakete mit pip installieren",
+            "videoUrl": "",
+            "steps": [
+              "Terminal öffnen",
+              "pip install paketname eingeben",
+              "Enter drücken und warten"
+            ]
+          },
+          "textTutorial": {
+            "title": "Programming Historian: Installing Python Modules with pip",
+            "url": "https://programminghistorian.org/en/lessons/installing-python-modules-pip",
+            "description": "Ausführliche Anleitung für Einsteiger"
+          }
+        },
+        "commonPackages": [
+          {
+            "name": "pandas",
+            "command": "pip install pandas",
+            "description": "Datenanalyse und CSV/Excel-Verarbeitung"
+          },
+          {
+            "name": "Pillow",
+            "command": "pip install Pillow",
+            "description": "Bildverarbeitung"
+          },
+          {
+            "name": "matplotlib",
+            "command": "pip install matplotlib",
+            "description": "Diagramme und Visualisierungen"
+          }
+        ],
+        "notes": "pip wird automatisch mit Python installiert."
+      }
+    ],
+    "quickCheck": {
+      "title": "Schnellcheck: Sind Sie startklar?",
+      "items": [
+        {
+          "label": "Python installiert",
+          "check": "Öffnen Sie ein Terminal und tippen Sie: python --version"
+        },
+        {
+          "label": "VS Code installiert",
+          "check": "Können Sie VS Code öffnen?"
+        },
+        {
+          "label": "Python-Extension in VS Code",
+          "check": "Extensions-Tab → Suche nach 'Python' → Installiert?"
+        },
+        {
+          "label": "LLM-Zugang",
+          "check": "Haben Sie Zugang zu einem LLM Ihrer Wahl?"
+        },
+        {
+          "label": "Erstes Script",
+          "check": "Erstellen Sie test.py mit print('Hallo!') und führen Sie es aus"
+        }
+      ]
+    },
+    "additionalResources": {
+      "title": "Weiterführende Ressourcen",
+      "forHumanities": [
+        {
+          "title": "Programming Historian",
+          "url": "https://programminghistorian.org/en/lessons/",
+          "description": "Peer-reviewed Tutorials speziell für Geisteswissenschaftler. Kostenlos und auf Deutsch verfügbar.",
+          "recommended": true
+        },
+        {
+          "title": "Python for Digital Humanities",
+          "url": "https://pythonhumanities.com/python-for-dh-course/",
+          "description": "Umfassender Online-Kurs von W.J.B. Mattingly, speziell für Humanities-Studierende.",
+          "recommended": true
+        },
+        {
+          "title": "Humanities Programming",
+          "url": "https://humanitiesprogramming.github.io/",
+          "description": "Einführung in Python für Geisteswissenschaftler mit Fokus auf Textanalyse."
+        },
+        {
+          "title": "Python Programming for the Humanities",
+          "url": "https://www.karsdorp.io/python-course/",
+          "description": "Folgert Karsdorps Kurs mit Fokus auf Natural Language Processing."
+        }
+      ],
+      "videoCourses": [
+        {
+          "title": "freeCodeCamp: Python for Beginners",
+          "url": "https://www.youtube.com/watch?v=rfscVS0vtbw",
+          "description": "Kostenloser 4-Stunden-Kurs auf YouTube. Perfekt für absolute Anfänger.",
+          "duration": "4+ Stunden"
+        },
+        {
+          "title": "Corey Schafer: Python Tutorials",
+          "url": "https://www.youtube.com/playlist?list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU",
+          "description": "Hochwertige Tutorial-Serie mit klaren Erklärungen.",
+          "duration": "Serie"
+        },
+        {
+          "title": "Microsoft: Python for Beginners",
+          "url": "https://learn.microsoft.com/en-us/shows/intro-to-python-development/",
+          "description": "Offizielle Microsoft-Serie mit 44 kurzen Videos.",
+          "duration": "44 Videos"
+        }
+      ],
+      "documentation": [
+        {
+          "title": "Python Official Tutorial",
+          "url": "https://docs.python.org/3/tutorial/",
+          "description": "Die offizielle Python-Dokumentation – umfassend aber technisch."
+        },
+        {
+          "title": "Real Python",
+          "url": "https://realpython.com/",
+          "description": "Hochwertige Tutorials und Artikel für alle Levels."
+        },
+        {
+          "title": "W3Schools Python",
+          "url": "https://www.w3schools.com/python/",
+          "description": "Interaktive Tutorials mit Try-it-yourself Editor."
+        }
+      ]
+    }
+  },
+
+  "chapters": [
+    {
+      "id": "CT",
+      "name": "Computational Thinking",
+      "color": "#4A7C7C",
+      "short": "Probleme strukturieren und zerlegen",
+      "longDescription": "Computational Thinking befasst sich mit einer Denkweise für die strukturierte Arbeit mit LLMs, insbesondere dem Zerlegen von Problemen und dem Verständnis iterativer Lösungsprozesse.",
+
+      "theory": {
+        "description": "Als Jeannette Wing 2006 ihren einflussreichen Essay über Computational Thinking veröffentlichte, ging es ihr um eine fundamentale Denkweise, die weit über Informatik hinausgeht. Sie argumentierte, dass CT nicht das Programmieren selbst ist, sondern eine Art des Problemlösens, die auf den Möglichkeiten und Grenzen von Rechenverfahren aufbaut – unabhängig davon, ob ein Mensch, ein klassisches Programm oder ein LLM die Lösung ausführt. Für die Arbeit mit LLMs wird diese Denkweise zur entscheidenden Grundkompetenz. Es geht darum, Probleme aus dem eigenen Fachbereich so zu strukturieren und zu zerlegen, dass jeder Teilschritt zu einem präzisen, ausführbaren Prompt wird. Das eigene Domänenwissen wird dabei zum Ausgangspunkt, nicht zum Hindernis.",
+        "keyPoints": [
+          "Computational Thinking builds on the power and limits of computing processes, whether they are executed by a human or by a machine (Wing, 2006)",
+          "CT ist keine Programmierung, sondern eine Denkweise",
+          "Die vier Kernelemente: Dekomposition, Mustererkennung, Abstraktion, Algorithmus",
+          "LLMs arbeiten am besten mit klaren, strukturierten Aufgaben – vage Anfragen führen zu unvorhersehbaren Ergebnissen",
+          "Dekomposition hilft: bessere Prompts schreiben, Fehler lokalisieren, iterativ verbessern"
+        ],
+        "concepts": [
+          {
+            "term": "Dekomposition",
+            "definition": "Großes Problem in kleinere Teile zerlegen. Beispiel: 'Katalog digitalisieren' → Scannen → OCR → Korrektur → Strukturieren"
+          },
+          {
+            "term": "Mustererkennung",
+            "definition": "Wiederkehrende Strukturen identifizieren. Beispiel: 'Alle Einträge haben: Titel, Datum, Material'"
+          },
+          {
+            "term": "Abstraktion",
+            "definition": "Unwichtiges weglassen, Kern erfassen. Beispiel: 'Egal ob Gemälde oder Skulptur – beide haben Inventarnummer'"
+          },
+          {
+            "term": "Algorithmus",
+            "definition": "Schrittweise Anleitung formulieren. Beispiel: '1. Öffne Datei, 2. Lies Zeile, 3. Extrahiere Titel...'"
+          },
+          {
+            "term": "Pseudocode",
+            "definition": "Informelle Beschreibung eines Ablaufs in natürlicher Sprache, bevor echter Code geschrieben wird"
+          }
+        ]
+      },
+
+      "handsOn": [
+        {
+          "id": "CT-1",
+          "title": "Code als Lesestoff",
+          "summary": "Code als Text betrachten, der gelesen und verstanden werden kann – ähnlich wie Quellentexte in der wissenschaftlichen Arbeit.",
+          "goals": [
+            "Die Grundstruktur eines Python-Programms erkennen",
+            "Zeilennummern und Einrückungen als Strukturelemente verstehen",
+            "Kommentare als Annotationen interpretieren"
+          ],
+          "exercise": {
+            "description": "Betrachten Sie das folgende Python-Programm. Es lädt ein Bild und zeigt dessen Dimensionen an.",
+            "code": "# Bildanalyse-Skript\nfrom PIL import Image\nimport os\n\ndef analyse_image(pfad):\n    \"\"\"Analysiert ein Bild und gibt Dimensionen zurück.\"\"\"\n    bild = Image.open(pfad)\n    breite, hoehe = bild.size\n    return breite, hoehe\n\n# Hauptprogramm\nif __name__ == \"__main__\":\n    b, h = analyse_image(\"beispiel.jpg\")\n    print(f\"Größe: {b} x {h} Pixel\")",
+            "filename": "bildanalyse.py",
+            "task": "Formulieren Sie einen Prompt, der diesen Code erklärt. Nutzen Sie das Muster: 'Erkläre mir den folgenden Python-Code Zeile für Zeile. Ich bin [Ihre Fachrichtung] und habe keine Programmiererfahrung.'"
+          },
+          "reflection": [
+            "Welche Teile des Codes haben Sie auch ohne Erklärung verstanden?",
+            "Welche Begriffe waren unbekannt?",
+            "Wie hilfreich war die LLM-Erklärung? Was hat gefehlt?"
+          ]
+        },
+        {
+          "id": "CT-2",
+          "title": "Probleme zerlegen",
+          "summary": "Wie man Probleme so strukturiert, dass LLMs sie verstehen und lösen können.",
+          "goals": [
+            "Probleme in Teilschritte zerlegen (Dekomposition)",
+            "Wiederkehrende Muster erkennen",
+            "Vom konkreten Problem zur allgemeinen Lösung abstrahieren"
+          ],
+          "exercise": {
+            "description": "Nehmen Sie ein Problem aus Ihrem Arbeitsbereich und zerlegen Sie es in Teilschritte.",
+            "task": "Schreiben Sie Pseudocode, bevor Sie einen Prompt formulieren. Das zwingt Sie, das Problem wirklich zu verstehen."
+          },
+          "reflection": [
+            "Hat das Zerlegen geholfen, das Problem klarer zu sehen?",
+            "Wo waren die Grenzen zwischen den Teilschritten unklar?",
+            "Was haben Sie über Ihr eigenes Problemverständnis gelernt?"
+          ]
+        },
+        {
+          "id": "CT-3",
+          "title": "Workflow-Automatisierung",
+          "summary": "Wiederkehrende Aufgaben automatisieren. Vom Einzelskript zum wiederverwendbaren Workflow.",
+          "goals": [
+            "Automatisierungspotenzial erkennen",
+            "Batch-Verarbeitung verstehen",
+            "Einfache Workflow-Skripte lesen"
+          ],
+          "exercise": {
+            "description": "Verstehen Sie diesen Batch-Verarbeitungs-Workflow.",
+            "code": "from pathlib import Path\nimport pandas as pd\n\n# Alle CSV-Dateien im Ordner finden\neingabe_ordner = Path(\"rohdaten\")\nausgabe_ordner = Path(\"verarbeitet\")\nausgabe_ordner.mkdir(exist_ok=True)\n\nfor datei in eingabe_ordner.glob(\"*.csv\"):\n    print(f\"Verarbeite: {datei.name}\")\n    \n    # Laden und bereinigen\n    df = pd.read_csv(datei)\n    df = df.dropna()\n    df.columns = [c.lower().strip() for c in df.columns]\n    \n    # Speichern\n    ausgabe = ausgabe_ordner / datei.name\n    df.to_csv(ausgabe, index=False)\n    \nprint(f\"Fertig! {len(list(eingabe_ordner.glob('*.csv')))} Dateien verarbeitet.\")",
+            "filename": "batch_workflow.py",
+            "task": "Was macht das Skript? Welche Schritte werden für jede Datei ausgeführt?"
+          },
+          "reflection": [
+            "Wo in Ihrer Arbeit gibt es wiederkehrende Aufgaben?",
+            "Was müsste angepasst werden für Ihre Dateien?",
+            "Wie würden Sie den Workflow erweitern?"
+          ]
+        }
+      ],
+
+      "resources": [
+        {
+          "title": "Wing, J. (2006). Computational Thinking",
+          "url": "https://www.cs.cmu.edu/~15110-s13/Wing06-ct.pdf",
+          "type": "paper"
+        },
+        {
+          "title": "Denning, P. & Tedre, M. (2019). Computational Thinking",
+          "url": "https://mitpress.mit.edu/books/computational-thinking",
+          "type": "book"
+        }
+      ],
+
+      "quote": {
+        "text": "Computational thinking is a way of solving problems, designing systems, and understanding human behavior that draws on concepts fundamental to computer science.",
+        "source": "Jeannette Wing, 2006"
+      }
+    },
+
+    {
+      "id": "RE",
+      "name": "Requirement Engineering",
+      "color": "#8B4557",
+      "short": "Anforderungen präzise formulieren",
+      "longDescription": "Requirement Engineering befasst sich mit der Übersetzung von Ideen in formale Spezifikationen mit definierten Eingaben, Ausgaben und Randbedingungen.",
+
+      "theory": {
+        "description": "Requirement Engineering ist eine etablierte Disziplin der Softwareentwicklung, die sich mit der systematischen Formulierung von Anforderungen befasst. In den 1990er Jahren erkannte die Branche, dass die meisten Softwareprojekte nicht an technischen Problemen scheitern, sondern an unklaren oder widersprüchlichen Anforderungen. Für die Arbeit mit LLMs wird diese Erkenntnis besonders relevant. Ein Prompt ist funktional ein Requirements-Dokument – und LLMs raten bei vagen Anforderungen. Sie füllen Lücken mit plausibel klingenden Annahmen, die nicht unbedingt das sind, was Sie wollten. Die Kernfragen bleiben dieselben wie in klassischen RE-Prozessen: Was soll das Tool tun? Was explizit nicht? Welche Eingaben, welche Ausgaben? Woran erkennt man, dass es korrekt funktioniert?",
+        "keyPoints": [
+          "Ein Prompt ist funktional ein Requirements-Dokument",
+          "User Stories sind niedrigschwelliger als formale Spezifikationen",
+          "LLMs raten bei vagen Anforderungen – sie füllen Lücken mit Annahmen",
+          "Akzeptanzkriterien definieren, bevor Code generiert wird",
+          "Grenzfälle und Ausnahmen antizipieren",
+          "Das LLM kann nur liefern, was Sie spezifizieren"
+        ],
+        "concepts": [
+          {
+            "term": "User Story",
+            "definition": "Leichtgewichtiges Anforderungsformat: 'Als [Rolle] möchte ich [Funktion], damit [Nutzen]'"
+          },
+          {
+            "term": "INVEST-Kriterien",
+            "definition": "Gute Anforderungen sind: Independent, Negotiable, Valuable, Estimable, Small, Testable"
+          },
+          {
+            "term": "Kernfragen",
+            "definition": "Was tun? Was nicht? Eingabe? Ausgabe? Woran erkenne ich Erfolg?"
+          },
+          {
+            "term": "Funktionale Anforderung",
+            "definition": "Was das System tun soll (Eingabe → Verarbeitung → Ausgabe)"
+          },
+          {
+            "term": "Akzeptanzkriterium",
+            "definition": "Messbarer Maßstab, ob eine Anforderung erfüllt ist"
+          },
+          {
+            "term": "Grenzfall",
+            "definition": "Extreme oder ungewöhnliche Eingaben, die getestet werden müssen"
+          }
+        ]
+      },
+
+      "handsOn": [
+        {
+          "id": "RE-1",
+          "title": "User Stories schreiben",
+          "summary": "Anforderungen im User-Story-Format formulieren, bevor Sie prompten.",
+          "goals": [
+            "Das User-Story-Format anwenden",
+            "Akzeptanzkriterien definieren",
+            "Abgrenzungen explizit machen"
+          ],
+          "exercise": {
+            "description": "Sie möchten ein Tool, das Ihre Bibliografie verwaltet. Formulieren Sie die Anforderungen.",
+            "code": "# Vage Anforderung (schlecht):\n\"Ich brauche was, um meine Bibliografie zu verwalten\"\n\n# User Story (besser):\n\"Als Forschende möchte ich eine CSV-Datei mit\nBibliografiedaten in eine formatierte HTML-Seite\numwandeln, damit ich meine Publikationsliste\nauf meiner Website anzeigen kann.\"\n\n# Präzise Spezifikation (am besten):\n# Eingabe: CSV mit Spalten (Autor, Titel, Jahr, Zeitschrift)\n# Ausgabe: HTML mit alphabetisch sortierter Liste\n# Format: Autor (Jahr): Titel. In: Zeitschrift.\n# Nicht im Scope: PDF-Verlinkung, Dubletten-Erkennung",
+            "filename": "anforderung.txt",
+            "task": "Schreiben Sie für Ihr eigenes Projekt: 1) Eine User Story, 2) Eingabe und Ausgabe, 3) Drei Akzeptanzkriterien, 4) Zwei Abgrenzungen (Was soll es nicht tun?)"
+          },
+          "reflection": [
+            "Welche Anforderungen waren implizit (in Ihrem Kopf)?",
+            "Was hätte das LLM ohne diese Spezifikation geraten?",
+            "Wie schwer war es, Abgrenzungen zu formulieren?"
+          ]
+        },
+        {
+          "id": "RE-2",
+          "title": "Akzeptanzkriterien testen",
+          "summary": "Code systematisch gegen definierte Kriterien prüfen.",
+          "goals": [
+            "Testfälle aus Anforderungen ableiten",
+            "Systematisch Grenzfälle durchspielen",
+            "Abweichungen dokumentieren"
+          ],
+          "exercise": {
+            "description": "Nehmen Sie den generierten Code aus RE-1 und testen Sie ihn gegen Ihre Akzeptanzkriterien.",
+            "task": "Erstellen Sie eine Checkliste und prüfen Sie jeden Punkt. Dokumentieren Sie, was funktioniert und was nicht."
+          },
+          "reflection": [
+            "Wie viele Ihrer Kriterien wurden erfüllt?",
+            "Welche Fehler hätten Sie ohne Kriterien übersehen?",
+            "Was müssen Sie im Prompt anpassen?"
+          ]
+        }
+      ],
+
+      "resources": [
+        {
+          "title": "Vogelsang & Fischbach (2024): LLMs for RE Tasks",
+          "url": "https://arxiv.org/abs/2402.13823",
+          "type": "paper"
+        },
+        {
+          "title": "Lucassen et al. (2016): User Stories in Practice",
+          "url": "https://link.springer.com/chapter/10.1007/978-3-319-30282-9_14",
+          "type": "paper"
+        },
+        {
+          "title": "User Stories Applied (Mike Cohn)",
+          "url": "https://www.mountaingoatsoftware.com/books/user-stories-applied",
+          "type": "book"
+        }
+      ],
+
+      "quote": {
+        "text": "The hardest single part of building a software system is deciding precisely what to build.",
+        "source": "Fred Brooks, No Silver Bullet"
+      }
+    },
+
+    {
+      "id": "CE",
+      "name": "Context Engineering",
+      "color": "#5B7355",
+      "short": "Kontext für LLMs gestalten",
+      "longDescription": "Context Engineering befasst sich mit der Aufbereitung aller Informationen, die ein LLM zur Bearbeitung einer Aufgabe benötigt.",
+
+      "theory": {
+        "description": "2024 markierte einen Wendepunkt in der LLM-Entwicklung. Modelle wie GPT-4o, Claude 3.5 und Gemini 1.5 brachten massive Kontextfenster mit – bis zu einer Million Tokens. Doch schnell zeigte sich: Mehr Kontext ist nicht automatisch besser. Liu et al. (2024) dokumentierten das Lost in the Middle Problem: LLMs verlieren Informationen, die in der Mitte langer Kontexte stehen. Context Engineering befasst sich mit dieser Herausforderung. Es geht nicht darum, möglichst viel Information zu liefern, sondern die richtige Information an der richtigen Stelle. Retrieval-Augmented Generation (RAG) wurde als Antwort entwickelt – nur relevante Ausschnitte aus großen Wissensbasen abrufen, statt alles ins Kontextfenster zu packen. Für praktisches Scripting bedeutet das: Projekte brauchen eine klare Kontextstruktur (Rolle, Aufgabe, Informationen, Constraints, Format) und eine bewusste Auswahl dessen, was wirklich relevant ist.",
+        "keyPoints": [
+          "Kontextfenster: GPT-4o 128K, Claude 200K, Gemini 1M Tokens",
+          "Mehr Kontext ist nicht automatisch besser – Lost in the Middle Problem",
+          "Bewährte Struktur: Rolle → Aufgabe → Infos → Constraints → Format",
+          "Komprimierung: Relevante Ausschnitte statt ganzer Dateien",
+          "Beispiele sind oft wirksamer als lange Beschreibungen",
+          "Projektkonventionen explizit machen"
+        ],
+        "concepts": [
+          {
+            "term": "RAG",
+            "definition": "Retrieval-Augmented Generation – relevante Infos aus externen Quellen abrufen und dem LLM bereitstellen"
+          },
+          {
+            "term": "Lost in the Middle",
+            "definition": "LLMs verlieren Informationen in der Mitte langer Kontexte – wichtiges an Anfang/Ende"
+          },
+          {
+            "term": "Kontextstruktur",
+            "definition": "Bewährte Anordnung: Rolle → Aufgabe → Informationen → Constraints → Format"
+          },
+          {
+            "term": "Kontextfenster",
+            "definition": "Die maximale Textmenge (in Tokens), die ein LLM gleichzeitig verarbeiten kann"
+          },
+          {
+            "term": "Destillation",
+            "definition": "Komplexe Informationen auf das Wesentliche komprimieren"
+          }
+        ]
+      },
+
+      "handsOn": [
+        {
+          "id": "CE-1",
+          "title": "Kontext strukturieren",
+          "summary": "Einen Prompt mit der bewährten Kontextstruktur aufbauen.",
+          "goals": [
+            "Die 5-teilige Kontextstruktur anwenden",
+            "Relevante von irrelevanten Informationen trennen",
+            "Wirksamkeit vergleichen"
+          ],
+          "exercise": {
+            "description": "Vergleichen Sie diese beiden Prompts für dieselbe Aufgabe.",
+            "code": "# OHNE Kontextstruktur:\n\"Mach mir ein Skript für meine Excel-Dateien\"\n\n# MIT Kontextstruktur:\n\"\"\"\nDu hilfst mir, ein Python-Skript zu schreiben.\n\nAufgabe: Alle Excel-Dateien in einem Ordner einlesen\nund zu einer CSV zusammenführen.\n\nBeispieldaten (erste Datei):\n| Inv-Nr | Bezeichnung | Datierung |\n| 001    | Vase        | 1820      |\n\nConstraints:\n- Alle Dateien haben identische Spaltenstruktur\n- Encoding: UTF-8\n- Nur .xlsx, keine .xls\n\nAusgabe: Ein einzelnes Skript mit Kommentaren.\n\"\"\"",
+            "filename": "kontext_vergleich.txt",
+            "task": "Testen Sie beide Prompts mit einem LLM. Dokumentieren Sie die Unterschiede in den Ergebnissen."
+          },
+          "reflection": [
+            "Welche Rückfragen stellte das LLM beim ersten Prompt?",
+            "Wie viel präziser war das Ergebnis beim zweiten Prompt?",
+            "Welche Informationen haben Sie im strukturierten Prompt hinzugefügt?"
+          ]
+        },
+        {
+          "id": "CE-2",
+          "title": "Wissen destillieren",
+          "summary": "Einen komplexen Standard so aufbereiten, dass er ins Kontextfenster passt.",
+          "goals": [
+            "Relevante Informationen identifizieren",
+            "Kontext strukturiert komprimieren",
+            "Wirksamkeit testen"
+          ],
+          "exercise": {
+            "description": "Besuchen Sie die Darwin-Core-Dokumentation (dwc.tdwg.org) und destillieren Sie die relevanten Felder für eine Museumssammlung.",
+            "task": "Erstellen Sie ein kompaktes Referenzdokument mit Feldname, Definition und Beispielwert. Testen Sie: Kann das LLM damit korrekt arbeiten?"
+          },
+          "reflection": [
+            "Wie viel kürzer wurde das Dokument?",
+            "Welche Informationen haben Sie weggelassen?",
+            "Hat das LLM mit dem destillierten Kontext korrekt gearbeitet?"
+          ]
+        }
+      ],
+
+      "resources": [
+        {
+          "title": "Gao et al. (2024): RAG Survey",
+          "url": "https://arxiv.org/abs/2312.10997",
+          "type": "paper"
+        },
+        {
+          "title": "Liu et al. (2025): Long-Context Survey",
+          "url": "https://arxiv.org/abs/2503.17407",
+          "type": "paper"
+        },
+        {
+          "title": "Anthropic: Prompt Engineering Guide",
+          "url": "https://docs.anthropic.com/claude/docs/prompt-engineering",
+          "type": "documentation"
+        }
+      ],
+
+      "quote": {
+        "text": "Context is everything. The same prompt with different context produces completely different results.",
+        "source": "Anthropic Documentation"
+      }
+    },
+
+    {
+      "id": "PE",
+      "name": "Prompt Engineering",
+      "color": "#7B6B8D",
+      "short": "Effektive Prompts entwickeln",
+      "longDescription": "Prompt Engineering befasst sich mit der wirksamen Operationalisierung der Kommunikation mit dem LLM und deren Verfeinerung im Dialog.",
+
+      "theory": {
+        "description": "Als GPT-3 2020 erschien, begannen Forschende systematisch zu untersuchen, wie man die Leistung von LLMs durch geschickte Formulierung verbessern kann. Wei et al. (2022) zeigten mit Chain-of-Thought Prompting, dass ein einfaches 'Denke Schritt für Schritt' die Leistung bei Reasoning-Aufgaben dramatisch steigern kann. Zhou et al. (2022) entwickelten Automatic Prompt Engineering (APE) – LLMs, die ihre eigenen Prompts optimieren. Schulhoff et al. (2024) dokumentieren mittlerweile 58 verschiedene Prompting-Techniken. Doch für praktisches Scripting genügen wenige Kernstrategien: Zero-Shot (direkte Anweisung ohne Beispiele) für einfache Aufgaben, Few-Shot (2-5 Beispiele) wenn das Format nicht offensichtlich ist, und Chain-of-Thought wenn das Problem mehrere Schritte erfordert. Die Kunst liegt nicht darin, alle Techniken zu kennen, sondern zu erkennen, welche Strategie für welches Problem passt.",
+        "keyPoints": [
+          "Schulhoff et al. dokumentieren 58 Prompting-Techniken – für die Praxis genügen wenige",
+          "Zero-Shot: Direkte Anweisung ohne Beispiele – für einfache, eindeutige Aufgaben",
+          "Few-Shot: 2-5 Beispiele zeigen Format und Umgang mit Sonderfällen",
+          "Chain-of-Thought: 'Denke Schritt für Schritt' – für komplexe Probleme",
+          "Iterative Verfeinerung: Prompt → Output → Problem → Anpassung → wiederholen",
+          "Ausgabeformat explizit spezifizieren"
+        ],
+        "concepts": [
+          {
+            "term": "Zero-Shot",
+            "definition": "Direkte Anweisung ohne Beispiele – funktioniert bei einfachen, eindeutigen Aufgaben"
+          },
+          {
+            "term": "Few-Shot",
+            "definition": "2-5 Beispiele im Prompt zeigen das gewünschte Format und den Umgang mit Sonderfällen"
+          },
+          {
+            "term": "Chain-of-Thought",
+            "definition": "'Denke Schritt für Schritt' – verbessert Leistung bei komplexen, mehrstufigen Problemen"
+          },
+          {
+            "term": "Role Prompting",
+            "definition": "'Du bist ein erfahrener...' – wenn spezifische Expertise oder Perspektive wichtig ist"
+          },
+          {
+            "term": "Iteration",
+            "definition": "Prompt → Output prüfen → Problem identifizieren → Prompt anpassen → wiederholen"
+          }
+        ]
+      },
+
+      "handsOn": [
+        {
+          "id": "PE-1",
+          "title": "Zero-Shot vs. Few-Shot",
+          "summary": "Den Unterschied zwischen direkter Anweisung und Beispiel-basiertem Prompting verstehen.",
+          "goals": [
+            "Zero-Shot und Few-Shot unterscheiden",
+            "Erkennen, wann Beispiele helfen",
+            "Beispiele effektiv formulieren"
+          ],
+          "exercise": {
+            "description": "Vergleichen Sie diese beiden Strategien für dieselbe Aufgabe.",
+            "code": "# ZERO-SHOT:\n\"Extrahiere das Datum aus diesem Text:\n'Das Gemälde wurde am 15. März 1823 erworben.'\"\n\n# FEW-SHOT:\n\"Extrahiere das Datum aus Texten. Formatiere als YYYY-MM-DD.\n\nText: 'Erworben im Januar 1820' -> 1820-01-00\nText: 'Datiert auf den 3.5.1899' -> 1899-05-03\nText: 'Das Gemälde wurde am 15. März 1823 erworben.' ->\"",
+            "filename": "prompting_strategien.txt",
+            "task": "Testen Sie beide Strategien. Wann liefert Few-Shot bessere Ergebnisse? Wann genügt Zero-Shot?"
+          },
+          "reflection": [
+            "Wie unterschieden sich die Ausgaben?",
+            "Welche Sonderfälle haben die Beispiele abgedeckt?",
+            "Wann würden Sie Few-Shot in Ihrer Arbeit einsetzen?"
+          ]
+        },
+        {
+          "id": "PE-2",
+          "title": "Iteratives Prompting",
+          "summary": "Durch Dialog schrittweise zum gewünschten Ergebnis.",
+          "goals": [
+            "Feedback präzise formulieren",
+            "Typische Anpassungen kennen",
+            "Wissen, wann man neu anfangen sollte"
+          ],
+          "exercise": {
+            "description": "Verfolgen Sie diesen iterativen Verfeinerungsprozess.",
+            "code": "# Iteration 1:\n\"Schreibe ein Skript, das Bilder verkleinert.\"\n# Problem: Unklar welche Größe, welches Format, welcher Ordner\n\n# Iteration 2:\n\"Schreibe ein Python-Skript mit Pillow.\nEingabe: Ordnerpfad als Argument\nAufgabe: Alle .jpg auf max. 1200px Breite skalieren\nAusgabe: Neue Dateien mit Suffix '_web'\"\n# Problem: Überschreibt Originale\n\n# Iteration 3:\n\"... (wie oben)\nConstraint: Originaldateien nicht überschreiben\"",
+            "filename": "iteration.txt",
+            "task": "Starten Sie mit einem einfachen Prompt für Ihr Projekt. Dokumentieren Sie 3 Iterationen: Problem → Anpassung → Ergebnis."
+          },
+          "reflection": [
+            "Wie viele Iterationen brauchten Sie?",
+            "Welche Art von Feedback war am effektivsten?",
+            "Wann hätten Sie besser neu angefangen?"
+          ]
+        }
+      ],
+
+      "resources": [
+        {
+          "title": "Schulhoff et al. (2024): The Prompt Report (58 Techniken)",
+          "url": "https://arxiv.org/abs/2406.06608",
+          "type": "paper"
+        },
+        {
+          "title": "Wei et al. (2022): Chain-of-Thought (NeurIPS)",
+          "url": "https://arxiv.org/abs/2201.11903",
+          "type": "paper"
+        },
+        {
+          "title": "OpenAI: Prompt Engineering Guide",
+          "url": "https://platform.openai.com/docs/guides/prompt-engineering",
+          "type": "documentation"
+        }
+      ],
+
+      "quote": {
+        "text": "The quality of your output is directly proportional to the quality of your input.",
+        "source": "Prompt Engineering Wisdom"
+      }
+    },
+
+    {
+      "id": "CL",
+      "name": "Code Literacy",
+      "color": "#8B7355",
+      "short": "Generierten Code verstehen",
+      "longDescription": "Code Literacy befasst sich mit dem Verstehen von generiertem Code und seinen Ausführungsergebnissen, einschließlich Fehlermeldungen.",
+
+      "theory": {
+        "description": "Lesen und Schreiben von Code sind zwei verschiedene Kompetenzen – das erkannten Lopez et al. bereits 2008. Ihre Studien zeigten, dass selbst Studierende, die keinen Code schreiben können, durchaus in der Lage sind, Code zu lesen und zu bewerten. Soloway und Ehrlich (1984) entwickelten die Idee von Delocalized Plans: Code, der zu einer einzigen Intention gehört, ist oft über mehrere Stellen im Programm verstreut. Das Verstehen erfordert Navigation und mentale Integration. Für die Arbeit mit LLMs ist genau diese Lesekompetenz zentral. Die Skill-Hierarchie (Run → Trace → Explain → Write) zeigt, dass Schreiben die höchste Stufe ist – für AI Coding Literacy genügen die Stufen Trace (Schritt für Schritt nachvollziehen) und Explain (Zweck verstehen). Interessant: Lau et al. (2024) berichten, dass 39% der Praktiker LLM-generierten Code lesbarer finden als menschlichen Code. Sie müssen nicht alles verstehen – nur genug, um zu prüfen, ob der Code das tut, was er soll.",
+        "keyPoints": [
+          "Lesen und Schreiben sind getrennte Kompetenzen (Lopez et al., 2008)",
+          "Skill-Hierarchie: Run → Trace → Explain → Write",
+          "Auch Experten vermeiden tiefes Verstehen wenn möglich – partielles Verstehen ist normal",
+          "39% der Praktiker finden LLM-Code lesbarer als menschlichen Code",
+          "Zwei mentale Modelle: prozedural ('Was passiert der Reihe nach?') und funktional ('Was ist das Ziel?')",
+          "Sie müssen nicht alles verstehen – nur genug, um zu prüfen"
+        ],
+        "concepts": [
+          {
+            "term": "Skill-Hierarchie",
+            "definition": "Run → Trace → Explain → Write: Lesen und Nachvollziehen gehen dem Schreiben voraus"
+          },
+          {
+            "term": "Prozedurales Modell",
+            "definition": "'Was passiert der Reihe nach?' – Kontrollfluss, Zeile für Zeile nachvollziehen"
+          },
+          {
+            "term": "Funktionales Modell",
+            "definition": "'Was ist das Ziel?' – Zweck verstehen, Eingabe/Ausgabe identifizieren"
+          },
+          {
+            "term": "Delocalized Plans",
+            "definition": "Code einer Intention ist oft über mehrere Stellen verstreut – Navigation erforderlich"
+          },
+          {
+            "term": "Kontrollstruktur",
+            "definition": "Anweisungen, die den Ablauf steuern (if, for, while)"
+          },
+          {
+            "term": "Bibliothek",
+            "definition": "Sammlung von vorgefertigtem Code für bestimmte Aufgaben"
+          }
+        ]
+      },
+
+      "handsOn": [
+        {
+          "id": "CL-1",
+          "title": "Variablen und Datentypen",
+          "summary": "Verstehen, wie Daten gespeichert und verarbeitet werden.",
+          "goals": [
+            "Variablen als benannte Container verstehen",
+            "Grundlegende Datentypen unterscheiden",
+            "Datenfluss im Code nachvollziehen"
+          ],
+          "exercise": {
+            "description": "Analysieren Sie diesen Code-Ausschnitt.",
+            "code": "# Sammlungsobjekt\nobjekt = {\n    \"inventar_nr\": \"2024-001\",\n    \"titel\": \"Bronzefibel\",\n    \"datierung\": -500,\n    \"materialien\": [\"Bronze\", \"Eisen\"]\n}\n\nprint(f\"Objekt {objekt['inventar_nr']}: {objekt['titel']}\")",
+            "filename": "sammlung.py",
+            "task": "Welche Variablen gibt es? Welche Datentypen haben sie? Was passiert in der letzten Zeile?"
+          },
+          "reflection": [
+            "Konnten Sie den Datenfluss nachvollziehen?",
+            "Was würde passieren, wenn 'datierung' ein String wäre?",
+            "Welche Teile waren intuitiv verständlich?"
+          ]
+        },
+        {
+          "id": "CL-2",
+          "title": "Kontrollstrukturen lesen",
+          "summary": "Code verzweigt und wiederholt sich. Kontrollstrukturen steuern den Fluss.",
+          "goals": [
+            "If-else-Verzweigungen verstehen",
+            "Schleifen nachvollziehen",
+            "Verschachtelte Strukturen entwirren"
+          ],
+          "exercise": {
+            "description": "Verfolgen Sie den Ablauf dieses Codes.",
+            "code": "objekte = [\n    {\"titel\": \"Vase\", \"zustand\": \"gut\"},\n    {\"titel\": \"Münze\", \"zustand\": \"beschädigt\"},\n    {\"titel\": \"Ring\", \"zustand\": \"gut\"}\n]\n\nfuer_ausstellung = []\nfuer_restaurierung = []\n\nfor obj in objekte:\n    if obj[\"zustand\"] == \"gut\":\n        fuer_ausstellung.append(obj[\"titel\"])\n    else:\n        fuer_restaurierung.append(obj[\"titel\"])\n\nprint(f\"Ausstellung: {fuer_ausstellung}\")\nprint(f\"Restaurierung: {fuer_restaurierung}\")",
+            "filename": "sortierung.py",
+            "task": "Was steht am Ende in 'fuer_ausstellung' und 'fuer_restaurierung'? Zeichnen Sie den Ablauf auf Papier."
+          },
+          "reflection": [
+            "Konnten Sie vorhersagen, was der Code ausgibt?",
+            "Wo hat das Aufzeichnen geholfen?",
+            "Was wäre anders bei einer anderen Bedingung?"
+          ]
+        },
+        {
+          "id": "CL-3",
+          "title": "Funktionen und Bibliotheken",
+          "summary": "Wiederverwendbare Bausteine und externe Pakete verstehen.",
+          "goals": [
+            "Funktionsdefinitionen erkennen",
+            "Parameter und Rückgabewerte identifizieren",
+            "Import-Statements verstehen"
+          ],
+          "exercise": {
+            "description": "Analysieren Sie diese Funktion zur Textbereinigung.",
+            "code": "def bereinige_text(text, lowercase=True):\n    \"\"\"Bereinigt einen Text für die Analyse.\"\"\"\n    text = text.strip()\n    \n    if lowercase:\n        text = text.lower()\n    \n    import re\n    text = re.sub(r'\\s+', ' ', text)\n    \n    return text\n\n# Verwendung\noriginal = \"  Hallo    WELT  \"\nbereinigt = bereinige_text(original)\nprint(bereinigt)  # \"hallo welt\"",
+            "filename": "textbereinigung.py",
+            "task": "Was sind die Parameter? Was ist der Rückgabewert? Was macht die Bibliothek 're'?"
+          },
+          "reflection": [
+            "Könnten Sie die Funktion mit anderen Parametern aufrufen?",
+            "Wo würde diese Funktion in Ihrer Arbeit nützlich sein?",
+            "Welche Teile waren schwer zu verstehen?"
+          ]
+        },
+        {
+          "id": "CL-4",
+          "title": "Pandas für Datenverarbeitung",
+          "summary": "DataFrames sind wie Excel-Tabellen, aber mächtiger.",
+          "goals": [
+            "DataFrames als Datenstruktur verstehen",
+            "Filtern, Sortieren, Gruppieren lesen",
+            "Daten einlesen und exportieren"
+          ],
+          "exercise": {
+            "description": "Verstehen Sie diese Datenanalyse.",
+            "code": "import pandas as pd\n\ndf = pd.read_csv(\"sammlung.csv\")\n\n# Nur Objekte aus Bronze\nbronze = df[df[\"material\"] == \"Bronze\"]\n\n# Nach Datierung sortieren\nbronze_sortiert = bronze.sort_values(\"datierung\")\n\nprint(f\"Anzahl Bronze-Objekte: {len(bronze)}\")\nprint(f\"Ältestes: {bronze_sortiert.iloc[0]['titel']}\")",
+            "filename": "pandas_analyse.py",
+            "task": "Was passiert in jeder Zeile? Was ist df, bronze, bronze_sortiert?"
+          },
+          "reflection": [
+            "Was bedeutet die eckige Klammer-Notation?",
+            "Wie würden Sie nach einem anderen Material filtern?",
+            "Welche Operationen könnten Sie für Ihre Daten brauchen?"
+          ]
+        },
+        {
+          "id": "CL-5",
+          "title": "Visualisierung mit Matplotlib",
+          "summary": "Daten sichtbar machen.",
+          "goals": [
+            "Grundstruktur von Matplotlib-Code verstehen",
+            "Figure und Axes unterscheiden",
+            "Anpassungen lesen"
+          ],
+          "exercise": {
+            "description": "Verstehen Sie diese Visualisierung.",
+            "code": "import matplotlib.pyplot as plt\nimport pandas as pd\n\ndf = pd.read_csv(\"objekte_pro_jahr.csv\")\n\nfig, ax = plt.subplots(figsize=(10, 6))\n\nax.bar(df[\"jahr\"], df[\"anzahl\"], color=\"#4A7C7C\")\nax.set_xlabel(\"Jahr\")\nax.set_ylabel(\"Anzahl Objekte\")\nax.set_title(\"Sammlungszuwachs über Zeit\")\n\nplt.tight_layout()\nplt.savefig(\"zuwachs.png\", dpi=150)",
+            "filename": "visualisierung.py",
+            "task": "Was wird visualisiert? Wie würden Sie die Farbe ändern?"
+          },
+          "reflection": [
+            "Konnten Sie sich das Ergebnis vorstellen?",
+            "Was wäre anders bei einem Liniendiagramm?",
+            "Welche Visualisierungen brauchen Sie für Ihre Daten?"
+          ]
+        }
+      ],
+
+      "resources": [
+        {
+          "title": "Lopez et al. (2008): Reading vs Writing Skills",
+          "url": "https://dl.acm.org/doi/10.1145/1404520.1404535",
+          "type": "paper"
+        },
+        {
+          "title": "Xie et al. (2019): Quadranten-Modell",
+          "url": "https://www.tandfonline.com/doi/full/10.1080/08993408.2019.1565235",
+          "type": "paper"
+        },
+        {
+          "title": "Hermans, F. (2021). The Programmer's Brain",
+          "url": "https://www.manning.com/books/the-programmers-brain",
+          "type": "book"
+        },
+        {
+          "title": "Python Tutorial (offiziell)",
+          "url": "https://docs.python.org/3/tutorial/",
+          "type": "documentation"
+        }
+      ],
+
+      "quote": {
+        "text": "Reading code is a skill. Like reading a foreign language, it gets easier with practice.",
+        "source": "Felienne Hermans"
+      }
+    },
+
+    {
+      "id": "RV",
+      "name": "Review",
+      "color": "#4A6B8C",
+      "short": "Ergebnisse systematisch prüfen",
+      "longDescription": "Review befasst sich mit der systematischen Prüfung von Lösungen auf Korrektheit und Eignung für den Einsatzzweck.",
+
+      "theory": {
+        "description": "Als GitHub Copilot 2021 erschien, schien eine neue Ära anzubrechen. Doch schnell zeigten Studien die Grenzen. Fu et al. (2022) fanden Sicherheitslücken in 29.5% der Python-Snippets. Liu et al. (2023) entwickelten EvalPlus, ein rigoroseres Testing-Framework – die Pass-Raten von GPT-4 sanken um 19-28.9%. Tambon et al. (2024) identifizierten 10 systematische Bug-Patterns in LLM-generiertem Code. Das Problem sind nicht zufällige Fehler, sondern vorhersagbare Schwächen: halluzinierte Funktionen, Grenzfälle, die ignoriert werden, subtile logische Fehler. Nguyen et al. (2024) kategorisierten Halluzinationen in 5 Typen: Intent Conflicting (Code widerspricht der Anforderung), Context Inconsistency (Code widerspricht dem Kontext), Dead Code, Knowledge Conflicting und halluzinierte Objekte. Review bedeutet nicht, misstrauisch zu sein – sondern systematisch zu prüfen. Vertrauen ist gut, Prüfen ist besser.",
+        "keyPoints": [
+          "EvalPlus: Pass-Raten sinken um 19-28.9% bei gründlicherem Testing",
+          "Tambon et al.: 10 Bug-Patterns in LLM-generiertem Code",
+          "29.5% Python-Snippets von Copilot haben Sicherheitslücken (Fu et al.)",
+          "5 Halluzinationskategorien: Intent Conflicting, Context Inconsistency, Dead Code, Knowledge Conflicting",
+          "Metamorphic Testing: Paraphrasierte Prompts zur Konsistenzprüfung",
+          "Systematisch testen: Normalfall, Grenzfall, Fehlerfall"
+        ],
+        "concepts": [
+          {
+            "term": "Halluzinierte Objekte",
+            "definition": "Nicht existierende Funktionen oder Bibliotheken, die das LLM erfindet"
+          },
+          {
+            "term": "Intent Conflicting",
+            "definition": "Code widerspricht der Anforderung – macht etwas anderes als gewünscht"
+          },
+          {
+            "term": "Context Inconsistency",
+            "definition": "Code widerspricht dem bereitgestellten Kontext (Beispieldaten, Dokumentation)"
+          },
+          {
+            "term": "Metamorphic Testing",
+            "definition": "Paraphrasierte Prompts zur Konsistenzprüfung – erkennt 75% fehlerhafter Programme"
+          },
+          {
+            "term": "Traceback",
+            "definition": "Die Fehlerspur, die zeigt, wo der Fehler aufgetreten ist – von unten nach oben lesen"
+          },
+          {
+            "term": "Logischer Fehler",
+            "definition": "Code läuft, aber das Ergebnis ist falsch – am schwierigsten zu finden"
+          }
+        ]
+      },
+
+      "handsOn": [
+        {
+          "id": "RV-1",
+          "title": "Fehlermeldungen lesen",
+          "summary": "Fehlermeldungen sind Informationen. Lesen lernen ist eine Kernkompetenz.",
+          "goals": [
+            "Fehlermeldungen strukturiert lesen",
+            "Häufige Fehlertypen unterscheiden",
+            "Systematisch nach Ursachen suchen"
+          ],
+          "exercise": {
+            "description": "Lesen Sie diese Fehlermeldung und finden Sie die Ursache.",
+            "code": "Traceback (most recent call last):\n  File \"analyse.py\", line 12, in <module>\n    ergebnis = berechne_durchschnitt(werte)\n  File \"analyse.py\", line 5, in berechne_durchschnitt\n    return sum(zahlen) / len(zahlen)\nZeroDivisionError: division by zero",
+            "filename": "fehler.txt",
+            "task": "Was ist passiert? In welcher Zeile? Warum? Wie würden Sie das Problem beheben?"
+          },
+          "reflection": [
+            "Konnten Sie den Traceback von unten nach oben lesen?",
+            "War die Fehlerursache klar?",
+            "Wie würden Sie diesen Fehler im Dialog mit dem LLM beheben?"
+          ]
+        },
+        {
+          "id": "RV-2",
+          "title": "Halluzinationen erkennen",
+          "summary": "LLMs erfinden manchmal plausibel klingende aber falsche Informationen.",
+          "goals": [
+            "Halluzinationsrisiken erkennen",
+            "Kritische Bereiche identifizieren",
+            "Strategien zur Absicherung entwickeln"
+          ],
+          "exercise": {
+            "description": "Historische Abkürzungen sind anfällig für Halluzinationen.",
+            "code": "# Historische Fundortangaben mit Abkürzungen:\n# B Jenesien: auf Porphyr.\n# O Stanzerthal in Spuren.\n# T Innsbruck: am Patscherkofel.\n\n# Prompten Sie ein LLM ohne Kontext:\n# \"Was bedeuten die Abkürzungen B, O, T \n#  in diesen historischen Fundortangaben?\"",
+            "task": "Vergleichen Sie die LLM-Antwort mit einer verlässlichen Quelle. Was wurde halluziniert?"
+          },
+          "reflection": [
+            "Wie selbstsicher präsentierte das LLM falsche Informationen?",
+            "Welche Strategie hätte das verhindert?",
+            "Bei welchen Daten in Ihrer Arbeit besteht Halluzinationsrisiko?"
+          ]
+        },
+        {
+          "id": "RV-3",
+          "title": "Systematisches Review",
+          "summary": "Code gegen Anforderungen prüfen – mit Checkliste.",
+          "goals": [
+            "Review-Checkliste anwenden",
+            "Grenzfälle systematisch testen",
+            "Verbesserungen gezielt anfordern"
+          ],
+          "exercise": {
+            "description": "Prüfen Sie generierten Code gegen diese Checkliste.",
+            "task": "1) Erfüllt der Code alle Anforderungen? 2) Sind Grenzfälle behandelt? 3) Sind Fehlermeldungen hilfreich? 4) Ist der Code lesbar? 5) Gibt es Sicherheitsrisiken?"
+          },
+          "reflection": [
+            "Wie viele Punkte waren erfüllt?",
+            "Welche Probleme hätten Sie ohne Checkliste übersehen?",
+            "Wie würden Sie die Checkliste für Ihre Projekte anpassen?"
+          ]
+        }
+      ],
+
+      "resources": [
+        {
+          "title": "Liu et al. (2024): HalluCode Benchmark",
+          "url": "https://arxiv.org/abs/2404.00971",
+          "type": "paper"
+        },
+        {
+          "title": "Tambon et al. (2024): Bug-Pattern Taxonomie",
+          "url": "https://arxiv.org/abs/2403.08937",
+          "type": "paper"
+        },
+        {
+          "title": "Fu et al. (2024): Security Analysis of Copilot",
+          "url": "https://dl.acm.org/doi/10.1145/3643769",
+          "type": "paper"
+        },
+        {
+          "title": "Mollick, E. (2024). Co-Intelligence",
+          "url": "https://www.oneusefulthing.org/",
+          "type": "book"
+        }
+      ],
+
+      "quote": {
+        "text": "Trust, but verify. Especially with AI-generated code.",
+        "source": "Adapted from Reagan"
+      }
+    }
+  ],
+
+  "workshop": {
+    "id": "programmieren-2-0",
+    "title": "Programmieren 2.0: LLMs fuer Forschungsdaten im Museum",
+    "date": "2026-02-12",
+    "location": "Naturhistorisches Museum Wien",
+    "organizer": "Museumsbund Oesterreich",
+    "instructor": "Dr. Christopher Pollin, Digital Humanities Craft OG",
+
+    "description": "Dieser Workshop vermittelt AI Coding Literacy fuer Museumsmitarbeiter:innen. Der Fokus liegt auf Context Engineering und der praktischen Anwendung von LLMs zur Datenverarbeitung.",
+
+    "learningGoals": [
+      "Python-Skripte und HTML/CSS/JavaScript mit LLM-Unterstuetzung erstellen und ausfuehren",
+      "Anforderungen so formulieren, dass ein LLM brauchbaren Code generiert (Context Engineering)",
+      "Generierte Ergebnisse kritisch pruefen und iterativ verbessern",
+      "Limitationen von LLM-generiertem Code erkennen"
+    ],
+
+    "competencyWeights": {
+      "CT": { "weight": "Grundlage", "description": "Probleme zerlegen, iterativ loesen" },
+      "RE": { "weight": "Schwerpunkt", "description": "Praezise formulieren, was gebraucht wird" },
+      "CE": { "weight": "Schwerpunkt", "description": "Dem LLM die richtigen Informationen geben" },
+      "PE": { "weight": "wird vermittelt", "description": "Kommunikation mit dem LLM operationalisieren" },
+      "CL": { "weight": "wird angebahnt", "description": "Generierten Code lesen und einordnen" },
+      "RV": { "weight": "wird vermittelt", "description": "Ergebnisse systematisch pruefen" },
+      "EW": { "weight": "implizit", "description": "Museale Fachkenntnis als Bewertungsgrundlage" }
+    },
+
+    "handsOn": [
+      {
+        "id": 1,
+        "title": "Mit LLM Python-Code erzeugen und lokal ausfuehren",
+        "goal": "Den gesamten Workflow einmal durchspielen, von der Datei ueber das LLM bis zur lokalen Ausfuehrung",
+        "competencies": ["CE", "PE", "RV"],
+        "dataFile": "workshop_objekte.csv",
+        "steps": [
+          "CSV-Datei herunterladen und in einem Ordner speichern",
+          "LLM oeffnen und CSV hochladen",
+          "Prompt eingeben: Analysiere die Datei Schritt fuer Schritt",
+          "Ergebnis beobachten: Fuehrt das LLM Code aus oder beschreibt es nur?",
+          "Python-Code in VS Code kopieren und lokal ausfuehren",
+          "Ergebnis vergleichen"
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Von den Daten zur Webseite",
+        "goal": "Aus dem Gesamtdatensatz eine statische Webdarstellung erstellen mit Context Engineering",
+        "competencies": ["CT", "RE", "CL", "RV"],
+        "dataFile": "workshop_objekte.json",
+        "steps": [
+          "data.md erstellen: Datensatz vollstaendig beschreiben",
+          "CSV zu JSON konvertieren mit Python-Skript",
+          "requirements.md schreiben: Wie soll die Webseite aussehen?",
+          "LLM mit data.md und requirements.md fuettern",
+          "HTML/CSS/JS im Live Server testen",
+          "Iterativ verbessern"
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Eigene Aufgabe",
+        "goal": "Gelerntes selbststaendig auf eine eigene oder vorgegebene Aufgabe anwenden",
+        "competencies": ["CT", "RE", "CE", "PE", "CL", "RV", "EW"],
+        "options": [
+          "Eigene Daten mitbringen und verarbeiten",
+          "Erweiterte Objektsuche mit mehreren Filterkriterien",
+          "Datenbereinigung: description-Feld in separate Spalten",
+          "Statistik-Dashboard: Verteilung nach Typ, Jahr, Qualitaet"
+        ]
+      }
+    ],
+
+    "dataset": {
+      "name": "Hans Gross Kriminalmuseum",
+      "source": "GAMS Repositorium, Universitaet Graz",
+      "url": "https://kriminalmuseum.uni-graz.at/",
+      "extractionDate": "2025-09",
+      "total": 3892,
+      "workshopSubset": 25,
+      "timeRange": "1850-1950",
+      "objectClasses": 90,
+      "dataModels": ["LIDO (Objekte)", "TEI (Karteikarten)"],
+      "knownIssues": [
+        "locations-Feld enthaelt teils Materialangaben statt Orte",
+        "persons-Feld ist Python-Dict, nicht standardisiertes JSON",
+        "88% der Jahreszahlen sind geschaetzt (dateSource: estimated)",
+        "60% der Eintraege haben niedrigsten Qualitaetswert (0.25)"
+      ]
+    },
+
+    "materials": {
+      "handouts": [
+        { "name": "Dokumentationsvorlage", "file": "dokumentation_vorlage.md" },
+        { "name": "Prompt-Vorlage", "file": "prompt_vorlage.md" },
+        { "name": "Python Fehler-Cheatsheet", "file": "cheatsheet_python_fehler.md" }
+      ],
+      "scripts": [
+        { "name": "API-Beispiel (einfach)", "file": "api_einfach.py" },
+        { "name": "CSV-Analyse Beispiel", "file": "beispiel_csv_analyse.py" }
+      ],
+      "data": [
+        { "name": "Workshop-Objekte (JSON)", "file": "workshop_objekte.json" },
+        { "name": "Workshop-Objekte (CSV)", "file": "workshop_objekte.csv" }
+      ]
+    },
+
+    "resources": {
+      "preparation": "https://chpollin.github.io/llmdh",
+      "repository": "https://github.com/DigitalHumanitiesCraft/ai-coding-literacy",
+      "references": [
+        { "author": "Karpathy, A.", "year": 2025, "title": "2025 LLM Year in Review" },
+        { "author": "Mei, L. et al.", "year": 2025, "title": "A Survey of Context Engineering for Large Language Models" },
+        { "author": "Schulhoff, S. et al.", "year": 2025, "title": "The Prompt Report" },
+        { "author": "Wing, J. M.", "year": 2006, "title": "Computational Thinking" }
+      ]
+    }
+  }
+}

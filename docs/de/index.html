@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Coding Literacy</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <a href="/de/" class="active">Übersicht</a>
+      <a href="/de/workshop.html">Workshop</a>
+      <a href="/de/setup.html">Setup</a>
+      <a href="/de/kompetenzmodell.html">Kompetenzmodell</a>
+      <a href="/de/referenz.html">Referenz</a>
+    </nav>
+    <div class="competency-bars" id="sidebar-bars">
+      <!-- Wird dynamisch aus JSON gefüllt -->
+    </div>
+  </aside>
+
+  <!-- Page Content -->
+  <div class="page-wrapper">
+    <main id="content">
+      <!-- Intro-Bereich -->
+      <section id="intro">
+        <h1 id="title">AI Coding Literacy</h1>
+        <p id="subtitle"></p>
+        <p id="description"></p>
+      </section>
+
+      <!-- Kompetenzmodell-Übersicht -->
+      <section id="competencies-overview">
+        <h2>Kompetenzmodell</h2>
+        <p>Das Curriculum entwickelt sechs Kompetenzbereiche:</p>
+        <ul class="competency-list" id="competency-list">
+          <!-- Wird dynamisch gefüllt -->
+        </ul>
+      </section>
+
+      <!-- Sessions werden hier dynamisch geladen -->
+      <section id="sessions-section">
+        <h2>Sessions</h2>
+        <div id="sessions-container"></div>
+        <div class="loading" id="loading">Lade Sessions...</div>
+      </section>
+    </main>
+
+    <footer>
+      <a href="https://github.com/DigitalHumanitiesCraft/ai-coding-literacy">GitHub</a> ·
+      DigitalHumanitiesCraft · 2025
+    </footer>
+  </div>
+
+  <!-- Right Info Panel -->
+  <aside class="info-panel" id="info-panel">
+    <div class="info-panel-progress" id="info-panel-progress"></div>
+    <button class="info-panel-close" id="info-panel-close" aria-label="Close">&times;</button>
+    <div class="info-panel-content" id="info-panel-content">
+      <!-- Content wird dynamisch geladen -->
+    </div>
+  </aside>
+
+  <script src="/js/app.js"></script>
+  <script src="/js/glossary.js"></script>
+</body>
+</html>
