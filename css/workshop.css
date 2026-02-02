@@ -93,6 +93,15 @@ body.workshop-page {
   gap: 0.5rem;
 }
 
+.workshop-tagline a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.workshop-tagline a:hover {
+  text-decoration: underline;
+}
+
 .workshop-tagline::before {
   content: '';
   width: 20px;
@@ -171,6 +180,44 @@ body.workshop-page {
   letter-spacing: 1px;
   color: rgba(255, 255, 255, 0.6);
   margin: 0;
+}
+
+.banner-meta a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+}
+
+.banner-meta a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* === 6.5 CONTEXT NOTE === */
+.context-note {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  padding: 1.5rem 2rem;
+  background: var(--ws-paper-fresh);
+  border-left: 3px solid var(--ws-terracotta);
+  border-radius: 0 4px 4px 0;
+}
+
+.context-note p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--ws-ink-faded);
+  margin: 0;
+}
+
+.context-note a {
+  color: var(--ws-ink);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--ws-terracotta);
+}
+
+.context-note a:hover {
+  color: var(--ws-terracotta);
+  border-bottom-style: solid;
 }
 
 /* === 7. TRANSFORMATION PROCESS === */
@@ -323,6 +370,17 @@ body.workshop-page {
   margin: 0;
 }
 
+.context-sub a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dotted var(--ws-ink-faded);
+}
+
+.context-sub a:hover {
+  color: var(--ws-terracotta);
+  border-bottom-color: var(--ws-terracotta);
+}
+
 /* Concept Links (klickbare Konzepte wie Informed Vibe Coding) */
 .concept-link {
   color: inherit;
@@ -391,6 +449,8 @@ body.workshop-page {
   border: 1px solid var(--ws-border);
   border-radius: 4px;
   padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .block-time {
@@ -408,11 +468,13 @@ body.workshop-page {
   margin: 0 0 0.5rem;
 }
 
-.material-card p {
+.material-card > p {
   font-size: 0.9rem;
   color: var(--ws-ink-faded);
   margin: 0 0 1rem;
   line-height: 1.5;
+  flex: 1;
+  min-height: 4.5rem;
 }
 
 .competency-tags {
@@ -444,6 +506,7 @@ body.workshop-page {
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
+  margin-top: auto;
 }
 
 .btn-download,

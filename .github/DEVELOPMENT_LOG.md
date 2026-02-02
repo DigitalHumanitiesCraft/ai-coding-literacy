@@ -4,6 +4,12 @@ Kompakte Dokumentation aller Sessions und Erkenntnisse.
 
 ---
 
+## 2026-02-02 (Nachmittag, spaet)
+
+Workshop-Seite Verlinkungen: "KI-gestuetzt" zu "LLM-gestuetzt" geaendert. Informed Vibe Coding Link auch im Intro-Text hinzugefuegt. Praxisbloecke-Karten UI alignment optimiert (Flexbox, min-height, margin-top:auto fuer Buttons). Neue Verlinkungen: Digital Humanities Craft (dhcraft.org), Christopher Pollin (chpollin.github.io), Museumsbund (museumsbund.at). Neue context-note Sektion erklaert Zusammenhang zur "KI im Museum" Webinar-Reihe. CSS erweitert um .context-note, .context-sub a, .banner-meta a, .workshop-tagline a Styles.
+
+---
+
 ## 2026-02-02 (Nachmittag)
 
 JavaScript-Refactoring: Neue shared.js mit gemeinsamen Funktionen (loadContentJson, renderCompetencySidebar, copyCode, escapeHtml, createCompetencyBadge, sharedI18n). app.js, kompetenzmodell.js, referenz.js, setup.js refaktoriert um shared.js zu nutzen. ~65 Zeilen Duplikation entfernt.
