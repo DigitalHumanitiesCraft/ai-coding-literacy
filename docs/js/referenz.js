@@ -52,7 +52,7 @@ function renderReference(data) {
       const row = document.createElement('tr');
       row.innerHTML = `
         <td><code>${exercise.id}</code></td>
-        <td><a href="/de/#exercise-${exercise.id}">${exercise.title}</a></td>
+        <td><a href="./#exercise-${exercise.id}">${exercise.title}</a></td>
         <td>${createCompetencyBadge(chapter, 'sm')}</td>
         <td>${exercise.summary}</td>
       `;

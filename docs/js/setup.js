@@ -556,8 +556,8 @@ function renderNextSteps() {
 
   container.innerHTML = `
     <p>${i18n.nextStepsText}</p>
-    <a href="/de/#sessions-section" class="cta-button">${i18n.toExercises}</a>
-    <p class="next-hint">${i18n.orStartWith} <a href="/de/ct.html">Computational Thinking</a>.</p>
+    <a href="./#sessions-section" class="cta-button">${i18n.toExercises}</a>
+    <p class="next-hint">${i18n.orStartWith} <a href="ct.html">Computational Thinking</a>.</p>
   `;
 }
 
