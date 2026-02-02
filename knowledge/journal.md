@@ -6,6 +6,8 @@ Kompakte Dokumentation aller Sessions und Erkenntnisse.
 
 ## 2026-02-02
 
+Qualitaetsverbesserungen nach kritischer Code-Review: workshop.js mit XSS-Schutz (textContent statt innerHTML), dateSource-Bug gefixt (Feld existierte nicht), DocumentFragment fuer Performance, Debouncing (300ms) fuer Suche. workshop.html mit main-Element, aria-labels, aria-hidden fuer SVGs, role-Attribute, meta-Tags erweitert, Placeholder-Links entfernt. workshop.css mit visually-hidden Klasse, Hover-Transition geglaettet (cubic-bezier, font-size 1.1rem).
+
 Workshop-UI Landingpage implementiert mit Archiv-inspiriertem Design. Neue Dateien: workshop.css (460 Zeilen), workshop.html, workshop.js. Design visualisiert Transformationsprozess (Physisches Objekt -> Archivkarte -> Datenextraktion -> Forschungsdaten). 4 Schriften fuer 4 Wissensordnungen: Playfair Display (Institution), Caveat (Handschrift), JetBrains Mono (Code), DM Sans (UI). Objekt-Karten mit Hover-Transformation von analog (Papier-Gradient, handschriftlich) zu digital (weiss, monospace). Farben: Terracotta (#C4725A) fuer Extraktion, Petrol (#7A9BB5) fuer Forschungsdaten.
 
 content.json erweitert um Workshop-Sektion mit 3 Hands-On-Uebungen, Dataset-Metadaten, Materialien und Ressourcen. glossar.json erweitert von 21 auf 28 Begriffe (Context Window, Markdown, Skript, Tool Use, Halluzination, pip). Workshop-Link in Sidebar-Navigation aller 10 HTML-Seiten hinzugefuegt. design.md um Workshop-Design-Sektion ergaenzt.
