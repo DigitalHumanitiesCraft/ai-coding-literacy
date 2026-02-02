@@ -1,22 +1,34 @@
 /* AI Coding Literacy – Style
-   Tufte-inspiriert: Maximale Information, minimale Dekoration
+   Einheitliches Design fuer Curriculum und Workshop
    ============================================================ */
 
 /* === Font Imports === */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 
 /* === Foundation === */
 :root {
-  /* Farben */
-  --bg: #FFFFF8;
-  --text: #222222;
+  /* Font Stacks */
+  --font-editorial: 'Playfair Display', Georgia, serif;
+  --font-handwritten: 'Caveat', cursive;
+  --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+  --font-ui: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Farben - Workshop-Palette */
+  --bg: #F5F0EA;
+  --bg-light: #F8F5F0;
+  --text: #2C2C2C;
   --text-muted: #666666;
-  --link: #0000CC;
-  --link-visited: #551A8B;
-  --border: #999999;
+  --link: #C4725A;
+  --link-hover: #A85C48;
+  --link-visited: #8B4557;
+  --border: rgba(0, 0, 0, 0.1);
   --code-bg: #F0F0F0;
   --prompt-bg: #FFFDE7;
-  --table-header: #F5F5F5;
+  --table-header: #E8E0D5;
+
+  /* Akzentfarben */
+  --terracotta: #C4725A;
+  --petrol: #7A9BB5;
 
   /* Kompetenzfarben */
   --comp-CT: #4A7C7C;
@@ -25,21 +37,19 @@
   --comp-PE: #7B6B8D;
   --comp-CL: #8B7355;
   --comp-RV: #4A6B8C;
+  --comp-EW: #6B5B8C;
 
   /* Glossar-Kategorien-Farben */
   --gloss-llm-basics: #6B8E9D;
   --gloss-coding-approaches: #9D7B6B;
+  --gloss-tech-basics: #7A9BB5;
+  --gloss-web-basics: #5B7355;
 
   /* Layout */
-  --sidebar-width: 240px;
+  --sidebar-width: 260px;
   --content-width: 720px;
   --content-width-narrow: 680px;
   --info-panel-width: 440px;
-
-  /* Fehlende Variablen */
-  --bg-light: #F5F5F5;
-  --font-editorial: 'Playfair Display', Georgia, serif;
-  --font-ui: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 *, *::before, *::after {
@@ -48,9 +58,9 @@
 
 /* === Body === */
 body {
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 18px;
-  line-height: 1.7;
+  font-family: var(--font-ui);
+  font-size: 16px;
+  line-height: 1.6;
   color: var(--text);
   background: var(--bg);
   margin: 0;
@@ -66,28 +76,29 @@ body {
 }
 
 /* === Typography === */
+h1, h2, h3, h4 {
+  font-family: var(--font-editorial);
+  font-weight: 500;
+}
+
 h1 {
-  font-size: 28px;
-  font-weight: bold;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
   margin: 0 0 1.5rem;
   line-height: 1.2;
 }
 
 h2 {
-  font-size: 24px;
-  font-weight: bold;
+  font-size: clamp(1.5rem, 3vw, 1.75rem);
   margin: 2.5rem 0 1rem;
 }
 
 h3 {
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 1.25rem;
   margin: 2rem 0 0.75rem;
 }
 
 h4 {
-  font-size: 18px;
-  font-weight: bold;
+  font-size: 1.1rem;
   margin: 1.5rem 0 0.5rem;
 }
 
@@ -107,7 +118,8 @@ em {
 /* === Links === */
 a {
   color: var(--link);
-  text-decoration: underline;
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 a:visited {
@@ -115,7 +127,8 @@ a:visited {
 }
 
 a:hover {
-  text-decoration: none;
+  color: var(--link-hover);
+  text-decoration: underline;
 }
 
 a:focus {
@@ -126,28 +139,30 @@ a:focus {
 /* === Navigation === */
 nav {
   margin-bottom: 2rem;
-  font-family: 'IBM Plex Mono', 'Courier New', monospace;
-  font-size: 16px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
 }
 
 nav a {
   text-decoration: none;
   color: var(--text);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: background 0.2s ease, color 0.2s ease;
 }
-
-nav a::before { content: '['; }
-nav a::after { content: ']'; }
 
 nav a:hover {
   color: var(--link);
+  background: rgba(196, 114, 90, 0.1);
 }
 
 nav a.active {
-  font-weight: bold;
+  font-weight: 600;
+  color: var(--terracotta);
 }
 
 nav a + a {
-  margin-left: 1rem;
+  margin-left: 0.5rem;
 }
 
 /* === Horizontal Rules === */
@@ -188,11 +203,12 @@ th {
 
 /* === Code === */
 code {
-  font-family: 'IBM Plex Mono', 'Source Code Pro', 'Courier New', monospace;
-  font-size: 16px;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
   background: var(--code-bg);
-  padding: 0.1rem 0.3rem;
-  border: 1px solid #DDDDDD;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  border: 1px solid var(--border);
 }
 
 pre {
@@ -222,9 +238,10 @@ pre code {
   background: var(--table-header);
   border: 1px solid var(--border);
   border-bottom: none;
+  border-radius: 8px 8px 0 0;
   padding: 0.35rem 0.75rem;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 14px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
 }
 
 .code-header .filename {
@@ -232,16 +249,20 @@ pre code {
 }
 
 .copy-btn {
-  font-family: Georgia, serif;
-  font-size: 14px;
-  background: var(--bg);
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  background: var(--bg-light);
   border: 1px solid var(--border);
-  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  padding: 0.25rem 0.6rem;
   cursor: pointer;
+  transition: background 0.2s ease;
 }
 
 .copy-btn:hover {
-  background: var(--code-bg);
+  background: var(--terracotta);
+  color: white;
+  border-color: var(--terracotta);
 }
 
 .copy-btn:focus {
@@ -321,8 +342,8 @@ footer a {
   margin-bottom: 2.5rem;
   padding-bottom: 1.5rem;
   border-bottom: 1px solid var(--border);
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 14px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
 }
 
 .sidebar-nav a {
@@ -382,7 +403,7 @@ footer a {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-mono);
   color: rgba(255,255,255,0.95);
   padding-left: 10px;
   width: 100%;
@@ -412,13 +433,14 @@ footer a {
 .comp-PE { background: var(--comp-PE); }
 .comp-CL { background: var(--comp-CL); }
 .comp-RV { background: var(--comp-RV); }
+.comp-EW { background: var(--comp-EW); }
 
 /* Language Switcher */
 .language-switcher {
   margin-top: auto;
   padding-top: 1.5rem;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 13px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
   text-align: center;
 }
 
@@ -477,8 +499,8 @@ footer a {
 
 .sidebar-sublink {
   display: block;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
   color: var(--text-muted);
   text-decoration: none;
   padding: 0.3rem 0.5rem;
@@ -529,23 +551,25 @@ footer a {
   padding: 1.5rem;
   padding-left: 1.5rem;
   margin-bottom: 2rem;
-  background: var(--code-bg);
+  background: var(--bg-light);
+  border-radius: 8px;
 }
 
 .chapter-id-badge {
   display: inline-block;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 12px;
-  font-weight: bold;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
   color: white;
   padding: 0.25rem 0.6rem;
+  border-radius: 4px;
   letter-spacing: 1px;
   margin-bottom: 0.5rem;
 }
 
 .chapter-title {
   margin: 0.5rem 0 0.25rem;
-  font-size: 24px;
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
 }
 
 .chapter-subtitle {
@@ -561,7 +585,7 @@ footer a {
 }
 
 .chapter-intro-block p {
-  font-size: 17px;
+  font-size: 1rem;
   line-height: 1.7;
 }
 
@@ -575,7 +599,7 @@ footer a {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  font-size: 20px;
+  font-size: 1.25rem;
   margin: 0 0 1.5rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--border);
@@ -635,7 +659,7 @@ footer a {
 }
 
 .concepts-list dt {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-mono);
   font-weight: bold;
   margin-top: 0.75rem;
 }
@@ -709,7 +733,7 @@ footer a {
 }
 
 .chapter-id {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 12px;
   color: var(--text-muted);
 }
@@ -752,7 +776,7 @@ footer a {
 }
 
 .chapter-id {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 14px;
   color: var(--text-muted);
 }
@@ -805,7 +829,7 @@ footer a {
 }
 
 .concept-term {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-mono);
   font-weight: bold;
 }
 
@@ -909,7 +933,7 @@ footer a {
   text-align: center;
   padding: 2rem;
   color: var(--text-muted);
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-mono);
 }
 
 /* Kompetenzmodell-Übersicht mit visueller Trennung */
@@ -950,7 +974,7 @@ footer a {
 
 .comp-badge {
   display: inline-block;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 12px;
   font-weight: bold;
   color: white;
@@ -1025,7 +1049,7 @@ footer a {
 }
 
 .concept-list dt {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-mono);
   font-weight: bold;
   margin-top: 0.75rem;
 }
@@ -1214,7 +1238,7 @@ footer a {
 }
 
 .detail-nav a {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 14px;
   color: var(--text-muted);
   text-decoration: none;
@@ -1285,7 +1309,7 @@ footer a {
   padding: 1rem;
   margin: 1rem 0;
   overflow-x: auto;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 14px;
 }
 
@@ -1307,7 +1331,7 @@ footer a {
 
 .chapter-nav a,
 .chapter-nav span {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 14px;
 }
 
@@ -1449,7 +1473,7 @@ footer a {
 
 /* Badges */
 .badge {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.75rem;
   padding: 0.25rem 0.5rem;
   border-radius: 3px;
@@ -1477,7 +1501,7 @@ footer a {
 }
 
 .download-link {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 1rem;
   font-weight: 600;
   color: var(--link);
@@ -1677,7 +1701,7 @@ footer a {
 }
 
 .llm-link {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.9rem;
 }
 
@@ -1743,7 +1767,7 @@ footer a {
   background: var(--comp-CT);
   color: white;
   border-radius: 50%;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.9rem;
   font-weight: 600;
   display: flex;
@@ -1800,7 +1824,7 @@ footer a {
   display: inline-block;
   background: var(--comp-CT);
   color: white;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 1.1rem;
   font-weight: 600;
   padding: 0.75rem 2rem;
@@ -1922,7 +1946,7 @@ footer a {
 }
 
 .resource-meta {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.75rem;
   background: var(--bg-light);
   border: 1px solid var(--border);
@@ -1965,7 +1989,7 @@ footer a {
   transform: translateY(-50%);
   background: var(--text);
   color: var(--bg);
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.75rem;
   font-weight: normal;
   padding: 0.4rem 0.6rem;
@@ -2177,7 +2201,7 @@ footer a {
 
 .glossary-category-badge {
   display: inline-block;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 11px;
   padding: 0.2rem 0.5rem;
   border-radius: 3px;
@@ -2228,7 +2252,7 @@ footer a {
 }
 
 .glossary-related-link {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 14px;
   color: var(--link);
   text-decoration: none;
