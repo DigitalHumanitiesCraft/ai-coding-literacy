@@ -432,13 +432,14 @@ body.workshop-page {
 .uncertainty-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.25rem;
-  background: var(--ws-terracotta);
-  color: white;
+  gap: 0.35rem;
+  background: #D4E4EE;
+  color: #3A5A6E;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.65rem;
-  padding: 0.2rem 0.5rem;
-  border-radius: 2px;
+  font-weight: 500;
+  padding: 0.35rem 0.6rem;
+  border-radius: 3px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-top: 0.75rem;

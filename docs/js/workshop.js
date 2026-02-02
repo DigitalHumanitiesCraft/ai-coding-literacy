@@ -7,7 +7,7 @@
  */
 
 // === Konfiguration ===
-const DATA_URL = '../data/kriminalmuseum/workshop_objekte.json';
+const DATA_URL = '../data/workshop_objects.json';
 const SEARCH_DEBOUNCE_MS = 300;
 
 // === Globale Variablen ===
@@ -33,34 +33,10 @@ async function loadObjects() {
   }
 }
 
-// === Inventarnummer extrahieren ===
-function extractInventoryNumber(id) {
-  // Format: "o:km.8009" -> "Inv. Nr. KM.8009"
-  if (!id) return 'Unbekannt';
-  const match = id.match(/o:km\.(\d+)/i);
-  if (match) {
-    return `Inv. Nr. KM.${match[1]}`;
-  }
-  return id;
-}
-
-// === Beschreibung kuerzen ===
-function extractDescription(description) {
-  if (!description) return '';
-
-  // Versuche den Description-Teil zu extrahieren
-  if (description.includes('Description:')) {
-    const start = description.indexOf('Description:') + 12;
-    const end = description.indexOf('|', start);
-    const extracted = end > 0
-      ? description.substring(start, end).trim()
-      : description.substring(start).trim();
-
-    // Entferne Jahr am Ende falls vorhanden
-    return extracted.replace(/,?\s*Jahr\s+\d{4}$/i, '').trim();
-  }
-
-  return description;
+// === Inventarnummer formatieren ===
+function formatInventoryNumber(id) {
+  if (!id) return 'Unknown';
+  return `Inv. Nr. ${id}`;
 }
 
 // === Hilfsfunktion: Element mit Text erstellen ===
@@ -76,18 +52,16 @@ function createObjectCard(obj) {
   const card = document.createElement('div');
   card.className = 'object-card';
 
-  const inventoryNumber = extractInventoryNumber(obj.id);
-  const description = extractDescription(obj.description);
-
-  // Pruefen ob Jahr unsicher/geschaetzt ist
-  const yearStr = String(obj.year || '');
-  const isEstimated = !obj.year || obj.year === '?' || yearStr.includes('ca.') || yearStr.includes('?');
+  const inventoryNumber = formatInventoryNumber(obj.id);
 
   // Card Header
   const header = document.createElement('div');
   header.className = 'card-header';
   header.appendChild(createTextElement('div', 'inventory-number', inventoryNumber));
-  header.appendChild(createTextElement('div', 'object-type', obj.type || 'Unbekannt'));
+
+  // Type mit Origin: "Pottery - Rome"
+  const typeOrigin = obj.origin ? `${obj.type} - ${obj.origin}` : obj.type || 'Unknown';
+  header.appendChild(createTextElement('div', 'object-type', typeOrigin));
   card.appendChild(header);
 
   // Data Fields
@@ -98,7 +72,7 @@ function createObjectCard(obj) {
   const dateRow = document.createElement('div');
   dateRow.className = 'data-row';
   dateRow.appendChild(createTextElement('span', 'data-label', 'Datierung'));
-  dateRow.appendChild(createTextElement('span', 'data-value', obj.year || '?'));
+  dateRow.appendChild(createTextElement('span', 'data-value', obj.date || '?'));
   dataFields.appendChild(dateRow);
 
   // Material
@@ -108,19 +82,21 @@ function createObjectCard(obj) {
   materialRow.appendChild(createTextElement('span', 'data-value', obj.material || '?'));
   dataFields.appendChild(materialRow);
 
+  // Herkunft
+  const locationRow = document.createElement('div');
+  locationRow.className = 'data-row';
+  locationRow.appendChild(createTextElement('span', 'data-label', 'Herkunft'));
+  locationRow.appendChild(createTextElement('span', 'data-value', obj.origin || '?'));
+  dataFields.appendChild(locationRow);
+
   card.appendChild(dataFields);
 
-  // Beschreibung (wenn vorhanden)
-  if (description) {
-    card.appendChild(createTextElement('div', 'description', description));
-  }
-
-  // Uncertainty Badge (wenn Datierung unsicher)
-  if (isEstimated) {
+  // Uncertainty Badge (wenn certainty === 'uncertain')
+  if (obj.certainty === 'uncertain') {
     const badge = document.createElement('div');
     badge.className = 'uncertainty-badge';
 
-    // SVG Icon (statisch, kein Sicherheitsrisiko)
+    // SVG Icon
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     svg.setAttribute('viewBox', '0 0 24 24');
     svg.setAttribute('aria-hidden', 'true');
@@ -146,8 +122,13 @@ function createObjectCard(obj) {
     svg.appendChild(line2);
 
     badge.appendChild(svg);
-    badge.appendChild(document.createTextNode(' Datierung geschaetzt'));
+    badge.appendChild(document.createTextNode(' Uncertain attribution'));
     card.appendChild(badge);
+  }
+
+  // Beschreibung
+  if (obj.description) {
+    card.appendChild(createTextElement('div', 'description', obj.description));
   }
 
   return card;
@@ -167,9 +148,9 @@ function renderObjects(objects) {
     grid.innerHTML = '';
     const noResults = document.createElement('div');
     noResults.className = 'no-results';
-    noResults.appendChild(createTextElement('p', null, 'Keine Objekte gefunden.'));
+    noResults.appendChild(createTextElement('p', null, 'No objects found.'));
     grid.appendChild(noResults);
-    if (countEl) countEl.textContent = '0 Objekte';
+    if (countEl) countEl.textContent = '0 Objects';
     return;
   }
 
@@ -184,7 +165,7 @@ function renderObjects(objects) {
 
   // Anzahl aktualisieren
   if (countEl) {
-    countEl.textContent = `${objects.length} Objekt${objects.length !== 1 ? 'e' : ''}`;
+    countEl.textContent = `${objects.length} Object${objects.length !== 1 ? 's' : ''}`;
   }
 }
 
@@ -198,11 +179,13 @@ function filterObjects(searchTerm) {
 
   return allObjects.filter(obj => {
     const searchableText = [
-      obj.title || '',
+      obj.id || '',
       obj.type || '',
+      obj.typeDe || '',
+      obj.origin || '',
       obj.material || '',
       obj.description || '',
-      String(obj.year || '')
+      obj.date || ''
     ].join(' ').toLowerCase();
 
     return searchableText.includes(term);
@@ -262,17 +245,15 @@ async function init() {
       const errorDiv = document.createElement('div');
       errorDiv.className = 'no-results';
 
-      const p1 = createTextElement('p', null, 'Fehler beim Laden der Daten');
-      p1.querySelector ? null : (p1.style.fontWeight = 'bold');
       const strong = document.createElement('strong');
-      strong.textContent = 'Fehler beim Laden der Daten';
-      const p1New = document.createElement('p');
-      p1New.appendChild(strong);
+      strong.textContent = 'Error loading data';
+      const p1 = document.createElement('p');
+      p1.appendChild(strong);
 
-      errorDiv.appendChild(p1New);
-      errorDiv.appendChild(createTextElement('p', null, 'Stelle sicher, dass:'));
-      errorDiv.appendChild(createTextElement('p', null, '1. Die Datei workshop_objekte.json existiert'));
-      errorDiv.appendChild(createTextElement('p', null, '2. Du Live Server verwendest (nicht die Datei direkt oeffnest)'));
+      errorDiv.appendChild(p1);
+      errorDiv.appendChild(createTextElement('p', null, 'Please ensure:'));
+      errorDiv.appendChild(createTextElement('p', null, '1. The file workshop_objects.json exists'));
+      errorDiv.appendChild(createTextElement('p', null, '2. You are using a local server (not opening the file directly)'));
 
       grid.appendChild(errorDiv);
     }
