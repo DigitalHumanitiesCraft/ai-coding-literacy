@@ -80,16 +80,47 @@ function initPage() {
     sidebarBars.appendChild(barWrapper);
   });
 
-  // Competency list in overview
-  const list = document.getElementById('competency-list');
+  // Competency grid in overview (as clickable cards)
+  const grid = document.getElementById('competency-list');
   contentData.chapters.forEach(chapter => {
-    const li = document.createElement('li');
-    li.innerHTML = `
-      <span class="comp-marker" style="background: ${chapter.color}"></span>
-      <strong>${chapter.name}</strong> – ${chapter.longDescription || chapter.short}
+    const card = document.createElement('a');
+    card.href = `${chapter.id.toLowerCase()}.html`;
+    card.className = 'competency-card';
+    card.innerHTML = `
+      <div class="competency-card-header">
+        <span class="competency-card-badge comp-${chapter.id}">${chapter.id}</span>
+        <h3 class="competency-card-title">${chapter.name}</h3>
+      </div>
+      <p class="competency-card-desc">${chapter.short}</p>
     `;
-    list.appendChild(li);
+    grid.appendChild(card);
   });
+
+  // Render cycle (Der Zyklus)
+  const cycleList = document.getElementById('cycle-list');
+  if (cycleList) {
+    const cycleSteps = [
+      { id: 'CT', action: 'Problem verstehen' },
+      { id: 'RE', action: 'Anforderungen definieren' },
+      { id: 'CE', action: 'Kontext aufbereiten' },
+      { id: 'PE', action: 'Prompt formulieren' },
+      { id: 'CL', action: 'Code verstehen' },
+      { id: 'RV', action: 'Ergebnis pruefen' }
+    ];
+
+    cycleSteps.forEach((step, index) => {
+      const chapter = contentData.chapters.find(c => c.id === step.id);
+      if (chapter) {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <strong>${step.action}</strong>
+          <span class="comp-ref" style="border-color: ${chapter.color}">${chapter.name}</span>
+          ${index === 5 ? ' -> zurueck zu 1.' : ''}
+        `;
+        cycleList.appendChild(li);
+      }
+    });
+  }
 
   // Load initial chapters
   loadMoreChapters();
@@ -280,7 +311,7 @@ function createChapterElement(chapter) {
   }
 
   // Ressourcen Section
-  if (chapter.resources?.length > 0 || chapter.quote) {
+  if (chapter.resources?.length > 0) {
     html += `
       <div class="content-section" id="${chapter.id}-ressourcen">
         <h3 class="section-title">
@@ -289,22 +320,11 @@ function createChapterElement(chapter) {
         </h3>
     `;
 
-    if (chapter.resources?.length > 0) {
-      html += `<ul class="resources-list">`;
-      chapter.resources.forEach(res => {
-        html += `<li><a href="${res.url}" target="_blank" rel="noopener">${res.title}</a> <span class="resource-type">(${res.type})</span></li>`;
-      });
-      html += `</ul>`;
-    }
-
-    if (chapter.quote) {
-      html += `
-        <blockquote class="chapter-quote">
-          "${chapter.quote.text}"
-          <cite>— ${chapter.quote.source}</cite>
-        </blockquote>
-      `;
-    }
+    html += `<ul class="resources-list">`;
+    chapter.resources.forEach(res => {
+      html += `<li><a href="${res.url}" target="_blank" rel="noopener">${res.title}</a> <span class="resource-type">(${res.type})</span></li>`;
+    });
+    html += `</ul>`;
 
     html += `</div>`;
   }

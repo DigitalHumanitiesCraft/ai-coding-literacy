@@ -6,17 +6,16 @@
   <title>Computational Thinking – AI Coding Literacy</title>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- Sidebar -->
   <aside class="sidebar">
     <nav class="sidebar-nav">
-      <a href="./">Uebersicht</a>
-      <a href="ueber.html">Ueber</a>
+      <a href="./">Konzept</a>
       <a href="workshop.html">Workshop</a>
       <a href="setup.html">Setup</a>
-      <a href="kompetenzmodell.html">Kompetenzmodell</a>
       <a href="referenz.html">Referenz</a>
     </nav>
     <div class="competency-bars">
@@ -53,21 +52,19 @@
     </div>
   </aside>
 
+  <!-- Page Banner -->
+  <header class="page-banner" style="border-bottom: 4px solid #4A7C7C">
+    <nav class="breadcrumb" style="color: rgba(255,255,255,0.7); margin-bottom: 1rem;">
+      <a href="./" style="color: rgba(255,255,255,0.7);">Konzept</a> → <span>Computational Thinking</span>
+    </nav>
+    <span class="chapter-id-badge" style="background: #4A7C7C">CT</span>
+    <h1>Computational Thinking</h1>
+    <p class="banner-subtitle">Probleme strukturieren und zerlegen</p>
+  </header>
+
   <!-- Page Content -->
   <div class="page-wrapper">
     <main id="content">
-      <!-- Breadcrumb -->
-      <nav class="breadcrumb">
-        <a href="./">Übersicht</a> → <span>Computational Thinking</span>
-      </nav>
-
-      <!-- Chapter Header -->
-      <div class="chapter-header-block" style="border-left: 4px solid #4A7C7C">
-        <span class="chapter-id-badge" style="background: #4A7C7C">CT</span>
-        <h1 class="chapter-title">Computational Thinking</h1>
-        <p class="chapter-subtitle">Probleme strukturieren und zerlegen</p>
-      </div>
-
       <!-- Intro -->
       <div class="chapter-intro-block">
         <p>Computational Thinking ist die Fähigkeit, Probleme so zu strukturieren, dass sie mit automatisierten Prozessen lösbar werden. Es geht nicht um Programmieren, sondern um eine Denkweise: Wie zerlege ich ein komplexes Problem in handhabbare Teile? Welche Muster erkenne ich? Was kann ich abstrahieren?</p>
@@ -424,11 +421,6 @@ transform_column("preise.csv", "preis", eur_to_usd)</code></pre>
             <p class="resource-note">Praxisnahe Einführung mit Beispielen</p>
           </li>
         </ul>
-
-        <blockquote class="chapter-quote">
-          "Computational thinking is a way of solving problems, designing systems, and understanding human behavior that draws on concepts fundamental to computer science."
-          <cite>— Jeannette Wing</cite>
-        </blockquote>
       </section>
 
       <!-- Navigation zu anderen Kapiteln -->
@@ -445,19 +437,14 @@ transform_column("preise.csv", "preis", eur_to_usd)</code></pre>
     </footer>
   </div>
 
-  <script>
-    // Simple copy function for code blocks
-    function copyCode(button) {
-      const codeBlock = button.closest('.code-block');
-      const code = codeBlock.querySelector('code').textContent;
-      navigator.clipboard.writeText(code).then(() => {
-        const originalText = button.textContent;
-        button.textContent = 'kopiert!';
-        setTimeout(() => {
-          button.textContent = originalText;
-        }, 2000);
-      });
-    }
-  </script>
+  <!-- Right Info Panel (Glossar) -->
+  <aside class="info-panel" id="info-panel">
+    <div class="info-panel-progress" id="info-panel-progress"></div>
+    <button class="info-panel-close" id="info-panel-close" aria-label="Close">&times;</button>
+    <div class="info-panel-content" id="info-panel-content"></div>
+  </aside>
+
+  <script src="../js/shared.js"></script>
+  <script src="../js/glossary.js"></script>
 </body>
 </html>

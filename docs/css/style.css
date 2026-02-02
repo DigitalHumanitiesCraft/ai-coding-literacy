@@ -47,8 +47,8 @@
 
   /* Layout */
   --sidebar-width: 260px;
-  --content-width: 720px;
-  --content-width-narrow: 680px;
+  --content-width: 900px;
+  --content-width-narrow: 800px;
   --info-panel-width: 440px;
 }
 
@@ -305,6 +305,46 @@ blockquote cite {
   margin: 0;
 }
 
+/* === Page Banner (Workshop-Style Header) === */
+.page-banner {
+  background: #2C2C2C;
+  color: white;
+  padding: 3rem 2rem;
+  margin-left: var(--sidebar-width);
+  margin-bottom: 0;
+  text-align: left;
+  padding-left: 3rem;
+}
+
+.page-banner h1 {
+  font-family: var(--font-editorial);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 400;
+  margin: 0 0 0.5rem;
+  color: white;
+}
+
+.page-banner h1 .highlight {
+  font-style: italic;
+  color: var(--terracotta);
+}
+
+.page-banner .banner-subtitle {
+  font-family: var(--font-editorial);
+  font-size: 1.25rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+.page-banner .banner-intro {
+  max-width: 700px;
+  margin: 1.5rem auto 0;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.9);
+}
+
 /* === Footer === */
 footer {
   margin-top: 3rem;
@@ -478,7 +518,6 @@ footer a {
 .page-wrapper {
   margin-left: var(--sidebar-width);
   flex: 1;
-  max-width: var(--content-width);
   padding: 2rem 3rem;
 }
 
@@ -1009,7 +1048,96 @@ footer a {
   border-top: 1px solid var(--border);
 }
 
-/* Kompetenz-Liste im Intro */
+/* Kompetenz-Grid auf Index-Seite */
+.competency-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.competency-card {
+  display: block;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  text-decoration: none;
+  color: var(--text);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.competency-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  border-color: var(--terracotta);
+}
+
+.competency-card:visited {
+  color: var(--text);
+}
+
+.competency-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.competency-card-badge {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: white;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  letter-spacing: 1px;
+}
+
+.competency-card-title {
+  font-family: var(--font-editorial);
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.competency-card-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Section Intro Text */
+.section-intro {
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+/* Section Link */
+.section-link {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.section-link a {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--terracotta);
+}
+
+/* Section Subtitle */
+.section-subtitle {
+  font-family: var(--font-editorial);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+/* Kompetenz-Liste im Intro (Legacy) */
 .competency-list {
   list-style: none;
   padding-left: 0;
@@ -1203,6 +1331,11 @@ footer a {
     display: block;
   }
 
+  .page-banner {
+    margin-left: 0;
+    padding: 2rem 1.5rem;
+  }
+
   .page-wrapper {
     margin-left: 0;
     max-width: var(--content-width-narrow);
@@ -1214,6 +1347,10 @@ footer a {
   body.detail-view-active .chapter-detail-view {
     margin-left: 0;
     padding: 2rem 1.5rem;
+  }
+
+  .competency-grid {
+    grid-template-columns: 1fr;
   }
 }
 

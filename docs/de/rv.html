@@ -11,11 +11,9 @@
 <body>
   <aside class="sidebar">
     <nav class="sidebar-nav">
-      <a href="./">Uebersicht</a>
-      <a href="ueber.html">Ueber</a>
+      <a href="./">Konzept</a>
       <a href="workshop.html">Workshop</a>
       <a href="setup.html">Setup</a>
-      <a href="kompetenzmodell.html">Kompetenzmodell</a>
       <a href="referenz.html">Referenz</a>
     </nav>
     <div class="competency-bars">
@@ -40,18 +38,18 @@
     </div>
   </aside>
 
+  <!-- Page Banner -->
+  <header class="page-banner" style="border-bottom: 4px solid #4A6B8C">
+    <nav class="breadcrumb" style="color: rgba(255,255,255,0.7); margin-bottom: 1rem;">
+      <a href="./" style="color: rgba(255,255,255,0.7);">Konzept</a> → <span>Review</span>
+    </nav>
+    <span class="chapter-id-badge" style="background: #4A6B8C">RV</span>
+    <h1>Review</h1>
+    <p class="banner-subtitle">Ergebnisse systematisch pruefen</p>
+  </header>
+
   <div class="page-wrapper">
     <main id="content">
-      <nav class="breadcrumb">
-        <a href="./">Übersicht</a> → <span>Review</span>
-      </nav>
-
-      <div class="chapter-header-block" style="border-left: 4px solid #4A6B8C">
-        <span class="chapter-id-badge" style="background: #4A6B8C">RV</span>
-        <h1 class="chapter-title">Review</h1>
-        <p class="chapter-subtitle">Ergebnisse systematisch prüfen</p>
-      </div>
-
       <div class="chapter-intro-block">
         <p>Review bezeichnet die systematische Prüfung von generiertem Code gegen die definierten Anforderungen. LLM-generierter Code sieht oft korrekt aus, enthält aber systematisch Fehler. EvalPlus zeigt: Pass-Raten sinken um 19-28.9% bei gründlicherem Testing. Vertrauen ist gut, Prüfen ist besser.</p>
       </div>
@@ -340,11 +338,6 @@ KeyError: 'name'
             <span class="resource-type">(book)</span>
           </li>
         </ul>
-
-        <blockquote class="chapter-quote">
-          "Trust, but verify. Especially with AI-generated code."
-          <cite>— Adapted from Reagan</cite>
-        </blockquote>
       </section>
 
       <nav class="chapter-nav">

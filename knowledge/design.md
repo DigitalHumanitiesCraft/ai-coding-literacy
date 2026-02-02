@@ -213,4 +213,102 @@ Offene Erweiterungsmöglichkeiten, die auf dem bestehenden Designsystem aufbauen
 
 ---
 
+## 9. Einheitliches Seitendesign
+
+### 9.1 Designprinzip
+
+Alle Seiten der Plattform folgen einem einheitlichen visuellen System. Das Ziel ist ein konsistentes Nutzererlebnis, bei dem Workshop-Seiten und Curriculum-Seiten nahtlos ineinander uebergehen.
+
+Kernelemente:
+- Gleiche Farbpalette (warmes Beige, Terracotta, Petrol)
+- Gleiche Typografie (Playfair Display, DM Sans, JetBrains Mono)
+- Gleiche UI-Komponenten (Cards, Badges, Buttons)
+- Konsistente Spacing- und Radius-Werte
+
+### 9.2 Seitentypen
+
+Zwei grundlegende Layoutvarianten existieren:
+
+**Full-Width Pages (Workshop-Stil)**
+- Zentriertes Single-Column-Layout
+- Dunkler Header-Banner mit Titel
+- Context-Cards fuer Metadaten
+- Maximale Breite: 1200px
+- Verwendung: workshop.html, ueber.html, informed-vibe-coding.html
+
+**Sidebar Pages (Curriculum-Stil)**
+- Fixierte linke Sidebar (260px)
+- Scroll-Content rechts
+- Kompetenz-Balken als vertikale Navigation
+- Maximale Content-Breite: 720px
+- Verwendung: index.html, ct.html, setup.html, etc.
+
+Beide Layouts teilen:
+- Gleiche Hintergrundfarbe (#F5F0EA)
+- Gleiche Card-Styles (white background, border-radius: 12px, subtle shadow)
+- Gleiche Typografie-Hierarchie
+- Gleiche Akzentfarben fuer Links und Buttons
+
+### 9.3 Page Header Pattern
+
+Jede Seite beginnt mit einem klaren Header-Block:
+
+```
+[Badge/Tag] (optional, z.B. Kompetenz-Kuerzel)
+[Titel] (Playfair Display, gross)
+[Untertitel] (Playfair Display, italic, muted)
+```
+
+Bei Curriculum-Seiten ist der Header ein Card-Element mit bg-light.
+Bei Workshop-Seiten ist der Header ein Banner mit dunklem Hintergrund.
+
+### 9.4 Content Sections
+
+Inhalte werden in Content-Sections gruppiert:
+- Weisser Hintergrund
+- 12px border-radius
+- Subtiler Schatten (0 1px 4px rgba(0,0,0,0.04))
+- 1px border in --border Farbe
+- Section-Title mit farbigem Marker
+
+### 9.5 Navigation
+
+**Sidebar Navigation**
+- Fixiert am linken Rand
+- Gradient-Hintergrund (bg-light zu bg)
+- Kompetenz-Balken als farbige Streifen
+- Hover-Effekt: translateX(6px)
+- Active-State: Schatten und Verschiebung
+
+**In-Page Navigation**
+- Tab-Style fuer Sektionswechsel (detail-nav)
+- Breadcrumb fuer Hierarchie
+- Chapter-Navigation am Seitenende (Previous/Next)
+
+### 9.6 Interaktive Elemente
+
+**Buttons**
+- Primary: Terracotta-Hintergrund, weisser Text
+- Secondary: Petrol-Hintergrund, weisser Text
+- Ghost: Transparenter Hintergrund, Border
+
+**Cards**
+- Hover: Shadow-Verstaerkung, leichte Anhebung
+- Active: Farbiger Border-Left oder Background-Tint
+
+**Badges**
+- Pill-Form (border-radius: 20px)
+- Kompetenz-Badges: Jeweilige Kompetenzfarbe
+- Status-Badges: Required (Terracotta), Recommended (Petrol), Optional (Light)
+
+### 9.7 Responsive Verhalten
+
+Unter 768px:
+- Sidebar wird ausgeblendet (Mobile Navigation geplant)
+- Cards gehen auf volle Breite
+- Font-Sizes werden per clamp() reduziert
+- Padding wird reduziert
+
+---
+
 *Digital Humanities Craft OG, 2026*

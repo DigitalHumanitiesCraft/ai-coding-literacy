@@ -437,12 +437,7 @@
           "url": "https://mitpress.mit.edu/books/computational-thinking",
           "type": "book"
         }
-      ],
-
-      "quote": {
-        "text": "Computational thinking is a way of solving problems, designing systems, and understanding human behavior that draws on concepts fundamental to computer science.",
-        "source": "Jeannette Wing, 2006"
-      }
+      ]
     },
 
     {
@@ -549,12 +544,7 @@
           "url": "https://www.mountaingoatsoftware.com/books/user-stories-applied",
           "type": "book"
         }
-      ],
-
-      "quote": {
-        "text": "The hardest single part of building a software system is deciding precisely what to build.",
-        "source": "Fred Brooks, No Silver Bullet"
-      }
+      ]
     },
 
     {
@@ -657,12 +647,7 @@
           "url": "https://docs.anthropic.com/claude/docs/prompt-engineering",
           "type": "documentation"
         }
-      ],
-
-      "quote": {
-        "text": "Context is everything. The same prompt with different context produces completely different results.",
-        "source": "Anthropic Documentation"
-      }
+      ]
     },
 
     {
@@ -767,12 +752,7 @@
           "url": "https://platform.openai.com/docs/guides/prompt-engineering",
           "type": "documentation"
         }
-      ],
-
-      "quote": {
-        "text": "The quality of your output is directly proportional to the quality of your input.",
-        "source": "Prompt Engineering Wisdom"
-      }
+      ]
     },
 
     {
@@ -949,12 +929,7 @@
           "url": "https://docs.python.org/3/tutorial/",
           "type": "documentation"
         }
-      ],
-
-      "quote": {
-        "text": "Reading code is a skill. Like reading a foreign language, it gets easier with practice.",
-        "source": "Felienne Hermans"
-      }
+      ]
     },
 
     {
@@ -1086,12 +1061,7 @@
           "url": "https://www.oneusefulthing.org/",
           "type": "book"
         }
-      ],
-
-      "quote": {
-        "text": "Trust, but verify. Especially with AI-generated code.",
-        "source": "Adapted from Reagan"
-      }
+      ]
     }
   ],
 

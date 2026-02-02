@@ -6,45 +6,75 @@
   <title>AI Coding Literacy</title>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- Sidebar -->
   <aside class="sidebar">
     <nav class="sidebar-nav">
-      <a href="./" class="active">Uebersicht</a>
-      <a href="ueber.html">Ueber</a>
+      <a href="./" class="active">Konzept</a>
       <a href="workshop.html">Workshop</a>
       <a href="setup.html">Setup</a>
-      <a href="kompetenzmodell.html">Kompetenzmodell</a>
       <a href="referenz.html">Referenz</a>
     </nav>
     <div class="competency-bars" id="sidebar-bars">
-      <!-- Wird dynamisch aus JSON gefüllt -->
+      <!-- Wird dynamisch aus JSON gefuellt -->
     </div>
   </aside>
+
+  <!-- Header Banner -->
+  <header class="page-banner">
+    <h1>AI Coding Literacy</h1>
+    <p class="banner-subtitle">Curriculum fuer LLM-gestuetztes Programmieren</p>
+  </header>
 
   <!-- Page Content -->
   <div class="page-wrapper">
     <main id="content">
       <!-- Intro-Bereich -->
-      <section id="intro">
-        <h1 id="title">AI Coding Literacy</h1>
-        <p id="subtitle"></p>
+      <section id="intro" class="content-section">
+        <p id="subtitle" class="section-subtitle"></p>
         <p id="description"></p>
       </section>
 
-      <!-- Kompetenzmodell-Übersicht -->
-      <section id="competencies-overview">
+      <!-- Kompetenzmodell-Uebersicht -->
+      <section id="kompetenzmodell" class="content-section">
         <h2>Kompetenzmodell</h2>
-        <p>Das Curriculum entwickelt sechs Kompetenzbereiche:</p>
-        <ul class="competency-list" id="competency-list">
-          <!-- Wird dynamisch gefüllt -->
+        <p class="section-intro">Sieben Bereiche, die einen vollstaendigen Entwicklungszyklus abbilden. Das Modell basiert auf der Erkenntnis, dass AI Coding Literacy mehr erfordert als Prompting allein.</p>
+        <div class="competency-grid" id="competency-list">
+          <!-- Wird dynamisch gefuellt -->
+        </div>
+      </section>
+
+      <!-- Der Zyklus -->
+      <section id="zyklus" class="content-section">
+        <h2>Der Zyklus</h2>
+        <p class="section-intro">Die Kompetenzen bilden einen iterativen Kreislauf:</p>
+        <ol class="cycle-list" id="cycle-list">
+          <!-- Wird dynamisch gefuellt -->
+        </ol>
+        <p>Nach dem Review beginnt der Zyklus erneut - mit verbessertem Verstaendnis und praeziseren Anforderungen.</p>
+      </section>
+
+      <!-- Didaktischer Ansatz -->
+      <section id="didaktik" class="content-section">
+        <h2>Didaktischer Ansatz</h2>
+        <p>Das Curriculum folgt einem <strong>Informed Vibe Coding</strong> Ansatz: Experimentieren ist erwuenscht, aber mit wachsendem Verstaendnis fuer das, was passiert. Der intuitive, explorative Umgang mit Code wird nicht ersetzt, sondern durch systematische Reflexion ergaenzt.</p>
+
+        <h3>Prinzipien</h3>
+        <ul class="principles-list">
+          <li><strong>Lesen vor Schreiben:</strong> Code verstehen ist einfacher als Code schreiben</li>
+          <li><strong>Domaenenwissen als Staerke:</strong> Ihr Fachwissen macht Sie zum Experten fuer Ihre Probleme</li>
+          <li><strong>Iteration statt Perfektion:</strong> Schrittweise Verbesserung durch Dialog</li>
+          <li><strong>Grenzen erkennen:</strong> Wissen, wann professionelle Hilfe noetig ist</li>
         </ul>
+
+        <p class="section-link"><a href="informed-vibe-coding.html">Mehr zu Informed Vibe Coding</a></p>
       </section>
 
       <!-- Sessions werden hier dynamisch geladen -->
-      <section id="sessions-section">
+      <section id="sessions-section" class="content-section">
         <h2>Sessions</h2>
         <div id="sessions-container"></div>
         <div class="loading" id="loading">Lade Sessions...</div>
