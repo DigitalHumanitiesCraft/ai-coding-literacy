@@ -621,6 +621,297 @@ body.workshop-page {
   color: white;
 }
 
+/* === Workshop Context Section === */
+.context-section {
+  margin-bottom: 3rem;
+}
+
+.section-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-align: center;
+  margin: 0 0 2rem;
+}
+
+.context-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.context-card {
+  background: white;
+  border: 1px solid var(--ws-border);
+  border-radius: 4px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.context-icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.context-icon svg {
+  width: 32px;
+  height: 32px;
+  stroke: var(--ws-terracotta);
+  stroke-width: 1.5;
+  fill: none;
+}
+
+.context-card h3 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ws-ink-faded);
+  margin: 0 0 0.5rem;
+}
+
+.context-main {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0 0 0.25rem;
+  color: var(--ws-ink);
+}
+
+.context-sub {
+  font-size: 0.85rem;
+  color: var(--ws-ink-faded);
+  margin: 0;
+}
+
+/* === Learning Objectives === */
+.learning-objectives {
+  background: white;
+  border: 1px solid var(--ws-border);
+  border-radius: 4px;
+  padding: 2rem;
+  margin-bottom: 3rem;
+}
+
+.objectives-list {
+  max-width: 700px;
+  margin: 0 auto;
+  padding-left: 1.5rem;
+}
+
+.objectives-list li {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+  color: var(--ws-ink);
+}
+
+.objectives-list li:last-child {
+  margin-bottom: 0;
+}
+
+/* === Block Time Badge === */
+.block-time {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  color: var(--ws-terracotta);
+  margin-bottom: 0.75rem;
+}
+
+/* === Dataset Section === */
+.dataset-section {
+  margin-bottom: 3rem;
+}
+
+.dataset-info {
+  background: white;
+  border: 1px solid var(--ws-border);
+  border-radius: 4px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.dataset-source h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.dataset-source p {
+  font-size: 0.9rem;
+  color: var(--ws-ink-faded);
+  margin: 0.25rem 0 1.5rem;
+}
+
+.dataset-stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--ws-terracotta);
+  line-height: 1;
+}
+
+.stat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--ws-ink-faded);
+  margin-top: 0.5rem;
+}
+
+.dataset-description {
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+  font-size: 0.9rem;
+  color: var(--ws-ink-faded);
+  line-height: 1.6;
+}
+
+.dataset-info .material-links {
+  justify-content: center;
+}
+
+/* === Resources Section === */
+.resources-section {
+  background: white;
+  border: 1px solid var(--ws-border);
+  border-radius: 4px;
+  padding: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.resource-category h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--ws-border);
+}
+
+.resource-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.resource-list li {
+  margin-bottom: 0.5rem;
+}
+
+.resource-list a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  color: var(--ws-ink);
+  text-decoration: none;
+  font-size: 0.9rem;
+  border-radius: 3px;
+  transition: all 0.2s;
+}
+
+.resource-list a:hover {
+  background: var(--ws-paper-aged);
+  color: var(--ws-terracotta);
+}
+
+.resource-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.resource-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  fill: none;
+}
+
+/* === Competency Grid for Workshop === */
+.competency-intro {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  font-size: 0.95rem;
+  color: var(--ws-ink-faded);
+}
+
+.competency-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0.75rem;
+  max-width: 900px;
+  margin: 0 auto 1.5rem;
+}
+
+.competency-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  color: white;
+}
+
+.competency-item .comp-code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 600;
+  width: 28px;
+  flex-shrink: 0;
+}
+
+.competency-item .comp-name {
+  flex: 1;
+  font-size: 0.9rem;
+}
+
+.competency-item .comp-weight {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  opacity: 0.85;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.comp-CT-bg { background: var(--comp-CT); }
+.comp-RE-bg { background: var(--comp-RE); }
+.comp-CE-bg { background: var(--comp-CE); }
+.comp-PE-bg { background: var(--comp-PE); }
+.comp-CL-bg { background: var(--comp-CL); }
+.comp-RV-bg { background: var(--comp-RV); }
+.comp-EW-bg { background: var(--comp-EW); }
+
 /* === Competency Overview === */
 .competency-section {
   text-align: center;

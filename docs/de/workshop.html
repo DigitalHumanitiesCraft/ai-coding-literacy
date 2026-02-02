@@ -16,18 +16,73 @@
   <!-- Header -->
   <header class="workshop-header">
     <p class="workshop-tagline">Digital Humanities Craft</p>
-    <h1 class="workshop-title">AI Coding <span class="highlight">Literacy</span></h1>
-    <p class="workshop-subtitle">Forschungsdaten im Museum</p>
+    <h1 class="workshop-title">Programmieren <span class="highlight">2.0</span></h1>
+    <p class="workshop-subtitle">LLMs fuer Forschungsdaten im Museum</p>
     <p class="workshop-intro">
       Wie werden handschriftliche Archivkarten zu maschinenlesbaren Forschungsdaten?
-      Dieses Interface zeigt den Transformationsprozess von physischen Museumsobjekten
-      zu strukturierten, verknuepfbaren Datensaetzen &ndash; unterstuetzt durch
-      KI-gestuetzte Datenextraktion.
+      Dieser Workshop vermittelt grundlegende Kompetenzen zur Nutzung von Large Language Models
+      fuer programmierbasierte Aufgaben im musealen Kontext &ndash; von Python-Skripten bis
+      zu interaktiven Webseiten.
     </p>
   </header>
 
   <main>
     <div class="workshop-container">
+
+      <!-- Workshop-Kontext -->
+      <section class="context-section" aria-labelledby="context-heading">
+        <h2 id="context-heading" class="section-heading">Workshop-Details</h2>
+        <div class="context-grid">
+          <div class="context-card">
+            <div class="context-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+            </div>
+            <h3>Datum &amp; Zeit</h3>
+            <p class="context-main">12. Februar 2026</p>
+            <p class="context-sub">12:00 - 17:00 Uhr</p>
+          </div>
+          <div class="context-card">
+            <div class="context-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <h3>Ort</h3>
+            <p class="context-main">Naturhistorisches Museum Wien</p>
+            <p class="context-sub">Museumsbund Oesterreich</p>
+          </div>
+          <div class="context-card">
+            <div class="context-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <h3>Zielgruppe</h3>
+            <p class="context-main">Museumsmitarbeiter:innen</p>
+            <p class="context-sub">Keine Programmierkenntnisse erforderlich</p>
+          </div>
+          <div class="context-card">
+            <div class="context-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+              </svg>
+            </div>
+            <h3>Leitgedanke</h3>
+            <p class="context-main">Informed Vibe Coding</p>
+            <p class="context-sub">Ergebnisse einordnen, Fehler erkennen, gezielt nachbessern</p>
+          </div>
+        </div>
+      </section>
 
       <!-- Transformationsprozess -->
       <section class="transformation-section" aria-labelledby="transformation-heading">
@@ -89,77 +144,51 @@
         </div>
       </section>
 
-      <!-- Filter Bar -->
-      <section class="filter-section" aria-label="Objektfilter">
-        <div class="filter-bar">
-          <div class="search-wrapper">
-            <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="11" cy="11" r="8"/>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-            </svg>
-            <input type="search" id="search-input" class="search-input"
-                   placeholder="Objekte durchsuchen ..."
-                   autocomplete="off"
-                   aria-label="Objekte durchsuchen">
-          </div>
-          <div class="view-toggles" role="group" aria-label="Ansicht wechseln">
-            <button class="view-btn active" data-view="grid"
-                    aria-label="Rasteransicht"
-                    aria-pressed="true">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <rect x="3" y="3" width="7" height="7"/>
-                <rect x="14" y="3" width="7" height="7"/>
-                <rect x="14" y="14" width="7" height="7"/>
-                <rect x="3" y="14" width="7" height="7"/>
-              </svg>
-            </button>
-            <button class="view-btn" data-view="list"
-                    aria-label="Listenansicht"
-                    aria-pressed="false">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <line x1="8" y1="6" x2="21" y2="6"/>
-                <line x1="8" y1="12" x2="21" y2="12"/>
-                <line x1="8" y1="18" x2="21" y2="18"/>
-                <line x1="3" y1="6" x2="3.01" y2="6"/>
-                <line x1="3" y1="12" x2="3.01" y2="12"/>
-                <line x1="3" y1="18" x2="3.01" y2="18"/>
-              </svg>
-            </button>
-          </div>
-          <span class="object-count" id="object-count" aria-live="polite">25 Objekte</span>
-        </div>
+      <!-- Lernziele -->
+      <section class="learning-objectives" aria-labelledby="objectives-heading">
+        <h2 id="objectives-heading" class="section-heading">Lernziele</h2>
+        <ol class="objectives-list">
+          <li>Python-Skripte und HTML/CSS/JS mit LLM-Unterstuetzung in VS Code ausfuehren</li>
+          <li>Anforderungen strukturiert formulieren (Context Engineering)</li>
+          <li>Generierte Outputs kritisch pruefen und iterativ verbessern</li>
+          <li>Limitationen von LLM-generiertem Code erkennen</li>
+        </ol>
       </section>
 
-      <!-- Objects Grid -->
-      <section class="objects-section" aria-labelledby="objects-heading">
-        <h2 id="objects-heading" class="visually-hidden">Museumsobjekte</h2>
-        <div class="objects-grid" id="objects-grid" role="list">
-          <!-- Karten werden per JavaScript eingefuegt -->
-        </div>
-      </section>
-
-      <!-- Workshop Materials -->
+      <!-- Praxisbloecke -->
       <section class="materials-section" aria-labelledby="materials-heading">
-        <h2 id="materials-heading">Workshop-Materialien</h2>
+        <h2 id="materials-heading">Praxisbloecke</h2>
 
         <div class="materials-grid">
 
           <article class="material-card">
-            <h3>Hands-On 1: CSV-Analyse mit LLM</h3>
-            <p>Fragen an Daten stellen, ohne Code zu schreiben. Den gesamten Workflow einmal durchspielen.</p>
+            <div class="block-time">12:45 - 13:45</div>
+            <h3>Praxisblock 1: Python mit LLM</h3>
+            <p>
+              Ein Python-Skript erstellen, das museale Daten verarbeitet.
+              Fehlermeldungen lesen und an das LLM zur Korrektur uebergeben.
+              Iteratives Arbeiten: generieren, ausfuehren, pruefen, korrigieren.
+            </p>
             <ul class="competency-tags" aria-label="Relevante Kompetenzen">
+              <li class="comp-CT">CT</li>
               <li class="comp-CE">CE</li>
               <li class="comp-PE">PE</li>
               <li class="comp-RV">RV</li>
             </ul>
             <div class="material-links">
-              <a href="../data/kriminalmuseum/workshop_objekte.csv" download class="btn-download">CSV herunterladen</a>
+              <a href="../data/kriminalmuseum/workshop_objekte.csv" download class="btn-download">CSV Datensatz</a>
+              <a href="../workshops/programmieren-2-0/python/beispiel_csv_analyse.py" class="btn-slides">Beispielskript</a>
             </div>
           </article>
 
           <article class="material-card">
-            <h3>Hands-On 2: Website aus Daten bauen</h3>
-            <p>Aus dem Datensatz eine interaktive Webdarstellung erstellen. Context Engineering anwenden.</p>
+            <div class="block-time">14:15 - 15:15</div>
+            <h3>Praxisblock 2: Webentwicklung mit LLM</h3>
+            <p>
+              Eine interaktive Webseite erstellen, die JSON-Daten laedt und anzeigt.
+              Browser-Konsole (F12) als Fehlerquelle nutzen.
+              Live Server fuer lokale Datenverarbeitung einsetzen.
+            </p>
             <ul class="competency-tags" aria-label="Relevante Kompetenzen">
               <li class="comp-CT">CT</li>
               <li class="comp-RE">RE</li>
@@ -167,54 +196,231 @@
               <li class="comp-RV">RV</li>
             </ul>
             <div class="material-links">
-              <a href="../data/kriminalmuseum/workshop_objekte.json" download class="btn-download">JSON herunterladen</a>
+              <a href="../data/kriminalmuseum/workshop_objekte.json" download class="btn-download">JSON Datensatz</a>
+              <a href="../workshops/programmieren-2-0/web/index.html" class="btn-slides">Web-Beispiel</a>
+            </div>
+          </article>
+
+          <article class="material-card">
+            <div class="block-time">15:45 - 16:30</div>
+            <h3>Praxisblock 3: Eigene Aufgabe</h3>
+            <p>
+              Gelerntes selbststaendig anwenden: eigene Daten mitbringen oder
+              vorgegebene Aufgaben bearbeiten (erweiterte Objektsuche, Datenbereinigung,
+              Statistik-Dashboard).
+            </p>
+            <ul class="competency-tags" aria-label="Relevante Kompetenzen">
+              <li class="comp-CT">CT</li>
+              <li class="comp-RE">RE</li>
+              <li class="comp-CE">CE</li>
+              <li class="comp-PE">PE</li>
+              <li class="comp-CL">CL</li>
+              <li class="comp-RV">RV</li>
+            </ul>
+            <div class="material-links">
+              <a href="../workshops/programmieren-2-0/handouts/dokumentation_vorlage.md" class="btn-slides">Dokumentationsvorlage</a>
             </div>
           </article>
 
         </div>
+      </section>
 
-        <div class="handouts">
-          <h3>Handouts</h3>
-          <ul>
-            <li><a href="../workshops/programmieren-2-0/handouts/dokumentation_vorlage.md">Dokumentationsvorlage</a></li>
-            <li><a href="../workshops/programmieren-2-0/handouts/prompt_vorlage.md">Prompt-Vorlage</a></li>
-            <li><a href="../workshops/programmieren-2-0/handouts/cheatsheet_python_fehler.md">Python Fehler-Cheatsheet</a></li>
-          </ul>
+      <!-- Datensatz -->
+      <section class="dataset-section" aria-labelledby="dataset-heading">
+        <h2 id="dataset-heading" class="section-heading">Workshop-Datensatz</h2>
+        <div class="dataset-info">
+          <div class="dataset-source">
+            <h3>Hans Gross Kriminalmuseum</h3>
+            <p>Universitaet Graz</p>
+          </div>
+          <div class="dataset-stats">
+            <div class="stat">
+              <span class="stat-number">25</span>
+              <span class="stat-label">kuratierte Objekte</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">14</span>
+              <span class="stat-label">Objekttypen</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">1895-1937</span>
+              <span class="stat-label">Zeitraum</span>
+            </div>
+          </div>
+          <p class="dataset-description">
+            Semi-strukturierte Beschreibungen mit reichhaltigem didaktischem Potenzial:
+            Waffen, Forensische Medizin, Falsifikate, Diebswerkzeuge, Wildererobjekte,
+            Fussspuren, Verstellungskuenste und mehr.
+          </p>
+          <div class="material-links">
+            <a href="../data/kriminalmuseum/workshop_objekte.csv" download class="btn-download">CSV herunterladen</a>
+            <a href="../data/kriminalmuseum/workshop_objekte.json" download class="btn-download">JSON herunterladen</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Handouts und Ressourcen -->
+      <section class="resources-section" aria-labelledby="resources-heading">
+        <h2 id="resources-heading" class="section-heading">Handouts &amp; Ressourcen</h2>
+
+        <div class="resources-grid">
+          <div class="resource-category">
+            <h3>Vorlagen</h3>
+            <ul class="resource-list">
+              <li>
+                <a href="../workshops/programmieren-2-0/handouts/dokumentation_vorlage.md">
+                  <span class="resource-icon">
+                    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                  </span>
+                  Dokumentationsvorlage
+                </a>
+              </li>
+              <li>
+                <a href="../workshops/programmieren-2-0/handouts/prompt_vorlage.md">
+                  <span class="resource-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                  </span>
+                  Prompt-Vorlage
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="resource-category">
+            <h3>Cheatsheets</h3>
+            <ul class="resource-list">
+              <li>
+                <a href="../workshops/programmieren-2-0/handouts/cheatsheet_python_fehler.md">
+                  <span class="resource-icon">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                  </span>
+                  Python-Fehler
+                </a>
+              </li>
+              <li>
+                <a href="../workshops/programmieren-2-0/handouts/cheatsheet_api.md">
+                  <span class="resource-icon">
+                    <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  </span>
+                  API-Referenz
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="resource-category">
+            <h3>Python-Beispiele</h3>
+            <ul class="resource-list">
+              <li>
+                <a href="../workshops/programmieren-2-0/python/api_einfach.py">
+                  <span class="resource-icon">
+                    <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                  </span>
+                  API-Aufruf (einfach)
+                </a>
+              </li>
+              <li>
+                <a href="../workshops/programmieren-2-0/python/api_beispiel_extraktion.py">
+                  <span class="resource-icon">
+                    <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                  </span>
+                  Datenextraktion
+                </a>
+              </li>
+              <li>
+                <a href="../workshops/programmieren-2-0/python/beispiel_csv_analyse.py">
+                  <span class="resource-icon">
+                    <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                  </span>
+                  CSV-Analyse
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="resource-category">
+            <h3>Externe Links</h3>
+            <ul class="resource-list">
+              <li>
+                <a href="https://docs.google.com/presentation/d/1pP-4I7VXCbQSOfVaeYPpOBQE5ZeY7590NuDBK2gGTow" target="_blank" rel="noopener">
+                  <span class="resource-icon">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                  </span>
+                  Workshop-Slides
+                </a>
+              </li>
+              <li>
+                <a href="https://docs.google.com/presentation/d/1gvhQtVVRV7btvqd2b-YIPsRNQJk0umt6C8un3ONnnLY" target="_blank" rel="noopener">
+                  <span class="resource-icon">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                  </span>
+                  Vorbereitungs-Slides
+                </a>
+              </li>
+              <li>
+                <a href="https://chpollin.github.io/llmdh" target="_blank" rel="noopener">
+                  <span class="resource-icon">
+                    <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                  </span>
+                  Vorbereitungslektuere
+                </a>
+              </li>
+              <li>
+                <a href="https://drive.google.com/drive/folders/1m37hhcmlzqmB9evjgVvRK7_Dgu6JCobn" target="_blank" rel="noopener">
+                  <span class="resource-icon">
+                    <svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                  </span>
+                  Google Drive
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </section>
 
       <!-- Competency Overview -->
       <section class="competency-section" aria-labelledby="competency-heading">
         <h2 id="competency-heading">Die 7 Kompetenzdimensionen</h2>
-        <nav class="competency-bar-horizontal" aria-label="Kompetenzdimensionen">
-          <a href="index.html#chapter-CT" class="comp-badge comp-CT">
-            <span class="visually-hidden">Computational Thinking</span>
-            <span aria-hidden="true">CT</span>
-          </a>
-          <a href="index.html#chapter-RE" class="comp-badge comp-RE">
-            <span class="visually-hidden">Requirement Engineering</span>
-            <span aria-hidden="true">RE</span>
-          </a>
-          <a href="index.html#chapter-CE" class="comp-badge comp-CE">
-            <span class="visually-hidden">Context Engineering</span>
-            <span aria-hidden="true">CE</span>
-          </a>
-          <a href="index.html#chapter-PE" class="comp-badge comp-PE">
-            <span class="visually-hidden">Prompt Engineering</span>
-            <span aria-hidden="true">PE</span>
-          </a>
-          <a href="index.html#chapter-CL" class="comp-badge comp-CL">
-            <span class="visually-hidden">Code Literacy</span>
-            <span aria-hidden="true">CL</span>
-          </a>
-          <a href="index.html#chapter-RV" class="comp-badge comp-RV">
-            <span class="visually-hidden">Review</span>
-            <span aria-hidden="true">RV</span>
-          </a>
-          <span class="comp-badge comp-EW" aria-label="Expertenwissen (Querschnittskompetenz)">
-            <span aria-hidden="true">EW</span>
-          </span>
-        </nav>
+        <p class="competency-intro">
+          AI Coding Literacy umfasst sieben Kompetenzbereiche. Dieser Workshop adressiert sie mit unterschiedlicher Gewichtung.
+        </p>
+        <div class="competency-grid">
+          <div class="competency-item comp-CT-bg">
+            <span class="comp-code">CT</span>
+            <span class="comp-name">Computational Thinking</span>
+            <span class="comp-weight">Grundlage</span>
+          </div>
+          <div class="competency-item comp-RE-bg">
+            <span class="comp-code">RE</span>
+            <span class="comp-name">Requirement Engineering</span>
+            <span class="comp-weight">Schwerpunkt</span>
+          </div>
+          <div class="competency-item comp-CE-bg">
+            <span class="comp-code">CE</span>
+            <span class="comp-name">Context Engineering</span>
+            <span class="comp-weight">Schwerpunkt</span>
+          </div>
+          <div class="competency-item comp-PE-bg">
+            <span class="comp-code">PE</span>
+            <span class="comp-name">Prompt Engineering</span>
+            <span class="comp-weight">wird vermittelt</span>
+          </div>
+          <div class="competency-item comp-CL-bg">
+            <span class="comp-code">CL</span>
+            <span class="comp-name">Code Literacy</span>
+            <span class="comp-weight">wird angebahnt</span>
+          </div>
+          <div class="competency-item comp-RV-bg">
+            <span class="comp-code">RV</span>
+            <span class="comp-name">Review</span>
+            <span class="comp-weight">wird vermittelt</span>
+          </div>
+          <div class="competency-item comp-EW-bg">
+            <span class="comp-code">EW</span>
+            <span class="comp-name">Expert:innenwissen</span>
+            <span class="comp-weight">implizit</span>
+          </div>
+        </div>
         <p class="competency-note">
           <a href="kompetenzmodell.html">Mehr zum Kompetenzmodell</a>
         </p>
@@ -226,11 +432,11 @@
   <!-- Footer -->
   <footer class="workshop-footer">
     <p>Workshop: Programmieren 2.0 &ndash; LLMs fuer Forschungsdaten im Museum</p>
-    <p>12. Februar 2026 | <a href="https://www.nhm-wien.ac.at" target="_blank" rel="noopener">Naturhistorisches Museum Wien</a> | Museumsbund Oesterreich</p>
+    <p>12. Februar 2026 | <a href="https://www.nhm-wien.ac.at" target="_blank" rel="noopener">Naturhistorisches Museum Wien</a> | <a href="https://www.museumsbund.at/museumspraxis/programmieren-2-0-llms-fuer-forschungsdaten-im-museum" target="_blank" rel="noopener">Museumsbund Oesterreich</a></p>
     <p>Daten: <a href="https://kriminalmuseum.uni-graz.at/" target="_blank" rel="noopener">Hans Gross Kriminalmuseum</a>, Universitaet Graz</p>
+    <p>Workshopleitung: Dr. Christopher Pollin</p>
     <p><a href="https://github.com/DigitalHumanitiesCraft/ai-coding-literacy" target="_blank" rel="noopener">GitHub Repository</a> | <a href="index.html">Curriculum</a></p>
   </footer>
 
-  <script src="../js/workshop.js"></script>
 </body>
 </html>
