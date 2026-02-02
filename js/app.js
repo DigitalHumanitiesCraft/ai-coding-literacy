@@ -1,6 +1,7 @@
 /**
  * AI Coding Literacy - Vertikales Scroll-Layout
- * Einfaches, klares Layout mit Sidebar-Navigation
+ * Hauptseite mit Sidebar-Navigation
+ * Benoetigt: shared.js
  */
 
 // State
@@ -10,18 +11,17 @@ const CHAPTERS_PER_LOAD = 2;
 
 // UI-Texte (nur Deutsch)
 const i18n = {
-  loadError: 'Fehler beim Laden der Inhalte.',
+  loadError: sharedI18n.loadError,
   theorie: 'Theorie',
-  uebungen: 'Übungen',
+  uebungen: 'Uebungen',
   ressourcen: 'Ressourcen',
-  learnMore: 'Mehr lernen →'
+  learnMore: 'Mehr lernen ->'
 };
 
 // Load JSON data
 async function loadContent() {
   try {
-    const response = await fetch('/data/content.json');
-    contentData = await response.json();
+    contentData = await loadContentJson();
     initPage();
   } catch (error) {
     console.error('Error loading content:', error);
@@ -217,13 +217,13 @@ function createChapterElement(chapter) {
     html += `</div>`;
   }
 
-  // Übungen Section
+  // Uebungen Section
   if (chapter.handsOn?.length > 0) {
     html += `
       <div class="content-section" id="${chapter.id}-uebungen">
         <h3 class="section-title">
           <span class="section-marker" style="background: ${chapter.color}"></span>
-          Übungen
+          Uebungen
         </h3>
     `;
 
@@ -445,27 +445,6 @@ function setupScrollSpy() {
   });
 
   mutationObserver.observe(container, { childList: true });
-}
-
-// Utility: Escape HTML
-function escapeHtml(text) {
-  const div = document.createElement('div');
-  div.textContent = text;
-  return div.innerHTML;
-}
-
-// Utility: Copy code
-function copyCode(button) {
-  const codeBlock = button.closest('.code-block');
-  const code = codeBlock.querySelector('code').textContent;
-
-  navigator.clipboard.writeText(code).then(() => {
-    const originalText = button.textContent;
-    button.textContent = 'kopiert!';
-    setTimeout(() => {
-      button.textContent = originalText;
-    }, 2000);
-  });
 }
 
 // Initialize

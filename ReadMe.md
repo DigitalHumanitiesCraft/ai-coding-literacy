@@ -55,6 +55,7 @@ Das Curriculum entwickelt sieben Kompetenzbereiche:
 ai-coding-literacy/
 ├── de/
 │   ├── index.html              # Curriculum-Uebersicht (Landing Page)
+│   ├── ueber.html              # Projekt-Konzept (public)
 │   ├── workshop.html           # Workshop-Seite mit allen Materialien
 │   ├── informed-vibe-coding.html  # Erklaerung des Leitgedankens
 │   ├── setup.html              # Setup-Anleitung
@@ -69,23 +70,27 @@ ai-coding-literacy/
 │   ├── glossar.json            # Glossar-Begriffe (21 Eintraege)
 │   └── kriminalmuseum/         # Workshop-Datensatz
 ├── js/
+│   ├── shared.js               # Gemeinsame Funktionen
 │   ├── app.js                  # Curriculum-Hauptlogik
 │   ├── glossary.js             # Glossar-System
 │   ├── kompetenzmodell.js
 │   ├── referenz.js
 │   └── setup.js
 ├── knowledge/                  # Konzeptdokumente
-│   ├── concept.md
-│   ├── design.md
-│   ├── implementation-plan.md
-│   ├── status-report.md
+│   ├── concept.md              # Curriculum-Konzept (SSOT)
+│   ├── design.md               # Visuelles Designsystem
+│   ├── hands-on.md             # Uebungskatalog
+│   ├── implementation-plan.md  # Technische Architektur
+│   ├── status-report.md        # Aktueller Projektstatus
 │   └── workshops/
-│       └── programmieren-2-0.md
+│       └── programmieren-2-0.md  # Workshop-Ausarbeitung (SSOT)
 ├── workshops/
 │   └── programmieren-2-0/
 │       ├── handouts/           # Vorlagen und Cheatsheets
 │       ├── python/             # Python-Beispielskripte
 │       └── web/                # Web-Beispiele
+├── .github/
+│   └── DEVELOPMENT_LOG.md      # Entwicklungs-Journal
 └── docs/                       # GitHub Pages Deployment-Ordner
 ```
 

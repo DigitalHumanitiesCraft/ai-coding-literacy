@@ -30,3 +30,20 @@ Leitgedanke: Informed Vibe Coding
 - Font-Stacks: --font-editorial, --font-mono, --font-ui
 - GitHub Pages Deployment via /docs Ordner
 - Datensatz: Hans Gross Kriminalmuseum (25 Workshop-Objekte)
+
+## JavaScript-Architektur
+
+- shared.js: Gemeinsame Funktionen (loadContentJson, renderCompetencySidebar, copyCode, escapeHtml, createCompetencyBadge)
+- app.js: Curriculum-Hauptlogik (index.html)
+- glossary.js: Glossar-System mit Info-Panel
+- kompetenzmodell.js, referenz.js, setup.js: Seitenspezifische Logik
+
+HTML-Dateien laden shared.js vor ihrem Haupt-Script.
+
+## Dokumentenstruktur
+
+Single Source of Truth (SSOT):
+- knowledge/concept.md: Curriculum-Konzept
+- knowledge/workshops/programmieren-2-0.md: Workshop-Ausarbeitung
+
+Verlinkungen zwischen Dokumenten beachten.

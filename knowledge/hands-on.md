@@ -2,6 +2,12 @@
 
 Diese Datei dokumentiert die Hands-On-Uebungen des Curriculums. Die Uebungen sind in /data/content.json integriert und werden im vertikalen Scroll-Layout gerendert.
 
+## Verwandte Dokumente
+
+- [Curriculum-Konzept](concept.md) - Kompetenzmodell und Lernziele
+- [Workshop: Programmieren 2.0](workshops/programmieren-2-0.md) - Praktische Anwendung
+- [Handouts](../../workshops/programmieren-2-0/handouts/) - Vorlagen und Cheatsheets
+
 ---
 
 ## Struktur

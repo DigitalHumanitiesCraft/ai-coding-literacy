@@ -1,26 +1,27 @@
 /**
  * AI Coding Literacy - Setup Page
  * Dynamically loads setup content from JSON
+ * Benoetigt: shared.js
  */
 
 let setupData = null;
 
 // UI-Texte (nur Deutsch)
 const i18n = {
-  loadError: 'Fehler beim Laden der Inhalte.',
-  breadcrumb: 'Übersicht',
+  loadError: sharedI18n.loadError,
+  breadcrumb: 'Uebersicht',
   required: 'erforderlich',
   recommended: 'empfohlen',
   tutorials: 'Tutorials',
   extensions: 'Empfohlene Erweiterungen',
   extensionsInstructions: 'So installieren Sie Erweiterungen:',
-  checkInstallation: 'Installation prüfen',
+  checkInstallation: 'Installation pruefen',
   expectedOutput: 'Erwartete Ausgabe:',
   download: 'herunterladen',
   important: 'Wichtig',
   note: 'Hinweis',
   tip: 'Tipp',
-  commonPackages: 'Häufig verwendete Pakete',
+  commonPackages: 'Haeufig verwendete Pakete',
   options: 'Optionen',
   commercial: 'Kommerzielle Anbieter',
   openSource: 'Open-Source-Alternativen',
@@ -31,30 +32,30 @@ const i18n = {
   freeTier: 'Kostenlose Version',
   importantCommands: 'Wichtige Befehle',
   terminalCommands: 'Terminal-Befehle',
-  personalRecommendation: 'Persönliche Empfehlung:',
-  personalNote: 'Aus meiner Erfahrung bietet die Bezahlversion von Claude (Claude Pro) die spannendste Lernerfahrung – besonders für längere Code-Erklärungen und iteratives Arbeiten. Wiewohl das natürlich ein proprietäres Modell ist, ist es für den Einstieg eine gute Wahl.',
-  firstScript: 'Erstes Script ausführen',
+  personalRecommendation: 'Persoenliche Empfehlung:',
+  personalNote: 'Aus meiner Erfahrung bietet die Bezahlversion von Claude (Claude Pro) die spannendste Lernerfahrung - besonders fuer laengere Code-Erklaerungen und iteratives Arbeiten. Wiewohl das natuerlich ein proprietaeres Modell ist, ist es fuer den Einstieg eine gute Wahl.',
+  firstScript: 'Erstes Script ausfuehren',
   firstScriptSteps: [
-    'Öffnen Sie VS Code',
+    'Oeffnen Sie VS Code',
     'Erstellen Sie eine neue Datei',
-    'Fügen Sie diesen Code ein:',
+    'Fuegen Sie diesen Code ein:',
     'Speichern Sie die Datei',
-    'Führen Sie das Script aus'
+    'Fuehren Sie das Script aus'
   ],
   firstScriptSubsteps: {
-    2: 'File → New File oder Ctrl+N',
-    4: 'File → Save As → Speichern als test.py',
-    5: 'Klicken Sie auf den Play-Button oben rechts, oder: Terminal öffnen (Ctrl+`) und eingeben: python test.py'
+    2: 'File -> New File oder Ctrl+N',
+    4: 'File -> Save As -> Speichern als test.py',
+    5: 'Klicken Sie auf den Play-Button oben rechts, oder: Terminal oeffnen (Ctrl+`) und eingeben: python test.py'
   },
   expectedOutputTitle: 'Erwartete Ausgabe:',
   successMessage: 'Wenn Sie diese Ausgabe sehen, ist alles richtig eingerichtet!',
-  troubleshooting: 'Häufige Probleme',
-  nextSteps: 'Nächste Schritte',
-  nextStepsText: 'Wenn alles eingerichtet ist, können Sie mit dem Curriculum beginnen:',
-  toExercises: '→ Zu den Übungen',
+  troubleshooting: 'Haeufige Probleme',
+  nextSteps: 'Naechste Schritte',
+  nextStepsText: 'Wenn alles eingerichtet ist, koennen Sie mit dem Curriculum beginnen:',
+  toExercises: '-> Zu den Uebungen',
   orStartWith: 'Oder starten Sie direkt mit',
-  copy: 'kopieren',
-  copied: 'kopiert!'
+  copy: sharedI18n.copy,
+  copied: sharedI18n.copied
 };
 
 // Competency color mapping
@@ -69,8 +70,7 @@ const competencyColors = {
 // Load JSON data
 async function loadContent() {
   try {
-    const response = await fetch('/data/content.json');
-    const data = await response.json();
+    const data = await loadContentJson();
     setupData = data.setup;
     initPage();
   } catch (error) {
@@ -81,7 +81,6 @@ async function loadContent() {
 
 // Initialize page
 function initPage() {
-
   // Update page header
   document.querySelector('.chapter-title').textContent = setupData.title;
   document.querySelector('.chapter-subtitle').textContent = setupData.subtitle;
@@ -117,7 +116,7 @@ function renderQuickCheck() {
     const li = document.createElement('li');
     li.className = 'checklist-item';
     li.innerHTML = `
-      <span class="check-box">☐</span>
+      <span class="check-box"></span>
       <span class="check-label">${item.label}</span>
       <span class="check-hint">${item.check}</span>
     `;
@@ -127,9 +126,7 @@ function renderQuickCheck() {
 
 // Render Setup Items
 function renderSetupItems() {
-  const sections = document.querySelectorAll('.content-section[id^="setup-"]');
-
-  setupData.items.forEach((item, index) => {
+  setupData.items.forEach(item => {
     const section = document.getElementById(`setup-${item.id}`);
     if (!section) return;
 
@@ -153,15 +150,13 @@ function renderSetupItems() {
 
 // Render Python Setup
 function renderPythonSetup(container, item) {
-  const comp = competencyColors[item.id];
-
   container.innerHTML = `
     <div class="setup-item-content">
-      <p>${item.shortDescription}. Python ist bekannt für ihre Lesbarkeit und wird häufig in der Wissenschaft eingesetzt.</p>
+      <p>${item.shortDescription}. Python ist bekannt fuer ihre Lesbarkeit und wird haeufig in der Wissenschaft eingesetzt.</p>
 
       <div class="download-box">
         <a href="${item.downloadUrl}" target="_blank" rel="noopener" class="download-link">
-          → Python ${i18n.download} (python.org)
+          -> Python ${i18n.download} (python.org)
         </a>
         <p class="download-note">${item.notes}</p>
       </div>
@@ -180,7 +175,7 @@ function renderPythonSetup(container, item) {
             <a href="${item.tutorials.windows.videoUrl}" target="_blank" rel="noopener">
               ${item.tutorials.windows.videoTitle}
             </a>
-            <p>Beliebtes YouTube-Tutorial mit klaren Erklärungen</p>
+            <p>Beliebtes YouTube-Tutorial mit klaren Erklaerungen</p>
           </div>
         </div>
 
@@ -198,7 +193,7 @@ function renderPythonSetup(container, item) {
 
       <div class="verify-box">
         <h4>${i18n.checkInstallation}</h4>
-        <p>Öffnen Sie ein Terminal und geben Sie ein:</p>
+        <p>Oeffnen Sie ein Terminal und geben Sie ein:</p>
         <div class="code-block">
           <div class="code-header">
             <span class="filename">Terminal</span>
@@ -214,7 +209,7 @@ function renderPythonSetup(container, item) {
 // Render VS Code Setup
 function renderVSCodeSetup(container, item) {
   const extSteps = [
-    'Öffnen Sie VS Code',
+    'Oeffnen Sie VS Code',
     'Klicken Sie auf das Extensions-Symbol in der linken Leiste (oder <code>Ctrl+Shift+X</code>)',
     'Suchen Sie nach "Python"',
     'Klicken Sie auf "Install"'
@@ -222,11 +217,11 @@ function renderVSCodeSetup(container, item) {
 
   container.innerHTML = `
     <div class="setup-item-content">
-      <p>VS Code ist ein kostenloser, leichtgewichtiger Code-Editor von Microsoft. Er ist einfach zu bedienen und hat eine große Sammlung von Erweiterungen.</p>
+      <p>VS Code ist ein kostenloser, leichtgewichtiger Code-Editor von Microsoft. Er ist einfach zu bedienen und hat eine grosse Sammlung von Erweiterungen.</p>
 
       <div class="download-box">
         <a href="${item.downloadUrl}" target="_blank" rel="noopener" class="download-link">
-          → VS Code ${i18n.download} (code.visualstudio.com)
+          -> VS Code ${i18n.download} (code.visualstudio.com)
         </a>
         <p class="download-note">${item.notes}</p>
       </div>
@@ -251,7 +246,7 @@ function renderVSCodeSetup(container, item) {
             <a href="${item.tutorials.windows.videoUrl}" target="_blank" rel="noopener">
               ${item.tutorials.windows.videoTitle}
             </a>
-            <p>Ausführliches Setup-Tutorial für Windows</p>
+            <p>Ausfuehrliches Setup-Tutorial fuer Windows</p>
           </div>
         </div>
 
@@ -296,7 +291,7 @@ function renderLLMSetup(container, item) {
       name: 'Mistral Le Chat',
       provider: 'Mistral AI (Frankreich)',
       url: 'https://chat.mistral.ai',
-      description: 'Europäischer Anbieter mit Open-Source-Modellen. Kostenloser Chat-Zugang.'
+      description: 'Europaeischer Anbieter mit Open-Source-Modellen. Kostenloser Chat-Zugang.'
     },
     {
       name: 'HuggingChat',
@@ -309,7 +304,7 @@ function renderLLMSetup(container, item) {
 
   container.innerHTML = `
     <div class="setup-item-content">
-      <p>Für die Übungen brauchen Sie Zugang zu einem LLM. Es gibt verschiedene Anbieter – wählen Sie einen, der zu Ihren Bedürfnissen passt:</p>
+      <p>Fuer die Uebungen brauchen Sie Zugang zu einem LLM. Es gibt verschiedene Anbieter - waehlen Sie einen, der zu Ihren Beduerfnissen passt:</p>
 
       <h4>Kommerzielle Anbieter (mit kostenloser Stufe)</h4>
       <div class="llm-options">
@@ -319,10 +314,10 @@ function renderLLMSetup(container, item) {
               <h4>${opt.name}</h4>
             </div>
             <p class="llm-provider">${i18n.provider} ${opt.provider}</p>
-            <p>${opt.name === 'Claude' ? 'Kostenloser Zugang mit Nutzungslimits. Gut für längere Gespräche und Code-Erklärungen.' :
-                 opt.name === 'ChatGPT' ? 'GPT-3.5 kostenlos, GPT-4 kostenpflichtig. Weit verbreitet mit großer Community.' :
+            <p>${opt.name === 'Claude' ? 'Kostenloser Zugang mit Nutzungslimits. Gut fuer laengere Gespraeche und Code-Erklaerungen.' :
+                 opt.name === 'ChatGPT' ? 'GPT-3.5 kostenlos, GPT-4 kostenpflichtig. Weit verbreitet mit grosser Community.' :
                  'Kostenloser Zugang. Gut integriert mit Google-Diensten.'}</p>
-            <a href="${opt.url}" target="_blank" rel="noopener" class="llm-link">→ ${opt.url.replace('https://', '')}</a>
+            <a href="${opt.url}" target="_blank" rel="noopener" class="llm-link">-> ${opt.url.replace('https://', '')}</a>
           </div>
         `).join('')}
         ${commercialOptions.length === 2 ? `
@@ -332,7 +327,7 @@ function renderLLMSetup(container, item) {
             </div>
             <p class="llm-provider">${i18n.provider} Google</p>
             <p>Kostenloser Zugang. Gut integriert mit Google-Diensten.</p>
-            <a href="https://gemini.google.com" target="_blank" rel="noopener" class="llm-link">→ gemini.google.com</a>
+            <a href="https://gemini.google.com" target="_blank" rel="noopener" class="llm-link">-> gemini.google.com</a>
           </div>
         ` : ''}
       </div>
@@ -346,7 +341,7 @@ function renderLLMSetup(container, item) {
             </div>
             <p class="llm-provider">${i18n.provider} ${opt.provider}</p>
             <p>${opt.description}</p>
-            <a href="${opt.url}" target="_blank" rel="noopener" class="llm-link">→ ${opt.url.replace('https://', '')}</a>
+            <a href="${opt.url}" target="_blank" rel="noopener" class="llm-link">-> ${opt.url.replace('https://', '')}</a>
           </div>
         `).join('')}
       </div>
@@ -359,15 +354,15 @@ function renderLLMSetup(container, item) {
             <h4>${copilotOption.name}</h4>
           </div>
           <p class="llm-provider">${i18n.provider} ${copilotOption.provider}</p>
-          <p>Direkt in VS Code integriert. Kostenlos für Studierende und Open-Source-Beitragende.</p>
-          <a href="${copilotOption.url}" target="_blank" rel="noopener" class="llm-link">→ ${copilotOption.url.replace('https://', '')}</a>
+          <p>Direkt in VS Code integriert. Kostenlos fuer Studierende und Open-Source-Beitragende.</p>
+          <a href="${copilotOption.url}" target="_blank" rel="noopener" class="llm-link">-> ${copilotOption.url.replace('https://', '')}</a>
         </div>
       </div>
       ` : ''}
 
       <div class="info-box">
         <strong>${i18n.note}:</strong>
-        <p>Alle genannten Optionen funktionieren für die Übungen. Wählen Sie einen Anbieter, bei dem Sie sich wohl fühlen. Die Konzepte sind übertragbar – Sie können jederzeit wechseln.</p>
+        <p>Alle genannten Optionen funktionieren fuer die Uebungen. Waehlen Sie einen Anbieter, bei dem Sie sich wohl fuehlen. Die Konzepte sind uebertragbar - Sie koennen jederzeit wechseln.</p>
       </div>
 
       <div class="info-box personal-note">
@@ -382,7 +377,7 @@ function renderLLMSetup(container, item) {
 function renderTerminalSetup(container, item) {
   container.innerHTML = `
     <div class="setup-item-content">
-      <p>Das Terminal (auch Kommandozeile genannt) ist der Ort, wo Sie Python-Scripts ausführen und Pakete installieren.</p>
+      <p>Das Terminal (auch Kommandozeile genannt) ist der Ort, wo Sie Python-Scripts ausfuehren und Pakete installieren.</p>
 
       <div class="info-box">
         <strong>Gute Nachricht:</strong>
@@ -394,10 +389,10 @@ function renderTerminalSetup(container, item) {
         <div class="code-header">
           <span class="filename">${i18n.terminalCommands}</span>
         </div>
-        <pre><code># Python-Version prüfen
+        <pre><code># Python-Version pruefen
 python --version
 
-# Ein Python-Script ausführen
+# Ein Python-Script ausfuehren
 python mein_script.py
 
 # Ein Paket installieren
@@ -414,11 +409,11 @@ cd</code></pre>
 function renderPipSetup(container, item) {
   container.innerHTML = `
     <div class="setup-item-content">
-      <p><strong>pip</strong> wird automatisch mit Python installiert. Es ist der Paketmanager, mit dem Sie zusätzliche Bibliotheken installieren.</p>
+      <p><strong>pip</strong> wird automatisch mit Python installiert. Es ist der Paketmanager, mit dem Sie zusaetzliche Bibliotheken installieren.</p>
 
       <div class="verify-box">
         <h4>${i18n.checkInstallation}</h4>
-        <p>Öffnen Sie ein Terminal und geben Sie ein:</p>
+        <p>Oeffnen Sie ein Terminal und geben Sie ein:</p>
         <div class="code-block">
           <div class="code-header">
             <span class="filename">Terminal</span>
@@ -428,7 +423,7 @@ function renderPipSetup(container, item) {
       </div>
 
       <h4>${i18n.commonPackages}</h4>
-      <p>Diese Pakete werden in den Übungen verwendet:</p>
+      <p>Diese Pakete werden in den Uebungen verwendet:</p>
 
       <ul class="package-list">
         ${item.commonPackages.map(pkg => `
@@ -444,7 +439,7 @@ function renderPipSetup(container, item) {
 
       <div class="info-box">
         <strong>${i18n.tip}:</strong>
-        <p>Sie müssen nicht alle Pakete vorab installieren. In den Übungen wird angegeben, welche Pakete benötigt werden.</p>
+        <p>Sie muessen nicht alle Pakete vorab installieren. In den Uebungen wird angegeben, welche Pakete benoetigt werden.</p>
       </div>
     </div>
   `;
@@ -520,15 +515,15 @@ function renderTroubleshooting() {
   const faqs = [
     {
       question: '"python" wird nicht erkannt (Windows)',
-      answer: 'Python wurde nicht zum PATH hinzugefügt. Lösung: Python neu installieren und <strong>"Add Python to PATH"</strong> aktivieren.'
+      answer: 'Python wurde nicht zum PATH hinzugefuegt. Loesung: Python neu installieren und <strong>"Add Python to PATH"</strong> aktivieren.'
     },
     {
       question: '"python3" statt "python" (macOS/Linux)',
-      answer: 'Auf manchen Systemen heißt der Befehl <code>python3</code> statt <code>python</code>. Probieren Sie: <code>python3 --version</code>'
+      answer: 'Auf manchen Systemen heisst der Befehl <code>python3</code> statt <code>python</code>. Probieren Sie: <code>python3 --version</code>'
     },
     {
       question: 'VS Code findet Python nicht',
-      answer: 'Öffnen Sie die Command Palette (<code>Ctrl+Shift+P</code>) und suchen Sie "Python: Select Interpreter". Wählen Sie die installierte Python-Version aus.'
+      answer: 'Oeffnen Sie die Command Palette (<code>Ctrl+Shift+P</code>) und suchen Sie "Python: Select Interpreter". Waehlen Sie die installierte Python-Version aus.'
     },
     {
       question: 'pip-Befehl funktioniert nicht',
@@ -548,9 +543,7 @@ function renderTroubleshooting() {
 function renderAdditionalResources() {
   const section = document.getElementById('ressourcen');
   if (!section) return;
-
-  // This section is already in HTML but could be enhanced with JSON data
-  // For now, we'll leave it as is since it's working well
+  // Section is already in HTML
 }
 
 // Render Next Steps
@@ -566,19 +559,6 @@ function renderNextSteps() {
     <a href="/de/#sessions-section" class="cta-button">${i18n.toExercises}</a>
     <p class="next-hint">${i18n.orStartWith} <a href="/de/ct.html">Computational Thinking</a>.</p>
   `;
-}
-
-// Copy code function
-function copyCode(button) {
-  const codeBlock = button.closest('.code-block');
-  const code = codeBlock.querySelector('code').textContent;
-  navigator.clipboard.writeText(code).then(() => {
-    const originalText = button.textContent;
-    button.textContent = i18n.copied;
-    setTimeout(() => {
-      button.textContent = originalText;
-    }, 2000);
-  });
 }
 
 // Initialize on load

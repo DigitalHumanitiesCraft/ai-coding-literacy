@@ -1,39 +1,27 @@
 /**
  * AI Coding Literacy - Kompetenzmodell Page
+ * Benoetigt: shared.js
  */
 
 async function loadContent() {
   try {
-    const response = await fetch('/data/content.json');
-    const data = await response.json();
-    renderSidebar(data);
+    const data = await loadContentJson();
+    renderCompetencySidebar(data);
     renderCompetencyModel(data);
   } catch (error) {
     console.error('Fehler beim Laden:', error);
   }
 }
 
-function renderSidebar(data) {
-  const sidebarBars = document.getElementById('sidebar-bars');
-  data.chapters.forEach(chapter => {
-    const link = document.createElement('a');
-    link.href = `/de/#chapter-${chapter.id}`;
-    link.className = `competency-bar comp-${chapter.id}`;
-    link.title = chapter.name;
-    link.innerHTML = `<span class="bar-label">${chapter.id}</span>`;
-    sidebarBars.appendChild(link);
-  });
-}
-
 function renderCompetencyModel(data) {
   const chapters = data.chapters;
 
-  // Übersichtstabelle
+  // Uebersichtstabelle
   const tableBody = document.getElementById('competency-table');
   chapters.forEach(chapter => {
     const row = document.createElement('tr');
     row.innerHTML = `
-      <td><span class="comp-badge" style="background: ${chapter.color}">${chapter.id}</span></td>
+      <td>${createCompetencyBadge(chapter)}</td>
       <td><strong>${chapter.name}</strong></td>
       <td>${chapter.short}</td>
     `;
@@ -48,7 +36,7 @@ function renderCompetencyModel(data) {
     { id: 'CE', action: 'Kontext aufbereiten' },
     { id: 'PE', action: 'Prompt formulieren' },
     { id: 'CL', action: 'Code verstehen' },
-    { id: 'RV', action: 'Ergebnis prüfen' }
+    { id: 'RV', action: 'Ergebnis pruefen' }
   ];
 
   cycleSteps.forEach((step, index) => {
@@ -57,7 +45,7 @@ function renderCompetencyModel(data) {
     li.innerHTML = `
       <strong>${step.action}</strong>
       <span class="comp-ref" style="border-color: ${chapter.color}">${chapter.name}</span>
-      ${index === 5 ? ' → zurück zu 1.' : ''}
+      ${index === 5 ? ' -> zurueck zu 1.' : ''}
     `;
     cycleList.appendChild(li);
   });
@@ -71,14 +59,14 @@ function renderCompetencyModel(data) {
 
     let html = `
       <h3>
-        <span class="comp-badge" style="background: ${chapter.color}">${chapter.id}</span>
+        ${createCompetencyBadge(chapter)}
         ${chapter.name}
       </h3>
       <p class="comp-short">${chapter.short}</p>
       <p>${chapter.theory.description}</p>
     `;
 
-    // Kernelemente als Tabelle (nur für CT)
+    // Kernelemente als Tabelle (nur fuer CT)
     if (chapter.id === 'CT' && chapter.theory.concepts) {
       html += `
         <table class="concept-table">
@@ -123,7 +111,7 @@ function renderCompetencyModel(data) {
     section.innerHTML = html;
     detailsContainer.appendChild(section);
 
-    // Trennlinie zwischen Bereichen (außer nach dem letzten)
+    // Trennlinie zwischen Bereichen (ausser nach dem letzten)
     if (chapter !== chapters[chapters.length - 1]) {
       detailsContainer.appendChild(document.createElement('hr'));
     }

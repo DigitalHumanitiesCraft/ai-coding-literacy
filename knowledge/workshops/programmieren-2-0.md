@@ -1,5 +1,8 @@
 # Workshopausarbeitung: Programmieren 2.0 - LLMs fuer Forschungsdaten im Museum
 
+> Dieses Dokument ist die Single Source of Truth fuer den Workshop.
+> Alle anderen Materialien (Handouts, Slides, Webseite) werden hieraus abgeleitet.
+
 ## Meta
 
 | Feld | Inhalt |

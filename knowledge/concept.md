@@ -2,6 +2,13 @@
 
 Ein Curriculum fuer LLM-gestuetzte Codeentwicklung in den Geisteswissenschaften.
 
+## Verwandte Dokumente
+
+- [Workshop: Programmieren 2.0](workshops/programmieren-2-0.md) - Praktische Anwendung des Curriculums
+- [Hands-On Uebungen](hands-on.md) - Katalog aller Uebungen
+- [Design System](design.md) - Visuelles Konzept
+- [Implementation Plan](implementation-plan.md) - Technische Architektur
+
 ---
 
 ## 1. Definition

@@ -4,7 +4,21 @@ Kompakte Dokumentation aller Sessions und Erkenntnisse.
 
 ---
 
-## 2026-02-02
+## 2026-02-02 (Nachmittag)
+
+JavaScript-Refactoring: Neue shared.js mit gemeinsamen Funktionen (loadContentJson, renderCompetencySidebar, copyCode, escapeHtml, createCompetencyBadge, sharedI18n). app.js, kompetenzmodell.js, referenz.js, setup.js refaktoriert um shared.js zu nutzen. ~65 Zeilen Duplikation entfernt.
+
+Markdown-Reorganisation: learning-script.md geloescht (war Duplikat von programmieren-2-0.md). journal.md nach .github/DEVELOPMENT_LOG.md verschoben. programmieren-2-0.md als Single Source of Truth markiert. Verlinkungen zwischen concept.md, hands-on.md und Workshop-Dokumenten hinzugefuegt.
+
+Informed Vibe Coding Page: de/informed-vibe-coding.html erstellt mit Erklaerung des Leitgedankens. Link in de/workshop.html eingefuegt.
+
+Ueber-Seite: de/ueber.html erstellt als oeffentliche Version von concept.md. Navigation in allen 10 Curriculum-Seiten aktualisiert.
+
+CSS: concept-link Styling hinzugefuegt. Banner-Kontrast verbessert (#D4826A). Header-Banner margin-top: -0.5rem.
+
+---
+
+## 2026-02-02 (Vormittag)
 
 Qualitaetsverbesserungen nach kritischer Code-Review: workshop.js mit XSS-Schutz (textContent statt innerHTML), dateSource-Bug gefixt (Feld existierte nicht), DocumentFragment fuer Performance, Debouncing (300ms) fuer Suche. workshop.html mit main-Element, aria-labels, aria-hidden fuer SVGs, role-Attribute, meta-Tags erweitert, Placeholder-Links entfernt. workshop.css mit visually-hidden Klasse, Hover-Transition geglaettet (cubic-bezier, font-size 1.1rem).
 
@@ -48,7 +62,8 @@ Kompetenzmodell: 7 Dimensionen (CT, RE, CE, PE, CL, RV, EW). EW (Expertenwissen)
 
 ## Offen
 
-- GitHub Pages Deployment
+- GitHub Pages Deployment verifizieren
 - Mobile-Test (<600px)
 - Cross-Browser-Test
 - Workshop-UI Live-Test mit echten Daten
+- docs/ Ordner vollstaendig synchronisieren

@@ -1,28 +1,16 @@
 /**
  * AI Coding Literacy - Referenz Page
+ * Benoetigt: shared.js
  */
 
 async function loadContent() {
   try {
-    const response = await fetch('/data/content.json');
-    const data = await response.json();
-    renderSidebar(data);
+    const data = await loadContentJson();
+    renderCompetencySidebar(data);
     renderReference(data);
   } catch (error) {
     console.error('Fehler beim Laden:', error);
   }
-}
-
-function renderSidebar(data) {
-  const sidebarBars = document.getElementById('sidebar-bars');
-  data.chapters.forEach(chapter => {
-    const link = document.createElement('a');
-    link.href = `/de/#chapter-${chapter.id}`;
-    link.className = `competency-bar comp-${chapter.id}`;
-    link.title = chapter.name;
-    link.innerHTML = `<span class="bar-label">${chapter.id}</span>`;
-    sidebarBars.appendChild(link);
-  });
 }
 
 function renderReference(data) {
@@ -37,7 +25,7 @@ function renderReference(data) {
     section.className = 'concept-section';
     section.innerHTML = `
       <h3>
-        <span class="comp-badge" style="background: ${chapter.color}">${chapter.id}</span>
+        ${createCompetencyBadge(chapter)}
         ${chapter.name}
       </h3>
     `;
@@ -55,7 +43,7 @@ function renderReference(data) {
     conceptsContainer.appendChild(section);
   });
 
-  // Übungen
+  // Uebungen
   const exercisesTable = document.getElementById('exercises-table');
   chapters.forEach(chapter => {
     if (!chapter.handsOn) return;
@@ -65,7 +53,7 @@ function renderReference(data) {
       row.innerHTML = `
         <td><code>${exercise.id}</code></td>
         <td><a href="/de/#exercise-${exercise.id}">${exercise.title}</a></td>
-        <td><span class="comp-badge comp-badge-sm" style="background: ${chapter.color}">${chapter.id}</span></td>
+        <td>${createCompetencyBadge(chapter, 'sm')}</td>
         <td>${exercise.summary}</td>
       `;
       exercisesTable.appendChild(row);
@@ -92,7 +80,7 @@ function renderReference(data) {
 
   const typeLabels = {
     paper: 'Wissenschaftliche Artikel',
-    book: 'Bücher',
+    book: 'Buecher',
     documentation: 'Dokumentation',
     tutorial: 'Tutorials',
     standard: 'Standards'
@@ -109,7 +97,7 @@ function renderReference(data) {
       li.innerHTML = `
         <a href="${res.url}" target="_blank" rel="noopener">${res.title}</a>
         <span class="resource-chapter">
-          <span class="comp-badge comp-badge-sm" style="background: ${res.chapter.color}">${res.chapter.id}</span>
+          ${createCompetencyBadge(res.chapter, 'sm')}
         </span>
       `;
       ul.appendChild(li);
@@ -130,7 +118,7 @@ function renderReference(data) {
       <p>"${chapter.quote.text}"</p>
       <footer>
         <cite>— ${chapter.quote.source}</cite>
-        <span class="comp-badge comp-badge-sm" style="background: ${chapter.color}">${chapter.id}</span>
+        ${createCompetencyBadge(chapter, 'sm')}
       </footer>
     `;
     quotesContainer.appendChild(quote);
