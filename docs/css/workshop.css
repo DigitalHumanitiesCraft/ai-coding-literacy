@@ -140,6 +140,48 @@ body.workshop-page {
   color: var(--ws-ink);
 }
 
+/* === Workshop Banner === */
+.workshop-banner {
+  background: var(--ws-ink);
+  color: white;
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-bottom: 2rem;
+}
+
+.banner-content {
+  max-width: var(--ws-max-width);
+  margin: 0 auto;
+}
+
+.banner-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 400;
+  margin: 0 0 0.5rem;
+}
+
+.banner-title .highlight {
+  font-style: italic;
+  color: var(--ws-terracotta);
+}
+
+.banner-subtitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 0 1rem;
+}
+
+.banner-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
 /* === Transformation Process === */
 .transformation-section {
   padding: 2rem 0 3rem;
