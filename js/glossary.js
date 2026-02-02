@@ -6,7 +6,6 @@
 class GlossaryManager {
   constructor() {
     this.glossaryData = null;
-    this.currentLanguage = this.detectLanguage();
     this.infoPanel = document.getElementById('info-panel');
     this.infoPanelContent = document.getElementById('info-panel-content');
     this.closeButton = document.getElementById('info-panel-close');
@@ -18,11 +17,6 @@ class GlossaryManager {
     this.init();
   }
 
-  detectLanguage() {
-    const path = window.location.pathname;
-    return path.includes('/en/') ? 'en' : 'de';
-  }
-
   async init() {
     await this.loadGlossaryData();
     this.attachEventListeners();
@@ -31,8 +25,7 @@ class GlossaryManager {
 
   async loadGlossaryData() {
     try {
-      const fileName = this.currentLanguage === 'en' ? 'glossar-en.json' : 'glossar.json';
-      const response = await fetch(`/data/${fileName}`);
+      const response = await fetch('/data/glossar.json');
       this.glossaryData = await response.json();
     } catch (error) {
       console.error('Failed to load glossary data:', error);
@@ -183,7 +176,7 @@ class GlossaryManager {
 
       ${term.relatedTerms && term.relatedTerms.length > 0 ? `
         <div class="glossary-related">
-          <h4>${this.currentLanguage === 'en' ? 'Related Terms' : 'Verwandte Begriffe'}</h4>
+          <h4>Verwandte Begriffe</h4>
           <ul class="glossary-related-list">
             ${term.relatedTerms.map(relatedId => {
               const relatedTerm = this.glossaryData.terms.find(t => t.id === relatedId);

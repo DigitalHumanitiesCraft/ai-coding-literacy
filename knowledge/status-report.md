@@ -1,237 +1,199 @@
 # Status-Report: AI Coding Literacy
 
-**Datum:** 2025-12-21
-**Phase:** Content narrativ überarbeitet, research blog Stil
+Datum: 2026-02-02
+Phase: Repository-Konsolidierung abgeschlossen
 
 ---
 
 ## Zusammenfassung
 
-Die AI Coding Literacy Lernplattform hat ein **vertikales Scroll-Layout** mit **ausklappbaren Sub-Links** in der Sidebar. Zusätzlich wurden **6 Detailseiten** (ct.html bis rv.html) mit vertiefenden Inhalten erstellt. **Setup-Seiten** (DE/EN) mit kompetenz-farbigen Icons und **erweiterte Sidebar-Labels** mit vollständigen Kompetenznamen. Neu: **Content im research blog Stil** – wissenschaftliche Hintergründe narrativ statt als Faktenlisten.
+Das Repository wurde konsolidiert: Alle englischen Inhalte wurden entfernt, das Glossar auf 21 Begriffe erweitert, und der Workshop "Programmieren 2.0" ist nun das autoritative Dokument. Die Plattform ist jetzt rein deutschsprachig.
 
 ---
 
-## Abgeschlossene Arbeiten
+## Konsolidierung (Februar 2026)
 
-### 1. UI-Umstellung: Loop-UI → Vertikales Layout (100%)
+### Geloeschte Inhalte
 
-| Komponente | Status | Datei |
-|------------|--------|-------|
-| Vertikale Sektionen (Theorie, Übungen, Ressourcen) | ✅ | js/app.js |
-| Sidebar mit ausklappbaren Sub-Links | ✅ | js/app.js |
-| Dual Scroll-Spy (Kapitel + Sektion) | ✅ | js/app.js |
-| CSS für vertikales Layout | ✅ | css/style.css |
-| Entfernung alter Loop-UI-Styles | ✅ | css/style.css |
+Englische Inhalte:
+- /en/ (gesamter Ordner mit 10 HTML-Dateien)
+- /data/content-en.json
+- /data/glossar-en.json
 
-### 2. Content-Update: Alle Kapitel (100%)
+Slides-Ordner:
+- /slides/ (gesamter Ordner)
+- slides/decks/programmieren-2-0/*.md (8 Markdown-Dateien)
+- slides/viewer.html, viewer.js, viewer.css
 
-| Kapitel | Status | Neue Konzepte |
-|---------|--------|---------------|
-| CT | ✅ | Fertig (vorherige Session) |
-| RE | ✅ | User Story, INVEST-Kriterien, Kernfragen |
-| CE | ✅ | RAG, Lost in Middle, Kontextstruktur |
-| PE | ✅ | Zero-Shot, Few-Shot, Chain-of-Thought, APE |
-| CL | ✅ | Skill-Hierarchie, Prozedurales/Funktionales Modell, Delocalized Plans |
-| RV | ✅ | Halluzinationskategorien, Bug-Patterns, Metamorphic Testing |
+Veraltete Knowledge-Dateien:
+- /knowledge/grundlagen-computational-thinking.md
+- /knowledge/grundlagen-kompetenzbereiche.md
+- /knowledge/grundlagen-oekosystem.md
 
-### 3. Detailseiten (100%)
+### Aktualisierte Inhalte
 
-| Seite | Status | Inhalt |
-|-------|--------|--------|
-| ct.html | ✅ | Computational Thinking - Vertiefung mit erweiterten Übungen |
-| re.html | ✅ | Requirement Engineering - User Stories, INVEST |
-| ce.html | ✅ | Context Engineering - RAG, Lost in Middle |
-| pe.html | ✅ | Prompt Engineering - Zero-Shot, Few-Shot, CoT |
-| cl.html | ✅ | Code Literacy - Skill-Hierarchie, Lesestrategien |
-| rv.html | ✅ | Review - Halluzinationskategorien, Bug-Patterns |
+Workshop-Dokument:
+- /knowledge/workshops/programmieren-2-0.md wurde mit neuem Inhalt ersetzt
+- Enthaelt vollstaendige Workshop-Dokumentation inkl. Context Engineering, data.md-Konzept
 
-### 4. Scroll-Spy Refactoring (100%)
+Glossar erweitert (6 -> 21 Begriffe):
+- Neue Kategorien: tech-basics, web-basics
+- 15 neue Begriffe aus Workshop-Dokumentation
 
-| Änderung | Status |
-|----------|--------|
-| Section Observer als primäre Quelle | ✅ |
-| Chapter Observer als Fallback | ✅ |
-| Debug-Logging entfernt | ✅ |
-| Duplikation reduziert | ✅ |
+Daten generiert:
+- /data/kriminalmuseum/workshop_objekte.csv aus JSON erstellt
 
-### 5. Setup-Seiten (100%)
+### Code-Anpassungen
 
-| Seite | Status | Inhalt |
-|-------|--------|--------|
-| de/setup.html | ✅ | Python, VS Code, LLM, Terminal, pip Anleitungen |
-| en/setup.html | ✅ | English version with same structure |
+JavaScript (Sprachlogik entfernt):
+- js/app.js: detectLanguage() entfernt, laedt nur noch content.json
+- js/glossary.js: Sprachlogik entfernt, laedt nur noch glossar.json
+- js/setup.js: Alle Sprachparameter und -verzweigungen entfernt
 
-### 6. Sidebar-Erweiterungen (100%)
-
-| Feature | Status |
-|---------|--------|
-| Kompetenz-farbige Setup-Icons | ✅ |
-| Tooltips mit Kompetenzname | ✅ |
-| Bar-Labels mit vollständigen Namen | ✅ |
-| Persönliche Claude-Empfehlung | ✅ |
-
-### 7. Glossar-System (100%)
-
-| Feature | Status | Datei |
-|---------|--------|-------|
-| Glossar-Datenstruktur (DE/EN) | ✅ | data/glossar.json, data/glossar-en.json |
-| Info-Panel HTML | ✅ | de/index.html, en/index.html |
-| CSS Styling (farbcodiert) | ✅ | css/style.css |
-| JavaScript Auto-Markup | ✅ | js/glossary.js |
-| Hover & Pinning Mechanik | ✅ | js/glossary.js |
-| Verwandte Begriffe Links | ✅ | js/glossary.js |
-
-**Features:**
-- Automatisches Erkennen und Markieren von Glossar-Begriffen im Text
-- Farbcodierung nach Kategorien (llm-basics, coding-approaches, oder Kompetenz-ID)
-- Hover → sofortiges Öffnen des Info-Panels
-- 1 Sekunde Hover → Panel wird "gepinnt" (bleibt offen, scrollbar, klickbar)
-- Verwandte Begriffe sind verlinkt
-- Schließen via X-Button oder Klick außerhalb
-
-### 8. Content-Überarbeitung (100%)
-
-| Änderung | Status | Datei |
-|----------|--------|-------|
-| meta.description mit Vibe Coding-Verweis | ✅ | data/content.json, data/content-en.json |
-| longDescription vereinheitlicht (befasst sich mit) | ✅ | data/content.json, data/content-en.json |
-| Review longDescription umformuliert | ✅ | data/content.json, data/content-en.json |
-| Doppelpunkte durch Gedankenstriche ersetzt | ✅ | js/app.js |
-
-### 9. Content-Überarbeitung (100%)
-
-| Änderung | Status | Datei |
-|----------|--------|-------|
-| meta.subtitle verkürzt (DE/EN) | ✅ | data/content.json, data/content-en.json |
-| meta.description kompakter (DE/EN) | ✅ | data/content.json, data/content-en.json |
-| CT Theorie: Wing (2006) narrativ | ✅ | data/content.json, data/content-en.json |
-| RE Theorie: 1990er Softwarekrise | ✅ | data/content.json, data/content-en.json |
-| CE Theorie: 2024 Wendepunkt, Lost in Middle | ✅ | data/content.json, data/content-en.json |
-| PE Theorie: GPT-3 2020, Wei/Zhou/Schulhoff | ✅ | data/content.json, data/content-en.json |
-| CL Theorie: Lopez 2008, Soloway/Ehrlich 1984 | ✅ | data/content.json, data/content-en.json |
-| RV Theorie: Copilot 2021, Fu/Liu/Tambon/Nguyen | ✅ | data/content.json, data/content-en.json |
-| Vibe Coding: Karpathy-Zitat präziser | ✅ | data/glossar.json, data/glossar-en.json |
-
-### 10. Dokumentation aktualisiert
-
-| Datei | Status |
-|-------|--------|
-| README.md | ✅ |
-| status-report.md | ✅ |
-| implementation-plan.md | ✅ (Glossar-System, Projektstruktur) |
-| design.md | ✅ (Glossar-System dokumentiert) |
-| journal.md | ✅ |
+HTML (Sprachumschalter entfernt):
+- de/index.html
+- de/setup.html
+- de/kompetenzmodell.html
+- de/referenz.html
+- de/ct.html, re.html, ce.html, pe.html, cl.html, rv.html
 
 ---
 
-## Aktuelle UI-Struktur
-
-### Vertikales Scroll-Layout
+## Aktuelle Projektstruktur
 
 ```
-┌─────────────────────────────────────────┐
-│ Sidebar     │  Kapitel-Header           │
-│             │  ────────────────────     │
-│ [CT] ←      │  ■ Theorie                │
-│  Theorie    │    Kernpunkte             │
-│  Übungen    │    Konzepte               │
-│  Ressourcen │                           │
-│ [RE]        │  ■ Übungen                │
-│ [CE]        │    Exercise-Blöcke        │
-│ [PE]        │    Code, Reflexion        │
-│ [CL]        │                           │
-│ [RV]        │  ■ Ressourcen             │
-│             │    Links, Zitat           │
-└─────────────────────────────────────────┘
+ai-coding-literacy/
+├── CLAUDE.md
+├── ReadMe.md
+├── css/
+│   └── style.css
+├── js/
+│   ├── app.js              (vereinfacht, nur DE)
+│   ├── glossary.js         (vereinfacht, nur DE)
+│   ├── kompetenzmodell.js
+│   ├── referenz.js
+│   └── setup.js
+├── data/
+│   ├── content.json        (DE)
+│   ├── glossar.json        (21 Begriffe, 4 Kategorien)
+│   └── kriminalmuseum/
+│       ├── workshop_objekte.json
+│       ├── workshop_objekte.csv
+│       └── kriminalmuseum_komplett.csv
+├── de/
+│   ├── index.html          (ohne Sprachumschalter)
+│   ├── setup.html
+│   ├── kompetenzmodell.html
+│   ├── referenz.html
+│   └── ct.html, re.html, ce.html, pe.html, cl.html, rv.html
+├── knowledge/
+│   ├── concept.md
+│   ├── design.md
+│   ├── implementation-plan.md
+│   ├── status-report.md
+│   ├── journal.md
+│   ├── hands-on.md
+│   └── workshops/
+│       └── programmieren-2-0.md    (AUTORITATIV)
+└── workshops/
+    └── programmieren-2-0/
+        ├── handouts/
+        ├── python/
+        └── web/
 ```
 
-### Sidebar-Verhalten
+---
 
-- Kompetenz-Balken sind klickbar → scrollt zum Kapitel
-- Sub-Links klappen bei aktivem Kapitel aus
-- Scroll-Spy highlightet:
-  - Aktiven Kompetenz-Balken
-  - Aktiven Sub-Link (Theorie/Übungen/Ressourcen)
+## Glossar-System
+
+21 Begriffe in 4 Kategorien:
+
+LLM-Grundlagen (llm-basics):
+- Large Language Model (LLM)
+- Prompt
+- Token
+
+Coding-Ansaetze (coding-approaches):
+- Vibe Coding
+- Scripting
+- Prototyping
+- Requirements Engineering
+
+Technische Grundlagen (tech-basics):
+- API
+- API-Key
+- CSV
+- Extension
+- Git
+- GitHub
+- JSON
+- Live Server
+- PATH
+- Terminal
+
+Web-Grundlagen (web-basics):
+- CORS
+- CSS
+- HTML
+- JavaScript
 
 ---
 
-## Geplante Erweiterungen
+## Workshop-Materialien
 
-### Detailseiten pro Kompetenz
+Google Slides:
+- Hauptpraesentation: https://docs.google.com/presentation/d/17fkBHPcBMlCBbg2GiV7kDaD-cnDAkfaIRSFCudFgXPQ/
+- Vorbereitungstreffen: https://docs.google.com/presentation/d/1TlCBDJDUQNqsQOiEbHR2MhDC0eL10RKjHfmKhYA6wOs/
 
-```
-/de/
-├── index.html           # Übersicht (aktuell)
-├── ct.html              # CT-Detailseite
-├── re.html              # RE-Detailseite
-├── ce.html              # CE-Detailseite
-├── pe.html              # PE-Detailseite
-├── cl.html              # CL-Detailseite
-└── rv.html              # RV-Detailseite
-```
+Repository-Materialien:
+- Python-Beispiele: /workshops/programmieren-2-0/python/
+- Web-Beispiele: /workshops/programmieren-2-0/web/
+- Handouts: /workshops/programmieren-2-0/handouts/
 
-**Konzept:**
-- Übersicht zeigt alle Kompetenzen kompakt
-- Detailseiten bieten vertiefende Inhalte, mehr Übungen, interaktive Elemente
-- Link von Übersicht zu Detailseite: "Mehr lernen →"
+Datensatz Hans Gross Kriminalmuseum:
+- Workshop-Objekte (25): /data/kriminalmuseum/workshop_objekte.json
+- Workshop-Objekte CSV: /data/kriminalmuseum/workshop_objekte.csv
+- Komplett (3892): /data/kriminalmuseum/kriminalmuseum_komplett.csv
 
 ---
 
-## Technische Änderungen
+## Naechste Schritte
 
-### JavaScript (app.js)
+1. Workshop-UI Landingpage entwickeln (wartet auf Designvorschlag)
+   - Spezifisch fuer Workshop "Programmieren 2.0" am NHM Wien (12.02.2026)
+   - Soll alle Materialien zur Verfuegung stellen
+   - Soll die 7 Kompetenzdimensionen visuell im Interface abbilden
 
-**Entfernt:**
-- `createInputPanel()`, `createProcessPanel()`, `createExecutePanel()`, `createOutputPanel()`
-- `updateLoopProgress()`
-- Horizontale Scroll-Logik
-- sessionStorage für Loop-Position
-
-**Neu:**
-- `createChapterElement()` – erstellt vertikale Sektionen
-- `scrollToSection()` – scrollt zu Theorie/Übungen/Ressourcen
-- Sidebar-Wrapper mit Sub-Links
-- Dual IntersectionObserver für Scroll-Spy
-
-### CSS (style.css)
-
-**Entfernt:**
-- `.loop-container`, `.loop-panel`, `.panel-phase`
-- `.loop-progress`, `.loop-step`, `.loop-dot`, `.loop-line`
-- Panel-spezifische Styles (`.panel-input`, `.panel-process`, etc.)
-
-**Neu:**
-- `.competency-bar-wrapper` – Wrapper für Bar + Sub-Links
-- `.sidebar-sublinks` – Container für Sub-Links (animiert)
-- `.sidebar-sublink` – Einzelne Sub-Links mit active-State
-- `.chapter-header-block` – Kapitel-Header mit Badge
-- `.content-section` – Theorie/Übungen/Ressourcen-Sektionen
-- `.section-title`, `.section-marker` – Sektions-Überschriften
-- `.keypoints`, `.keypoints-list` – Kernpunkte
-- `.concepts`, `.concepts-list` – Konzept-Definitionen
-- `.exercise-block` – Übungs-Container
-- `.chapter-quote` – Zitat am Ende
+2. Verifizierung
+   - Lokalen Server starten und /de/index.html testen
+   - Glossar-Begriffe pruefen (Hover-Funktion)
+   - Workshop-Materialien pruefen
 
 ---
 
-## Nächste Schritte
+## Kompetenzmodell (7 Dimensionen)
 
-1. **GitHub Pages** – Deployment testen
-2. **Mobile-Test** – Responsive Layout prüfen
-3. **Cross-Browser-Test** – Firefox, Safari, Edge
+- CT: Computational Thinking
+- RE: Requirement Engineering
+- CE: Context Engineering
+- PE: Prompt Engineering
+- CL: Code Literacy
+- RV: Review
+- EW: Expertenwissen (Domaenenwissen)
 
 ---
 
-## Überprüfungskriterien
+## Technische Details
 
-### Vertikales Layout testen:
+Frontend:
+- Vanilla HTML/CSS/JavaScript
+- Keine Build-Tools oder Frameworks
+- Tufte-inspirierte Aesthetik
 
-- [x] Alle Kapitel scrollen vertikal
-- [x] Theorie/Übungen/Ressourcen-Sektionen sichtbar
-- [x] Sidebar-Balken scrollen zum Kapitel
-- [x] Sub-Links klappen bei aktivem Kapitel aus
-- [x] Sub-Links scrollen zur Sektion
-- [x] Scroll-Spy highlightet korrekten Balken
-- [x] Scroll-Spy highlightet korrekten Sub-Link
-- [ ] Mobile (<600px): Sidebar versteckt
-- [ ] Mobile: Vertikales Layout ohne Probleme
+Datenformat:
+- JSON fuer strukturierte Inhalte
+- CSV fuer Workshop-Datensaetze
+
+Hosting:
+- GitHub Pages
+- Live: https://digitalhumanitiescraft.github.io/ai-coding-literacy/de/

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programmieren 2.0 - AI Coding Literacy Workshop</title>
+  <meta name="description" content="Workshop: LLMs fuer Forschungsdaten im Museum. 12. Februar 2026, Naturhistorisches Museum Wien.">
+  <link rel="stylesheet" href="../css/workshop.css">
+</head>
+<body class="workshop-page">
+
+  <!-- Header -->
+  <header class="workshop-header">
+    <p class="workshop-tagline">Digital Humanities Craft</p>
+    <h1 class="workshop-title">AI Coding <span class="highlight">Literacy</span></h1>
+    <p class="workshop-subtitle">Forschungsdaten im Museum</p>
+    <p class="workshop-intro">
+      Wie werden handschriftliche Archivkarten zu maschinenlesbaren Forschungsdaten?
+      Dieses Interface zeigt den Transformationsprozess von physischen Museumsobjekten
+      zu strukturierten, verknuepfbaren Datensaetzen &ndash; unterstuetzt durch
+      KI-gestuetzte Datenextraktion.
+    </p>
+  </header>
+
+  <div class="workshop-container">
+
+    <!-- Transformationsprozess -->
+    <section class="transformation-section">
+      <p class="transformation-label">Transformationsprozess</p>
+      <div class="process-steps">
+
+        <div class="process-step">
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+              <line x1="12" y1="22.08" x2="12" y2="12"/>
+            </svg>
+          </div>
+          <h3>Physisches Objekt</h3>
+          <p>Museumsartefakt als materieller Ausgangspunkt</p>
+        </div>
+
+        <div class="process-connector">
+          <svg viewBox="0 0 24 24">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </div>
+
+        <div class="process-step">
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+              <line x1="8" y1="7" x2="16" y2="7"/>
+              <line x1="8" y1="11" x2="14" y2="11"/>
+            </svg>
+          </div>
+          <h3>Archivkarte</h3>
+          <p>Handschriftliche Inventarisierung und Dokumentation</p>
+        </div>
+
+        <div class="process-connector">
+          <svg viewBox="0 0 24 24">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </div>
+
+        <div class="process-step">
+          <div class="step-icon filled terracotta">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+            </svg>
+          </div>
+          <h3>Datenextraktion</h3>
+          <p>KI-gestuetzte Erkennung und Strukturierung</p>
+        </div>
+
+        <div class="process-connector">
+          <svg viewBox="0 0 24 24">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </div>
+
+        <div class="process-step">
+          <div class="step-icon filled petrol">
+            <svg viewBox="0 0 24 24">
+              <line x1="8" y1="6" x2="21" y2="6"/>
+              <line x1="8" y1="12" x2="21" y2="12"/>
+              <line x1="8" y1="18" x2="21" y2="18"/>
+              <line x1="3" y1="6" x2="3.01" y2="6"/>
+              <line x1="3" y1="12" x2="3.01" y2="12"/>
+              <line x1="3" y1="18" x2="3.01" y2="18"/>
+            </svg>
+          </div>
+          <h3>Forschungsdaten</h3>
+          <p>Maschinenlesbare, verknuepfbare Datensaetze</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+      <div class="search-wrapper">
+        <svg class="search-icon" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" id="search-input" class="search-input" placeholder="Objekte durchsuchen ..." autocomplete="off">
+      </div>
+      <div class="view-toggles">
+        <button class="view-btn active" data-view="grid" title="Rasteransicht">
+          <svg viewBox="0 0 24 24">
+            <rect x="3" y="3" width="7" height="7"/>
+            <rect x="14" y="3" width="7" height="7"/>
+            <rect x="14" y="14" width="7" height="7"/>
+            <rect x="3" y="14" width="7" height="7"/>
+          </svg>
+        </button>
+        <button class="view-btn" data-view="list" title="Listenansicht">
+          <svg viewBox="0 0 24 24">
+            <line x1="8" y1="6" x2="21" y2="6"/>
+            <line x1="8" y1="12" x2="21" y2="12"/>
+            <line x1="8" y1="18" x2="21" y2="18"/>
+            <line x1="3" y1="6" x2="3.01" y2="6"/>
+            <line x1="3" y1="12" x2="3.01" y2="12"/>
+            <line x1="3" y1="18" x2="3.01" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <span class="object-count" id="object-count">25 Objekte</span>
+    </div>
+
+    <!-- Objects Grid -->
+    <div class="objects-grid" id="objects-grid">
+      <!-- Karten werden per JavaScript eingefuegt -->
+    </div>
+
+    <!-- Workshop Materials -->
+    <section class="materials-section">
+      <h2>Workshop-Materialien</h2>
+
+      <div class="materials-grid">
+
+        <div class="material-card">
+          <h3>Hands-On 1: CSV-Analyse mit LLM</h3>
+          <p>Fragen an Daten stellen, ohne Code zu schreiben. Den gesamten Workflow einmal durchspielen.</p>
+          <ul class="competency-tags">
+            <li class="comp-CE">CE</li>
+            <li class="comp-PE">PE</li>
+            <li class="comp-RV">RV</li>
+          </ul>
+          <div class="material-links">
+            <a href="../data/kriminalmuseum/workshop_objekte.csv" download class="btn-download">CSV herunterladen</a>
+            <a href="https://docs.google.com/presentation/d/1example" target="_blank" rel="noopener" class="btn-slides">Slides</a>
+          </div>
+        </div>
+
+        <div class="material-card">
+          <h3>Hands-On 2: Website aus Daten bauen</h3>
+          <p>Aus dem Datensatz eine interaktive Webdarstellung erstellen. Context Engineering anwenden.</p>
+          <ul class="competency-tags">
+            <li class="comp-CT">CT</li>
+            <li class="comp-RE">RE</li>
+            <li class="comp-CL">CL</li>
+            <li class="comp-RV">RV</li>
+          </ul>
+          <div class="material-links">
+            <a href="../data/kriminalmuseum/workshop_objekte.json" download class="btn-download">JSON herunterladen</a>
+            <a href="https://docs.google.com/presentation/d/2example" target="_blank" rel="noopener" class="btn-slides">Slides</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="handouts">
+        <h3>Handouts</h3>
+        <ul>
+          <li><a href="../workshops/programmieren-2-0/handouts/dokumentation_vorlage.md">Dokumentationsvorlage</a></li>
+          <li><a href="../workshops/programmieren-2-0/handouts/prompt_vorlage.md">Prompt-Vorlage</a></li>
+          <li><a href="../workshops/programmieren-2-0/handouts/cheatsheet_python_fehler.md">Python Fehler-Cheatsheet</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Competency Overview -->
+    <section class="competency-section">
+      <h2>Die 7 Kompetenzdimensionen</h2>
+      <div class="competency-bar-horizontal">
+        <a href="index.html#chapter-CT" class="comp-badge comp-CT" title="Computational Thinking">CT</a>
+        <a href="index.html#chapter-RE" class="comp-badge comp-RE" title="Requirement Engineering">RE</a>
+        <a href="index.html#chapter-CE" class="comp-badge comp-CE" title="Context Engineering">CE</a>
+        <a href="index.html#chapter-PE" class="comp-badge comp-PE" title="Prompt Engineering">PE</a>
+        <a href="index.html#chapter-CL" class="comp-badge comp-CL" title="Code Literacy">CL</a>
+        <a href="index.html#chapter-RV" class="comp-badge comp-RV" title="Review">RV</a>
+        <span class="comp-badge comp-EW" title="Expertenwissen (Querschnittskompetenz)">EW</span>
+      </div>
+      <p class="competency-note">
+        <a href="kompetenzmodell.html">Mehr zum Kompetenzmodell</a>
+      </p>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="workshop-footer">
+    <p>Workshop: Programmieren 2.0 &ndash; LLMs fuer Forschungsdaten im Museum</p>
+    <p>12. Februar 2026 | <a href="https://www.nhm-wien.ac.at" target="_blank" rel="noopener">Naturhistorisches Museum Wien</a> | Museumsbund Oesterreich</p>
+    <p>Daten: <a href="https://kriminalmuseum.uni-graz.at/" target="_blank" rel="noopener">Hans Gross Kriminalmuseum</a>, Universitaet Graz</p>
+    <p><a href="https://github.com/DigitalHumanitiesCraft/ai-coding-literacy" target="_blank" rel="noopener">GitHub Repository</a> | <a href="index.html">Curriculum</a></p>
+  </footer>
+
+  <script src="../js/workshop.js"></script>
+</body>
+</html>

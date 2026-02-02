@@ -8,57 +8,29 @@ let contentData = null;
 let loadedChapters = 0;
 const CHAPTERS_PER_LOAD = 2;
 
-// Detect language from URL path
-function detectLanguage() {
-  const path = window.location.pathname;
-  if (path.startsWith('/en/') || path.startsWith('/en')) {
-    return 'en';
-  }
-  return 'de';
-}
-
-// Get i18n strings based on language
-function getI18n(lang) {
-  const strings = {
-    de: {
-      loadError: 'Fehler beim Laden der Inhalte.',
-      theorie: 'Theorie',
-      uebungen: 'Übungen',
-      ressourcen: 'Ressourcen',
-      learnMore: 'Mehr lernen →'
-    },
-    en: {
-      loadError: 'Error loading content.',
-      theorie: 'Theory',
-      uebungen: 'Exercises',
-      ressourcen: 'Resources',
-      learnMore: 'Learn more →'
-    }
-  };
-  return strings[lang] || strings.de;
-}
+// UI-Texte (nur Deutsch)
+const i18n = {
+  loadError: 'Fehler beim Laden der Inhalte.',
+  theorie: 'Theorie',
+  uebungen: 'Übungen',
+  ressourcen: 'Ressourcen',
+  learnMore: 'Mehr lernen →'
+};
 
 // Load JSON data
 async function loadContent() {
   try {
-    const lang = detectLanguage();
-    const contentFile = lang === 'en' ? '/data/content-en.json' : '/data/content.json';
-    const response = await fetch(contentFile);
+    const response = await fetch('/data/content.json');
     contentData = await response.json();
     initPage();
   } catch (error) {
     console.error('Error loading content:', error);
-    const lang = detectLanguage();
-    const i18n = getI18n(lang);
     document.getElementById('loading').textContent = i18n.loadError;
   }
 }
 
 // Initialize page
 function initPage() {
-  const lang = detectLanguage();
-  const i18n = getI18n(lang);
-
   // Meta
   document.getElementById('subtitle').textContent = contentData.meta.subtitle;
   document.getElementById('description').textContent = contentData.meta.description;

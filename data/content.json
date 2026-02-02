@@ -1093,5 +1093,123 @@
         "source": "Adapted from Reagan"
       }
     }
-  ]
+  ],
+
+  "workshop": {
+    "id": "programmieren-2-0",
+    "title": "Programmieren 2.0: LLMs fuer Forschungsdaten im Museum",
+    "date": "2026-02-12",
+    "location": "Naturhistorisches Museum Wien",
+    "organizer": "Museumsbund Oesterreich",
+    "instructor": "Dr. Christopher Pollin, Digital Humanities Craft OG",
+
+    "description": "Dieser Workshop vermittelt AI Coding Literacy fuer Museumsmitarbeiter:innen. Der Fokus liegt auf Context Engineering und der praktischen Anwendung von LLMs zur Datenverarbeitung.",
+
+    "learningGoals": [
+      "Python-Skripte und HTML/CSS/JavaScript mit LLM-Unterstuetzung erstellen und ausfuehren",
+      "Anforderungen so formulieren, dass ein LLM brauchbaren Code generiert (Context Engineering)",
+      "Generierte Ergebnisse kritisch pruefen und iterativ verbessern",
+      "Limitationen von LLM-generiertem Code erkennen"
+    ],
+
+    "competencyWeights": {
+      "CT": { "weight": "Grundlage", "description": "Probleme zerlegen, iterativ loesen" },
+      "RE": { "weight": "Schwerpunkt", "description": "Praezise formulieren, was gebraucht wird" },
+      "CE": { "weight": "Schwerpunkt", "description": "Dem LLM die richtigen Informationen geben" },
+      "PE": { "weight": "wird vermittelt", "description": "Kommunikation mit dem LLM operationalisieren" },
+      "CL": { "weight": "wird angebahnt", "description": "Generierten Code lesen und einordnen" },
+      "RV": { "weight": "wird vermittelt", "description": "Ergebnisse systematisch pruefen" },
+      "EW": { "weight": "implizit", "description": "Museale Fachkenntnis als Bewertungsgrundlage" }
+    },
+
+    "handsOn": [
+      {
+        "id": 1,
+        "title": "Mit LLM Python-Code erzeugen und lokal ausfuehren",
+        "goal": "Den gesamten Workflow einmal durchspielen, von der Datei ueber das LLM bis zur lokalen Ausfuehrung",
+        "competencies": ["CE", "PE", "RV"],
+        "dataFile": "workshop_objekte.csv",
+        "steps": [
+          "CSV-Datei herunterladen und in einem Ordner speichern",
+          "LLM oeffnen und CSV hochladen",
+          "Prompt eingeben: Analysiere die Datei Schritt fuer Schritt",
+          "Ergebnis beobachten: Fuehrt das LLM Code aus oder beschreibt es nur?",
+          "Python-Code in VS Code kopieren und lokal ausfuehren",
+          "Ergebnis vergleichen"
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Von den Daten zur Webseite",
+        "goal": "Aus dem Gesamtdatensatz eine statische Webdarstellung erstellen mit Context Engineering",
+        "competencies": ["CT", "RE", "CL", "RV"],
+        "dataFile": "workshop_objekte.json",
+        "steps": [
+          "data.md erstellen: Datensatz vollstaendig beschreiben",
+          "CSV zu JSON konvertieren mit Python-Skript",
+          "requirements.md schreiben: Wie soll die Webseite aussehen?",
+          "LLM mit data.md und requirements.md fuettern",
+          "HTML/CSS/JS im Live Server testen",
+          "Iterativ verbessern"
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Eigene Aufgabe",
+        "goal": "Gelerntes selbststaendig auf eine eigene oder vorgegebene Aufgabe anwenden",
+        "competencies": ["CT", "RE", "CE", "PE", "CL", "RV", "EW"],
+        "options": [
+          "Eigene Daten mitbringen und verarbeiten",
+          "Erweiterte Objektsuche mit mehreren Filterkriterien",
+          "Datenbereinigung: description-Feld in separate Spalten",
+          "Statistik-Dashboard: Verteilung nach Typ, Jahr, Qualitaet"
+        ]
+      }
+    ],
+
+    "dataset": {
+      "name": "Hans Gross Kriminalmuseum",
+      "source": "GAMS Repositorium, Universitaet Graz",
+      "url": "https://kriminalmuseum.uni-graz.at/",
+      "extractionDate": "2025-09",
+      "total": 3892,
+      "workshopSubset": 25,
+      "timeRange": "1850-1950",
+      "objectClasses": 90,
+      "dataModels": ["LIDO (Objekte)", "TEI (Karteikarten)"],
+      "knownIssues": [
+        "locations-Feld enthaelt teils Materialangaben statt Orte",
+        "persons-Feld ist Python-Dict, nicht standardisiertes JSON",
+        "88% der Jahreszahlen sind geschaetzt (dateSource: estimated)",
+        "60% der Eintraege haben niedrigsten Qualitaetswert (0.25)"
+      ]
+    },
+
+    "materials": {
+      "handouts": [
+        { "name": "Dokumentationsvorlage", "file": "dokumentation_vorlage.md" },
+        { "name": "Prompt-Vorlage", "file": "prompt_vorlage.md" },
+        { "name": "Python Fehler-Cheatsheet", "file": "cheatsheet_python_fehler.md" }
+      ],
+      "scripts": [
+        { "name": "API-Beispiel (einfach)", "file": "api_einfach.py" },
+        { "name": "CSV-Analyse Beispiel", "file": "beispiel_csv_analyse.py" }
+      ],
+      "data": [
+        { "name": "Workshop-Objekte (JSON)", "file": "workshop_objekte.json" },
+        { "name": "Workshop-Objekte (CSV)", "file": "workshop_objekte.csv" }
+      ]
+    },
+
+    "resources": {
+      "preparation": "https://chpollin.github.io/llmdh",
+      "repository": "https://github.com/DigitalHumanitiesCraft/ai-coding-literacy",
+      "references": [
+        { "author": "Karpathy, A.", "year": 2025, "title": "2025 LLM Year in Review" },
+        { "author": "Mei, L. et al.", "year": 2025, "title": "A Survey of Context Engineering for Large Language Models" },
+        { "author": "Schulhoff, S. et al.", "year": 2025, "title": "The Prompt Report" },
+        { "author": "Wing, J. M.", "year": 2006, "title": "Computational Thinking" }
+      ]
+    }
+  }
 }

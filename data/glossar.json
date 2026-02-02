@@ -7,18 +7,28 @@
     },
     {
       "id": "coding-approaches",
-      "name": "Coding-Ansätze",
+      "name": "Coding-Ansaetze",
       "color": "#9D7B6B"
+    },
+    {
+      "id": "tech-basics",
+      "name": "Technische Grundlagen",
+      "color": "#7B8B6B"
+    },
+    {
+      "id": "web-basics",
+      "name": "Web-Grundlagen",
+      "color": "#6B7B9D"
     }
   ],
   "terms": [
     {
       "id": "llm",
-      "term": "Large Language Models",
-      "short": "LLMs",
+      "term": "Large Language Model",
+      "short": "LLM",
       "category": "llm-basics",
-      "definition": "Ein Large Language Model ist ein auf neuronalen Netzen basierendes probabilistisches Modell, das auf umfangreichen Textmengen trainiert wurde, um statistische Muster der Sprache zu erlernen. Es zeichnet sich durch eine hohe Parameteranzahl und emergente Fähigkeiten aus, die über reine Sprachmodellierung hinausgehen. Im Kontext von AI Coding Literacy dienen LLMs als Werkzeuge, die aus natürlichsprachlichen Beschreibungen funktionierenden Code erzeugen. Die Qualität der Ergebnisse hängt davon ab, wie präzise die Aufgabe beschrieben wird und welcher Kontext bereitgestellt wird. LLMs generieren plausibel wirkende Ausgaben, die aber nicht zwingend korrekt sind.",
-      "relatedTerms": ["vibe-coding"],
+      "definition": "Ein Large Language Model ist ein auf neuronalen Netzen basierendes probabilistisches Modell, das auf umfangreichen Textmengen trainiert wurde, um statistische Muster der Sprache zu erlernen. Es zeichnet sich durch eine hohe Parameteranzahl und emergente Faehigkeiten aus, die ueber reine Sprachmodellierung hinausgehen. Im Kontext von AI Coding Literacy dienen LLMs als Werkzeuge, die aus natuerlichsprachlichen Beschreibungen funktionierenden Code erzeugen. Die Qualitaet der Ergebnisse haengt davon ab, wie praezise die Aufgabe beschrieben wird und welcher Kontext bereitgestellt wird.",
+      "relatedTerms": ["vibe-coding", "prompt", "token"],
       "detailPage": null
     },
     {
@@ -26,8 +36,8 @@
       "term": "Vibe Coding",
       "short": "Vibe Coding",
       "category": "coding-approaches",
-      "definition": "Vibe Coding ist ein von Andrej Karpathy geprägter Begriff für einen Ansatz, bei dem Nutzende bewusst nicht verstehen wollen, wie der Code funktioniert. Sie beschreiben der KI was sie wollen, übernehmen den generierten Code ungeprüft und geben bei Fehlern die Fehlermeldung zurück. Karpathy formulierte es so: 'fully give in to the vibes, embrace exponentials, and forget that the code even exists.' Der Ansatz funktioniert für einfache Aufgaben, stößt aber bei komplexeren Problemen an Grenzen. AI Coding Literacy positioniert sich als Mittelweg zwischen Vibe Coding und dem Erlernen einer Programmiersprache.",
-      "relatedTerms": ["llm"],
+      "definition": "Vibe Coding ist ein von Andrej Karpathy gepraegter Begriff fuer einen Ansatz, bei dem Nutzende bewusst nicht verstehen wollen, wie der Code funktioniert. Sie beschreiben der KI was sie wollen, uebernehmen den generierten Code ungeprueft und geben bei Fehlern die Fehlermeldung zurueck. Karpathy formulierte es so: 'fully give in to the vibes, embrace exponentials, and forget that the code even exists.' AI Coding Literacy positioniert sich als Informed Vibe Coding - die Faehigkeit, Ergebnisse einzuordnen, Fehler zu erkennen und gezielt nachzubessern.",
+      "relatedTerms": ["llm", "scripting"],
       "detailPage": null
     },
     {
@@ -35,8 +45,8 @@
       "term": "Scripting",
       "short": "Scripting",
       "category": "coding-approaches",
-      "definition": "Ein Script ist eine kurze, einfache Folge von Anweisungen, die einen Prozess automatisiert, der sonst manuell Schritt für Schritt ausgeführt werden müsste. Scripting bezeichnet das Schreiben solcher Programme in einer interpretierten Hochsprache. Im Kontext von AI Coding Literacy geht es um praktische Werkzeuge für den Eigenbedarf, die eine konkrete Aufgabe lösen. Im Unterschied zu größeren Softwareprojekten sind Scripts nicht für den Einsatz durch andere oder für langfristige Wartung gedacht.",
-      "relatedTerms": ["prototyping"],
+      "definition": "Ein Script ist eine kurze, einfache Folge von Anweisungen, die einen Prozess automatisiert, der sonst manuell Schritt fuer Schritt ausgefuehrt werden muesste. Scripting bezeichnet das Schreiben solcher Programme in einer interpretierten Hochsprache. Im Kontext von AI Coding Literacy geht es um praktische Werkzeuge fuer den Eigenbedarf, die eine konkrete Aufgabe loesen.",
+      "relatedTerms": ["prototyping", "terminal"],
       "detailPage": null
     },
     {
@@ -44,26 +54,215 @@
       "term": "Prototyping",
       "short": "Prototyping",
       "category": "coding-approaches",
-      "definition": "Ein Prototyp ist eine funktionsfähige Vorabversion, die zeigt ob ein Ansatz grundsätzlich funktioniert. Im Unterschied zu einer fertigen Lösung muss ein Prototyp nicht vollständig, robust oder schön sein. Er dient dazu, Ideen schnell zu testen und auf Basis der Ergebnisse anzupassen. Im Kontext von AI Coding Literacy ist Prototyping das zentrale Ziel. Es geht nicht darum, professionelle Software zu entwickeln, sondern kleine funktionale Lösungen zu bauen.",
+      "definition": "Ein Prototyp ist eine funktionsfaehige Vorabversion, die zeigt ob ein Ansatz grundsaetzlich funktioniert. Im Unterschied zu einer fertigen Loesung muss ein Prototyp nicht vollstaendig, robust oder schoen sein. Er dient dazu, Ideen schnell zu testen und auf Basis der Ergebnisse anzupassen.",
       "relatedTerms": ["scripting"],
       "detailPage": null
     },
     {
       "id": "requirements-engineering",
       "term": "Requirements Engineering",
-      "short": "Requirements Engineering",
-      "category": "RE",
-      "definition": "Requirements Engineering bezeichnet die systematische Übersetzung von Bedürfnissen und Zielen in formale Spezifikationen. Der Prozess umfasst vier Schritte: das Erheben von Anforderungen, ihre Analyse und Priorisierung, die präzise Dokumentation und die Überprüfung auf Vollständigkeit. Im Kontext von AI Coding Literacy geht es darum, eine Idee oder ein Problem so zu beschreiben, dass daraus eine umsetzbare Spezifikation entsteht.",
-      "relatedTerms": ["user-stories"],
+      "short": "RE",
+      "category": "coding-approaches",
+      "definition": "Requirements Engineering bezeichnet die systematische Uebersetzung von Beduerfnissen und Zielen in formale Spezifikationen. Der Prozess umfasst das Erheben von Anforderungen, ihre Analyse und Priorisierung, die praezise Dokumentation und die Ueberpruefung auf Vollstaendigkeit. Im Kontext von AI Coding Literacy geht es darum, eine Idee oder ein Problem so zu beschreiben, dass daraus eine umsetzbare Spezifikation entsteht.",
+      "relatedTerms": ["prompt"],
       "detailPage": null
     },
     {
-      "id": "user-stories",
-      "term": "User Stories",
-      "short": "User Stories",
-      "category": "RE",
-      "definition": "Eine User Story ist eine prägnante Beschreibung einer Funktionalität aus der Perspektive der Nutzenden. Sie folgt dem standardisierten Format 'Als [Benutzertyp] möchte ich [Ziel], damit [Grund]'. Im Requirements Engineering dienen User Stories dazu, umfassende Aufgabenbereiche in spezifische Anforderungen zu unterteilen. Im Kontext von AI Coding Literacy sind User Stories eine hilfreiche Technik für die Formulierung von Anforderungen.",
-      "relatedTerms": ["requirements-engineering"],
+      "id": "api",
+      "term": "API",
+      "short": "API",
+      "category": "tech-basics",
+      "definition": "Application Programming Interface - eine Schnittstelle zur programmatischen Nutzung eines Dienstes. APIs ermoeglichen es, dass Programme miteinander kommunizieren. Im Workshop-Kontext wird die Claude API genutzt, um LLM-Anfragen automatisiert aus Python heraus zu stellen.",
+      "relatedTerms": ["api-key", "json"],
+      "detailPage": null
+    },
+    {
+      "id": "api-key",
+      "term": "API-Key",
+      "short": "API-Key",
+      "category": "tech-basics",
+      "definition": "Ein geheimer Schluessel zur Authentifizierung bei einer API. Der Key identifiziert den Nutzer und ermoeglicht die Abrechnung. API-Keys sollten niemals in Code committet oder oeffentlich geteilt werden. Nach Workshops werden Keys rotiert.",
+      "relatedTerms": ["api"],
+      "detailPage": null
+    },
+    {
+      "id": "cors",
+      "term": "CORS",
+      "short": "CORS",
+      "category": "web-basics",
+      "definition": "Cross-Origin Resource Sharing - ein Browser-Sicherheitsmechanismus, der verhindert, dass Webseiten Daten von anderen Domains laden. Deshalb funktioniert das Laden lokaler JSON-Dateien nur ueber einen lokalen Server wie Live Server, nicht direkt aus dem Dateisystem.",
+      "relatedTerms": ["live-server", "json"],
+      "detailPage": null
+    },
+    {
+      "id": "csv",
+      "term": "CSV",
+      "short": "CSV",
+      "category": "tech-basics",
+      "definition": "Comma-Separated Values - ein einfaches Tabellenformat, bei dem Werte durch Kommas getrennt sind. CSV-Dateien koennen mit Excel, Python (pandas) oder Texteditoren geoeffnet werden. Im Workshop werden Museumsdaten im CSV-Format verarbeitet.",
+      "relatedTerms": ["json"],
+      "detailPage": null
+    },
+    {
+      "id": "css",
+      "term": "CSS",
+      "short": "CSS",
+      "category": "web-basics",
+      "definition": "Cascading Style Sheets - die Sprache fuer visuelles Design von Webseiten. CSS definiert Farben, Schriften, Abstände und Layout. Eine CSS-Datei wird ueber ein link-Element in HTML eingebunden.",
+      "relatedTerms": ["html", "javascript"],
+      "detailPage": null
+    },
+    {
+      "id": "extension",
+      "term": "Extension",
+      "short": "Extension",
+      "category": "tech-basics",
+      "definition": "Eine Erweiterung fuer VS Code, die zusätzliche Funktionen hinzufuegt. Wichtige Extensions fuer den Workshop sind Python (fuer Python-Unterstuetzung) und Live Server (fuer lokale Webentwicklung).",
+      "relatedTerms": ["live-server"],
+      "detailPage": null
+    },
+    {
+      "id": "git",
+      "term": "Git",
+      "short": "Git",
+      "category": "tech-basics",
+      "definition": "Ein System zur Versionskontrolle von Code. Git speichert die Historie aller Aenderungen und ermoeglicht Zusammenarbeit. GitHub ist eine Plattform, die Git-Repositories hostet.",
+      "relatedTerms": ["github"],
+      "detailPage": null
+    },
+    {
+      "id": "github",
+      "term": "GitHub",
+      "short": "GitHub",
+      "category": "tech-basics",
+      "definition": "Eine Plattform zum Speichern und Teilen von Code-Projekten. GitHub hostet Git-Repositories und bietet Funktionen wie Issues, Pull Requests und GitHub Pages fuer statische Webseiten.",
+      "relatedTerms": ["git"],
+      "detailPage": null
+    },
+    {
+      "id": "html",
+      "term": "HTML",
+      "short": "HTML",
+      "category": "web-basics",
+      "definition": "HyperText Markup Language - die Sprache fuer die Struktur von Webseiten. HTML definiert Ueberschriften, Absätze, Listen, Links und andere Elemente. Eine HTML-Datei ist der Ausgangspunkt jeder Webseite.",
+      "relatedTerms": ["css", "javascript"],
+      "detailPage": null
+    },
+    {
+      "id": "javascript",
+      "term": "JavaScript",
+      "short": "JS",
+      "category": "web-basics",
+      "definition": "Eine Programmiersprache fuer Interaktivitaet in Webseiten. JavaScript ermoeglicht dynamische Inhalte, Benutzerinteraktionen und das Laden von Daten. Im Workshop wird JavaScript genutzt, um JSON-Daten zu laden und anzuzeigen.",
+      "relatedTerms": ["html", "css", "json"],
+      "detailPage": null
+    },
+    {
+      "id": "json",
+      "term": "JSON",
+      "short": "JSON",
+      "category": "tech-basics",
+      "definition": "JavaScript Object Notation - ein leichtgewichtiges Datenformat, das sowohl fuer Menschen lesbar als auch fuer Maschinen einfach zu verarbeiten ist. JSON wird haeufig fuer den Datenaustausch zwischen Webseiten und Servern verwendet.",
+      "relatedTerms": ["csv", "api"],
+      "detailPage": null
+    },
+    {
+      "id": "live-server",
+      "term": "Live Server",
+      "short": "Live Server",
+      "category": "tech-basics",
+      "definition": "Eine VS Code Extension, die einen lokalen Webserver startet und HTML-Dateien im Browser anzeigt. Aenderungen werden automatisch aktualisiert (Hot Reload). Live Server ist notwendig, wenn Webseiten externe Daten laden, da Browser aus Sicherheitsgruenden (CORS) das Laden lokaler Dateien blockieren.",
+      "relatedTerms": ["extension", "cors"],
+      "detailPage": null
+    },
+    {
+      "id": "path",
+      "term": "PATH",
+      "short": "PATH",
+      "category": "tech-basics",
+      "definition": "Eine Systemvariable, die dem Computer sagt, wo ausfuehrbare Programme zu finden sind. Wenn Python 'nicht gefunden' wird, liegt es oft daran, dass Python nicht im PATH eingetragen ist. Bei der Installation sollte 'Add Python to PATH' aktiviert werden.",
+      "relatedTerms": ["terminal"],
+      "detailPage": null
+    },
+    {
+      "id": "prompt",
+      "term": "Prompt",
+      "short": "Prompt",
+      "category": "llm-basics",
+      "definition": "Die Eingabe oder Anweisung, die einem LLM gegeben wird. Ein guter Prompt enthaelt klare Anforderungen, Beispieldaten und erwartete Ergebnisse. Die Qualitaet des Prompts bestimmt massgeblich die Qualitaet der Ausgabe.",
+      "relatedTerms": ["llm", "token"],
+      "detailPage": null
+    },
+    {
+      "id": "terminal",
+      "term": "Terminal",
+      "short": "Terminal",
+      "category": "tech-basics",
+      "definition": "Eine textbasierte Eingabezeile zum Ausfuehren von Befehlen und Programmen. In VS Code oeffnet man das Terminal ueber das Menue oder mit Ctrl+Backtick. Unter Windows heisst es PowerShell, unter Mac/Linux bash oder zsh.",
+      "relatedTerms": ["path", "scripting"],
+      "detailPage": null
+    },
+    {
+      "id": "token",
+      "term": "Token",
+      "short": "Token",
+      "category": "llm-basics",
+      "definition": "Eine Texteinheit, die LLMs verarbeiten. Ein Token entspricht etwa 0.75 Woertern oder 4 Zeichen. LLMs haben ein begrenztes Kontextfenster, gemessen in Tokens. Die Kosten fuer API-Aufrufe werden pro Token berechnet.",
+      "relatedTerms": ["llm", "api", "context-window"],
+      "detailPage": null
+    },
+    {
+      "id": "context-window",
+      "term": "Context Window",
+      "short": "Context Window",
+      "category": "llm-basics",
+      "definition": "Die maximale Menge an Text, die ein LLM gleichzeitig verarbeiten kann, gemessen in Tokens. Moderne Modelle haben Kontextfenster von 100.000+ Tokens. Die Positionierung relevanter Informationen im Kontext beeinflusst die Verarbeitungsqualitaet (Lost in the Middle-Effekt).",
+      "relatedTerms": ["token", "llm", "prompt"],
+      "detailPage": null
+    },
+    {
+      "id": "markdown",
+      "term": "Markdown",
+      "short": "MD",
+      "category": "tech-basics",
+      "definition": "Eine einfache Auszeichnungssprache fuer formatierte Texte. Markdown verwendet Zeichen wie # fuer Ueberschriften, * fuer Listen und ** fuer fette Schrift. README-Dateien und Dokumentation werden haeufig in Markdown geschrieben.",
+      "relatedTerms": ["html"],
+      "detailPage": null
+    },
+    {
+      "id": "skript",
+      "term": "Skript",
+      "short": "Skript",
+      "category": "coding-approaches",
+      "definition": "Eine Datei mit Programmcode, die von einem Interpreter ausgefuehrt wird. Python-Skripte haben die Endung .py. Ein Skript automatisiert Aufgaben, die sonst manuell ausgefuehrt werden muessten.",
+      "relatedTerms": ["scripting", "terminal"],
+      "detailPage": null
+    },
+    {
+      "id": "tool-use",
+      "term": "Tool Use",
+      "short": "Tool Use",
+      "category": "llm-basics",
+      "definition": "Die Faehigkeit von LLMs, externe Werkzeuge und Funktionen aufzurufen. Statt nur Text zu generieren, kann das Modell strukturierte Aufrufe ausgeben, die von einem Programm ausgefuehrt werden. Dies ermoeglicht Interaktion mit APIs, Datenbanken oder dem Dateisystem.",
+      "relatedTerms": ["llm", "api"],
+      "detailPage": null
+    },
+    {
+      "id": "halluzination",
+      "term": "Halluzination",
+      "short": "Halluzination",
+      "category": "llm-basics",
+      "definition": "Eine Ausgabe eines LLMs, die faktisch falsch, erfunden oder inkonsistent ist. Halluzinationen entstehen, weil LLMs statistische Muster reproduzieren, nicht Fakten nachschlagen. Bei Code kann dies nicht existierende Funktionen oder falsche API-Aufrufe bedeuten. Review-Kompetenz ist essenziell, um Halluzinationen zu erkennen.",
+      "relatedTerms": ["llm", "prompt"],
+      "detailPage": null
+    },
+    {
+      "id": "pip",
+      "term": "pip",
+      "short": "pip",
+      "category": "tech-basics",
+      "definition": "Der Paketmanager fuer Python. Mit pip install werden externe Bibliotheken installiert. Im Workshop wird pip genutzt, um das anthropic-Paket fuer die Claude-API zu installieren.",
+      "relatedTerms": ["terminal", "api"],
       "detailPage": null
     }
   ]

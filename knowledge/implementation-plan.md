@@ -1,16 +1,16 @@
 # Implementierungsplan: AI Coding Literacy Lernplattform
 
-## Projektübersicht
+## Projektuebersicht
 
-**Ziel:** Lernplattform mit vertikalem Scroll-Layout auf GitHub Pages.
+Ziel: Lernplattform mit vertikalem Scroll-Layout auf GitHub Pages.
 
-**Stack:**
+Stack:
 - Vanilla HTML/CSS/JavaScript
-- JSON für strukturierte Inhalte
-- Intersection Observer für Scroll-Spy
+- JSON fuer strukturierte Inhalte
+- Intersection Observer fuer Scroll-Spy
 - GitHub Pages
 
-**Design:** Tufte-inspirierte Ästhetik nach [design.md](design.md).
+Design: Tufte-inspirierte Aesthetik nach design.md.
 
 ---
 
@@ -18,41 +18,41 @@
 
 ### Datengetriebener Ansatz
 
-Alle Inhalte werden aus `/data/content.json` geladen:
+Alle Inhalte werden aus /data/content.json geladen:
 - Meta-Informationen (Titel, Beschreibung)
-- 6 Kapitel (Kompetenzbereiche) mit Farben
-- Jedes Kapitel mit Theorie, Hands-On-Übungen, Ressourcen
+- 6 Hauptkapitel (Kompetenzbereiche) mit Farben
+- Jedes Kapitel mit Theorie, Hands-On-Uebungen, Ressourcen
 
 ### Vertikales Scroll-Layout
 
-Das zentrale UI-Konzept ist **vertikales Scrollen** mit einer erweiterten Sidebar:
+Das zentrale UI-Konzept ist vertikales Scrollen mit einer erweiterten Sidebar:
 
 ```
-┌─────────────────────────────────────────┐
-│ Sidebar     │  Kapitel-Header           │
-│             │  ────────────────────     │
-│ [CT] ←      │  ■ Theorie                │
-│  Theorie    │    Kernpunkte             │
-│  Übungen    │    Konzepte               │
-│  Ressourcen │                           │
-│ [RE]        │  ■ Übungen                │
-│ [CE]        │    Exercise-Blöcke        │
-│ [PE]        │    Code, Reflexion        │
-│ [CL]        │                           │
-│ [RV]        │  ■ Ressourcen             │
-│             │    Links, Zitat           │
-└─────────────────────────────────────────┘
++-----------------------------------------+
+| Sidebar     |  Kapitel-Header           |
+|             |  --------------------     |
+| [CT] <-     |  # Theorie                |
+|  Theorie    |    Kernpunkte             |
+|  Uebungen   |    Konzepte               |
+|  Ressourcen |                           |
+| [RE]        |  # Uebungen               |
+| [CE]        |    Exercise-Bloecke       |
+| [PE]        |    Code, Reflexion        |
+| [CL]        |                           |
+| [RV]        |  # Ressourcen             |
+|             |    Links, Zitat           |
++-----------------------------------------+
 ```
 
-**Vorteile:**
-- Natürliches Scrollverhalten
-- Alle Inhalte auf einen Blick zugänglich
+Vorteile:
+- Natuerliches Scrollverhalten
+- Alle Inhalte auf einen Blick zugaenglich
 - Sidebar mit Kontext (welche Sektion ist aktiv)
 
 ### Zwei-Ebenen-Konzept
 
-1. **Übersicht (index.html):** Alle 6 Kompetenzen kompakt
-2. **Detailseiten (ct.html etc.):** Vertiefende Inhalte (geplant)
+1. Uebersicht (index.html): Alle 6 Kompetenzen kompakt
+2. Detailseiten (ct.html etc.): Vertiefende Inhalte
 
 ---
 
@@ -60,46 +60,42 @@ Das zentrale UI-Konzept ist **vertikales Scrollen** mit einer erweiterten Sideba
 
 ```
 ai-coding-literacy/
-├── index.html              # Redirect zu /de/
-├── de/
-│   ├── index.html          # Übersicht mit vertikalem Scroll
-│   ├── setup.html          # Setup-Anleitung
-│   ├── kompetenzmodell.html # Detailseite Kompetenzen
-│   ├── referenz.html       # Referenzmaterial
-│   ├── ct.html             # CT-Detailseite
-│   ├── re.html             # RE-Detailseite
-│   ├── ce.html             # CE-Detailseite
-│   ├── pe.html             # PE-Detailseite
-│   ├── cl.html             # CL-Detailseite
-│   └── rv.html             # RV-Detailseite
-├── en/
-│   ├── index.html          # English overview
-│   ├── setup.html          # Setup guide
-│   ├── competency-model.html # Competency model
-│   └── reference.html      # Reference materials
-├── css/
-│   └── style.css           # Globale Styles (inkl. Glossar)
-├── data/
-│   ├── content.json        # Alle Inhalte strukturiert (DE)
-│   ├── content-en.json     # Alle Inhalte strukturiert (EN)
-│   ├── glossar.json        # Glossar-Begriffe (DE)
-│   └── glossar-en.json     # Glossar-Begriffe (EN)
-├── js/
-│   ├── app.js              # Hauptlogik für Übersicht
-│   ├── glossary.js         # Glossar-System
-│   ├── setup.js            # Setup-Seite
-│   ├── kompetenzmodell.js  # Kompetenzmodell-Seite
-│   └── referenz.js         # Referenz-Seite
-└── knowledge/              # Konzeptdokumente (nicht Teil der Website)
-    ├── concept.md
-    ├── design.md
-    ├── implementation-plan.md
-    ├── status-report.md
-    ├── journal.md
-    ├── hands-on.md
-    ├── grundlagen-computational-thinking.md
-    ├── grundlagen-kompetenzbereiche.md
-    └── grundlagen-oekosystem.md
++-- index.html              # Redirect zu /de/
++-- de/
+|   +-- index.html          # Uebersicht mit vertikalem Scroll
+|   +-- setup.html          # Setup-Anleitung
+|   +-- kompetenzmodell.html
+|   +-- referenz.html
+|   +-- ct.html, re.html, ce.html, pe.html, cl.html, rv.html
++-- css/
+|   +-- style.css           # Globale Styles (inkl. Glossar)
++-- data/
+|   +-- content.json        # Alle Inhalte strukturiert
+|   +-- glossar.json        # Glossar-Begriffe (21 Eintraege, 4 Kategorien)
+|   +-- kriminalmuseum/     # Workshop-Datensatz
+|       +-- workshop_objekte.json
+|       +-- workshop_objekte.csv
+|       +-- kriminalmuseum_komplett.csv
++-- js/
+|   +-- app.js              # Hauptlogik fuer Uebersicht
+|   +-- glossary.js         # Glossar-System
+|   +-- setup.js            # Setup-Seite
+|   +-- kompetenzmodell.js
+|   +-- referenz.js
++-- knowledge/              # Konzeptdokumente (nicht Teil der Website)
+|   +-- concept.md
+|   +-- design.md
+|   +-- implementation-plan.md
+|   +-- status-report.md
+|   +-- journal.md
+|   +-- hands-on.md
+|   +-- workshops/
+|       +-- programmieren-2-0.md
++-- workshops/
+    +-- programmieren-2-0/
+        +-- handouts/
+        +-- python/
+        +-- web/
 ```
 
 ---
@@ -119,8 +115,9 @@ ai-coding-literacy/
       "name": "Computational Thinking",
       "color": "#4A7C7C",
       "short": "Probleme strukturieren und zerlegen",
+      "longDescription": "...",
       "theory": {
-        "description": "Einführungstext...",
+        "description": "Einfuehrungstext...",
         "keyPoints": ["...", "..."],
         "concepts": [{"term": "...", "definition": "..."}]
       },
@@ -155,24 +152,24 @@ ai-coding-literacy/
 ### Sidebar Navigation
 
 ```
-┌──────────────┐
-│ Übersicht    │  ← Aktive Seite
-│ Kompetenzmod │
-│ Referenz     │
-├──────────────┤
-│ [CT] ■■■■■■  │  ← Farbiger Balken
-│  Theorie     │  ← Sub-Link (sichtbar bei aktivem Kapitel)
-│  Übungen     │
-│  Ressourcen  │
-│ [RE] ■■■■■■  │
-│ [CE] ■■■■■■  │
-│ [PE] ■■■■■■  │
-│ [CL] ■■■■■■  │
-│ [RV] ■■■■■■  │
-└──────────────┘
++----------------+
+| Uebersicht     |  <- Aktive Seite
+| Kompetenzmod   |
+| Referenz       |
++----------------+
+| [CT] ######    |  <- Farbiger Balken
+|  Theorie       |  <- Sub-Link (sichtbar bei aktivem Kapitel)
+|  Uebungen      |
+|  Ressourcen    |
+| [RE] ######    |
+| [CE] ######    |
+| [PE] ######    |
+| [CL] ######    |
+| [RV] ######    |
++----------------+
 ```
 
-**Verhalten:**
+Verhalten:
 - Kompetenz-Balken: Klick scrollt zum Kapitel
 - Sub-Links: Klappen aus bei aktivem Kapitel
 - Scroll-Spy: Highlightet aktiven Balken + Sub-Link
@@ -188,7 +185,7 @@ ai-coding-literacy/
   </div>
 
   <div class="chapter-intro-block">
-    <p>Einführungstext...</p>
+    <p>Einfuehrungstext...</p>
   </div>
 
   <div class="content-section" id="CT-theorie">
@@ -202,9 +199,9 @@ ai-coding-literacy/
   <div class="content-section" id="CT-uebungen">
     <h3 class="section-title">
       <span class="section-marker"></span>
-      Übungen
+      Uebungen
     </h3>
-    <!-- Exercise-Blöcke -->
+    <!-- Exercise-Bloecke -->
   </div>
 
   <div class="content-section" id="CT-ressourcen">
@@ -217,27 +214,16 @@ ai-coding-literacy/
 </section>
 ```
 
-### Code-Block
-
-```
-┌─ dateiname.py ─────────────── [kopieren] ─┐
-│ from PIL import Image                      │
-│ import os                                  │
-└────────────────────────────────────────────┘
-```
-
 ---
 
 ## 5. Kompetenzfarben
 
-| ID | Name | Farbe |
-|----|------|-------|
-| CT | Computational Thinking | #4A7C7C (Petrol) |
-| RE | Requirement Engineering | #8B4557 (Wine) |
-| CE | Context Engineering | #5B7355 (Moss) |
-| PE | Prompt Engineering | #7B6B8D (Mauve) |
-| CL | Code Literacy | #8B7355 (Bronze) |
-| RV | Review | #4A6B8C (Steel Blue) |
+- CT (Computational Thinking): #4A7C7C (Petrol)
+- RE (Requirement Engineering): #8B4557 (Wine)
+- CE (Context Engineering): #5B7355 (Moss)
+- PE (Prompt Engineering): #7B6B8D (Mauve)
+- CL (Code Literacy): #8B7355 (Bronze)
+- RV (Review): #4A6B8C (Steel Blue)
 
 ---
 
@@ -251,7 +237,7 @@ let contentData = null;
 let loadedChapters = 0;
 
 // Initialisierung
-loadContent()           // Lädt JSON
+loadContent()           // Laedt JSON
 initPage()              // Initialisiert UI
 
 // Sidebar
@@ -271,11 +257,11 @@ setupScrollSpy()        // Scroll-Spy Observer
 
 Zwei IntersectionObserver:
 
-1. **chapterObserver:** Beobachtet `.chapter` Elemente
+1. chapterObserver: Beobachtet .chapter Elemente
    - Highlightet aktiven Kompetenz-Balken
-   - Zeigt Sub-Links für aktives Kapitel
+   - Zeigt Sub-Links fuer aktives Kapitel
 
-2. **sectionObserver:** Beobachtet `.content-section` Elemente
+2. sectionObserver: Beobachtet .content-section Elemente
    - Highlightet aktiven Sub-Link
 
 ---
@@ -284,29 +270,31 @@ Zwei IntersectionObserver:
 
 ### Abgeschlossen
 
-- [x] CSS erstellen – style.css mit vertikalem Layout
-- [x] JavaScript erstellen – app.js mit Scroll-Spy
-- [x] JSON-Datenstruktur – content.json mit 6 Kapiteln
-- [x] Single-Page – de/index.html mit vertikalem Scroll
+- [x] CSS erstellen - style.css mit vertikalem Layout
+- [x] JavaScript erstellen - app.js mit Scroll-Spy
+- [x] JSON-Datenstruktur - content.json mit 6 Kapiteln
+- [x] Single-Page - de/index.html mit vertikalem Scroll
 - [x] Sidebar mit ausklappbaren Sub-Links
 - [x] Dual Scroll-Spy (Kapitel + Sektion)
-- [x] Infinite Scroll für Kapitel
-- [x] Responsive Fallback für Mobile (<600px)
-- [x] Kompetenzmodell – de/kompetenzmodell.html
-- [x] Referenz – de/referenz.html
+- [x] Infinite Scroll fuer Kapitel
+- [x] Responsive Fallback fuer Mobile (<600px)
+- [x] Kompetenzmodell - de/kompetenzmodell.html
+- [x] Referenz - de/referenz.html
 - [x] Content erweitert: Alle 6 Kapitel
 - [x] Detailseiten erstellen (ct.html, re.html, etc.)
-- [x] Setup-Seiten (de/setup.html, en/setup.html)
-- [x] Sidebar-Labels mit vollständigen Namen
-- [x] Englische Version
+- [x] Setup-Seite (de/setup.html)
+- [x] Sidebar-Labels mit vollstaendigen Namen
 - [x] Glossar-System implementiert (glossary.js, glossar.json)
-- [x] Info-Panel für Glossar-Definitionen
+- [x] Info-Panel fuer Glossar-Definitionen
 - [x] Kompetenzmodell longDescription-Felder
-- [x] 6 Glossar-Begriffe mit umfassenden Definitionen (DE/EN)
+- [x] 21 Glossar-Begriffe mit umfassenden Definitionen
+- [x] Repository-Konsolidierung (nur Deutsch)
+- [x] Workshop-Materialien integriert
 
 ### Offen
 
-- [ ] GitHub Pages – Deployment konfigurieren
+- [ ] Workshop-UI Landingpage (wartet auf Design)
+- [ ] GitHub Pages - Deployment konfigurieren
 - [ ] Final-Test aller Seiten
 - [ ] Mobile-Test
 
@@ -315,20 +303,16 @@ Zwei IntersectionObserver:
 ## 8. Nicht im Scope
 
 - Logbuch-Komponente (Phase 2)
-- Syntax-Highlighting für Code (optional)
-- Interaktive Code-Ausführung
+- Syntax-Highlighting fuer Code (optional)
+- Interaktive Code-Ausfuehrung
 
 ---
 
 ## 9. Knowledge-Dokumente
 
-| Datei | Inhalt |
-|-------|--------|
-| concept.md | Definition, Zielgruppe, Kompetenzmodell |
-| design.md | Visuelle Identität, Layout, Komponenten |
-| hands-on.md | Übersicht aller Hands-On-Übungen |
-| status-report.md | Aktueller Projektstatus |
-| journal.md | Session-Logs und Erkenntnisse |
-| grundlagen-computational-thinking.md | CT-Theorie im Detail |
-| grundlagen-kompetenzbereiche.md | RE, CE, PE, CL, RV-Theorie |
-| grundlagen-oekosystem.md | LLM-Ökosystem, Tools |
+- concept.md: Definition, Zielgruppe, Kompetenzmodell (7 Bereiche)
+- design.md: Visuelle Identitaet, Layout, Komponenten
+- hands-on.md: Uebersicht aller Hands-On-Uebungen
+- status-report.md: Aktueller Projektstatus
+- journal.md: Session-Logs und Erkenntnisse
+- workshops/programmieren-2-0.md: Autoritatives Workshop-Dokument

@@ -1,22 +1,22 @@
 # AI Coding Literacy
 
-Ein Curriculum für LLM-gestützte Codeentwicklung in den Geisteswissenschaften.
+Ein Curriculum fuer LLM-gestuetzte Codeentwicklung in den Geisteswissenschaften.
 
 ---
 
 ## 1. Definition
 
-AI Coding Literacy bezeichnet die Kompetenz, Large Language Models als Werkzeuge zur Codeentwicklung einzusetzen. Die Tätigkeit verlagert sich von der Syntaxproduktion hin zur Formulierung von Anforderungen, zur systematischen Gestaltung des Kontexts, zur kritischen Bewertung generierter Outputs sowie zur iterativen Verfeinerung durch Dialog mit dem Modell.
+AI Coding Literacy bezeichnet die Kompetenz, Large Language Models als Werkzeuge zur Codeentwicklung einzusetzen. Die Taetigkeit verlagert sich von der Syntaxproduktion hin zur Formulierung von Anforderungen, zur systematischen Gestaltung des Kontexts, zur kritischen Bewertung generierter Outputs sowie zur iterativen Verfeinerung durch Dialog mit dem Modell.
 
-Das Ziel ist nicht Softwareentwicklung im professionellen Sinn, sondern Scripting und Prototyping: kleine, funktionale Lösungen für konkrete Probleme.
+Das Ziel ist nicht Softwareentwicklung im professionellen Sinn, sondern Scripting und Prototyping: kleine, funktionale Loesungen fuer konkrete Probleme.
 
 ---
 
 ## 2. Zielgruppe
 
-Fachwissenschaftler·innen aus dem geisteswissenschaftlich-kulturwissenschaftlichen Bereich, die ohne Programmiervorerfahrung kleine, funktionale Tools für ihre Arbeit entwickeln wollen.
+Fachwissenschaftler und Fachwissenschaftlerinnen aus dem geisteswissenschaftlich-kulturwissenschaftlichen Bereich, die ohne Programmiervorerfahrung kleine, funktionale Tools fuer ihre Arbeit entwickeln wollen.
 
-**Voraussetzungen:**
+Voraussetzungen:
 - Keine Programmiervorerfahrung erforderlich
 - Grundlegende Computerkenntnisse (Dateisystem, Browser)
 - Erfahrung im Umgang mit einem LLM (Chat-Interface)
@@ -26,67 +26,82 @@ Fachwissenschaftler·innen aus dem geisteswissenschaftlich-kulturwissenschaftlic
 
 ## 3. Kompetenzmodell
 
-Sechs Bereiche, die einen vollständigen Entwicklungszyklus abbilden. Jeder Bereich wird als eigenständiges Kapitel mit Theorie und Hands-On-Übungen behandelt:
+Sieben Bereiche, die einen vollstaendigen Entwicklungszyklus abbilden. Jeder Bereich wird als eigenstaendiges Kapitel mit Theorie und Hands-On-Uebungen behandelt:
 
-### CT – Computational Thinking
-Problemzerlegung, Mustererkennung und Abstraktion – unabhängig von konkreter Programmiersyntax. Das eigene Domänenwissen wird zum Ausgangspunkt: Probleme so strukturieren, dass sie in ausführbare Schritte übersetzt werden können.
+### CT - Computational Thinking
+Problemzerlegung, Mustererkennung und Abstraktion - unabhaengig von konkreter Programmiersyntax. Das eigene Domaenenwissen wird zum Ausgangspunkt: Probleme so strukturieren, dass sie in ausfuehrbare Schritte uebersetzt werden koennen.
 
-### RE – Requirement Engineering
-Präzise Formulierung von Anforderungen und Akzeptanzkriterien. Was soll das Tool tun? Was nicht? Welche Eingaben, welche Ausgaben? Woran erkennt man, dass es korrekt funktioniert?
+### RE - Requirement Engineering
+Praezise Formulierung von Anforderungen und Akzeptanzkriterien. Was soll das Tool tun? Was nicht? Welche Eingaben, welche Ausgaben? Woran erkennt man, dass es korrekt funktioniert?
 
-### CE – Context Engineering
-Systematische Gestaltung des Informationskontexts für das LLM. Auswahl, Kompression und Anordnung relevanter Informationen: Codebasis-Ausschnitte, Dokumentation, Beispiele, Projektkonventionen.
+### CE - Context Engineering
+Systematische Gestaltung des Informationskontexts fuer das LLM. Auswahl, Kompression und Anordnung relevanter Informationen: Codebasis-Ausschnitte, Dokumentation, Beispiele, Projektkonventionen. Umfasst Konzepte wie data.md (komprimierte Wissensdokumente) und die Optimierung des Kontextfensters.
 
-### PE – Prompt Engineering
-Entwicklung und Optimierung von Eingabeaufforderungen. Auswahl von Prompting-Techniken, um LLMs effektiv zu steuern und die Qualität der generierten Ausgaben zu maximieren.
+### PE - Prompt Engineering
+Entwicklung und Optimierung von Eingabeaufforderungen. Auswahl von Prompting-Techniken, um LLMs effektiv zu steuern und die Qualitaet der generierten Ausgaben zu maximieren.
 
-### CL – Code Literacy
-Generierten Code lesen und verstehen: Ablauf nachvollziehen, Eingaben und Ausgaben identifizieren, Logik erkennen, Unstimmigkeiten bemerken. Setzt nicht voraus, denselben Code selbst schreiben zu können.
+### CL - Code Literacy
+Generierten Code lesen und verstehen: Ablauf nachvollziehen, Eingaben und Ausgaben identifizieren, Logik erkennen, Unstimmigkeiten bemerken. Setzt nicht voraus, denselben Code selbst schreiben zu koennen.
 
-### RV – Review
-Systematische Prüfung gegen die definierten Anforderungen. Validieren, ob der Code die Akzeptanzkriterien erfüllt. Lücken identifizieren. Den Entwicklungszyklus durch Iteration schließen.
+### RV - Review
+Systematische Pruefung gegen die definierten Anforderungen. Validieren, ob der Code die Akzeptanzkriterien erfuellt. Luecken identifizieren. Den Entwicklungszyklus durch Iteration schliessen.
+
+### EW - Expertenwissen
+Das Fachwissen aus der eigenen Domaene, das zur Einordnung und Bewertung von LLM-Ergebnissen notwendig ist. LLMs koennen Domaenenexpertise nicht ersetzen - sie koennen sie nur unterstuetzen und erweitern.
 
 ---
 
 ## 4. Struktur
 
-Das Curriculum ist als **Single-Page mit Endless Scroll** implementiert:
+Das Curriculum ist als vertikales Scroll-Layout implementiert:
 
-- 6 Kapitel (eines pro Kompetenzbereich)
-- Jedes Kapitel enthält:
-  - **Theorie**: Einführung, Kernpunkte, Konzeptdefinitionen
-  - **Hands-On-Übungen**: 2-4 praktische Übungen pro Kapitel
-  - **Ressourcen**: Weiterführende Links und Literatur
-  - **Zitat**: Einordnendes Zitat aus der Fachliteratur
+- 6 Hauptkapitel (CT, RE, CE, PE, CL, RV) plus EW als Querschnittskompetenz
+- Jedes Kapitel enthaelt:
+  - Theorie: Einfuehrung, Kernpunkte, Konzeptdefinitionen
+  - Hands-On-Uebungen: 2-4 praktische Uebungen pro Kapitel
+  - Ressourcen: Weiterfuehrende Links und Literatur
+  - Zitat: Einordnendes Zitat aus der Fachliteratur
 
-Alle Inhalte werden aus `/data/content.json` geladen und dynamisch gerendert.
+Alle Inhalte werden aus /data/content.json geladen und dynamisch gerendert.
 
 ---
 
 ## 5. Didaktischer Ansatz
 
-**Vibe Coding als Einstieg:** Explorativer Zugang – beschreiben, generieren lassen, ausprobieren, im Dialog korrigieren. Niedrige Hemmschwelle, schnelle Erfolgserlebnisse.
+Vibe Coding als Einstieg: Explorativer Zugang - beschreiben, generieren lassen, ausprobieren, im Dialog korrigieren. Niedrige Hemmschwelle, schnelle Erfolgserlebnisse.
 
-**Von Vibe Coding zu informierter Praxis:** Mit wachsender Kompetenz kommen strukturiertere Methoden hinzu. Präzisere Anforderungen, systematischerer Kontext, kritischere Bewertung.
+Von Vibe Coding zu informierter Praxis: Mit wachsender Kompetenz kommen strukturiertere Methoden hinzu. Praezisere Anforderungen, systematischerer Kontext, kritischere Bewertung.
 
-**Domänenwissen als Ausgangspunkt:** Die Übungen beginnen nicht mit Programmierkonzepten, sondern mit konkreten Problemen aus der jeweiligen Domäne.
+Domaenenwissen als Ausgangspunkt: Die Uebungen beginnen nicht mit Programmierkonzepten, sondern mit konkreten Problemen aus der jeweiligen Domaene.
 
 ---
 
 ## 6. Grenzen
 
-- **Fehlertypen jenseits der Syntax:** Logikfehler, die syntaktisch korrekt aber semantisch falsch sind, werden ohne tieferes Domänenwissen oder systematisches Testen übersehen.
-- **Instabilität:** Was heute funktioniert, kann durch Modell-Updates anders ausfallen. Teil der Kompetenz ist, damit umzugehen.
-- **Komplexitätsgrenzen:** Ab einer gewissen Komplexität reicht AI Coding Literacy nicht aus. Die Kompetenz, diese Grenze zu erkennen, ist selbst Teil des Curriculums.
+- Fehlertypen jenseits der Syntax: Logikfehler, die syntaktisch korrekt aber semantisch falsch sind, werden ohne tieferes Domaenenwissen oder systematisches Testen uebersehen.
+- Instabilitaet: Was heute funktioniert, kann durch Modell-Updates anders ausfallen. Teil der Kompetenz ist, damit umzugehen.
+- Komplexitaetsgrenzen: Ab einer gewissen Komplexitaet reicht AI Coding Literacy nicht aus. Die Kompetenz, diese Grenze zu erkennen, ist selbst Teil des Curriculums.
 
 ---
 
 ## 7. Technischer Rahmen
 
-- **Editor:** Visual Studio Code
-- **Sprachen:** Python für Datenverarbeitung; HTML, CSS, JavaScript für Web
-- **LLM:** Tool-agnostisch. Demos mit Claude und Claude Code.
-- **Alternative:** Jupyter Notebooks (Google Colab) für Nutzer ohne lokale Python-Installation
+- Editor: Visual Studio Code
+- Sprachen: Python fuer Datenverarbeitung; HTML, CSS, JavaScript fuer Web
+- LLM: Tool-agnostisch. Demos mit Claude und Claude Code.
+- Alternative: Jupyter Notebooks (Google Colab) fuer Nutzer ohne lokale Python-Installation
+
+---
+
+## 8. Workshop-Materialien
+
+Der Workshop "Programmieren 2.0" ist das autoritative Dokument fuer praktische Anwendung:
+
+- Wissensdokument: /knowledge/workshops/programmieren-2-0.md
+- Python-Beispiele: /workshops/programmieren-2-0/python/
+- Web-Beispiele: /workshops/programmieren-2-0/web/
+- Handouts: /workshops/programmieren-2-0/handouts/
+- Datensatz: Hans Gross Kriminalmuseum (25 Workshop-Objekte, 3892 Gesamteintraege)
 
 ---
 
