@@ -1,13 +1,19 @@
-/* Workshop-Landingpage Styles
-   Archiv-inspiriertes Design: Forschungsdaten im Museum
-   ============================================================ */
+/* =============================================
+   WORKSHOP.CSS - Refactored
+   AI Coding Literacy + Programmieren 2.0 Workshop
+   ============================================= */
 
-/* === Google Fonts === */
+/* === 1. IMPORTS & VARIABLES === */
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 
-/* === Variablen === */
 :root {
-  /* Workshop-spezifische Farben */
+  /* Font Stacks */
+  --font-editorial: 'Playfair Display', Georgia, serif;
+  --font-handwritten: 'Caveat', cursive;
+  --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+  --font-ui: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Colors */
   --ws-bg: #F5F0EA;
   --ws-terracotta: #C4725A;
   --ws-petrol: #7A9BB5;
@@ -17,7 +23,7 @@
   --ws-ink-faded: #666666;
   --ws-border: rgba(0, 0, 0, 0.1);
 
-  /* Kompetenzfarben (aus style.css) */
+  /* Competency Colors */
   --comp-CT: #4A7C7C;
   --comp-RE: #8B4557;
   --comp-CE: #5B7355;
@@ -31,13 +37,13 @@
   --ws-content-padding: 2rem;
 }
 
-/* === Reset & Base === */
+/* === 2. RESET & BASE === */
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
 body.workshop-page {
-  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-ui);
   font-size: 16px;
   line-height: 1.6;
   color: var(--ws-ink);
@@ -47,24 +53,7 @@ body.workshop-page {
   min-height: 100vh;
 }
 
-/* === Typography === */
-.ws-font-editorial {
-  font-family: 'Playfair Display', Georgia, serif;
-}
-
-.ws-font-handwritten {
-  font-family: 'Caveat', cursive;
-}
-
-.ws-font-mono {
-  font-family: 'JetBrains Mono', 'Consolas', monospace;
-}
-
-.ws-font-ui {
-  font-family: 'DM Sans', sans-serif;
-}
-
-/* === Accessibility === */
+/* === 3. UTILITIES === */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -77,22 +66,22 @@ body.workshop-page {
   border: 0;
 }
 
-/* === Layout === */
+/* === 4. LAYOUT === */
 .workshop-container {
   max-width: var(--ws-max-width);
   margin: 0 auto;
   padding: var(--ws-content-padding);
 }
 
-/* === Header === */
+/* === 5. HEADER === */
 .workshop-header {
   text-align: center;
   padding: 3rem 1rem 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
 }
 
 .workshop-tagline {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.75rem;
   letter-spacing: 3px;
   text-transform: uppercase;
@@ -112,7 +101,7 @@ body.workshop-page {
 }
 
 .workshop-title {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-editorial);
   font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: 400;
   margin: 0;
@@ -125,7 +114,7 @@ body.workshop-page {
 }
 
 .workshop-subtitle {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-editorial);
   font-size: 1.5rem;
   font-style: italic;
   color: var(--ws-ink-faded);
@@ -140,13 +129,13 @@ body.workshop-page {
   color: var(--ws-ink);
 }
 
-/* === Workshop Banner === */
+/* === 6. WORKSHOP BANNER === */
 .workshop-banner {
-  background: var(--ws-ink);
-  color: white;
+  background-color: #2C2C2C;
+  color: #ffffff;
   text-align: center;
   padding: 2rem 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
 }
 
 .banner-content {
@@ -155,10 +144,11 @@ body.workshop-page {
 }
 
 .banner-title {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-editorial);
   font-size: clamp(1.5rem, 4vw, 2.5rem);
   font-weight: 400;
   margin: 0 0 0.5rem;
+  color: #ffffff;
 }
 
 .banner-title .highlight {
@@ -167,7 +157,7 @@ body.workshop-page {
 }
 
 .banner-subtitle {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-editorial);
   font-size: 1.1rem;
   font-style: italic;
   color: rgba(255, 255, 255, 0.8);
@@ -175,21 +165,21 @@ body.workshop-page {
 }
 
 .banner-meta {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.8rem;
   letter-spacing: 1px;
   color: rgba(255, 255, 255, 0.6);
   margin: 0;
 }
 
-/* === Transformation Process === */
+/* === 7. TRANSFORMATION PROCESS === */
 .transformation-section {
   padding: 2rem 0 3rem;
   margin-bottom: 2rem;
 }
 
 .transformation-label {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 4px;
   text-transform: uppercase;
@@ -221,7 +211,6 @@ body.workshop-page {
   justify-content: center;
   margin: 0 auto 1rem;
   background: var(--ws-bg);
-  transition: all 0.3s ease;
 }
 
 .step-icon svg {
@@ -237,7 +226,7 @@ body.workshop-page {
 }
 
 .step-icon.filled svg {
-  stroke: white;
+  stroke: #ffffff;
 }
 
 .step-icon.dark {
@@ -253,7 +242,7 @@ body.workshop-page {
 }
 
 .process-step h3 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-editorial);
   font-size: 1rem;
   font-weight: 500;
   margin: 0 0 0.5rem;
@@ -266,410 +255,13 @@ body.workshop-page {
   line-height: 1.4;
 }
 
-.process-connector {
-  display: flex;
-  align-items: center;
-  padding-top: 20px;
-}
-
-.process-connector svg {
-  width: 24px;
-  height: 24px;
-  stroke: var(--ws-ink-faded);
-  stroke-width: 1.5;
-  fill: none;
-}
-
-/* === Search & Filter Bar === */
-.filter-bar {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem 1.5rem;
-  background: white;
-  border: 1px solid var(--ws-border);
-  border-radius: 4px;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-}
-
-.search-wrapper {
-  flex: 1;
-  min-width: 250px;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.search-icon {
-  width: 20px;
-  height: 20px;
-  stroke: var(--ws-ink-faded);
-  stroke-width: 2;
-  fill: none;
-}
-
-.search-input {
-  flex: 1;
-  border: none;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 1rem;
-  padding: 0.5rem 0;
-  background: transparent;
-  color: var(--ws-ink);
-}
-
-.search-input::placeholder {
-  color: var(--ws-ink-faded);
-}
-
-.search-input:focus {
-  outline: none;
-}
-
-.view-toggles {
-  display: flex;
-  gap: 0.25rem;
-  border: 1px solid var(--ws-border);
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.view-btn {
-  padding: 0.5rem 0.75rem;
-  background: white;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s;
-}
-
-.view-btn:hover {
-  background: var(--ws-paper-aged);
-}
-
-.view-btn.active {
-  background: var(--ws-ink);
-}
-
-.view-btn.active svg {
-  stroke: white;
-}
-
-.view-btn svg {
-  width: 18px;
-  height: 18px;
-  stroke: var(--ws-ink-faded);
-  stroke-width: 2;
-  fill: none;
-}
-
-.object-count {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.85rem;
-  color: var(--ws-ink-faded);
-  white-space: nowrap;
-}
-
-/* === Object Cards Grid === */
-.objects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 3rem;
-}
-
-.objects-grid.list-view {
-  grid-template-columns: 1fr;
-}
-
-/* === Object Card === */
-.object-card {
-  background: linear-gradient(
-    135deg,
-    var(--ws-paper-aged) 0%,
-    var(--ws-paper-fresh) 100%
-  );
-  border: 1px solid var(--ws-border);
-  border-radius: 2px;
-  box-shadow:
-    2px 2px 4px rgba(0, 0, 0, 0.05),
-    inset 0 0 20px rgba(0, 0, 0, 0.02);
-  padding: 1.5rem;
-  position: relative;
-  transition:
-    background 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
-    border-color 0.4s ease,
-    box-shadow 0.4s ease;
-}
-
-.object-card:hover {
-  background: white;
-  border-color: var(--ws-petrol);
-  box-shadow: 0 4px 20px rgba(122, 155, 181, 0.15);
-}
-
-.object-card .inventory-number {
-  font-family: 'Caveat', cursive;
-  font-size: 1.4rem;
-  color: var(--ws-ink);
-  margin-bottom: 0.25rem;
-  transition: all 0.4s ease;
-}
-
-.object-card:hover .inventory-number {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 1.1rem;
-  line-height: 1.4;
-  letter-spacing: 0.5px;
-}
-
-.object-card .object-type {
-  font-family: 'Playfair Display', serif;
-  font-size: 0.9rem;
-  color: var(--ws-ink-faded);
-  letter-spacing: 0.5px;
-  margin-bottom: 1.25rem;
-}
-
-.object-card .data-fields {
-  margin-bottom: 1rem;
-}
-
-.object-card .data-row {
-  display: flex;
-  justify-content: space-between;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.85rem;
-  padding: 0.35rem 0;
-  border-bottom: 1px dotted rgba(0, 0, 0, 0.1);
-  transition: border-color 0.4s ease;
-}
-
-.object-card:hover .data-row {
-  border-bottom-style: solid;
-  border-bottom-color: rgba(122, 155, 181, 0.3);
-}
-
-.object-card .data-label {
-  font-style: italic;
-  color: var(--ws-ink-faded);
-}
-
-.object-card .data-value {
-  text-align: right;
-  color: var(--ws-ink);
-}
-
-.object-card .description {
-  font-size: 0.85rem;
-  color: var(--ws-ink-faded);
-  line-height: 1.5;
-  margin-top: 1rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-/* Uncertainty Badge */
-.uncertainty-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  background: #D4E4EE;
-  color: #3A5A6E;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
-  font-weight: 500;
-  padding: 0.35rem 0.6rem;
-  border-radius: 3px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-top: 0.75rem;
-}
-
-.uncertainty-badge svg {
-  width: 12px;
-  height: 12px;
-  stroke: currentColor;
-  stroke-width: 2;
-  fill: none;
-}
-
-/* List View Cards */
-.objects-grid.list-view .object-card {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 1.5rem;
-  align-items: start;
-}
-
-.objects-grid.list-view .object-card .card-header {
-  min-width: 200px;
-}
-
-.objects-grid.list-view .object-card .data-fields {
-  margin-bottom: 0;
-}
-
-.objects-grid.list-view .object-card .description {
-  margin-top: 0;
-  -webkit-line-clamp: 2;
-}
-
-/* === Workshop Materials Section === */
-.materials-section {
-  background: white;
-  border: 1px solid var(--ws-border);
-  border-radius: 4px;
-  padding: 2.5rem;
-  margin-bottom: 3rem;
-}
-
-.materials-section h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
-  font-weight: 500;
-  margin: 0 0 2rem;
-  text-align: center;
-}
-
-.materials-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-bottom: 2rem;
-}
-
-.material-card {
-  background: var(--ws-paper-fresh);
-  border: 1px solid var(--ws-border);
-  border-radius: 4px;
-  padding: 1.5rem;
-}
-
-.material-card h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.1rem;
-  font-weight: 500;
-  margin: 0 0 0.5rem;
-}
-
-.material-card p {
-  font-size: 0.9rem;
-  color: var(--ws-ink-faded);
-  margin: 0 0 1rem;
-}
-
-.competency-tags {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-  list-style: none;
-  padding: 0;
-}
-
-.competency-tags li {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.7rem;
-  font-weight: 600;
-  padding: 0.2rem 0.5rem;
-  border-radius: 2px;
-  color: white;
-}
-
-.competency-tags .comp-CT { background: var(--comp-CT); }
-.competency-tags .comp-RE { background: var(--comp-RE); }
-.competency-tags .comp-CE { background: var(--comp-CE); }
-.competency-tags .comp-PE { background: var(--comp-PE); }
-.competency-tags .comp-CL { background: var(--comp-CL); }
-.competency-tags .comp-RV { background: var(--comp-RV); }
-
-.material-links {
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.btn-download,
-.btn-slides {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.8rem;
-  padding: 0.5rem 1rem;
-  border-radius: 3px;
-  text-decoration: none;
-  transition: all 0.2s;
-}
-
-.btn-download {
-  background: var(--ws-petrol);
-  color: white;
-}
-
-.btn-download:hover {
-  background: #6a8ba5;
-}
-
-.btn-slides {
-  background: transparent;
-  color: var(--ws-ink);
-  border: 1px solid var(--ws-ink-faded);
-}
-
-.btn-slides:hover {
-  background: var(--ws-ink);
-  color: white;
-}
-
-/* Handouts List */
-.handouts {
-  border-top: 1px solid var(--ws-border);
-  padding-top: 1.5rem;
-}
-
-.handouts h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.1rem;
-  font-weight: 500;
-  margin: 0 0 1rem;
-}
-
-.handouts ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.handouts li a {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.85rem;
-  color: var(--ws-ink);
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  background: var(--ws-paper-aged);
-  border-radius: 3px;
-  display: inline-block;
-  transition: all 0.2s;
-}
-
-.handouts li a:hover {
-  background: var(--ws-ink);
-  color: white;
-}
-
-/* === Workshop Context Section === */
+/* === 8. CONTEXT SECTION === */
 .context-section {
   margin-bottom: 3rem;
 }
 
 .section-heading {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-editorial);
   font-size: 1.5rem;
   font-weight: 500;
   text-align: center;
@@ -678,12 +270,12 @@ body.workshop-page {
 
 .context-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
 }
 
 .context-card {
-  background: white;
+  background: #ffffff;
   border: 1px solid var(--ws-border);
   border-radius: 4px;
   padding: 1.5rem;
@@ -708,7 +300,7 @@ body.workshop-page {
 }
 
 .context-card h3 {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -717,7 +309,7 @@ body.workshop-page {
 }
 
 .context-main {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-editorial);
   font-size: 1.1rem;
   font-weight: 500;
   margin: 0 0 0.25rem;
@@ -730,9 +322,9 @@ body.workshop-page {
   margin: 0;
 }
 
-/* === Learning Objectives === */
+/* === 9. LEARNING OBJECTIVES === */
 .learning-objectives {
-  background: white;
+  background: #ffffff;
   border: 1px solid var(--ws-border);
   border-radius: 4px;
   padding: 2rem;
@@ -756,22 +348,127 @@ body.workshop-page {
   margin-bottom: 0;
 }
 
-/* === Block Time Badge === */
+/* === 10. MATERIALS / PRAXIS BLOCKS === */
+.materials-section {
+  background: #ffffff;
+  border: 1px solid var(--ws-border);
+  border-radius: 4px;
+  padding: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.materials-section h2 {
+  font-family: var(--font-editorial);
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0 0 2rem;
+  text-align: center;
+}
+
+.materials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.material-card {
+  background: var(--ws-paper-fresh);
+  border: 1px solid var(--ws-border);
+  border-radius: 4px;
+  padding: 1.5rem;
+}
+
 .block-time {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 1px;
   color: var(--ws-terracotta);
   margin-bottom: 0.75rem;
 }
 
-/* === Dataset Section === */
+.material-card h3 {
+  font-family: var(--font-editorial);
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0 0 0.5rem;
+}
+
+.material-card p {
+  font-size: 0.9rem;
+  color: var(--ws-ink-faded);
+  margin: 0 0 1rem;
+  line-height: 1.5;
+}
+
+.competency-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  list-style: none;
+  padding: 0;
+}
+
+.competency-tags li {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+  color: #ffffff;
+}
+
+.competency-tags .comp-CT { background: var(--comp-CT); }
+.competency-tags .comp-RE { background: var(--comp-RE); }
+.competency-tags .comp-CE { background: var(--comp-CE); }
+.competency-tags .comp-PE { background: var(--comp-PE); }
+.competency-tags .comp-CL { background: var(--comp-CL); }
+.competency-tags .comp-RV { background: var(--comp-RV); }
+
+.material-links {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.btn-download,
+.btn-slides {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.btn-download {
+  background: var(--ws-petrol);
+  color: #ffffff;
+}
+
+.btn-download:hover {
+  background: #6a8ba5;
+}
+
+.btn-slides {
+  background: transparent;
+  color: var(--ws-ink);
+  border: 1px solid var(--ws-ink-faded);
+}
+
+.btn-slides:hover {
+  background: var(--ws-ink);
+  color: #ffffff;
+}
+
+/* === 11. DATASET SECTION === */
 .dataset-section {
   margin-bottom: 3rem;
 }
 
 .dataset-info {
-  background: white;
+  background: #ffffff;
   border: 1px solid var(--ws-border);
   border-radius: 4px;
   padding: 2rem;
@@ -779,7 +476,7 @@ body.workshop-page {
 }
 
 .dataset-source h3 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-editorial);
   font-size: 1.3rem;
   font-weight: 500;
   margin: 0;
@@ -806,7 +503,7 @@ body.workshop-page {
 }
 
 .stat-number {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-editorial);
   font-size: 2rem;
   font-weight: 600;
   color: var(--ws-terracotta);
@@ -814,7 +511,7 @@ body.workshop-page {
 }
 
 .stat-label {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -834,9 +531,9 @@ body.workshop-page {
   justify-content: center;
 }
 
-/* === Resources Section === */
+/* === 12. RESOURCES SECTION === */
 .resources-section {
-  background: white;
+  background: #ffffff;
   border: 1px solid var(--ws-border);
   border-radius: 4px;
   padding: 2.5rem;
@@ -845,12 +542,12 @@ body.workshop-page {
 
 .resources-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
 }
 
 .resource-category h3 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-editorial);
   font-size: 1.1rem;
   font-weight: 500;
   margin: 0 0 1rem;
@@ -899,7 +596,19 @@ body.workshop-page {
   fill: none;
 }
 
-/* === Competency Grid for Workshop === */
+/* === 13. COMPETENCY SECTION === */
+.competency-section {
+  text-align: center;
+  padding: 2rem 0 3rem;
+}
+
+.competency-section h2 {
+  font-family: var(--font-editorial);
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin: 0 0 1.5rem;
+}
+
 .competency-intro {
   text-align: center;
   max-width: 600px;
@@ -910,7 +619,7 @@ body.workshop-page {
 
 .competency-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 0.75rem;
   max-width: 900px;
   margin: 0 auto 1.5rem;
@@ -922,11 +631,11 @@ body.workshop-page {
   gap: 0.75rem;
   padding: 0.75rem 1rem;
   border-radius: 4px;
-  color: white;
+  color: #ffffff;
 }
 
 .competency-item .comp-code {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.8rem;
   font-weight: 600;
   width: 28px;
@@ -936,10 +645,11 @@ body.workshop-page {
 .competency-item .comp-name {
   flex: 1;
   font-size: 0.9rem;
+  text-align: left;
 }
 
 .competency-item .comp-weight {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.7rem;
   opacity: 0.85;
   text-transform: uppercase;
@@ -954,51 +664,6 @@ body.workshop-page {
 .comp-RV-bg { background: var(--comp-RV); }
 .comp-EW-bg { background: var(--comp-EW); }
 
-/* === Competency Overview === */
-.competency-section {
-  text-align: center;
-  padding: 2rem 0 3rem;
-}
-
-.competency-section h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.3rem;
-  font-weight: 500;
-  margin: 0 0 1.5rem;
-}
-
-.competency-bar-horizontal {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  margin-bottom: 1rem;
-}
-
-.competency-bar-horizontal .comp-badge {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.8rem;
-  font-weight: 600;
-  padding: 0.5rem 1rem;
-  border-radius: 3px;
-  color: white;
-  text-decoration: none;
-  transition: all 0.2s;
-}
-
-.competency-bar-horizontal .comp-badge:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.competency-bar-horizontal .comp-CT { background: var(--comp-CT); }
-.competency-bar-horizontal .comp-RE { background: var(--comp-RE); }
-.competency-bar-horizontal .comp-CE { background: var(--comp-CE); }
-.competency-bar-horizontal .comp-PE { background: var(--comp-PE); }
-.competency-bar-horizontal .comp-CL { background: var(--comp-CL); }
-.competency-bar-horizontal .comp-RV { background: var(--comp-RV); }
-.competency-bar-horizontal .comp-EW { background: var(--comp-EW); }
-
 .competency-note {
   font-size: 0.9rem;
   color: var(--ws-ink-faded);
@@ -1008,7 +673,7 @@ body.workshop-page {
   color: var(--ws-petrol);
 }
 
-/* === Footer === */
+/* === 14. FOOTER === */
 .workshop-footer {
   text-align: center;
   padding: 2rem;
@@ -1030,29 +695,32 @@ body.workshop-page {
   margin: 0.5rem 0;
 }
 
-/* === No Results === */
-.no-results {
-  text-align: center;
-  padding: 3rem;
-  color: var(--ws-ink-faded);
-}
+/* === 15. RESPONSIVE === */
 
-.no-results p {
-  margin: 0;
-}
-
-/* === Responsive === */
+/* Tablet */
 @media (max-width: 900px) {
+  .context-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .materials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .resources-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .competency-grid {
+    grid-template-columns: 1fr;
+  }
+
   .process-steps {
-    gap: 0.5rem;
+    gap: 1.5rem;
   }
 
   .process-step {
     flex: 0 1 140px;
-  }
-
-  .process-connector {
-    display: none;
   }
 
   .step-icon {
@@ -1061,6 +729,7 @@ body.workshop-page {
   }
 }
 
+/* Mobile */
 @media (max-width: 600px) {
   :root {
     --ws-content-padding: 1rem;
@@ -1078,6 +747,22 @@ body.workshop-page {
     font-size: 1.2rem;
   }
 
+  .workshop-banner {
+    padding: 1.5rem 1rem;
+  }
+
+  .banner-title {
+    font-size: 1.3rem;
+  }
+
+  .banner-meta {
+    font-size: 0.7rem;
+  }
+
+  .context-grid {
+    grid-template-columns: 1fr;
+  }
+
   .process-steps {
     flex-direction: column;
     align-items: center;
@@ -1089,29 +774,16 @@ body.workshop-page {
     max-width: 250px;
   }
 
-  .filter-bar {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .search-wrapper {
-    min-width: auto;
-  }
-
-  .view-toggles {
-    align-self: flex-end;
-  }
-
-  .objects-grid {
+  .resources-grid {
     grid-template-columns: 1fr;
   }
 
-  .objects-grid.list-view .object-card {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+  .dataset-stats {
+    gap: 2rem;
   }
 
-  .materials-section {
+  .materials-section,
+  .resources-section {
     padding: 1.5rem;
   }
 
@@ -1122,14 +794,5 @@ body.workshop-page {
   .btn-download,
   .btn-slides {
     text-align: center;
-  }
-
-  .competency-bar-horizontal {
-    gap: 0.35rem;
-  }
-
-  .competency-bar-horizontal .comp-badge {
-    font-size: 0.7rem;
-    padding: 0.4rem 0.7rem;
   }
 }
