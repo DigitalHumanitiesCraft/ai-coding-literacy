@@ -160,7 +160,7 @@ body.workshop-page {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 3rem;
   flex-wrap: wrap;
 }
 
@@ -196,6 +196,10 @@ body.workshop-page {
 
 .step-icon.filled svg {
   stroke: white;
+}
+
+.step-icon.dark {
+  background: var(--ws-ink);
 }
 
 .step-icon.terracotta {
