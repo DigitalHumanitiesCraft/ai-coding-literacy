@@ -2,6 +2,9 @@
    Tufte-inspiriert: Maximale Information, minimale Dekoration
    ============================================================ */
 
+/* === Font Imports === */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
 /* === Foundation === */
 :root {
   /* Farben */
@@ -32,6 +35,11 @@
   --content-width: 720px;
   --content-width-narrow: 680px;
   --info-panel-width: 440px;
+
+  /* Fehlende Variablen */
+  --bg-light: #F5F5F5;
+  --font-editorial: 'Playfair Display', Georgia, serif;
+  --font-ui: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 *, *::before, *::after {

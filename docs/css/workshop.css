@@ -967,3 +967,50 @@ body.workshop-page {
     padding: 2rem 1rem;
   }
 }
+
+/* === SITE NAVIGATION === */
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--ws-ink);
+  padding: 0.5rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  z-index: 100;
+  text-align: center;
+}
+
+.site-nav a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.site-nav a:hover,
+.site-nav a.active {
+  color: #fff;
+}
+
+.nav-separator {
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0 0.75rem;
+}
+
+/* Offset body content for fixed nav */
+body.workshop-page {
+  padding-top: 2.5rem;
+}
+
+/* === CLICKABLE COMPETENCY ITEMS === */
+a.competency-item {
+  text-decoration: none;
+  display: block;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+a.competency-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}

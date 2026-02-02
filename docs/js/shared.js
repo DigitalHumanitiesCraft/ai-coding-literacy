@@ -12,7 +12,7 @@
  * @returns {Promise<Object>} Content-Daten
  */
 async function loadContentJson() {
-  const response = await fetch('/data/content.json');
+  const response = await fetch('../data/content.json');
   return response.json();
 }
 
@@ -31,7 +31,7 @@ function renderCompetencySidebar(data, targetId = 'sidebar-bars') {
 
   data.chapters.forEach(chapter => {
     const link = document.createElement('a');
-    link.href = `/de/#chapter-${chapter.id}`;
+    link.href = `./#chapter-${chapter.id}`;
     link.className = `competency-bar comp-${chapter.id}`;
     link.title = chapter.name;
     link.innerHTML = `<span class="bar-label">${chapter.id}</span>`;
