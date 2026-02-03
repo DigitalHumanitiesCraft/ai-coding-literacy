@@ -88,6 +88,54 @@ function createCompetencyBadge(chapter, size = '') {
 }
 
 // ============================================
+// Mobile Navigation
+// ============================================
+
+/**
+ * Initialisiert die mobile Navigation
+ */
+function initMobileNav() {
+  const sidebar = document.querySelector('.sidebar');
+  if (!sidebar) return;
+
+  // Mobile Menu Button erstellen
+  const menuBtn = document.createElement('button');
+  menuBtn.className = 'mobile-menu-btn';
+  menuBtn.innerHTML = 'Menu';
+  menuBtn.setAttribute('aria-label', 'Navigation oeffnen');
+  document.body.appendChild(menuBtn);
+
+  // Overlay erstellen
+  const overlay = document.createElement('div');
+  overlay.className = 'sidebar-overlay';
+  document.body.appendChild(overlay);
+
+  // Toggle Funktion
+  function toggleSidebar() {
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('open');
+    menuBtn.innerHTML = sidebar.classList.contains('open') ? 'Schliessen' : 'Menu';
+  }
+
+  menuBtn.addEventListener('click', toggleSidebar);
+  overlay.addEventListener('click', toggleSidebar);
+
+  // Sidebar schliessen wenn Link geklickt wird
+  sidebar.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 1000) {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('open');
+        menuBtn.innerHTML = 'Menu';
+      }
+    });
+  });
+}
+
+// Mobile Nav initialisieren wenn DOM bereit
+document.addEventListener('DOMContentLoaded', initMobileNav);
+
+// ============================================
 // i18n - Gemeinsame UI-Texte
 // ============================================
 

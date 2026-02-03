@@ -106,23 +106,6 @@ function renderReference(data) {
     section.appendChild(ul);
     resourcesContainer.appendChild(section);
   });
-
-  // Zitate
-  const quotesContainer = document.getElementById('quotes-container');
-  chapters.forEach(chapter => {
-    if (!chapter.quote) return;
-
-    const quote = document.createElement('blockquote');
-    quote.className = 'reference-quote';
-    quote.innerHTML = `
-      <p>"${chapter.quote.text}"</p>
-      <footer>
-        <cite>— ${chapter.quote.source}</cite>
-        ${createCompetencyBadge(chapter, 'sm')}
-      </footer>
-    `;
-    quotesContainer.appendChild(quote);
-  });
 }
 
 document.addEventListener('DOMContentLoaded', loadContent);
