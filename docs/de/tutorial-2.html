@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutorial 2: Datenverarbeitung mit API - AI Coding Literacy</title>
+  <meta name="description" content="Mit der LLM-API arbeiten: Daten bereinigen, anreichern und strukturieren.">
+  <link rel="stylesheet" href="../css/workshop.css">
+</head>
+<body class="workshop-page">
+
+  <!-- Site Navigation -->
+  <nav class="site-nav">
+    <a href="./">Konzept</a>
+    <span class="nav-separator">|</span>
+    <a href="workshop.html">Workshop</a>
+    <span class="nav-separator">|</span>
+    <a href="referenz.html">Referenz</a>
+  </nav>
+
+  <!-- Header -->
+  <header class="workshop-header">
+    <p class="workshop-tagline">Workshop Tutorial</p>
+    <h1 class="workshop-title">Datenverarbeitung mit API</h1>
+    <p class="workshop-subtitle">Bereinigen, anreichern, strukturieren</p>
+    <p class="workshop-intro">
+      In diesem Tutorial lernen Sie, wie Sie die LLM-API programmatisch nutzen.
+      Statt einzelner Chat-Nachrichten verarbeiten Sie Daten automatisiert.
+      Das eroeffnet neue Moeglichkeiten: Batch-Verarbeitung, Datenanreicherung,
+      Konvertierung von unstrukturierten zu strukturierten Daten.
+    </p>
+  </header>
+
+  <main>
+    <div class="workshop-container">
+
+      <!-- Downloads -->
+      <section class="tutorial-downloads">
+        <h3>Downloads fuer dieses Tutorial</h3>
+        <div class="download-list">
+          <a href="../data/kriminalmuseum/workshop_objekte.csv" class="download-item" download>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path fill="none" d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline fill="none" points="7 10 12 15 17 10"/><line fill="none" x1="12" y1="15" x2="12" y2="3"/></svg>
+            workshop_objekte.csv
+          </a>
+        </div>
+        <div class="download-list download-list-secondary">
+          <a href="../workshops/programmieren-2-0/python/api_test.py" class="download-item" download>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path fill="none" d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline fill="none" points="7 10 12 15 17 10"/><line fill="none" x1="12" y1="15" x2="12" y2="3"/></svg>
+            Loesung: api_test.py
+          </a>
+          <a href="../workshops/programmieren-2-0/python/batch_extract.py" class="download-item" download>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path fill="none" d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline fill="none" points="7 10 12 15 17 10"/><line fill="none" x1="12" y1="15" x2="12" y2="3"/></svg>
+            Loesung: batch_extract.py
+          </a>
+        </div>
+      </section>
+
+      <!-- Tutorial Content -->
+      <div class="tutorial-content">
+
+        <h2>Warum die API?</h2>
+
+        <p>
+          Im ersten Tutorial haben Sie das LLM ueber das Chat-Interface genutzt. Das funktioniert
+          gut fuer einzelne Aufgaben. Aber was, wenn Sie 100 Beschreibungen verarbeiten wollen?
+          Oder 1000? Manuelles Copy-Paste ist keine Option.
+        </p>
+
+        <p>
+          Die <span class="glossar-term" data-term="api">API</span> (Application Programming Interface)
+          erlaubt es, das LLM aus Ihrem Code heraus anzusprechen. Sie schreiben ein
+          <span class="glossar-term" data-term="python">Python</span>-Skript, das automatisch
+          Anfragen an das LLM schickt und die Antworten verarbeitet.
+        </p>
+
+        <!-- Dimension Box: CE -->
+        <aside class="dimension-box dim-CE">
+          <div class="dimension-header">
+            <span class="dimension-badge dim-CE">CE</span>
+            <h4 class="dimension-title">Context Engineering</h4>
+          </div>
+          <p>
+            Bei API-Aufrufen ist Context Engineering noch wichtiger als im Chat. Sie haben
+            keinen Dialog: eine Anfrage, eine Antwort. Der gesamte Kontext muss im Prompt sein.
+          </p>
+          <p>
+            Die bewaehrte Struktur: Rolle, Aufgabe, Informationen, Constraints, Ausgabeformat.
+            Bei strukturierten Ausgaben wie JSON: Exakt spezifizieren, was Sie erwarten.
+          </p>
+          <p class="dimension-source">Mei et al. (2025). A Survey of Context Engineering. arXiv.</p>
+        </aside>
+
+        <h2>Teil 1: API-Zugang einrichten</h2>
+
+        <p>
+          Fuer dieses Tutorial verwenden wir die Claude API von Anthropic. Sie brauchen einen
+          <span class="glossar-term" data-term="api-key">API-Key</span>. Dieser identifiziert
+          Sie gegenueber dem Dienst und ermoeglicht die Abrechnung.
+        </p>
+
+        <div class="tutorial-step">
+          <div class="tutorial-step-header">
+            <span class="step-number">1</span>
+            <h4 class="step-title">API-Key erhalten</h4>
+          </div>
+          <p>
+            Gehen Sie zu <a href="https://console.anthropic.com/" target="_blank">console.anthropic.com</a>,
+            erstellen Sie ein Konto und generieren Sie einen API-Key. Fuer Workshops stellen
+            wir oft einen temporaeren Key bereit.
+          </p>
+        </div>
+
+        <p>
+          Der API-Key ist wie ein Passwort: Teilen Sie ihn nicht, committen Sie ihn nicht
+          in Versionskontrolle. Speichern Sie ihn in einer Umgebungsvariable oder einer
+          lokalen Konfigurationsdatei.
+        </p>
+
+        <div class="tutorial-step">
+          <div class="tutorial-step-header">
+            <span class="step-number">2</span>
+            <h4 class="step-title">Bibliothek installieren</h4>
+          </div>
+          <p>
+            Oeffnen Sie das <span class="glossar-term" data-term="terminal">Terminal</span>
+            und installieren Sie die anthropic-<span class="glossar-term" data-term="bibliothek">Bibliothek</span>:
+          </p>
+        </div>
+
+        <div class="tutorial-code">
+          <pre><code>pip install anthropic</code></pre>
+        </div>
+
+        <details class="tutorial-expected">
+          <summary>So sollte die Ausgabe aussehen</summary>
+          <div class="tutorial-expected-content">
+            <pre>Successfully installed anthropic-0.x.x</pre>
+            <p>Falls Sie eine Meldung sehen wie "Requirement already satisfied", ist die
+            Bibliothek bereits installiert.</p>
+          </div>
+        </details>
+
+        <aside class="tutorial-troubleshoot">
+          <div class="troubleshoot-header">
+            <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <h4 class="troubleshoot-title">Haeufige Fehler</h4>
+          </div>
+          <p>
+            <code>pip: command not found</code> - Versuchen Sie <code>pip3 install anthropic</code>
+            oder unter Windows: <code>py -m pip install anthropic</code>
+          </p>
+          <p>
+            <code>Permission denied</code> - Verwenden Sie <code>pip install --user anthropic</code>
+            oder starten Sie das Terminal als Administrator.
+          </p>
+        </aside>
+
+        <h2>Teil 2: Der erste API-Aufruf</h2>
+
+        <p>
+          Beginnen wir mit einem einfachen Beispiel. Das folgende Skript schickt eine
+          Anfrage an Claude und gibt die Antwort aus.
+        </p>
+
+        <div class="tutorial-code">
+          <pre><code>import anthropic
+
+# API-Client erstellen
+client = anthropic.Anthropic(
+    api_key="Ihr-API-Key-hier"  # Oder: aus Umgebungsvariable
+)
+
+# Nachricht senden
+message = client.messages.create(
+    model="claude-sonnet-4-20250514",
+    max_tokens=1024,
+    messages=[
+        {"role": "user", "content": "Was ist ein Museum?"}
+    ]
+)
+
+# Antwort ausgeben
+print(message.content[0].text)</code></pre>
+        </div>
+
+        <p>
+          Speichern Sie diesen Code als <code>api_test.py</code>, ersetzen Sie den API-Key
+          und fuehren Sie aus: <code>python api_test.py</code>
+        </p>
+
+        <details class="tutorial-expected">
+          <summary>So sollte die Ausgabe aussehen</summary>
+          <div class="tutorial-expected-content">
+            <p>Sie sollten eine Antwort wie diese sehen:</p>
+            <pre>Ein Museum ist eine Institution, die Objekte von kultureller,
+historischer, wissenschaftlicher oder kuenstlerischer Bedeutung
+sammelt, bewahrt, erforscht und der Oeffentlichkeit zugaenglich
+macht...</pre>
+            <p>Die genaue Formulierung variiert bei jedem Aufruf.</p>
+          </div>
+        </details>
+
+        <aside class="tutorial-troubleshoot">
+          <div class="troubleshoot-header">
+            <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <h4 class="troubleshoot-title">Haeufige Fehler</h4>
+          </div>
+          <p>
+            <code>AuthenticationError</code> - Der API-Key ist falsch oder fehlt. Pruefen Sie
+            Tippfehler und ob der Key aktiv ist.
+          </p>
+          <p>
+            <code>ModuleNotFoundError: anthropic</code> - Die Bibliothek ist nicht installiert.
+            Fuehren Sie <code>pip install anthropic</code> aus.
+          </p>
+          <p>
+            <code>RateLimitError</code> - Sie haben zu viele Anfragen gesendet. Warten Sie
+            einige Sekunden und versuchen Sie es erneut.
+          </p>
+        </aside>
+
+        <p>
+          Wenn alles funktioniert, sehen Sie eine Antwort von Claude. Wenn nicht, pruefen
+          Sie die Fehlermeldung oben.
+        </p>
+
+        <!-- Dimension Box: PE -->
+        <aside class="dimension-box dim-PE">
+          <div class="dimension-header">
+            <span class="dimension-badge dim-PE">PE</span>
+            <h4 class="dimension-title">Prompt Engineering</h4>
+          </div>
+          <p>
+            Bei API-Aufrufen koennen Sie den <code>system</code>-Parameter nutzen, um dem
+            LLM eine Rolle oder Grundhaltung zu geben. Das ist wie eine Vorabinstruktion,
+            die bei jedem Aufruf gilt.
+          </p>
+          <p>
+            Beispiel: <code>system="Du bist ein Experte fuer Museumskataloge. Antworte praezise und faktenbasiert."</code>
+          </p>
+          <p class="dimension-source">Anthropic (2024). Prompt Engineering Guide.</p>
+        </aside>
+
+        <div class="tutorial-checkpoint">
+          <div class="checkpoint-header">
+            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <h4 class="checkpoint-title">Checkpoint: Bereit fuer Teil 3?</h4>
+          </div>
+          <ul>
+            <li>Die anthropic-Bibliothek ist installiert</li>
+            <li>Sie haben einen funktionierenden API-Key</li>
+            <li>Der erste API-Aufruf hat eine Antwort zurueckgegeben</li>
+          </ul>
+        </div>
+
+        <h2>Teil 3: Daten bereinigen</h2>
+
+        <p>
+          Jetzt wird es praktisch. Unsere Museumsdaten haben ein Problem: Das Feld
+          <code>description</code> enthaelt semi-strukturierten Text mit Angaben zu Material,
+          Masse, Herkunft. Wir wollen diese Informationen in separate Felder extrahieren.
+        </p>
+
+        <div class="tutorial-step">
+          <div class="tutorial-step-header">
+            <span class="step-number">3</span>
+            <h4 class="step-title">Beschreibungen analysieren</h4>
+          </div>
+          <p>
+            Schauen Sie sich einige Beschreibungen an:
+          </p>
+        </div>
+
+        <div class="tutorial-code">
+          <pre><code># Beispiel-Beschreibungen aus dem Datensatz:
+
+"Dolch mit Holzgriff. Material: Stahl, Holz. Masse: L. 25 cm."
+
+"Revolver, System Smith & Wesson. 6-schüssig. Herkunft: USA."
+
+"Handschellen aus Eisen. Gebrauchsspuren sichtbar."</code></pre>
+        </div>
+
+        <p>
+          Manche Beschreibungen haben explizite Feldangaben (Material:, Masse:), andere nicht.
+          Das ist ein typisches Problem bei historischen Daten. Ein LLM kann hier helfen,
+          weil es natuerliche Sprache versteht.
+        </p>
+
+        <!-- Dimension Box: RE -->
+        <aside class="dimension-box dim-RE">
+          <div class="dimension-header">
+            <span class="dimension-badge dim-RE">RE</span>
+            <h4 class="dimension-title">Requirement Engineering</h4>
+          </div>
+          <p>
+            Bevor Sie Code schreiben: Was genau wollen Sie extrahieren? Welche Felder?
+            Was, wenn eine Information fehlt? Was ist das Ausgabeformat?
+          </p>
+          <p>
+            Definieren Sie: Eingabe (Beschreibungstext), Ausgabe (JSON mit definierten
+            Feldern), Verhalten bei fehlenden Informationen (null oder leerer String?),
+            Umgang mit Mehrdeutigkeiten.
+          </p>
+          <p class="dimension-source">Vogelsang & Fischbach (2024). LLMs for RE Tasks. arXiv.</p>
+        </aside>
+
+        <div class="tutorial-step">
+          <div class="tutorial-step-header">
+            <span class="step-number">4</span>
+            <h4 class="step-title">Extraktions-Prompt entwickeln</h4>
+          </div>
+          <p>
+            Formulieren Sie einen Prompt, der die gewuenschte Extraktion beschreibt:
+          </p>
+        </div>
+
+        <div class="tutorial-code">
+          <pre><code>EXTRACTION_PROMPT = """
+Extrahiere strukturierte Informationen aus dieser Museumsobjekt-Beschreibung.
+
+Beschreibung: {description}
+
+Extrahiere folgende Felder (falls vorhanden):
+- material: Liste der Materialien
+- dimensions: Masseangaben (als Text)
+- origin: Herkunftsort oder -land
+- condition: Zustandsbeschreibung
+
+Ausgabe als JSON. Felder ohne Information: null.
+Nur das JSON ausgeben, keine Erklaerung.
+
+Beispiel-Ausgabe:
+{{"material": ["Stahl", "Holz"], "dimensions": "L. 25 cm", "origin": null, "condition": null}}
+"""</code></pre>
+        </div>
+
+        <p>
+          Beachten Sie das Beispiel am Ende. Das ist
+          <span class="glossar-term" data-term="prompt">Few-Shot Prompting</span>:
+          Sie zeigen dem LLM das gewuenschte Format anhand eines Beispiels.
+        </p>
+
+        <h2>Teil 4: Batch-Verarbeitung</h2>
+
+        <p>
+          Jetzt kombinieren wir alles: Wir lesen die CSV-Datei, schicken jede Beschreibung
+          an die API und speichern die extrahierten Daten.
+        </p>
+
+        <div class="tutorial-code">
+          <pre><code>import anthropic
+import pandas as pd
+import json
+import time
+
+# Setup
+client = anthropic.Anthropic(api_key="Ihr-Key")
+
+# Daten laden
+df = pd.read_csv("workshop_objekte.csv")
+
+# Ergebnisse sammeln
+results = []
+
+for index, row in df.iterrows():
+    print(f"Verarbeite {index + 1}/{len(df)}: {row['title'][:30]}...")
+
+    # Prompt mit Beschreibung fuellen
+    prompt = EXTRACTION_PROMPT.format(description=row['description'])
+
+    try:
+        message = client.messages.create(
+            model="claude-sonnet-4-20250514",
+            max_tokens=500,
+            messages=[{"role": "user", "content": prompt}]
+        )
+
+        # JSON aus Antwort parsen
+        response_text = message.content[0].text
+        extracted = json.loads(response_text)
+        extracted['pid'] = row['pid']  # ID hinzufuegen
+        results.append(extracted)
+
+    except Exception as e:
+        print(f"  Fehler: {e}")
+        results.append({'pid': row['pid'], 'error': str(e)})
+
+    # Pause zwischen Anfragen (Rate Limiting)
+    time.sleep(0.5)
+
+# Ergebnisse speichern
+output_df = pd.DataFrame(results)
+output_df.to_csv("extrahierte_daten.csv", index=False)
+print(f"Fertig! {len(results)} Objekte verarbeitet.")</code></pre>
+        </div>
+
+        <aside class="tutorial-why">
+          <div class="why-header">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <h4 class="why-title">Warum time.sleep?</h4>
+          </div>
+          <p>
+            APIs haben Rate Limits - Begrenzungen, wie viele Anfragen pro Sekunde erlaubt sind.
+            Ohne Pause sendet Ihr Skript Anfragen so schnell wie moeglich. Das fuehrt zu
+            <code>RateLimitError</code> und blockiert Sie temporaer.
+          </p>
+          <p>
+            0.5 Sekunden Pause ist ein sicherer Wert. Bei grossen Datenmengen koennen Sie
+            auch mit kleineren Pausen experimentieren.
+          </p>
+        </aside>
+
+        <details class="tutorial-expected">
+          <summary>So sollte die Ausgabe aussehen</summary>
+          <div class="tutorial-expected-content">
+            <pre>Verarbeite 1/25: Revolver Lefaucheux...
+Verarbeite 2/25: Einbruchswerkzeug...
+Verarbeite 3/25: Handschellen...
+...
+Fertig! 25 Objekte verarbeitet.</pre>
+            <p>Am Ende sollte eine Datei <code>extrahierte_daten.csv</code> existieren.</p>
+          </div>
+        </details>
+
+        <!-- Dimension Box: CL -->
+        <aside class="dimension-box dim-CL">
+          <div class="dimension-header">
+            <span class="dimension-badge dim-CL">CL</span>
+            <h4 class="dimension-title">Code Literacy</h4>
+          </div>
+          <p>
+            Dieses Skript hat mehr Struktur als die vorherigen. Erkennen Sie die Teile?
+            Setup (Client erstellen, Daten laden), Hauptschleife (for-Loop durch alle Zeilen),
+            Fehlerbehandlung (try-except), Ausgabe (DataFrame speichern).
+          </p>
+          <p>
+            Die <span class="glossar-term" data-term="schleife">Schleife</span> <code>for index, row in df.iterrows()</code>
+            geht durch jede Zeile des DataFrames. <code>row['description']</code> greift auf
+            die Spalte description zu.
+          </p>
+          <p class="dimension-source">Hermans, F. (2021). The Programmer's Brain. Manning.</p>
+        </aside>
+
+        <div class="tutorial-checkpoint">
+          <div class="checkpoint-header">
+            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <h4 class="checkpoint-title">Checkpoint: Bereit fuer Teil 5?</h4>
+          </div>
+          <ul>
+            <li>Das Batch-Skript laeuft ohne Fehler durch</li>
+            <li>Die Datei extrahierte_daten.csv wurde erstellt</li>
+            <li>Stichproben zeigen plausible Ergebnisse</li>
+          </ul>
+        </div>
+
+        <h2>Teil 5: Daten anreichern</h2>
+
+        <p>
+          Extraktion ist gut. Aber LLMs koennen mehr: Sie koennen Daten anreichern.
+          Zum Beispiel: Kategorisierung, Zusammenfassungen, Uebersetzungen.
+        </p>
+
+        <div class="tutorial-step">
+          <div class="tutorial-step-header">
+            <span class="step-number">5</span>
+            <h4 class="step-title">Kategorisierung hinzufuegen</h4>
+          </div>
+          <p>
+            Erweitern Sie den Prompt um eine Kategorisierung:
+          </p>
+        </div>
+
+        <div class="tutorial-code">
+          <pre><code>ENRICHMENT_PROMPT = """
+Analysiere dieses Museumsobjekt und ergaenze strukturierte Metadaten.
+
+Titel: {title}
+Kategorie: {objectClass}
+Beschreibung: {description}
+
+Ergaenze:
+1. keywords: 3-5 relevante Schlagworte (deutsch)
+2. era: Historische Epoche (z.B. "Kaiserzeit", "Zwischenkriegszeit")
+3. significance: Einschaetzung der musealen Bedeutung (hoch/mittel/gering)
+4. related_topics: 2-3 verwandte Themengebiete
+
+Ausgabe als JSON. Nur das JSON, keine Erklaerung.
+"""</code></pre>
+        </div>
+
+        <p>
+          Vorsicht: Diese Anreicherungen sind LLM-Einschaetzungen, keine Fakten.
+          Sie koennen hilfreich sein fuer Recherche und Exploration, aber nicht als
+          autoritativ gelten.
+        </p>
+
+        <!-- Dimension Box: RV -->
+        <aside class="dimension-box dim-RV">
+          <div class="dimension-header">
+            <span class="dimension-badge dim-RV">RV</span>
+            <h4 class="dimension-title">Review</h4>
+          </div>
+          <p>
+            Bei automatisierter Verarbeitung ist Review besonders wichtig. Sie sehen nicht
+            jede einzelne Antwort. Strategien: Stichproben pruefen, Plausibilitaetschecks
+            einbauen, unerwartete Werte flaggen.
+          </p>
+          <p>
+            Was, wenn das LLM <span class="glossar-term" data-term="halluzination">halluziniert</span>?
+            Bei 100 Objekten werden Sie nicht jede Antwort lesen. Pruefen Sie zumindest
+            die ersten 10 und einige zufaellige Stichproben.
+          </p>
+          <p class="dimension-source">Liu et al. (2024). HalluCode Benchmark. arXiv.</p>
+        </aside>
+
+        <h2>Teil 6: Unstrukturiert zu strukturiert</h2>
+
+        <p>
+          Ein haeufiger Anwendungsfall: Sie haben Freitext und wollen strukturierte Daten.
+          Das klassische Beispiel sind historische Karteikarten, die als Fliesstext vorliegen.
+        </p>
+
+        <div class="tutorial-step">
+          <div class="tutorial-step-header">
+            <span class="step-number">6</span>
+            <h4 class="step-title">Karteikarten-Konvertierung</h4>
+          </div>
+          <p>
+            Stellen Sie sich vor, Sie haben diesen Freitext:
+          </p>
+        </div>
+
+        <div class="tutorial-code">
+          <pre><code># Beispiel: Historische Karteikarte als Fliesstext
+
+karteikarte = """
+Inv.Nr. 1923/45
+Dolch mit Scheide, vermutlich osmanisch, 18. Jhd.
+Klinge aus Damaststahl, Griff aus Elfenbein mit
+Silberbeschlaegen. Scheide Leder mit Metallbeschlaegen.
+L. 35 cm (mit Scheide 40 cm). Erworben 1923 aus
+Privatsammlung Dr. Karl Mueller, Wien. Zustand gut,
+leichte Korrosionsspuren an Beschlaegen.
+"""</code></pre>
+        </div>
+
+        <p>
+          Der Prompt fuer die Strukturierung:
+        </p>
+
+        <div class="tutorial-code">
+          <pre><code>STRUCTURE_PROMPT = """
+Konvertiere diese historische Karteikarte in strukturierte Daten.
+
+Karteikarte:
+{text}
+
+Extrahiere in folgendes Schema:
+- inventory_number: Inventarnummer
+- title: Kurztitel
+- object_type: Objekttyp
+- date_text: Datierungsangabe (Originaltext)
+- date_start: Frueheste Datierung (Jahr)
+- date_end: Spaeteste Datierung (Jahr)
+- materials: Liste der Materialien
+- techniques: Herstellungstechniken
+- dimensions: Masseangaben
+- provenance: Erwerbsgeschichte
+- condition: Zustandsbeschreibung
+- notes: Weitere Anmerkungen
+
+Ausgabe als JSON. Unbekannte Felder: null.
+Bei Datierungen wie "18. Jhd." schaetze: date_start=1700, date_end=1799.
+"""</code></pre>
+        </div>
+
+        <p>
+          Diese Art der Konvertierung ist eine Staerke von LLMs. Sie verstehen Kontext,
+          koennen mit Varianten umgehen und interpretieren implizite Informationen.
+        </p>
+
+        <!-- Dimension Box: EW -->
+        <aside class="dimension-box dim-EW">
+          <div class="dimension-header">
+            <span class="dimension-badge dim-EW">EW</span>
+            <h4 class="dimension-title">Expertenwissen</h4>
+          </div>
+          <p>
+            Hier zeigt sich der Wert Ihres Fachwissens. Das LLM kennt "osmanisch" und
+            "Damaststahl" - aber Sie wissen, ob die Interpretation plausibel ist.
+            Ist "18. Jhd." fuer osmanische Dolche realistisch? Ist Elfenbein fuer diese
+            Periode typisch?
+          </p>
+          <p>
+            Ihr Domaenenwissen ist der Pruefstein. Das LLM liefert, Sie validieren.
+          </p>
+          <p class="dimension-source">Dell'Acqua et al. (2023). Navigating the Jagged Frontier. HBS.</p>
+        </aside>
+
+        <h2>Teil 7: Robustheit verbessern</h2>
+
+        <p>
+          Produktiver Code braucht Fehlerbehandlung. Was, wenn die API nicht antwortet?
+          Was, wenn das JSON ungueltig ist? Hier ein robusteres Skript:
+        </p>
+
+        <div class="tutorial-code">
+          <pre><code>import anthropic
+import pandas as pd
+import json
+import time
+from typing import Optional
+
+def extract_with_retry(client, prompt: str, max_retries: int = 3) -> Optional[dict]:
+    """Extrahiert Daten mit Wiederholungsversuchen bei Fehlern."""
+
+    for attempt in range(max_retries):
+        try:
+            message = client.messages.create(
+                model="claude-sonnet-4-20250514",
+                max_tokens=500,
+                messages=[{"role": "user", "content": prompt}]
+            )
+
+            response_text = message.content[0].text
+
+            # Versuche JSON zu parsen
+            # Manchmal gibt das LLM Markdown-Bloecke zurueck
+            if response_text.startswith("```"):
+                response_text = response_text.split("```")[1]
+                if response_text.startswith("json"):
+                    response_text = response_text[4:]
+
+            return json.loads(response_text.strip())
+
+        except json.JSONDecodeError as e:
+            print(f"  JSON-Fehler (Versuch {attempt + 1}): {e}")
+            time.sleep(1)
+
+        except anthropic.RateLimitError:
+            print(f"  Rate Limit erreicht, warte 30 Sekunden...")
+            time.sleep(30)
+
+        except Exception as e:
+            print(f"  Fehler (Versuch {attempt + 1}): {e}")
+            time.sleep(2)
+
+    return None  # Alle Versuche fehlgeschlagen</code></pre>
+        </div>
+
+        <p>
+          Diese <span class="glossar-term" data-term="funktion">Funktion</span> versucht es
+          bis zu 3 mal, behandelt Rate Limits und bereinigt das JSON. Das macht den
+          Unterschied zwischen einem Demo-Skript und einem nutzbaren Werkzeug.
+        </p>
+
+        <h2>Was Sie gelernt haben</h2>
+
+        <p>
+          In diesem Tutorial haben Sie den Sprung vom Chat-Interface zur programmatischen
+          Nutzung gemacht:
+        </p>
+
+        <ul>
+          <li>API-Zugang einrichten und erste Anfragen stellen</li>
+          <li>Batch-Verarbeitung: Viele Datensaetze automatisiert verarbeiten</li>
+          <li>Strukturierte Extraktion aus unstrukturiertem Text</li>
+          <li>Datenanreicherung mit LLM-generierten Metadaten</li>
+          <li>Robuste Fehlerbehandlung fuer produktiven Einsatz</li>
+        </ul>
+
+        <p>
+          Die API eroeffnet Moeglichkeiten, die im Chat-Interface nicht praktikabel waeren.
+          Aber sie erfordert auch mehr Sorgfalt: kein Dialog, keine Rueckfragen, systematische
+          Pruefung der Ergebnisse.
+        </p>
+
+        <p>
+          Der naechste Schritt waere die Integration in bestehende Workflows: automatische
+          Verarbeitung von Neuzugaengen, regelmaessige Datenanreicherung, Export in
+          Dokumentationssysteme. Das sind keine Projekte fuer einen Workshop-Tag, aber
+          die Grundlagen haben Sie jetzt.
+        </p>
+
+        <!-- Tutorial Navigation -->
+        <nav class="tutorial-nav">
+          <a href="tutorial-1.html" class="tutorial-nav-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            Tutorial 1: Einfuehrung
+          </a>
+          <a href="workshop.html" class="tutorial-nav-link">
+            Zurueck zum Workshop
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </nav>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="workshop-footer">
+    <p><a href="https://github.com/DigitalHumanitiesCraft/ai-coding-literacy">GitHub</a></p>
+    <p>DigitalHumanitiesCraft - 2025</p>
+  </footer>
+
+  <script src="../js/shared.js"></script>
+  <script src="../js/tutorial.js"></script>
+</body>
+</html>

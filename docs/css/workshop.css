@@ -1014,3 +1014,602 @@ a.competency-item:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
+
+/* === 18. TUTORIAL PAGES === */
+
+/* Tutorial Container */
+.tutorial-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.tutorial-content p {
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.tutorial-content h2 {
+  font-family: var(--font-editorial);
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 3rem 0 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--ws-border);
+}
+
+.tutorial-content h3 {
+  font-family: var(--font-editorial);
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 2rem 0 1rem;
+}
+
+/* Downloads Section */
+.tutorial-downloads {
+  background: var(--ws-paper-fresh);
+  border: 1px solid var(--ws-border);
+  border-radius: 4px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+}
+
+.tutorial-downloads h3 {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ws-ink-faded);
+  margin: 0 0 1rem;
+}
+
+.download-list {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.download-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: 0.5rem 1rem;
+  background: var(--ws-petrol);
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: background 0.2s;
+}
+
+.download-item:hover {
+  background: #6a8ba5;
+}
+
+.download-item svg {
+  width: 16px;
+  height: 16px;
+  max-width: 16px;
+  max-height: 16px;
+  flex-shrink: 0;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none !important;
+}
+
+.download-item svg * {
+  fill: none !important;
+  stroke: inherit;
+  stroke-width: inherit;
+}
+
+/* Dimension Boxes (Inline in Text) */
+.dimension-box {
+  background: #ffffff;
+  border-left: 4px solid var(--ws-terracotta);
+  border-radius: 0 4px 4px 0;
+  padding: 1.5rem 2rem;
+  margin: 2rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.dimension-box.dim-CT { border-left-color: var(--comp-CT); }
+.dimension-box.dim-RE { border-left-color: var(--comp-RE); }
+.dimension-box.dim-CE { border-left-color: var(--comp-CE); }
+.dimension-box.dim-PE { border-left-color: var(--comp-PE); }
+.dimension-box.dim-CL { border-left-color: var(--comp-CL); }
+.dimension-box.dim-RV { border-left-color: var(--comp-RV); }
+.dimension-box.dim-EW { border-left-color: var(--comp-EW); }
+
+.dimension-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.dimension-badge {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 2px;
+  color: #ffffff;
+}
+
+.dimension-badge.dim-CT { background: var(--comp-CT); }
+.dimension-badge.dim-RE { background: var(--comp-RE); }
+.dimension-badge.dim-CE { background: var(--comp-CE); }
+.dimension-badge.dim-PE { background: var(--comp-PE); }
+.dimension-badge.dim-CL { background: var(--comp-CL); }
+.dimension-badge.dim-RV { background: var(--comp-RV); }
+.dimension-badge.dim-EW { background: var(--comp-EW); }
+
+.dimension-title {
+  font-family: var(--font-editorial);
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.dimension-box p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0 0 0.75rem;
+  color: var(--ws-ink);
+}
+
+.dimension-box p:last-child {
+  margin-bottom: 0;
+}
+
+.dimension-source {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ws-ink-faded);
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--ws-border);
+}
+
+/* Glossar Terms (Highlighted inline) */
+.glossar-term {
+  color: var(--ws-ink);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--ws-petrol);
+  cursor: help;
+  transition: all 0.2s;
+}
+
+.glossar-term:hover {
+  color: var(--ws-petrol);
+  border-bottom-style: solid;
+}
+
+/* Glossar Tooltip */
+.glossar-tooltip {
+  position: fixed;
+  max-width: 350px;
+  background: var(--ws-ink);
+  color: #ffffff;
+  padding: 1rem 1.25rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.glossar-tooltip.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.glossar-tooltip-term {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--ws-petrol);
+  margin-bottom: 0.5rem;
+}
+
+.glossar-tooltip-definition {
+  margin: 0;
+}
+
+/* Code Snippets in Tutorials */
+.tutorial-code {
+  background: var(--ws-ink);
+  color: #e8e8e8;
+  border-radius: 4px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+.tutorial-code pre {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.tutorial-code code {
+  font-family: inherit;
+}
+
+/* Inline Code */
+.tutorial-content code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--ws-paper-aged);
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+}
+
+/* Tutorial Navigation */
+.tutorial-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0;
+  margin-top: 3rem;
+  border-top: 1px solid var(--ws-border);
+}
+
+.tutorial-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--ws-ink);
+  text-decoration: none;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--ws-border);
+  border-radius: 3px;
+  transition: all 0.2s;
+}
+
+.tutorial-nav-link:hover {
+  background: var(--ws-ink);
+  color: #ffffff;
+  border-color: var(--ws-ink);
+}
+
+.tutorial-nav-link svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+}
+
+.tutorial-nav-link.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Step Indicators */
+.tutorial-step {
+  background: var(--ws-paper-fresh);
+  border: 1px solid var(--ws-border);
+  border-radius: 4px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.tutorial-step-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.step-number {
+  width: 28px;
+  height: 28px;
+  background: var(--ws-terracotta);
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-title {
+  font-family: var(--font-editorial);
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.tutorial-step p {
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* Expected Output (aufklappbar) */
+.tutorial-expected {
+  background: var(--ws-paper-fresh);
+  border: 1px solid var(--ws-border);
+  border-radius: 4px;
+  margin: 1rem 0 1.5rem;
+}
+
+.tutorial-expected summary {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--ws-ink-faded);
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  transition: background 0.2s;
+}
+
+.tutorial-expected summary::-webkit-details-marker {
+  display: none;
+}
+
+.tutorial-expected summary::before {
+  content: '+';
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ws-petrol);
+  width: 1rem;
+  text-align: center;
+}
+
+.tutorial-expected[open] summary::before {
+  content: '-';
+}
+
+.tutorial-expected summary:hover {
+  background: var(--ws-paper-aged);
+}
+
+.tutorial-expected-content {
+  padding: 0 1rem 1rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.tutorial-expected-content pre {
+  background: var(--ws-ink);
+  color: #e8e8e8;
+  padding: 1rem;
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  overflow-x: auto;
+  margin: 0.75rem 0 0;
+}
+
+/* Troubleshooting Box */
+.tutorial-troubleshoot {
+  background: #FFF8F0;
+  border: 1px solid #E6D0C0;
+  border-left: 4px solid var(--ws-terracotta);
+  border-radius: 0 4px 4px 0;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.troubleshoot-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.troubleshoot-header svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--ws-terracotta);
+  stroke-width: 2;
+  fill: none;
+}
+
+.troubleshoot-title {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ws-terracotta);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.tutorial-troubleshoot p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0 0 0.75rem;
+}
+
+.tutorial-troubleshoot p:last-child {
+  margin-bottom: 0;
+}
+
+.tutorial-troubleshoot code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background: rgba(196, 114, 90, 0.15);
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+}
+
+/* Warum-Box (Motivation) */
+.tutorial-why {
+  background: #F0F5FF;
+  border: 1px solid #D0E0F0;
+  border-left: 4px solid var(--ws-petrol);
+  border-radius: 0 4px 4px 0;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.why-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.why-header svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--ws-petrol);
+  stroke-width: 2;
+  fill: none;
+}
+
+.why-title {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ws-petrol);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.tutorial-why p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0 0 0.75rem;
+}
+
+.tutorial-why p:last-child {
+  margin-bottom: 0;
+}
+
+/* Checkpoint (Selbsttest) */
+.tutorial-checkpoint {
+  background: #F0FAF0;
+  border: 1px solid #C0E0C0;
+  border-radius: 4px;
+  padding: 1.25rem 1.5rem;
+  margin: 2rem 0;
+}
+
+.checkpoint-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.checkpoint-header svg {
+  width: 18px;
+  height: 18px;
+  stroke: #5B7355;
+  stroke-width: 2;
+  fill: none;
+}
+
+.checkpoint-title {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #5B7355;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.tutorial-checkpoint ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.tutorial-checkpoint li {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.tutorial-checkpoint li:last-child {
+  margin-bottom: 0;
+}
+
+/* File Structure Box */
+.file-structure {
+  background: var(--ws-paper-aged);
+  border-radius: 4px;
+  padding: 1rem 1.25rem;
+  margin: 1rem 0;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.8;
+}
+
+.file-structure-title {
+  font-size: 0.75rem;
+  color: var(--ws-ink-faded);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+/* Solution Downloads in Tutorial Downloads */
+.download-list-secondary {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--ws-border);
+}
+
+.download-list-secondary .download-item {
+  background: var(--ws-ink-faded);
+}
+
+.download-list-secondary .download-item:hover {
+  background: var(--ws-ink);
+}
+
+/* Responsive Tutorial */
+@media (max-width: 600px) {
+  .tutorial-downloads {
+    padding: 1rem;
+  }
+
+  .download-list {
+    flex-direction: column;
+  }
+
+  .dimension-box {
+    padding: 1rem 1.25rem;
+    margin: 1.5rem -1rem;
+    border-radius: 0;
+  }
+
+  .tutorial-nav {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .tutorial-nav-link {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .tutorial-troubleshoot,
+  .tutorial-why,
+  .tutorial-checkpoint {
+    padding: 1rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    border-radius: 0;
+  }
+}

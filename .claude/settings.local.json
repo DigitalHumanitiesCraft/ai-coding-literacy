@@ -7,7 +7,29 @@
       "Bash(git commit:*)",
       "Bash(python -m http.server:*)",
       "Bash(git stash:*)",
-      "Bash(git push)"
+      "Bash(git push)",
+      "Bash(dir:*)",
+      "Bash(ls:*)",
+      "Bash(xargs:*)",
+      "Bash(grep:*)",
+      "Bash(test:*)",
+      "Bash(git rm:*)",
+      "Bash(copy /Y \"c:\\\\Users\\\\Chrisi\\\\Documents\\\\GitHub\\\\DHCraft\\\\ai-coding-literacy\\\\de\\\\workshop.html\" \"c:\\\\Users\\\\Chrisi\\\\Documents\\\\GitHub\\\\DHCraft\\\\ai-coding-literacy\\\\docs\\\\de\\\\workshop.html\")",
+      "Bash(copy /Y \"c:\\\\Users\\\\Chrisi\\\\Documents\\\\GitHub\\\\DHCraft\\\\ai-coding-literacy\\\\css\\\\workshop.css\" \"c:\\\\Users\\\\Chrisi\\\\Documents\\\\GitHub\\\\DHCraft\\\\ai-coding-literacy\\\\docs\\\\css\\\\workshop.css\")",
+      "Bash(cmd:*)",
+      "Bash(tree:*)",
+      "Bash(timeout:*)",
+      "Bash(curl:*)",
+      "Bash(ping:*)",
+      "Bash(git -C \"c:\\\\Users\\\\Chrisi\\\\Documents\\\\GitHub\\\\DHCraft\\\\ai-coding-literacy\" remote -v)",
+      "Bash(git fetch:*)",
+      "Bash(git -C \"c:\\\\Users\\\\Chrisi\\\\Documents\\\\GitHub\\\\DHCraft\\\\ai-coding-literacy\" status --porcelain)",
+      "Bash(git -C \"c:\\\\Users\\\\Chrisi\\\\Documents\\\\GitHub\\\\DHCraft\\\\ai-coding-literacy\" diff --stat docs/css/style.css)",
+      "Bash(git -C \"c:\\\\Users\\\\Chrisi\\\\Documents\\\\GitHub\\\\DHCraft\\\\ai-coding-literacy\" add docs/css/style.css)",
+      "Bash(git -C \"c:\\\\Users\\\\Chrisi\\\\Documents\\\\GitHub\\\\DHCraft\\\\ai-coding-literacy\" commit -m \"$\\(cat <<''EOF''\nUnify design: Update style.css with workshop typography\n\n- Changed body font from Georgia to DM Sans \\(--font-ui\\)\n- Changed headings to Playfair Display \\(--font-editorial\\)\n- Updated color palette to match workshop design \\(warmer tones\\)\n- Added terracotta and petrol accent colors\n- Updated all IBM Plex Mono references to use --font-mono variable\n- Added comp-EW class for Expert Knowledge competency\n- Added border-radius to code blocks and chapter headers\n- Updated link styles with hover transitions\n- Removed nav bracket decorators for cleaner look\n- Added Caveat and JetBrains Mono font imports\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git -C \"c:\\\\Users\\\\Chrisi\\\\Documents\\\\GitHub\\\\DHCraft\\\\ai-coding-literacy\" push)",
+      "Bash(del \"c:\\\\Users\\\\Chrisi\\\\Documents\\\\GitHub\\\\DHCraft\\\\ai-coding-literacy\\\\PLAN-design-vereinheitlichung.md\")",
+      "Bash(del \"c:\\\\Users\\\\Chrisi\\\\Documents\\\\GitHub\\\\DHCraft\\\\ai-coding-literacy\\\\docs\\\\de\\\\ueber.html\")"
     ]
   }
 }

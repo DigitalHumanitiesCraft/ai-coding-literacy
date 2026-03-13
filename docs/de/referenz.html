@@ -3,93 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Referenz | AI Coding Literacy</title>
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <title>Referenz - AI Coding Literacy</title>
+  <link rel="stylesheet" href="../css/workshop.css">
 </head>
-<body>
-  <!-- Sidebar -->
-  <aside class="sidebar">
-    <nav class="sidebar-nav">
-      <a href="./">Konzept</a>
-      <a href="workshop.html">Workshop</a>
-      <a href="setup.html">Setup</a>
-      <a href="referenz.html" class="active">Referenz</a>
-    </nav>
-    <div class="competency-bars" id="sidebar-bars">
-      <!-- Wird dynamisch aus JSON gefüllt -->
-    </div>
-  </aside>
+<body class="workshop-page">
 
-  <!-- Page Banner -->
-  <header class="page-banner">
-    <nav class="breadcrumb" style="color: rgba(255,255,255,0.7); margin-bottom: 1rem;">
-      <a href="./" style="color: rgba(255,255,255,0.7);">Konzept</a> → <span>Referenz</span>
-    </nav>
-    <h1>Referenz</h1>
-    <p class="banner-subtitle">Schnelluebersicht aller Konzepte und Ressourcen</p>
+  <!-- Site Navigation -->
+  <nav class="site-nav">
+    <a href="./">Konzept</a>
+    <span class="nav-separator">|</span>
+    <a href="workshop.html">Workshop</a>
+    <span class="nav-separator">|</span>
+    <a href="referenz.html" class="active">Referenz</a>
+  </nav>
+
+  <!-- Header -->
+  <header class="workshop-header">
+    <p class="workshop-tagline">AI Coding Literacy</p>
+    <h1 class="workshop-title">Referenz</h1>
+    <p class="workshop-subtitle">Schnelluebersicht aller Konzepte und Ressourcen</p>
+    <p class="workshop-intro">
+      Alle Konzepte, Uebungen und Ressourcen des Curriculums im Ueberblick.
+    </p>
   </header>
 
-  <!-- Page Content -->
-  <div class="page-wrapper">
-    <main>
-      <p>Alle Konzepte, Uebungen und Ressourcen des Curriculums im Ueberblick.</p>
+  <main>
+    <div class="workshop-container">
 
-      <section id="concepts">
+      <!-- Navigation innerhalb der Seite -->
+      <nav class="context-section" style="text-align: center; padding: 1rem 0;">
+        <a href="#concepts" class="concept-link" style="margin: 0 1rem;">Konzepte</a>
+        <a href="#exercises" class="concept-link" style="margin: 0 1rem;">Uebungen</a>
+        <a href="#resources" class="concept-link" style="margin: 0 1rem;">Ressourcen</a>
+      </nav>
+
+      <!-- Konzepte -->
+      <section class="materials-section" id="concepts">
         <h2>Konzepte</h2>
         <p>Alle zentralen Begriffe, geordnet nach Kompetenzbereich.</p>
+
         <div id="concepts-container">
-          <!-- Wird dynamisch gefüllt -->
+          <!-- Wird dynamisch gefuellt -->
         </div>
       </section>
 
-      <hr>
+      <!-- Uebungen -->
+      <section class="materials-section" id="exercises">
+        <h2>Uebungen</h2>
+        <p>Alle Hands-On-Uebungen im Ueberblick.</p>
 
-      <section id="exercises">
-        <h2>Übungen</h2>
-        <p>Alle Hands-On-Übungen im Überblick.</p>
-        <table class="exercise-table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Titel</th>
-              <th>Kompetenz</th>
-              <th>Fokus</th>
-            </tr>
-          </thead>
-          <tbody id="exercises-table">
-            <!-- Wird dynamisch gefüllt -->
-          </tbody>
-        </table>
+        <div class="exercise-table-wrapper" style="overflow-x: auto;">
+          <table class="exercise-table" style="width: 100%; border-collapse: collapse;">
+            <thead>
+              <tr style="border-bottom: 2px solid var(--ws-terracotta);">
+                <th style="text-align: left; padding: 0.75rem;">ID</th>
+                <th style="text-align: left; padding: 0.75rem;">Titel</th>
+                <th style="text-align: left; padding: 0.75rem;">Kompetenz</th>
+                <th style="text-align: left; padding: 0.75rem;">Fokus</th>
+              </tr>
+            </thead>
+            <tbody id="exercises-table">
+              <!-- Wird dynamisch gefuellt -->
+            </tbody>
+          </table>
+        </div>
       </section>
 
-      <hr>
+      <!-- Ressourcen -->
+      <section class="resources-section" id="resources">
+        <h2 class="section-heading">Ressourcen</h2>
+        <p>Weiterfuehrende Literatur und Dokumentation.</p>
 
-      <section id="resources">
-        <h2>Ressourcen</h2>
-        <p>Weiterführende Literatur und Dokumentation.</p>
         <div id="resources-container">
-          <!-- Wird dynamisch gefüllt -->
+          <!-- Wird dynamisch gefuellt -->
         </div>
       </section>
-    </main>
 
-    <footer>
-      <a href="https://github.com/DigitalHumanitiesCraft/ai-coding-literacy">GitHub</a> ·
-      DigitalHumanitiesCraft · 2025
-    </footer>
-  </div>
+      <!-- Navigation -->
+      <nav class="back-navigation">
+        <a href="./" class="back-link">
+          <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          Zurueck zur Uebersicht
+        </a>
+      </nav>
 
-  <!-- Right Info Panel (Glossar) -->
-  <aside class="info-panel" id="info-panel">
-    <div class="info-panel-progress" id="info-panel-progress"></div>
-    <button class="info-panel-close" id="info-panel-close" aria-label="Close">&times;</button>
-    <div class="info-panel-content" id="info-panel-content"></div>
-  </aside>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="workshop-footer">
+    <p><a href="https://github.com/DigitalHumanitiesCraft/ai-coding-literacy">GitHub</a></p>
+    <p>DigitalHumanitiesCraft - 2025</p>
+  </footer>
 
   <script src="../js/shared.js"></script>
-  <script src="../js/glossary.js"></script>
   <script src="../js/referenz.js"></script>
 </body>
 </html>

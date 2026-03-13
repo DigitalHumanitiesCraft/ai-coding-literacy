@@ -262,7 +262,70 @@
       "short": "pip",
       "category": "tech-basics",
       "definition": "Der Paketmanager fuer Python. Mit pip install werden externe Bibliotheken installiert. Im Workshop wird pip genutzt, um das anthropic-Paket fuer die Claude-API zu installieren.",
-      "relatedTerms": ["terminal", "api"],
+      "relatedTerms": ["terminal", "api", "python"],
+      "detailPage": null
+    },
+    {
+      "id": "python",
+      "term": "Python",
+      "short": "Python",
+      "category": "tech-basics",
+      "definition": "Eine interpretierte Programmiersprache, die fuer ihre Lesbarkeit bekannt ist. Python wird haeufig in der Datenanalyse, Automatisierung und im wissenschaftlichen Bereich eingesetzt. Im Workshop nutzen wir Python fuer Scripting und die Interaktion mit APIs.",
+      "relatedTerms": ["pip", "terminal", "scripting"],
+      "detailPage": null
+    },
+    {
+      "id": "variable",
+      "term": "Variable",
+      "short": "Variable",
+      "category": "tech-basics",
+      "definition": "Ein benannter Speicherplatz fuer Daten. Variablen haben einen Namen (z.B. 'anzahl') und einen Wert (z.B. 42). Der Wert kann sich waehrend der Programmausfuehrung aendern - daher der Name Variable.",
+      "relatedTerms": ["python", "funktion"],
+      "detailPage": null
+    },
+    {
+      "id": "funktion",
+      "term": "Funktion",
+      "short": "Funktion",
+      "category": "tech-basics",
+      "definition": "Ein benannter Block von Anweisungen, der eine bestimmte Aufgabe erledigt. Funktionen werden einmal definiert und koennen beliebig oft aufgerufen werden. Sie nehmen oft Parameter entgegen und geben Ergebnisse zurueck.",
+      "relatedTerms": ["python", "variable"],
+      "detailPage": null
+    },
+    {
+      "id": "schleife",
+      "term": "Schleife",
+      "short": "Schleife",
+      "category": "tech-basics",
+      "definition": "Eine Kontrollstruktur, die einen Codeblock wiederholt ausfuehrt. For-Schleifen iterieren ueber eine Sequenz (z.B. alle Zeilen einer Datei), while-Schleifen laufen solange eine Bedingung wahr ist.",
+      "relatedTerms": ["python", "variable"],
+      "detailPage": null
+    },
+    {
+      "id": "bibliothek",
+      "term": "Bibliothek",
+      "short": "Library",
+      "category": "tech-basics",
+      "definition": "Eine Sammlung von vorgefertigten Funktionen und Klassen, die in eigenen Programmen verwendet werden koennen. Bibliotheken wie pandas (Datenanalyse) oder requests (HTTP-Anfragen) erweitern die Moeglichkeiten von Python.",
+      "relatedTerms": ["pip", "python"],
+      "detailPage": null
+    },
+    {
+      "id": "excel",
+      "term": "Excel",
+      "short": "Excel",
+      "category": "tech-basics",
+      "definition": "Tabellenkalkulationsprogramm von Microsoft. Excel-Dateien (.xlsx) koennen mit Python gelesen und geschrieben werden. Im Workshop verwenden wir Excel als Ausgangspunkt fuer Datenverarbeitung.",
+      "relatedTerms": ["csv", "python"],
+      "detailPage": null
+    },
+    {
+      "id": "pandas",
+      "term": "pandas",
+      "short": "pandas",
+      "category": "tech-basics",
+      "definition": "Eine Python-Bibliothek fuer Datenanalyse und -manipulation. pandas macht das Arbeiten mit tabellarischen Daten einfach - Laden von Excel/CSV, Filtern, Sortieren, Aggregieren und Exportieren.",
+      "relatedTerms": ["python", "bibliothek", "excel", "csv"],
       "detailPage": null
     }
   ]

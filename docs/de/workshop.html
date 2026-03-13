@@ -19,8 +19,6 @@
     <span class="nav-separator">|</span>
     <a href="workshop.html" class="active">Workshop</a>
     <span class="nav-separator">|</span>
-    <a href="setup.html">Setup</a>
-    <span class="nav-separator">|</span>
     <a href="referenz.html">Referenz</a>
   </nav>
 
@@ -62,20 +60,9 @@
                 <line x1="3" y1="10" x2="21" y2="10"/>
               </svg>
             </div>
-            <h3>Datum &amp; Zeit</h3>
+            <h3>Wann &amp; Wo</h3>
             <p class="context-main">12. Februar 2026</p>
-            <p class="context-sub">12:00 - 17:00 Uhr</p>
-          </div>
-          <div class="context-card">
-            <div class="context-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                <circle cx="12" cy="10" r="3"/>
-              </svg>
-            </div>
-            <h3>Ort</h3>
-            <p class="context-main">Naturhistorisches Museum Wien</p>
-            <p class="context-sub">Museumsbund Oesterreich</p>
+            <p class="context-sub">NHM Wien, Museumsbund Oesterreich</p>
           </div>
           <div class="context-card">
             <div class="context-icon">
@@ -177,70 +164,49 @@
         </ol>
       </section>
 
-      <!-- Praxisbloecke -->
+      <!-- Tutorials -->
       <section class="materials-section" aria-labelledby="materials-heading">
-        <h2 id="materials-heading">Praxisbloecke</h2>
+        <h2 id="materials-heading">Tutorials</h2>
 
-        <div class="materials-grid">
-
-          <article class="material-card">
-            <div class="block-time">12:45 - 13:45</div>
-            <h3>Praxisblock 1: Python mit LLM</h3>
-            <p>
-              Ein Python-Skript erstellen, das museale Daten verarbeitet.
-              Fehlermeldungen lesen und an das LLM zur Korrektur uebergeben.
-              Iteratives Arbeiten: generieren, ausfuehren, pruefen, korrigieren.
-            </p>
-            <ul class="competency-tags" aria-label="Relevante Kompetenzen">
-              <li class="comp-CT">CT</li>
-              <li class="comp-CE">CE</li>
-              <li class="comp-PE">PE</li>
-              <li class="comp-RV">RV</li>
-            </ul>
-            <div class="material-links">
-              <a href="../data/kriminalmuseum/workshop_objekte.csv" download class="btn-download">CSV Datensatz</a>
-              <a href="../workshops/programmieren-2-0/python/beispiel_csv_analyse.py" class="btn-slides">Beispielskript</a>
-            </div>
-          </article>
+        <div class="materials-grid" style="grid-template-columns: repeat(2, 1fr);">
 
           <article class="material-card">
-            <div class="block-time">14:15 - 15:15</div>
-            <h3>Praxisblock 2: Webentwicklung mit LLM</h3>
+            <div class="block-time">Tutorial 1</div>
+            <h3>Einfuehrung: Daten explorieren</h3>
             <p>
-              Eine interaktive Webseite erstellen, die JSON-Daten laedt und anzeigt.
-              Browser-Konsole (F12) als Fehlerquelle nutzen.
-              Live Server fuer lokale Datenverarbeitung einsetzen.
-            </p>
-            <ul class="competency-tags" aria-label="Relevante Kompetenzen">
-              <li class="comp-CT">CT</li>
-              <li class="comp-RE">RE</li>
-              <li class="comp-CL">CL</li>
-              <li class="comp-RV">RV</li>
-            </ul>
-            <div class="material-links">
-              <a href="../data/kriminalmuseum/workshop_objekte.json" download class="btn-download">JSON Datensatz</a>
-              <a href="../workshops/programmieren-2-0/web/index.html" class="btn-slides">Web-Beispiel</a>
-            </div>
-          </article>
-
-          <article class="material-card">
-            <div class="block-time">15:45 - 16:30</div>
-            <h3>Praxisblock 3: Eigene Aufgabe</h3>
-            <p>
-              Gelerntes selbststaendig anwenden: eigene Daten mitbringen oder
-              vorgegebene Aufgaben bearbeiten (erweiterte Objektsuche, Datenbereinigung,
-              Statistik-Dashboard).
+              LLM nutzen lernen, Daten explorieren, Excel-Daten verarbeiten,
+              Python lokal ausfuehren, eine einfache Webseite erstellen.
+              Der komplette Workflow von der Datei zur funktionierenden Anwendung.
             </p>
             <ul class="competency-tags" aria-label="Relevante Kompetenzen">
               <li class="comp-CT">CT</li>
               <li class="comp-RE">RE</li>
               <li class="comp-CE">CE</li>
               <li class="comp-PE">PE</li>
+            </ul>
+            <div class="material-links">
+              <a href="tutorial-1.html" class="btn-download">Zum Tutorial</a>
+              <a href="../data/kriminalmuseum/workshop_objekte.csv" download class="btn-slides">CSV Datensatz</a>
+            </div>
+          </article>
+
+          <article class="material-card">
+            <div class="block-time">Tutorial 2</div>
+            <h3>API: Datenverarbeitung</h3>
+            <p>
+              Mit der LLM-API arbeiten, Daten bereinigen, anreichern und taggen.
+              Unstrukturierte Texte in strukturierte Daten umwandeln.
+              Batch-Verarbeitung fuer groessere Datenmengen.
+            </p>
+            <ul class="competency-tags" aria-label="Relevante Kompetenzen">
+              <li class="comp-CE">CE</li>
+              <li class="comp-PE">PE</li>
               <li class="comp-CL">CL</li>
               <li class="comp-RV">RV</li>
             </ul>
             <div class="material-links">
-              <a href="../workshops/programmieren-2-0/handouts/dokumentation_vorlage.md" class="btn-slides">Dokumentationsvorlage</a>
+              <a href="tutorial-2.html" class="btn-download">Zum Tutorial</a>
+              <a href="../workshops/programmieren-2-0/python/api_einfach.py" class="btn-slides">API-Beispiel</a>
             </div>
           </article>
 
@@ -270,9 +236,8 @@
             </div>
           </div>
           <p class="dataset-description">
-            Semi-strukturierte Beschreibungen mit reichhaltigem didaktischem Potenzial:
-            Waffen, Forensische Medizin, Falsifikate, Diebswerkzeuge, Wildererobjekte,
-            Fussspuren, Verstellungskuenste und mehr.
+            Objektkategorien: Waffen, Forensische Medizin, Falsifikate, Diebswerkzeuge,
+            Wildererobjekte, Fussspuren, Verstellungskuenste.
           </p>
           <div class="material-links">
             <a href="../data/kriminalmuseum/workshop_objekte.csv" download class="btn-download">CSV herunterladen</a>
@@ -286,6 +251,20 @@
         <h2 id="resources-heading" class="section-heading">Handouts &amp; Ressourcen</h2>
 
         <div class="resources-grid">
+          <div class="resource-category">
+            <h3>Vorbereitung</h3>
+            <ul class="resource-list">
+              <li>
+                <a href="setup.html">
+                  <span class="resource-icon">
+                    <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                  </span>
+                  Setup-Anleitung
+                </a>
+              </li>
+            </ul>
+          </div>
+
           <div class="resource-category">
             <h3>Vorlagen</h3>
             <ul class="resource-list">
@@ -444,7 +423,7 @@
           </a>
         </div>
         <p class="competency-note">
-          <a href="kompetenzmodell.html">Mehr zum Kompetenzmodell</a>
+          <a href="./">Mehr zum Kompetenzmodell</a>
         </p>
       </section>
 

@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutorial 1: Einfuehrung - AI Coding Literacy</title>
+  <meta name="description" content="LLM nutzen lernen, Daten explorieren, Excel in Webseite darstellen.">
+  <link rel="stylesheet" href="../css/workshop.css">
+</head>
+<body class="workshop-page">
+
+  <!-- Site Navigation -->
+  <nav class="site-nav">
+    <a href="./">Konzept</a>
+    <span class="nav-separator">|</span>
+    <a href="workshop.html">Workshop</a>
+    <span class="nav-separator">|</span>
+    <a href="referenz.html">Referenz</a>
+  </nav>
+
+  <!-- Header -->
+  <header class="workshop-header">
+    <p class="workshop-tagline">Workshop Tutorial</p>
+    <h1 class="workshop-title">Einfuehrung</h1>
+    <p class="workshop-subtitle">LLM nutzen, Daten explorieren, Webseite erstellen</p>
+    <p class="workshop-intro">
+      In diesem Tutorial lernen Sie den grundlegenden Workflow: Von einer Excel-Datei ueber
+      das LLM bis zur funktionierenden Webseite. Sie arbeiten mit echten Museumsdaten und
+      erleben, wie LLM-gestuetztes Programmieren in der Praxis funktioniert.
+    </p>
+  </header>
+
+  <main>
+    <div class="workshop-container">
+
+      <!-- Downloads -->
+      <section class="tutorial-downloads">
+        <h3>Downloads fuer dieses Tutorial</h3>
+        <div class="download-list">
+          <a href="../data/kriminalmuseum/workshop_objekte.csv" class="download-item" download>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path fill="none" d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline fill="none" points="7 10 12 15 17 10"/><line fill="none" x1="12" y1="15" x2="12" y2="3"/></svg>
+            workshop_objekte.csv
+          </a>
+          <a href="../data/kriminalmuseum/workshop_objekte.json" class="download-item" download>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path fill="none" d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline fill="none" points="7 10 12 15 17 10"/><line fill="none" x1="12" y1="15" x2="12" y2="3"/></svg>
+            workshop_objekte.json
+          </a>
+        </div>
+        <div class="download-list download-list-secondary">
+          <a href="../workshops/programmieren-2-0/python/analyse.py" class="download-item" download>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path fill="none" d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline fill="none" points="7 10 12 15 17 10"/><line fill="none" x1="12" y1="15" x2="12" y2="3"/></svg>
+            Loesung: analyse.py
+          </a>
+          <a href="../workshops/programmieren-2-0/python/csv_to_json.py" class="download-item" download>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path fill="none" d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline fill="none" points="7 10 12 15 17 10"/><line fill="none" x1="12" y1="15" x2="12" y2="3"/></svg>
+            Loesung: csv_to_json.py
+          </a>
+          <a href="../workshops/programmieren-2-0/web/" class="download-item" download>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path fill="none" d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline fill="none" points="7 10 12 15 17 10"/><line fill="none" x1="12" y1="15" x2="12" y2="3"/></svg>
+            Loesung: Webseite
+          </a>
+        </div>
+      </section>
+
+      <!-- Tutorial Content -->
+      <div class="tutorial-content">
+
+        <h2>Was Sie in diesem Tutorial lernen</h2>
+
+        <p>
+          Dieses Tutorial fuehrt Sie durch den gesamten Prozess: Sie starten mit einer
+          <span class="glossar-term" data-term="excel">Excel</span>-Datei mit Museumsobjekten,
+          nutzen ein <span class="glossar-term" data-term="llm">LLM</span> um die Daten zu verstehen,
+          und erstellen am Ende eine einfache Webseite, die diese Daten anzeigt.
+        </p>
+
+        <p>
+          Der Datensatz stammt aus dem Hans Gross Kriminalmuseum in Graz. Er enthaelt 25 Objekte
+          mit Informationen wie Titel, Datierung, Typ und Beschreibung. Die Daten sind bewusst
+          nicht perfekt: Es gibt fehlende Werte, unterschiedliche Datumsformate und gemischte
+          Qualitaetsstufen. Das ist realistisch fuer Museumsarbeit.
+        </p>
+
+        <!-- Dimension Box: CT -->
+        <aside class="dimension-box dim-CT">
+          <div class="dimension-header">
+            <span class="dimension-badge dim-CT">CT</span>
+            <h4 class="dimension-title">Computational Thinking</h4>
+          </div>
+          <p>
+            Bevor Sie mit dem LLM arbeiten, hilft es, das Problem zu zerlegen. Was wollen Sie
+            erreichen? Der Weg von der Excel-Datei zur Webseite hat mehrere Teilschritte:
+            Daten verstehen, Daten umwandeln, Webseite erstellen, testen. Jeder Schritt wird
+            zu einem eigenen Prompt.
+          </p>
+          <p class="dimension-source">Wing, J. (2006). Computational Thinking. CACM 49(3).</p>
+        </aside>
+
+        <h2>Teil 1: Das LLM kennenlernen</h2>
+
+        <p>
+          Ein <span class="glossar-term" data-term="llm">Large Language Model</span> ist ein
+          statistisches Modell, das auf grossen Textmengen trainiert wurde. Es kann Code generieren,
+          erklaeren und verbessern. Aber es "versteht" nicht wirklich. Es erzeugt plausible
+          Fortsetzungen basierend auf Mustern.
+        </p>
+
+        <p>
+          Fuer dieses Tutorial koennen Sie Claude, ChatGPT oder ein anderes LLM verwenden.
+          Oeffnen Sie das Chat-Interface und laden Sie die heruntergeladene CSV-Datei hoch.
+        </p>
+
+        <div class="tutorial-step">
+          <div class="tutorial-step-header">
+            <span class="step-number">1</span>
+            <h4 class="step-title">Datei hochladen und explorieren</h4>
+          </div>
+          <p>
+            Laden Sie <code>workshop_objekte.csv</code> in das LLM-Chat hoch und geben Sie
+            folgenden <span class="glossar-term" data-term="prompt">Prompt</span> ein:
+          </p>
+        </div>
+
+        <div class="tutorial-code">
+          <pre><code>Analysiere diese CSV-Datei Schritt fuer Schritt:
+1. Welche Spalten gibt es?
+2. Wie viele Zeilen hat die Datei?
+3. Gibt es fehlende Werte?
+4. Zeige mir 3 Beispielzeilen.</code></pre>
+        </div>
+
+        <p>
+          Beobachten Sie die Antwort. Das LLM wird die Struktur beschreiben und vielleicht
+          <span class="glossar-term" data-term="python">Python</span>-Code ausfuehren, um die
+          Datei zu analysieren. Manche LLMs zeigen den Code, manche nur das Ergebnis.
+        </p>
+
+        <details class="tutorial-expected">
+          <summary>So sollte die Antwort aussehen</summary>
+          <div class="tutorial-expected-content">
+            <p>Das LLM sollte Ihnen etwa Folgendes mitteilen:</p>
+            <pre>Spalten: pid, title, objectClass, dateText, year, description, qualityScore
+Zeilen: 25 Objekte
+Fehlende Werte: year hat 3 leere Eintraege
+Beispiele: Revolver Lefaucheux (1870), Einbruchswerkzeug (1920)...</pre>
+            <p>Falls die Antwort stark abweicht, pruefen Sie ob die CSV-Datei korrekt hochgeladen wurde.</p>
+          </div>
+        </details>
+
+        <!-- Dimension Box: CE -->
+        <aside class="dimension-box dim-CE">
+          <div class="dimension-header">
+            <span class="dimension-badge dim-CE">CE</span>
+            <h4 class="dimension-title">Context Engineering</h4>
+          </div>
+          <p>
+            Die Qualitaet der LLM-Antwort haengt stark vom Kontext ab. Indem Sie die Datei
+            hochladen, geben Sie dem LLM den noetigen Kontext. Ohne die Datei koennte es
+            nur raten. Mit der Datei kann es konkret arbeiten.
+          </p>
+          <p>
+            Je mehr relevanten Kontext Sie bereitstellen, desto besser die Ergebnisse.
+            Aber zu viel Kontext kann auch verwirren (Lost in the Middle-Effekt).
+          </p>
+          <p class="dimension-source">Liu et al. (2024). Lost in the Middle. TACL.</p>
+        </aside>
+
+        <h2>Teil 2: Daten verstehen</h2>
+
+        <p>
+          Bevor Sie Code generieren lassen, sollten Sie Ihre Daten verstehen. Die CSV-Datei
+          enthaelt folgende Spalten:
+        </p>
+
+        <ul>
+          <li><code>pid</code> - Persistente Objekt-ID</li>
+          <li><code>title</code> - Titel des Objekts</li>
+          <li><code>objectClass</code> - Kategorie (Waffen, Dokumente, etc.)</li>
+          <li><code>dateText</code> - Datierungstext</li>
+          <li><code>year</code> - Extrahiertes Jahr (numerisch)</li>
+          <li><code>description</code> - Beschreibungstext</li>
+          <li><code>qualityScore</code> - Datenqualitaet (0.25-1.0)</li>
+        </ul>
+
+        <div class="tutorial-step">
+          <div class="tutorial-step-header">
+            <span class="step-number">2</span>
+            <h4 class="step-title">Datenqualitaet pruefen</h4>
+          </div>
+          <p>
+            Lassen Sie das LLM die Datenqualitaet analysieren:
+          </p>
+        </div>
+
+        <div class="tutorial-code">
+          <pre><code>Pruefe die Datenqualitaet:
+1. Wie viele Objekte haben year = null?
+2. Welche objectClass-Werte gibt es und wie oft?
+3. Was ist der Durchschnitt von qualityScore?
+4. Gibt es auffaellige Muster oder Probleme?</code></pre>
+        </div>
+
+        <p>
+          Das LLM wird wahrscheinlich <span class="glossar-term" data-term="pandas">pandas</span>
+          verwenden, um diese Fragen zu beantworten. pandas ist eine
+          <span class="glossar-term" data-term="bibliothek">Bibliothek</span> fuer Datenanalyse
+          in Python.
+        </p>
+
+        <details class="tutorial-expected">
+          <summary>So sollte die Antwort aussehen</summary>
+          <div class="tutorial-expected-content">
+            <p>Erwartete Ergebnisse:</p>
+            <pre>1. Objekte ohne year: 3 von 25
+2. objectClass-Verteilung:
+   - Waffen: 8
+   - Dokumente: 6
+   - Werkzeuge: 5
+   - Sonstiges: 6
+3. Durchschnitt qualityScore: ca. 0.7
+4. Muster: Aeltere Objekte haben oft schlechtere Qualitaet</pre>
+          </div>
+        </details>
+
+        <!-- Dimension Box: RE -->
+        <aside class="dimension-box dim-RE">
+          <div class="dimension-header">
+            <span class="dimension-badge dim-RE">RE</span>
+            <h4 class="dimension-title">Requirement Engineering</h4>
+          </div>
+          <p>
+            Praezise Fragen fuehren zu praezisen Antworten. Der Prompt oben hat vier
+            konkrete Teilfragen. Das ist besser als "Analysiere die Datenqualitaet" -
+            denn das LLM muss dann raten, was Sie wissen wollen.
+          </p>
+          <p>
+            Formulieren Sie Anforderungen so, dass Sie pruefen koennen, ob sie erfuellt wurden.
+            "Zeige alle Objekte ohne Jahr" ist pruefbar. "Mach die Daten besser" ist es nicht.
+          </p>
+          <p class="dimension-source">Lucassen et al. (2016). User Stories in Practice. RE.</p>
+        </aside>
+
+        <h2>Teil 3: Python lokal ausfuehren</h2>
+
+        <aside class="tutorial-why">
+          <div class="why-header">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <h4 class="why-title">Warum lokal ausfuehren?</h4>
+          </div>
+          <p>
+            Das LLM fuehrt Code in einer Sandbox aus - einer isolierten Umgebung, die nach
+            der Sitzung verschwindet. Fuer echte Projekte brauchen Sie lokale Ausfuehrung:
+          </p>
+          <p>
+            - Dateien bleiben erhalten und koennen weiterverwendet werden<br>
+            - Sie koennen beliebige Bibliotheken installieren<br>
+            - Groessere Datenmengen sind moeglich<br>
+            - Sie verstehen, was tatsaechlich auf Ihrem System passiert
+          </p>
+        </aside>
+
+        <p>
+          Bisher hat das LLM den Code ausgefuehrt. Aber Sie wollen Code auch lokal ausfuehren
+          koennen. Das gibt Ihnen mehr Kontrolle und ist noetig fuer komplexere Projekte.
+        </p>
+
+        <div class="tutorial-step">
+          <div class="tutorial-step-header">
+            <span class="step-number">3</span>
+            <h4 class="step-title">Code kopieren und lokal ausfuehren</h4>
+          </div>
+          <p>
+            Bitten Sie das LLM um ein Skript zur Datenanalyse:
+          </p>
+        </div>
+
+        <div class="tutorial-code">
+          <pre><code>Schreibe mir ein Python-Skript, das:
+1. workshop_objekte.csv einliest
+2. Die Anzahl Objekte pro objectClass zaehlt
+3. Das Ergebnis als Tabelle ausgibt
+
+Das Skript soll ich lokal ausfuehren koennen.
+Erklaere jeden Schritt mit Kommentaren.</code></pre>
+        </div>
+
+        <p>
+          Das LLM wird ein Skript generieren. Kopieren Sie es in VS Code, speichern Sie es
+          als <code>analyse.py</code> im selben Ordner wie die CSV-Datei.
+        </p>
+
+        <p>
+          Oeffnen Sie das <span class="glossar-term" data-term="terminal">Terminal</span> in
+          VS Code (Ctrl+` oder Menu: Terminal > New Terminal) und fuehren Sie aus:
+        </p>
+
+        <div class="tutorial-code">
+          <pre><code>python analyse.py</code></pre>
+        </div>
+
+        <p>
+          Wenn Sie eine Fehlermeldung bekommen, kopieren Sie diese ins LLM und fragen Sie
+          nach einer Loesung. Das ist der normale Workflow: Code generieren, ausfuehren,
+          Fehler beheben, wiederholen.
+        </p>
+
+        <details class="tutorial-expected">
+          <summary>So sollte die Ausgabe aussehen</summary>
+          <div class="tutorial-expected-content">
+            <pre>Workshop-Objekte Analyse
+------------------------
+Geladen: 25 Objekte
+
+========================================
+OBJEKTE NACH KATEGORIE
+========================================
+Kategorie                     Anzahl
+----------------------------------------
+Waffen                             8
+Dokumente                          6
+Werkzeuge                          5
+Sonstiges                          6
+----------------------------------------
+GESAMT                            25
+========================================</pre>
+          </div>
+        </details>
+
+        <aside class="tutorial-troubleshoot">
+          <div class="troubleshoot-header">
+            <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <h4 class="troubleshoot-title">Haeufige Fehler</h4>
+          </div>
+          <p>
+            <code>python: command not found</code> - Python ist nicht im PATH. Unter Windows:
+            Starten Sie VS Code neu oder fuehren Sie <code>py analyse.py</code> aus.
+          </p>
+          <p>
+            <code>FileNotFoundError</code> - Die CSV-Datei liegt nicht im selben Ordner.
+            Verschieben Sie die Datei oder passen Sie den Pfad im Skript an.
+          </p>
+          <p>
+            <code>ModuleNotFoundError: No module named 'pandas'</code> - Falls das LLM pandas
+            verwendet hat: <code>pip install pandas</code> im Terminal ausfuehren.
+          </p>
+        </aside>
+
+        <!-- Dimension Box: PE -->
+        <aside class="dimension-box dim-PE">
+          <div class="dimension-header">
+            <span class="dimension-badge dim-PE">PE</span>
+            <h4 class="dimension-title">Prompt Engineering</h4>
+          </div>
+          <p>
+            Der Prompt oben nutzt mehrere bewaehrte Techniken: nummerierte Schritte
+            (macht die Struktur klar), explizites Ausgabeformat (Tabelle), Kontext
+            (lokal ausfuehren) und die Bitte um Kommentare.
+          </p>
+          <p>
+            Diese Techniken sind keine Magie. Sie helfen dem LLM, Ihre Intention zu verstehen.
+            Experimentieren Sie: Was passiert, wenn Sie die Kommentare weglassen?
+          </p>
+          <p class="dimension-source">Schulhoff et al. (2025). The Prompt Report. arXiv.</p>
+        </aside>
+
+        <div class="tutorial-checkpoint">
+          <div class="checkpoint-header">
+            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <h4 class="checkpoint-title">Checkpoint: Bereit fuer Teil 4?</h4>
+          </div>
+          <ul>
+            <li>Python laeuft lokal (python --version zeigt eine Versionsnummer)</li>
+            <li>Sie koennen ein Skript im Terminal ausfuehren</li>
+            <li>Sie wissen, wie Sie Fehlermeldungen ins LLM kopieren</li>
+          </ul>
+        </div>
+
+        <h2>Teil 4: Von CSV zu JSON</h2>
+
+        <p>
+          <span class="glossar-term" data-term="csv">CSV</span> ist gut fuer Tabellen, aber
+          fuer Webseiten ist <span class="glossar-term" data-term="json">JSON</span> praktischer.
+          JSON kann hierarchische Strukturen darstellen und wird von
+          <span class="glossar-term" data-term="javascript">JavaScript</span> nativ unterstuetzt.
+        </p>
+
+        <div class="tutorial-step">
+          <div class="tutorial-step-header">
+            <span class="step-number">4</span>
+            <h4 class="step-title">CSV zu JSON konvertieren</h4>
+          </div>
+          <p>
+            Lassen Sie ein Konvertierungsskript erstellen:
+          </p>
+        </div>
+
+        <div class="tutorial-code">
+          <pre><code>Schreibe ein Python-Skript, das:
+1. workshop_objekte.csv einliest
+2. Jede Zeile als Objekt mit allen Spalten speichert
+3. Das Ergebnis als workshop_objekte.json speichert
+
+Format: Array von Objekten, UTF-8 Encoding, eingerueckt fuer Lesbarkeit.</code></pre>
+        </div>
+
+        <p>
+          Speichern Sie das Skript als <code>csv_to_json.py</code> und fuehren Sie es aus:
+        </p>
+
+        <div class="tutorial-code">
+          <pre><code>python csv_to_json.py</code></pre>
+        </div>
+
+        <details class="tutorial-expected">
+          <summary>So sollte die JSON-Datei aussehen</summary>
+          <div class="tutorial-expected-content">
+            <p>Oeffnen Sie <code>workshop_objekte.json</code> in VS Code. Die Struktur sollte so aussehen:</p>
+            <pre>[
+  {
+    "pid": "o:hgk.1234",
+    "title": "Revolver Lefaucheux",
+    "objectClass": "Waffen",
+    "dateText": "um 1870",
+    "year": 1870,
+    "description": "...",
+    "qualityScore": 0.85
+  },
+  {
+    "pid": "o:hgk.1235",
+    ...
+  }
+]</pre>
+            <p>Wichtig: Die Datei sollte mit <code>[</code> beginnen und mit <code>]</code> enden.</p>
+          </div>
+        </details>
+
+        <p>
+          Sie sollten nun eine JSON-Datei im selben Ordner haben.
+          Oeffnen Sie sie in VS Code und pruefen Sie die Struktur.
+        </p>
+
+        <h2>Teil 5: Die Webseite erstellen</h2>
+
+        <p>
+          Jetzt kommt der spannende Teil: Eine Webseite, die Ihre Daten anzeigt.
+          Eine Webseite besteht aus <span class="glossar-term" data-term="html">HTML</span>
+          (Struktur), <span class="glossar-term" data-term="css">CSS</span> (Design) und
+          <span class="glossar-term" data-term="javascript">JavaScript</span> (Interaktivitaet).
+        </p>
+
+        <div class="tutorial-step">
+          <div class="tutorial-step-header">
+            <span class="step-number">5</span>
+            <h4 class="step-title">HTML-Grundgeruest erstellen</h4>
+          </div>
+          <p>
+            Geben Sie dem LLM einen strukturierten Prompt:
+          </p>
+        </div>
+
+        <div class="tutorial-code">
+          <pre><code>Erstelle eine einfache Webseite fuer Museumsobjekte.
+
+Datenquelle: workshop_objekte.json (liegt im selben Ordner)
+
+Anforderungen:
+- Zeige alle Objekte als Karten (Cards)
+- Jede Karte zeigt: Titel, objectClass, year, description
+- Einfaches, sauberes Design
+- Die JSON-Datei wird per fetch() geladen
+
+Technologie: Vanilla HTML/CSS/JavaScript, keine Frameworks.
+
+Gib mir drei Dateien: index.html, style.css, app.js</code></pre>
+        </div>
+
+        <p>
+          Erstellen Sie einen neuen Ordner (z.B. <code>museum-web</code>) und legen Sie
+          die drei Dateien dort ab. Kopieren Sie auch die <code>workshop_objekte.json</code>
+          in diesen Ordner.
+        </p>
+
+        <div class="file-structure">
+          <div class="file-structure-title">Ordnerstruktur</div>
+          museum-web/<br>
+          &nbsp;&nbsp;index.html<br>
+          &nbsp;&nbsp;style.css<br>
+          &nbsp;&nbsp;app.js<br>
+          &nbsp;&nbsp;workshop_objekte.json
+        </div>
+
+        <p>
+          Um die Webseite zu testen, brauchen Sie einen lokalen Server. Der Browser blockiert
+          das Laden lokaler Dateien aus Sicherheitsgruenden
+          (<span class="glossar-term" data-term="cors">CORS</span>).
+        </p>
+
+        <p>
+          Installieren Sie die <span class="glossar-term" data-term="live-server">Live Server</span>
+          Extension in VS Code:
+        </p>
+
+        <ol>
+          <li>Oeffnen Sie die Extensions-Seitenleiste (Ctrl+Shift+X)</li>
+          <li>Suchen Sie nach "Live Server"</li>
+          <li>Installieren Sie die Extension von Ritwick Dey</li>
+          <li>Rechtsklick auf index.html > "Open with Live Server"</li>
+        </ol>
+
+        <details class="tutorial-expected">
+          <summary>So sollte die Webseite aussehen</summary>
+          <div class="tutorial-expected-content">
+            <p>Im Browser sollten Sie sehen:</p>
+            <pre>- Eine Ueberschrift mit dem Seitentitel
+- 25 Karten, eine pro Objekt
+- Jede Karte zeigt Titel, Kategorie-Tag, Jahr-Tag, Beschreibung
+- Beim Hover aendern die Karten leicht ihre Darstellung</pre>
+            <p>Falls nichts angezeigt wird: Oeffnen Sie die Browser-Konsole (F12 > Console)
+            und pruefen Sie auf Fehlermeldungen.</p>
+          </div>
+        </details>
+
+        <aside class="tutorial-troubleshoot">
+          <div class="troubleshoot-header">
+            <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <h4 class="troubleshoot-title">Haeufige Fehler</h4>
+          </div>
+          <p>
+            <code>Failed to fetch</code> oder <code>CORS error</code> - Sie haben die Datei
+            direkt geoeffnet (file://) statt ueber Live Server. Rechtsklick > Open with Live Server.
+          </p>
+          <p>
+            <code>404 Not Found</code> - Die JSON-Datei liegt nicht im richtigen Ordner.
+            Pruefen Sie, ob <code>workshop_objekte.json</code> neben <code>index.html</code> liegt.
+          </p>
+          <p>
+            Leere Seite ohne Fehler - Pruefen Sie den Dateinamen in app.js. Heisst die Datei
+            genau <code>workshop_objekte.json</code>?
+          </p>
+        </aside>
+
+        <!-- Dimension Box: CL -->
+        <aside class="dimension-box dim-CL">
+          <div class="dimension-header">
+            <span class="dimension-badge dim-CL">CL</span>
+            <h4 class="dimension-title">Code Literacy</h4>
+          </div>
+          <p>
+            Sie muessen den generierten Code nicht Zeile fuer Zeile verstehen. Aber Sie
+            sollten die Grundstruktur erkennen: HTML definiert was angezeigt wird,
+            CSS wie es aussieht, JavaScript was passiert.
+          </p>
+          <p>
+            Suchen Sie in app.js nach <code>fetch</code> - das ist der Teil, der die
+            JSON-Datei laedt. Suchen Sie nach einer <span class="glossar-term" data-term="schleife">Schleife</span>
+            (<code>for</code> oder <code>forEach</code>) - das ist der Teil, der durch
+            alle Objekte geht.
+          </p>
+          <p class="dimension-source">Lopez et al. (2008). Reading vs Writing Code. ITICSE.</p>
+        </aside>
+
+        <div class="tutorial-checkpoint">
+          <div class="checkpoint-header">
+            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <h4 class="checkpoint-title">Checkpoint: Bereit fuer Teil 6?</h4>
+          </div>
+          <ul>
+            <li>Die Webseite zeigt alle 25 Objekte als Karten</li>
+            <li>Live Server laeuft (URL beginnt mit http://localhost)</li>
+            <li>Keine Fehler in der Browser-Konsole</li>
+          </ul>
+        </div>
+
+        <h2>Teil 6: Iterativ verbessern</h2>
+
+        <p>
+          Die erste Version funktioniert, aber Sie wollen mehr. Vielleicht eine Filterung
+          nach objectClass? Eine Sortierung nach Jahr? Das ist der Normalfall: Sie starten
+          einfach und erweitern schrittweise.
+        </p>
+
+        <div class="tutorial-step">
+          <div class="tutorial-step-header">
+            <span class="step-number">6</span>
+            <h4 class="step-title">Filter hinzufuegen</h4>
+          </div>
+          <p>
+            Erweitern Sie die Webseite um ein Kategorie-Filter:
+          </p>
+        </div>
+
+        <div class="tutorial-code">
+          <pre><code>Erweitere die Webseite um einen Filter:
+
+Aktuelle Situation:
+- Alle Objekte werden als Karten angezeigt
+- Es gibt verschiedene objectClass-Werte
+
+Gewuenschte Erweiterung:
+- Dropdown-Menu mit allen objectClass-Werten
+- Option "Alle" zeigt alle Objekte
+- Auswahl eines Werts filtert die Anzeige
+
+Aendere nur die notwendigen Stellen in app.js und index.html.</code></pre>
+        </div>
+
+        <p>
+          Beachten Sie, wie der Prompt die aktuelle Situation beschreibt. Das hilft dem LLM,
+          den Kontext zu verstehen und gezielt zu aendern statt alles neu zu schreiben.
+        </p>
+
+        <details class="tutorial-expected">
+          <summary>So sollte der Filter funktionieren</summary>
+          <div class="tutorial-expected-content">
+            <p>Nach der Aenderung sollten Sie sehen:</p>
+            <pre>1. Ein Dropdown-Menu oberhalb der Karten
+2. Optionen: "Alle anzeigen", "Waffen", "Dokumente", "Werkzeuge", ...
+3. Bei Auswahl einer Kategorie: Nur passende Karten werden angezeigt
+4. Anzeige der Anzahl: "8 Objekte" statt "25 Objekte"</pre>
+            <p>Testen Sie: Waehlen Sie "Waffen", dann "Alle anzeigen". Die Anzahl sollte
+            sich entsprechend aendern.</p>
+          </div>
+        </details>
+
+        <p>
+          Die Loesung erfordert Aenderungen in zwei Dateien:
+        </p>
+
+        <p>
+          In <code>index.html</code> kommt ein neues Element hinzu:
+        </p>
+
+        <div class="tutorial-code">
+          <pre><code>&lt;div class="filter-container"&gt;
+  &lt;label for="kategorie-filter"&gt;Kategorie:&lt;/label&gt;
+  &lt;select id="kategorie-filter"&gt;
+    &lt;option value=""&gt;Alle anzeigen&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <p>
+          In <code>app.js</code> brauchen Sie zwei neue Funktionen: Eine zum Befuellen des
+          Dropdowns mit den verfuegbaren Kategorien, eine zum Filtern bei Auswahl.
+        </p>
+
+        <!-- Dimension Box: RV -->
+        <aside class="dimension-box dim-RV">
+          <div class="dimension-header">
+            <span class="dimension-badge dim-RV">RV</span>
+            <h4 class="dimension-title">Review</h4>
+          </div>
+          <p>
+            Nach jeder Aenderung: Testen! Funktioniert der Filter? Zeigt "Alle" wirklich
+            alle Objekte? Was passiert bei objectClass-Werten mit Sonderzeichen?
+          </p>
+          <p>
+            LLMs machen Fehler. Sie erfinden manchmal
+            <span class="glossar-term" data-term="funktion">Funktionen</span>, die nicht
+            existieren (<span class="glossar-term" data-term="halluzination">Halluzinationen</span>).
+            Sie uebersehen Grenzfaelle. Systematisches Testen ist nicht optional.
+          </p>
+          <p class="dimension-source">Tambon et al. (2024). Bug Patterns in LLM Code. TSE.</p>
+        </aside>
+
+        <h2>Was Sie gelernt haben</h2>
+
+        <p>
+          In diesem Tutorial haben Sie den kompletten Workflow erlebt:
+        </p>
+
+        <ul>
+          <li>Daten mit dem LLM explorieren und verstehen</li>
+          <li>Python-Code lokal ausfuehren</li>
+          <li>Datenformate konvertieren (CSV zu JSON)</li>
+          <li>Eine Webseite mit HTML/CSS/JavaScript erstellen</li>
+          <li>Iterativ erweitern und verbessern</li>
+        </ul>
+
+        <p>
+          Das ist die Essenz von AI Coding Literacy: Sie muessen nicht programmieren koennen.
+          Aber Sie muessen wissen, wie Sie mit dem LLM kommunizieren, wie Sie Ergebnisse
+          pruefen und wie Sie iterativ verbessern.
+        </p>
+
+        <p>
+          Im naechsten Tutorial gehen wir einen Schritt weiter: Sie lernen, mit der
+          <span class="glossar-term" data-term="api">API</span> zu arbeiten, um Daten
+          automatisiert zu verarbeiten.
+        </p>
+
+        <!-- Tutorial Navigation -->
+        <nav class="tutorial-nav">
+          <a href="workshop.html" class="tutorial-nav-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            Zurueck zum Workshop
+          </a>
+          <a href="tutorial-2.html" class="tutorial-nav-link">
+            Tutorial 2: API
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </nav>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="workshop-footer">
+    <p><a href="https://github.com/DigitalHumanitiesCraft/ai-coding-literacy">GitHub</a></p>
+    <p>DigitalHumanitiesCraft - 2025</p>
+  </footer>
+
+  <script src="../js/shared.js"></script>
+  <script src="../js/tutorial.js"></script>
+</body>
+</html>

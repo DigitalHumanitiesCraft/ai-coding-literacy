@@ -3,323 +3,207 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Setup & Voraussetzungen – AI Coding Literacy</title>
-  <link rel="stylesheet" href="../css/style.css">
+  <title>Setup & Voraussetzungen - AI Coding Literacy</title>
+  <link rel="stylesheet" href="../css/workshop.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body>
-  <!-- Sidebar -->
-  <aside class="sidebar">
-    <nav class="sidebar-nav">
-      <a href="./">Konzept</a>
-      <a href="workshop.html">Workshop</a>
-      <a href="setup.html" class="active">Setup</a>
-      <a href="referenz.html">Referenz</a>
-    </nav>
-    <div class="competency-bars">
-      <div class="competency-bar-wrapper">
-        <a href="ct.html" class="competency-bar comp-CT" title="Computational Thinking">
-          <span class="bar-label"><span class="bar-label-id">CT</span><span class="bar-label-name">Computational Thinking</span></span>
-        </a>
-      </div>
-      <div class="competency-bar-wrapper">
-        <a href="re.html" class="competency-bar comp-RE" title="Requirement Engineering">
-          <span class="bar-label"><span class="bar-label-id">RE</span><span class="bar-label-name">Requirement Engineering</span></span>
-        </a>
-      </div>
-      <div class="competency-bar-wrapper">
-        <a href="ce.html" class="competency-bar comp-CE" title="Context Engineering">
-          <span class="bar-label"><span class="bar-label-id">CE</span><span class="bar-label-name">Context Engineering</span></span>
-        </a>
-      </div>
-      <div class="competency-bar-wrapper">
-        <a href="pe.html" class="competency-bar comp-PE" title="Prompt Engineering">
-          <span class="bar-label"><span class="bar-label-id">PE</span><span class="bar-label-name">Prompt Engineering</span></span>
-        </a>
-      </div>
-      <div class="competency-bar-wrapper">
-        <a href="cl.html" class="competency-bar comp-CL" title="Code Literacy">
-          <span class="bar-label"><span class="bar-label-id">CL</span><span class="bar-label-name">Code Literacy</span></span>
-        </a>
-      </div>
-      <div class="competency-bar-wrapper">
-        <a href="rv.html" class="competency-bar comp-RV" title="Review">
-          <span class="bar-label"><span class="bar-label-id">RV</span><span class="bar-label-name">Review</span></span>
-        </a>
-      </div>
-    </div>
-  </aside>
+<body class="workshop-page">
 
-  <!-- Page Banner -->
-  <header class="page-banner">
-    <nav class="breadcrumb" style="color: rgba(255,255,255,0.7); margin-bottom: 1rem;">
-      <a href="./" style="color: rgba(255,255,255,0.7);">Konzept</a> → <span>Setup</span>
-    </nav>
-    <h1>Setup & Voraussetzungen</h1>
-    <p class="banner-subtitle">Was Sie brauchen, um loszulegen</p>
+  <!-- Site Navigation -->
+  <nav class="site-nav">
+    <a href="./">Konzept</a>
+    <span class="nav-separator">|</span>
+    <a href="workshop.html">Workshop</a>
+    <span class="nav-separator">|</span>
+    <a href="referenz.html">Referenz</a>
+  </nav>
+
+  <!-- Header -->
+  <header class="workshop-header">
+    <p class="workshop-tagline">AI Coding Literacy</p>
+    <h1 class="workshop-title">Setup & Voraussetzungen</h1>
+    <p class="workshop-subtitle">Was Sie brauchen, um loszulegen</p>
+    <p class="workshop-intro">
+      Bevor Sie mit den Uebungen starten, sollten Sie Ihre Arbeitsumgebung einrichten.
+      Keine Sorge - alles hier ist kostenlos und fuer Einsteiger geeignet.
+      Diese Seite fuehrt Sie Schritt fuer Schritt durch die Installation.
+    </p>
   </header>
 
-  <!-- Page Content -->
-  <div class="page-wrapper">
-    <main id="content">
-      <!-- Intro -->
-      <div class="chapter-intro-block">
-        <p>Bevor Sie mit den Übungen starten, sollten Sie Ihre Arbeitsumgebung einrichten. Keine Sorge – alles hier ist kostenlos und für Einsteiger geeignet. Diese Seite führt Sie Schritt für Schritt durch die Installation.</p>
-      </div>
+  <main>
+    <div class="workshop-container">
 
-      <!-- Quick Check -->
-      <section class="content-section" id="schnellcheck">
-        <h2 class="section-title">
-          <span class="section-marker" style="background: #4A7C7C"></span>
-          Schnellcheck: Sind Sie startklar?
-        </h2>
+      <!-- Navigation innerhalb der Seite -->
+      <nav class="context-section" style="text-align: center; padding: 1rem 0;">
+        <a href="#schnellcheck" class="concept-link" style="margin: 0 1rem;">Schnellcheck</a>
+        <a href="#setup-python" class="concept-link" style="margin: 0 1rem;">Python</a>
+        <a href="#setup-vscode" class="concept-link" style="margin: 0 1rem;">VS Code</a>
+        <a href="#setup-llm" class="concept-link" style="margin: 0 1rem;">LLM</a>
+        <a href="#ressourcen" class="concept-link" style="margin: 0 1rem;">Ressourcen</a>
+      </nav>
 
-        <div class="quick-check-box">
-          <p>Prüfen Sie diese Punkte. Wenn alle erfüllt sind, können Sie direkt mit den <a href="#sessions-section">Übungen</a> starten.</p>
+      <!-- Schnellcheck -->
+      <section class="materials-section" id="schnellcheck">
+        <h2>Schnellcheck: Sind Sie startklar?</h2>
 
-          <ul class="checklist">
-            <!-- Wird dynamisch gefüllt -->
+        <div class="learning-objectives">
+          <h3 class="section-heading">Pruefen Sie diese Punkte</h3>
+          <p>Wenn alle erfuellt sind, koennen Sie direkt mit den Uebungen starten.</p>
+          <ul class="objectives-list checklist">
+            <!-- Wird dynamisch gefuellt -->
           </ul>
         </div>
       </section>
 
-      <!-- Python Section -->
-      <section class="content-section" id="setup-python">
-        <h2 class="section-title">
-          <span class="section-marker" style="background: #3776AB"></span>
-          1. Python installieren
-        </h2>
+      <!-- Python -->
+      <section class="materials-section" id="setup-python">
+        <h2>1. Python installieren</h2>
 
-        <div class="setup-item">
-          <div class="setup-item-header">
-            <span class="setup-icon comp-CL" data-tooltip="CL – Code Literacy"><i class="fa-brands fa-python"></i></span>
-            <div class="setup-item-info">
-              <h3>Python</h3>
-              <p class="setup-short">Die Programmiersprache für unsere Code-Beispiele</p>
-            </div>
-            <span class="badge required">erforderlich</span>
-          </div>
-          <!-- Content wird dynamisch gefüllt -->
-        </div>
-      </section>
-
-      <!-- VS Code Section -->
-      <section class="content-section" id="setup-vscode">
-        <h2 class="section-title">
-          <span class="section-marker" style="background: #007ACC"></span>
-          2. Visual Studio Code einrichten
-        </h2>
-
-        <div class="setup-item">
-          <div class="setup-item-header">
-            <span class="setup-icon comp-CL" data-tooltip="CL – Code Literacy"><i class="fa-solid fa-code"></i></span>
-            <div class="setup-item-info">
-              <h3>Visual Studio Code</h3>
-              <p class="setup-short">Der Code-Editor zum Schreiben und Ausführen von Scripts</p>
-            </div>
-            <span class="badge required">erforderlich</span>
-          </div>
-          <!-- Content wird dynamisch gefüllt -->
-        </div>
-      </section>
-
-      <!-- LLM Section -->
-      <section class="content-section" id="setup-llm">
-        <h2 class="section-title">
-          <span class="section-marker" style="background: #7B6B8D"></span>
-          3. LLM-Zugang einrichten
-        </h2>
-
-        <div class="setup-item">
-          <div class="setup-item-header">
-            <span class="setup-icon comp-PE" data-tooltip="PE – Prompt Engineering"><i class="fa-solid fa-comments"></i></span>
-            <div class="setup-item-info">
-              <h3>Large Language Model</h3>
-              <p class="setup-short">Zugang zu einem KI-Modell für Code-Generierung</p>
-            </div>
-            <span class="badge required">erforderlich</span>
-          </div>
-          <!-- Content wird dynamisch gefüllt -->
-        </div>
-      </section>
-
-      <!-- Terminal Section -->
-      <section class="content-section" id="setup-terminal">
-        <h2 class="section-title">
-          <span class="section-marker" style="background: #2D2D2D"></span>
-          4. Terminal nutzen
-        </h2>
-
-        <div class="setup-item">
-          <div class="setup-item-header">
-            <span class="setup-icon comp-RV" data-tooltip="RV – Review"><i class="fa-solid fa-terminal"></i></span>
-            <div class="setup-item-info">
-              <h3>Terminal / Kommandozeile</h3>
-              <p class="setup-short">Zum Ausführen von Python-Scripts und Installieren von Paketen</p>
-            </div>
-            <span class="badge required">erforderlich</span>
-          </div>
-          <!-- Content wird dynamisch gefüllt -->
-        </div>
-      </section>
-
-      <!-- Pip Section -->
-      <section class="content-section" id="setup-pip">
-        <h2 class="section-title">
-          <span class="section-marker" style="background: #3775A9"></span>
-          5. Pakete installieren (pip)
-        </h2>
-
-        <div class="setup-item">
-          <div class="setup-item-header">
-            <span class="setup-icon comp-CE" data-tooltip="CE – Context Engineering"><i class="fa-solid fa-cube"></i></span>
-            <div class="setup-item-info">
-              <h3>pip (Paketmanager)</h3>
-              <p class="setup-short">Zum Installieren von Python-Bibliotheken</p>
-            </div>
-            <span class="badge required">erforderlich</span>
-          </div>
-          <!-- Content wird dynamisch gefüllt -->
-        </div>
-      </section>
-
-      <!-- First Script Section -->
-      <section class="content-section" id="erstes-script">
-        <h2 class="section-title">
-          <span class="section-marker" style="background: #5B7355"></span>
-          6. Erstes Script ausführen
-        </h2>
-
-        <div class="setup-item">
+        <div class="material-card">
+          <div class="block-time"><i class="fa-brands fa-python"></i></div>
+          <h3>Python</h3>
+          <p>Die Programmiersprache fuer unsere Code-Beispiele</p>
           <div class="setup-item-content">
-            <!-- Wird dynamisch gefüllt -->
+            <!-- Content wird dynamisch gefuellt -->
           </div>
         </div>
       </section>
 
-      <!-- Troubleshooting Section -->
-      <section class="content-section" id="probleme">
-        <h2 class="section-title">
-          <span class="section-marker" style="background: #8B4557"></span>
-          Häufige Probleme
-        </h2>
+      <!-- VS Code -->
+      <section class="materials-section" id="setup-vscode">
+        <h2>2. Visual Studio Code einrichten</h2>
+
+        <div class="material-card">
+          <div class="block-time"><i class="fa-solid fa-code"></i></div>
+          <h3>Visual Studio Code</h3>
+          <p>Der Code-Editor zum Schreiben und Ausfuehren von Scripts</p>
+          <div class="setup-item-content">
+            <!-- Content wird dynamisch gefuellt -->
+          </div>
+        </div>
+      </section>
+
+      <!-- LLM -->
+      <section class="materials-section" id="setup-llm">
+        <h2>3. LLM-Zugang einrichten</h2>
+
+        <div class="material-card">
+          <div class="block-time"><i class="fa-solid fa-comments"></i></div>
+          <h3>Large Language Model</h3>
+          <p>Zugang zu einem KI-Modell fuer Code-Generierung</p>
+          <div class="setup-item-content">
+            <!-- Content wird dynamisch gefuellt -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Terminal -->
+      <section class="materials-section" id="setup-terminal">
+        <h2>4. Terminal nutzen</h2>
+
+        <div class="material-card">
+          <div class="block-time"><i class="fa-solid fa-terminal"></i></div>
+          <h3>Terminal / Kommandozeile</h3>
+          <p>Zum Ausfuehren von Python-Scripts und Installieren von Paketen</p>
+          <div class="setup-item-content">
+            <!-- Content wird dynamisch gefuellt -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Pip -->
+      <section class="materials-section" id="setup-pip">
+        <h2>5. Pakete installieren (pip)</h2>
+
+        <div class="material-card">
+          <div class="block-time"><i class="fa-solid fa-cube"></i></div>
+          <h3>pip (Paketmanager)</h3>
+          <p>Zum Installieren von Python-Bibliotheken</p>
+          <div class="setup-item-content">
+            <!-- Content wird dynamisch gefuellt -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Erstes Script -->
+      <section class="materials-section" id="erstes-script">
+        <h2>6. Erstes Script ausfuehren</h2>
+
+        <div class="material-card">
+          <div class="setup-item-content">
+            <!-- Wird dynamisch gefuellt -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Probleme -->
+      <section class="materials-section" id="probleme">
+        <h2>Haeufige Probleme</h2>
 
         <div class="faq-list">
-          <!-- Wird dynamisch gefüllt -->
+          <!-- Wird dynamisch gefuellt -->
         </div>
       </section>
 
-      <!-- Weiterführende Ressourcen -->
-      <section class="content-section" id="ressourcen">
-        <h2 class="section-title">
-          <span class="section-marker" style="background: #5B7355"></span>
-          Weiterführende Ressourcen
-        </h2>
+      <!-- Ressourcen -->
+      <section class="resources-section" id="ressourcen">
+        <h2 class="section-heading">Weiterfuehrende Ressourcen</h2>
 
-        <div class="resources-category">
-          <h3>Für Geisteswissenschaftler</h3>
-          <p>Diese Ressourcen wurden speziell für Wissenschaftler ohne Programmiervorerfahrung entwickelt:</p>
-
-          <ul class="resource-list">
-            <li class="resource-item recommended">
-              <div class="resource-header">
-                <a href="https://programminghistorian.org/en/lessons/" target="_blank" rel="noopener">Programming Historian</a>
-                <span class="badge recommended">empfohlen</span>
-              </div>
-              <p>Peer-reviewed Tutorials speziell für Geisteswissenschaftler. Kostenlos und auch auf Deutsch verfügbar.</p>
-            </li>
-            <li class="resource-item recommended">
-              <div class="resource-header">
-                <a href="https://pythonhumanities.com/python-for-dh-course/" target="_blank" rel="noopener">Python for Digital Humanities</a>
-                <span class="badge recommended">empfohlen</span>
-              </div>
-              <p>Umfassender Online-Kurs von W.J.B. Mattingly, speziell für Humanities-Studierende.</p>
-            </li>
-            <li class="resource-item">
-              <a href="https://humanitiesprogramming.github.io/" target="_blank" rel="noopener">Humanities Programming</a>
-              <p>Einführung in Python für Geisteswissenschaftler mit Fokus auf Textanalyse.</p>
-            </li>
-            <li class="resource-item">
-              <a href="https://www.karsdorp.io/python-course/" target="_blank" rel="noopener">Python Programming for the Humanities</a>
-              <p>Folgert Karsdorps Kurs mit Fokus auf Natural Language Processing.</p>
-            </li>
-          </ul>
-        </div>
-
-        <div class="resources-category">
-          <h3>Video-Kurse</h3>
-          <p>Kostenlose YouTube-Kurse für visuelle Lerner:</p>
-
-          <ul class="resource-list">
-            <li class="resource-item">
-              <a href="https://www.youtube.com/watch?v=rfscVS0vtbw" target="_blank" rel="noopener">freeCodeCamp: Python for Beginners</a>
-              <span class="resource-meta">4+ Stunden</span>
-              <p>Kostenloser Komplettkurs auf YouTube. Perfekt für absolute Anfänger.</p>
-            </li>
-            <li class="resource-item">
-              <a href="https://www.youtube.com/playlist?list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU" target="_blank" rel="noopener">Corey Schafer: Python Tutorials</a>
-              <span class="resource-meta">Serie</span>
-              <p>Hochwertige Tutorial-Serie mit klaren Erklärungen.</p>
-            </li>
-            <li class="resource-item">
-              <a href="https://learn.microsoft.com/en-us/shows/intro-to-python-development/" target="_blank" rel="noopener">Microsoft: Python for Beginners</a>
-              <span class="resource-meta">44 Videos</span>
-              <p>Offizielle Microsoft-Serie mit kurzen, fokussierten Videos.</p>
-            </li>
-          </ul>
-        </div>
-
-        <div class="resources-category">
-          <h3>Dokumentation & Referenz</h3>
-
-          <ul class="resource-list">
-            <li class="resource-item">
-              <a href="https://docs.python.org/3/tutorial/" target="_blank" rel="noopener">Python Official Tutorial</a>
-              <p>Die offizielle Python-Dokumentation – umfassend aber technisch.</p>
-            </li>
-            <li class="resource-item">
-              <a href="https://realpython.com/" target="_blank" rel="noopener">Real Python</a>
-              <p>Hochwertige Tutorials und Artikel für alle Levels.</p>
-            </li>
-            <li class="resource-item">
-              <a href="https://www.w3schools.com/python/" target="_blank" rel="noopener">W3Schools Python</a>
-              <p>Interaktive Tutorials mit Try-it-yourself Editor.</p>
-            </li>
-          </ul>
+        <div class="resources-grid" style="grid-template-columns: repeat(2, 1fr);">
+          <div class="resource-category">
+            <h3>Fuer Geisteswissenschaftler</h3>
+            <ul class="resource-list">
+              <li><a href="https://programminghistorian.org/en/lessons/" target="_blank" rel="noopener">Programming Historian</a> - Peer-reviewed Tutorials, auch auf Deutsch</li>
+              <li><a href="https://pythonhumanities.com/python-for-dh-course/" target="_blank" rel="noopener">Python for Digital Humanities</a> - Online-Kurs von W.J.B. Mattingly</li>
+              <li><a href="https://humanitiesprogramming.github.io/" target="_blank" rel="noopener">Humanities Programming</a> - Einfuehrung mit Fokus auf Textanalyse</li>
+            </ul>
+          </div>
+          <div class="resource-category">
+            <h3>Video-Kurse</h3>
+            <ul class="resource-list">
+              <li><a href="https://www.youtube.com/watch?v=rfscVS0vtbw" target="_blank" rel="noopener">freeCodeCamp: Python for Beginners</a> - 4+ Stunden, kostenlos</li>
+              <li><a href="https://www.youtube.com/playlist?list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU" target="_blank" rel="noopener">Corey Schafer: Python Tutorials</a> - Hochwertige Serie</li>
+              <li><a href="https://learn.microsoft.com/en-us/shows/intro-to-python-development/" target="_blank" rel="noopener">Microsoft: Python for Beginners</a> - 44 Videos</li>
+            </ul>
+          </div>
+          <div class="resource-category">
+            <h3>Dokumentation & Referenz</h3>
+            <ul class="resource-list">
+              <li><a href="https://docs.python.org/3/tutorial/" target="_blank" rel="noopener">Python Official Tutorial</a> - Offizielle Dokumentation</li>
+              <li><a href="https://realpython.com/" target="_blank" rel="noopener">Real Python</a> - Tutorials fuer alle Levels</li>
+              <li><a href="https://www.w3schools.com/python/" target="_blank" rel="noopener">W3Schools Python</a> - Interaktive Tutorials</li>
+            </ul>
+          </div>
         </div>
       </section>
 
-      <!-- Next Steps -->
-      <section class="content-section" id="naechste-schritte">
-        <h2 class="section-title">
-          <span class="section-marker" style="background: #4A7C7C"></span>
-          Nächste Schritte
-        </h2>
+      <!-- Naechste Schritte -->
+      <section class="materials-section" id="naechste-schritte">
+        <h2>Naechste Schritte</h2>
 
         <div class="next-steps-box">
-          <!-- Wird dynamisch gefüllt -->
+          <!-- Wird dynamisch gefuellt -->
         </div>
       </section>
 
-    </main>
+      <!-- Navigation -->
+      <nav class="back-navigation">
+        <a href="./" class="back-link">
+          <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          Zurueck zur Uebersicht
+        </a>
+      </nav>
 
-    <footer>
-      <a href="https://github.com/DigitalHumanitiesCraft/ai-coding-literacy">GitHub</a> ·
-      DigitalHumanitiesCraft · 2025
-    </footer>
-  </div>
+    </div>
+  </main>
 
-  <!-- Right Info Panel (Glossar) -->
-  <aside class="info-panel" id="info-panel">
-    <div class="info-panel-progress" id="info-panel-progress"></div>
-    <button class="info-panel-close" id="info-panel-close" aria-label="Close">&times;</button>
-    <div class="info-panel-content" id="info-panel-content"></div>
-  </aside>
+  <!-- Footer -->
+  <footer class="workshop-footer">
+    <p><a href="https://github.com/DigitalHumanitiesCraft/ai-coding-literacy">GitHub</a></p>
+    <p>DigitalHumanitiesCraft - 2025</p>
+  </footer>
 
   <script src="../js/shared.js"></script>
-  <script src="../js/glossary.js"></script>
   <script src="../js/setup.js"></script>
 </body>
 </html>

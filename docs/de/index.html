@@ -4,100 +4,153 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Coding Literacy</title>
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <meta name="description" content="AI Coding Literacy: Ein Curriculum fuer LLM-gestuetzte Codeentwicklung in den Geisteswissenschaften.">
+  <link rel="stylesheet" href="../css/workshop.css">
 </head>
-<body>
-  <!-- Sidebar -->
-  <aside class="sidebar">
-    <nav class="sidebar-nav">
-      <a href="./" class="active">Konzept</a>
-      <a href="workshop.html">Workshop</a>
-      <a href="setup.html">Setup</a>
-      <a href="referenz.html">Referenz</a>
-    </nav>
-    <div class="competency-bars" id="sidebar-bars">
-      <!-- Wird dynamisch aus JSON gefuellt -->
-    </div>
-  </aside>
+<body class="workshop-page">
 
-  <!-- Header Banner -->
-  <header class="page-banner">
-    <h1>AI Coding Literacy</h1>
-    <p class="banner-subtitle">Curriculum fuer LLM-gestuetztes Programmieren</p>
+  <!-- Site Navigation -->
+  <nav class="site-nav">
+    <a href="./" class="active">Konzept</a>
+    <span class="nav-separator">|</span>
+    <a href="workshop.html">Workshop</a>
+    <span class="nav-separator">|</span>
+    <a href="referenz.html">Referenz</a>
+  </nav>
+
+  <!-- Header -->
+  <header class="workshop-header">
+    <p class="workshop-tagline">Curriculum</p>
+    <h1 class="workshop-title">AI Coding Literacy</h1>
+    <p class="workshop-subtitle">LLM-gestuetztes Programmieren fuer Geisteswissenschaftler</p>
+    <p class="workshop-intro">
+      AI Coding Literacy bezeichnet die Kompetenz, Large Language Models als Werkzeuge
+      zur Codeentwicklung einzusetzen. Das Ziel ist nicht Softwareentwicklung im
+      professionellen Sinn, sondern Scripting und Prototyping: kleine, funktionale
+      Loesungen fuer konkrete Probleme aus dem eigenen Arbeitsbereich.
+    </p>
   </header>
 
-  <!-- Page Content -->
-  <div class="page-wrapper">
-    <main id="content">
-      <!-- Intro-Bereich -->
-      <section id="intro" class="content-section">
-        <p id="subtitle" class="section-subtitle"></p>
-        <p id="description"></p>
-      </section>
+  <main>
+    <div class="workshop-container">
 
-      <!-- Kompetenzmodell-Uebersicht -->
-      <section id="kompetenzmodell" class="content-section">
+      <!-- Navigation innerhalb der Seite -->
+      <nav class="context-section" style="text-align: center; padding: 1rem 0;">
+        <a href="#kompetenzmodell" class="concept-link" style="margin: 0 1rem;">Kompetenzmodell</a>
+        <a href="#zyklus" class="concept-link" style="margin: 0 1rem;">Der Zyklus</a>
+        <a href="#didaktik" class="concept-link" style="margin: 0 1rem;">Didaktik</a>
+        <a href="#grenzen" class="concept-link" style="margin: 0 1rem;">Grenzen</a>
+      </nav>
+
+      <!-- Kompetenzmodell -->
+      <section class="materials-section" id="kompetenzmodell">
         <h2>Kompetenzmodell</h2>
-        <p class="section-intro">Sieben Bereiche, die einen vollstaendigen Entwicklungszyklus abbilden. Das Modell basiert auf der Erkenntnis, dass AI Coding Literacy mehr erfordert als Prompting allein.</p>
-        <div class="competency-grid" id="competency-list">
-          <!-- Wird dynamisch gefuellt -->
+        <p>Sieben Bereiche, die einen vollstaendigen Entwicklungszyklus abbilden. Das Modell basiert auf der Erkenntnis, dass AI Coding Literacy mehr erfordert als Prompting allein.</p>
+
+        <div class="context-grid" id="competency-list" style="grid-template-columns: repeat(2, 1fr); margin-top: 1.5rem;">
+          <!-- Wird dynamisch aus JSON gefuellt -->
         </div>
       </section>
 
       <!-- Der Zyklus -->
-      <section id="zyklus" class="content-section">
+      <section class="materials-section" id="zyklus">
         <h2>Der Zyklus</h2>
-        <p class="section-intro">Die Kompetenzen bilden einen iterativen Kreislauf:</p>
-        <ol class="cycle-list" id="cycle-list">
-          <!-- Wird dynamisch gefuellt -->
-        </ol>
-        <p>Nach dem Review beginnt der Zyklus erneut - mit verbessertem Verstaendnis und praeziseren Anforderungen.</p>
+        <p>Die Kompetenzen bilden einen iterativen Kreislauf:</p>
+
+        <div class="learning-objectives" style="margin-top: 1.5rem;">
+          <ol class="objectives-list" id="cycle-list">
+            <!-- Wird dynamisch gefuellt -->
+          </ol>
+        </div>
+
+        <p style="margin-top: 1rem;">Nach dem Review beginnt der Zyklus erneut - mit verbessertem Verstaendnis und praeziseren Anforderungen.</p>
       </section>
 
       <!-- Didaktischer Ansatz -->
-      <section id="didaktik" class="content-section">
+      <section class="materials-section" id="didaktik">
         <h2>Didaktischer Ansatz</h2>
-        <p>Das Curriculum folgt einem <strong>Informed Vibe Coding</strong> Ansatz: Experimentieren ist erwuenscht, aber mit wachsendem Verstaendnis fuer das, was passiert. Der intuitive, explorative Umgang mit Code wird nicht ersetzt, sondern durch systematische Reflexion ergaenzt.</p>
 
-        <h3>Prinzipien</h3>
-        <ul class="principles-list">
-          <li><strong>Lesen vor Schreiben:</strong> Code verstehen ist einfacher als Code schreiben</li>
-          <li><strong>Domaenenwissen als Staerke:</strong> Ihr Fachwissen macht Sie zum Experten fuer Ihre Probleme</li>
-          <li><strong>Iteration statt Perfektion:</strong> Schrittweise Verbesserung durch Dialog</li>
-          <li><strong>Grenzen erkennen:</strong> Wissen, wann professionelle Hilfe noetig ist</li>
-        </ul>
+        <div class="concept-content">
+          <p>Das Curriculum folgt einem <a href="informed-vibe-coding.html" class="concept-link">Informed Vibe Coding</a> Ansatz: Experimentieren ist erwuenscht, aber mit wachsendem Verstaendnis fuer das, was passiert.</p>
 
-        <p class="section-link"><a href="informed-vibe-coding.html">Mehr zu Informed Vibe Coding</a></p>
+          <div class="context-grid" style="grid-template-columns: repeat(2, 1fr); margin-top: 1.5rem;">
+            <div class="context-card">
+              <h3>Lesen vor Schreiben</h3>
+              <p class="context-sub">Code verstehen ist einfacher als Code schreiben</p>
+            </div>
+            <div class="context-card">
+              <h3>Domaenenwissen als Staerke</h3>
+              <p class="context-sub">Ihr Fachwissen macht Sie zum Experten fuer Ihre Probleme</p>
+            </div>
+            <div class="context-card">
+              <h3>Iteration statt Perfektion</h3>
+              <p class="context-sub">Schrittweise Verbesserung durch Dialog</p>
+            </div>
+            <div class="context-card">
+              <h3>Grenzen erkennen</h3>
+              <p class="context-sub">Wissen, wann professionelle Hilfe noetig ist</p>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <!-- Sessions werden hier dynamisch geladen -->
-      <section id="sessions-section" class="content-section">
+      <!-- Grenzen -->
+      <section class="materials-section" id="grenzen">
+        <h2>Grenzen</h2>
+
+        <div class="context-grid" style="grid-template-columns: repeat(3, 1fr); margin-top: 1rem;">
+          <div class="context-card">
+            <h3>Logikfehler</h3>
+            <p class="context-sub">Syntaktisch korrekter, aber semantisch falscher Code wird ohne Domaenenwissen uebersehen</p>
+          </div>
+          <div class="context-card">
+            <h3>Instabilitaet</h3>
+            <p class="context-sub">Modell-Updates koennen Ergebnisse veraendern</p>
+          </div>
+          <div class="context-card">
+            <h3>Komplexitaet</h3>
+            <p class="context-sub">Ab einer gewissen Komplexitaet reicht AI Coding Literacy nicht aus</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sessions -->
+      <section class="materials-section" id="sessions-section">
         <h2>Sessions</h2>
-        <div id="sessions-container"></div>
-        <div class="loading" id="loading">Lade Sessions...</div>
+        <div id="sessions-container">
+          <!-- Wird dynamisch gefuellt -->
+        </div>
+        <div class="loading" id="loading" style="text-align: center; padding: 2rem; color: var(--ws-ink-faded);">Lade Sessions...</div>
       </section>
-    </main>
 
-    <footer>
-      <a href="https://github.com/DigitalHumanitiesCraft/ai-coding-literacy">GitHub</a> ·
-      DigitalHumanitiesCraft · 2025
-    </footer>
-  </div>
+      <!-- Quellen -->
+      <section class="resources-section" id="quellen">
+        <h2 class="section-heading">Quellen</h2>
+        <div class="resources-grid" style="grid-template-columns: 1fr;">
+          <div class="resource-category">
+            <ul class="resource-list" style="font-size: 0.9rem;">
+              <li>Dell'Acqua, F., et al. (2023). Navigating the Jagged Technological Frontier. Harvard Business School.</li>
+              <li>Hermans, F. (2021). The Programmer's Brain. Manning Publications.</li>
+              <li>Karpathy, A. (2025). Vibe Coding.</li>
+              <li>Long, D., &amp; Magerko, B. (2020). What is AI Literacy? CHI 2020.</li>
+              <li>Mei, L., et al. (2025). A Survey of Context Engineering for LLMs. arXiv:2507.13334.</li>
+              <li>Mollick, E. (2024). Co-Intelligence: Living and Working with AI. Portfolio.</li>
+              <li>Schulhoff, S., et al. (2025). The Prompt Report. arXiv:2406.06608.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
-  <!-- Right Info Panel -->
-  <aside class="info-panel" id="info-panel">
-    <div class="info-panel-progress" id="info-panel-progress"></div>
-    <button class="info-panel-close" id="info-panel-close" aria-label="Close">&times;</button>
-    <div class="info-panel-content" id="info-panel-content">
-      <!-- Content wird dynamisch geladen -->
     </div>
-  </aside>
+  </main>
+
+  <!-- Footer -->
+  <footer class="workshop-footer">
+    <p><a href="https://github.com/DigitalHumanitiesCraft/ai-coding-literacy">GitHub</a></p>
+    <p>DigitalHumanitiesCraft - 2025</p>
+  </footer>
 
   <script src="../js/shared.js"></script>
   <script src="../js/app.js"></script>
-  <script src="../js/glossary.js"></script>
 </body>
 </html>
