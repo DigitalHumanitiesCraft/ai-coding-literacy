@@ -12,7 +12,7 @@
 | Q&A Nachgang | Termin offen, online, 60 Min |
 | Zielgruppe | Museumsmitarbeiter:innen ohne Programmierkenntnisse |
 | Teilnehmerzahl | 20 Personen |
-| Kosten | 144 EUR (inkl. Vorbereitungstreffen und Q&A) |
+| Kosten | Teilnahmegebühr laut Ankündigung des Veranstalters (inkl. Vorbereitungstreffen und Q&A) |
 | Veranstalter | Naturhistorisches Museum Wien, Museumsbund Oesterreich |
 | Ankuendigung | https://www.museumsbund.at/museumspraxis/programmieren-2-0-llms-fuer-forschungsdaten-im-museum |
 | Workshopleitung | Dr. Christopher Pollin |
@@ -323,7 +323,7 @@ Fuer eine programmatische Nutzung der Claude API im Workshop ist folgende Konfig
 | Modell-String | claude-haiku-4-5-20251001 |
 | Input-Kosten | 1 $ / Million Tokens |
 | Output-Kosten | 5 $ / Million Tokens |
-| Budget | 75 $ Credits |
+| Budget | API-Credits bereitgestellt, Umfang separat verwaltet |
 
 Der API-Key wird im Workshop muendlich geteilt. Teilnehmende tragen ihn in vorbereiteten Code ein. Nach der Uebung wird der Key geloescht und rotiert.
 
