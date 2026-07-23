@@ -164,9 +164,9 @@ npx serve .
 open http://localhost:8000/de/
 ```
 
-## Lizenz
+## Licence
 
-CC-BY
+Code steht unter der MIT-Lizenz (siehe [LICENSE](LICENSE)). Dokumentation und Wissensdokumente stehen unter Creative Commons Attribution 4.0 International (CC BY 4.0). Forschungsdaten Dritter sind ausgenommen; die Rechte verbleiben bei den jeweiligen Inhabern. Der enthaltene Datensatz (Hans Gross Kriminalmuseum, Universität Graz) verbleibt bei der Universität Graz.
 
 ---
 
