@@ -1,0 +1,6 @@
+# GitHub Pages builds this site from the repository root, so every tracked
+# file is served unless excluded here. knowledge/ holds internal project
+# documents (status report, plans, design notes) that stay in the repository
+# but are not part of the published site.
+exclude:
+  - knowledge/
